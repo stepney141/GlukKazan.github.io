@@ -2,7 +2,8 @@
 
 Dagaz.View.markType = {
    TARGET:    0,
-   ATTACKING: 1
+   ATTACKING: 1,
+   GOAL:      2
 };
 
 var STEP_CNT     = 3;
@@ -26,6 +27,7 @@ function View2D() {
   this.setup   = [];
   this.target  = [];
   this.strike  = [];
+  this.goal    = [];
   this.changes = [];
   this.vectors = [];
 }
@@ -146,8 +148,12 @@ View2D.prototype.addPiece = function(piece, pos) {
 View2D.prototype.markPositions = function(type, positions) {
   if (type == Dagaz.View.markType.TARGET) {
       this.target = positions;
-  } else {
+  } 
+  if (type == Dagaz.View.markType.ATTACKING) {
       this.strike = positions;
+  }
+  if (type == Dagaz.View.markType.GOAL) {
+      this.goal   = positions;
   }
   this.invalidate();
 }
@@ -324,6 +330,32 @@ View2D.prototype.animate = function() {
         }
         frame.cnt--;
     }, this);
+/*var captured = _.chain(this.changes)
+   .filter(function(frame) {
+        return frame.phase == phase;
+    })
+   .filter(isCommitted)
+   .filter(isDone)
+   .map(function(frame) {
+       if (_.isUndefined(frame.to)) {
+           return frame.from;
+       } else {
+           return frame.to;
+       }
+    })
+   .map(function(pos) {
+       return posToIx(this, pos);
+    }, this)
+   .compact()
+   .difference(
+       _.chain(this.changes)
+        .map(function(frame) {
+             return frame.from;
+         })
+        .compact()
+        .value()
+    )
+   .value();*/
   _.chain(this.changes)
    .filter(function(frame) {
         return frame.phase == phase;
@@ -351,6 +383,14 @@ View2D.prototype.animate = function() {
         }
         frame.done = true;
     }, this);
+/*  this.setup = _.chain(_.range(this.setup.length))
+    .filter(function(ix) {
+        return _.indexOf(captured, ix) < 0;
+     })
+    .map(function(ix) {
+        return this.setup[ix];
+     }, this)
+    .value(); */
     if ((len > 0) && (this.changes.length == 0)) {
         isValid = true;
         if (this.controller) {
@@ -362,6 +402,7 @@ View2D.prototype.animate = function() {
 Dagaz.View.showMarks = function(view, ctx) {
   drawMarks(ctx, view, view.target, "#00AA00");
   drawMarks(ctx, view, view.strike, "#FF0000");
+  drawMarks(ctx, view, view.goal,   "#FFFF00");
 }
 
 View2D.prototype.draw = function(canvas) {
