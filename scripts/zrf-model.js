@@ -726,7 +726,7 @@ ZrfDesign.prototype.addPlayer = function(player, symmetries) {
 }
 
 ZrfDesign.prototype.isPuzzle = function() {
-  return _.chain(_.keys(this.players)).max().value() == 1;
+  return _.chain(_.keys(this.playerNames)).max().value() == 1;
 }
 
 ZrfDesign.prototype.nextPlayer = function(player) {
@@ -1168,6 +1168,30 @@ function ZrfBoard(game) {
   this.moves    = [];
   this.player   = 1;
   this.changed  = [];
+  this.parent   = null;
+}
+
+ZrfBoard.prototype.traceMoves = function() {
+  var signs = [];
+  var moves = [];
+  var board = this;
+  while (board.parent) {
+      if (board.zSign != 0) {
+          if (_.indexOf(signs, board.zSign) >= 0) {
+              var f = true;
+              while (f) {
+                 moves.pop();
+                 f = signs.pop() != board.zSign;
+              }
+          }
+      }
+      if (board.move) {
+          signs.push(board.zSign);
+          moves.push(board.move);
+      }
+      board = board.parent;
+  }
+  return moves.reverse();
 }
 
 ZrfBoard.prototype.checkGoals = function(design) {
