@@ -69,15 +69,6 @@ var cache = function(ctx, board) {
   return ctx.cache[ix];
 }
 
-Dagaz.Model.moveToString = function(move) {
-  if (move.actions[0]) {
-      var action = move.actions[0];
-      return Dagaz.Model.posToString(action[0][0]) + "-" + 
-             Dagaz.Model.posToString(action[1][0]);
-  }
-  return "";
-}
-
 var debug = function(moves) {
   var r = ""
   _.each(moves, function(move) {
