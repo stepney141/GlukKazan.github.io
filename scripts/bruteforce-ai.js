@@ -108,7 +108,7 @@ BruteforceAi.prototype.checkMoves = function(ctx, board, timestamp) {
 }
 
 BruteforceAi.prototype.getMove = function(ctx) {
-  this.checkMoves(ctx, ctx.board, Date.now());
+//this.checkMoves(ctx, ctx.board, Date.now());
   var moves = cache(ctx, ctx.board);
   if (moves.length > 1) {
       return {
