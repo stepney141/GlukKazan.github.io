@@ -2,7 +2,7 @@
 
 var checkVersion = Dagaz.Model.checkVersion;
 var distinctMode = false;
-var uniqueMode   = false;
+var uniqueMode   = true;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
   if (name == "sliding-puzzle") {
@@ -86,6 +86,19 @@ Dagaz.AI.eval = function(board) {
        .value();
   }
   return r;
+}
+
+var simpleHeuristic = function(move) {
+  return move.actions.length;
+}
+
+var smartHeuristic = function(board, move) {
+  var b = board.apply(move);
+  return Dagaz.AI.eval(b) - Dagaz.AI.eval(board);
+}
+
+Dagaz.AI.heuristic = function(board, move) {
+  return simpleHeuristic(move);
 }
 
 var isEqual = function(a, b) {

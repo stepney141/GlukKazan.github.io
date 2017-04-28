@@ -66,6 +66,13 @@ var cache = function(ctx, board) {
        return f.move;
     })
    .value();
+  if (Dagaz.AI.heuristic && (ctx.cache[ix].length > 1)) {
+      var move = ctx.cache[ix].shift();
+      ctx.cache[ix] = _.sortBy(ctx.cache[ix], function(move) {
+          return -Dagaz.AI.heuristic(board, move);
+      });
+      ctx.cache[ix].unshift(move);
+  }
   return ctx.cache[ix];
 }
 
