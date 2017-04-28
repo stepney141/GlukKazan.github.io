@@ -2,11 +2,15 @@
 
 var checkVersion = Dagaz.Model.checkVersion;
 var distinctMode = false;
+var uniqueMode   = false;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
   if (name == "sliding-puzzle") {
       if (value == "distinct") {
           distinctMode = true;
+      }
+      if (value == "unique") {
+          uniqueMode = true;
       }
       if (value == "all") {
           distinctMode = false;
@@ -198,5 +202,13 @@ Dagaz.Model.CheckInvariants = function(board) {
 }
 
 Dagaz.View.showHint = function(view) {}
+
+Dagaz.Model.getPieceType = function(piece) {
+  if (uniqueMode) {
+      return piece.getValue(1);
+  } else {
+      return piece.type;
+  }
+}
 
 })();
