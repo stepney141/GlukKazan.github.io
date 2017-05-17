@@ -1,6 +1,6 @@
 (function() {
 
-var Z2J_VERSION = 1;
+var Z2J_VERSION = 2;
 
 Dagaz.Model.deferredStrike  = false;
 Dagaz.Model.discardCascades = false;
@@ -115,6 +115,8 @@ Dagaz.Model.ZRF_MARK      = 6;
 Dagaz.Model.ZRF_BACK      = 7;
 Dagaz.Model.ZRF_PUSH      = 8;
 Dagaz.Model.ZRF_POP       = 9;
+Dagaz.Model.ZRF_IS_PIECE  = 10;
+Dagaz.Model.ZRF_CREATE    = 11;
 
 Dagaz.Model.commands = {};
 
@@ -411,6 +413,32 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_IS_EMPTY] = function(gen) {
    return 0;
 }
 
+Dagaz.Model.functions[Dagaz.Model.ZRF_IS_PIECE] = function(gen) {
+   if (gen.pos === null) {
+       return null;
+   }
+   if (gen.stack.length == 0) {
+       return null;
+   }
+   var type = gen.stack.pop();
+   var piece = gen.getPiece(gen.pos);
+   gen.stack.push(piece.type == type);
+   return 0;
+}
+
+Dagaz.Model.functions[Dagaz.Model.ZRF_CREATE] = function(gen) {
+   if (gen.pos === null) {
+       return null;
+   }
+   if (gen.stack.length == 0) {
+       return null;
+   }
+   var type = gen.stack.pop();
+   var piece = new ZrfPiece(type, gen.board.player);
+   gen.dropPiece(gen.pos, piece);
+   return 0;
+}
+
 Dagaz.Model.isFriend = function(piece, player) {
    return (piece.player == player);
 }
@@ -563,6 +591,14 @@ Dagaz.Model.getDesign = function() {
       Dagaz.Model.design = new ZrfDesign();
   }
   return Dagaz.Model.design;
+}
+
+ZrfDesign.prototype.allPositions = function() {
+  return _.range(this.positions.length);
+}
+
+ZrfDesign.prototype.allDirections = function() {
+  return _.range(this.dirs.length);
 }
 
 ZrfDesign.prototype.reserve = function(player, piece, cnt) {
@@ -1257,6 +1293,8 @@ ZrfBoard.prototype.copy = function() {
   r.player  = this.player;
   r.zSign   = this.zSign;
   r.reserve = this.reserve;
+  r.lastf   = this.lastf;
+  r.lastt   = this.lastt;
   _.each(_.keys(this.pieces), function(pos) {
       r.pieces[pos] = this.pieces[pos];
   }, this);
@@ -1495,6 +1533,7 @@ ZrfBoard.prototype.movePiece = function(from, to, piece) {
 }
 
 ZrfBoard.prototype.dropPiece = function(pos, piece) {
+  this.lastt = pos;
   Dagaz.Model.decReserve(this, piece);
   this.setPiece(pos, piece);
   this.changed.push(pos);
@@ -1519,8 +1558,6 @@ ZrfBoard.prototype.commit = function() {
 
 ZrfBoard.prototype.apply = function(move) {
   var r = this.copy();
-  delete r.lastf;
-  delete r.lastt;
   move.applyAll(r);
   r.player = this.game.design.nextOrder(this.player);
   r.move = move;
@@ -1846,6 +1883,10 @@ ZrfMove.prototype.addValue = function(name, value, part) {
           }
       }
   }], part]);
+}
+
+ZrfMove.prototype.isPass = function() {
+  return this.actions.length == 0;
 }
 
 })();
