@@ -1248,13 +1248,9 @@ ZrfBoard.prototype.traceMoves = function() {
   return moves.reverse();
 }
 
-ZrfBoard.prototype.checkGoals = function(design, player) {
-  if (!player) {
-      player = this.player;
-  }
+Dagaz.Model.checkGoals = function(design, board, player) {
   var r = 0;
   _.each(_.keys(design.goals), function(p) {
-      var board  = this;
       var groups = _.groupBy(design.goals[p], function(goal) {
           return goal.num;
       });
@@ -1278,8 +1274,15 @@ ZrfBoard.prototype.checkGoals = function(design, player) {
       if (s) {
           r = (p == player) ? 1: -1; 
       }
-  }, this);
+  });
   return r;
+}
+
+ZrfBoard.prototype.checkGoals = function(design, player) {
+  if (!player) {
+      player = this.player;
+  }
+  return Dagaz.Model.checkGoals(design, this, player);
 }
 
 ZrfBoard.prototype.setup = function(view) {
