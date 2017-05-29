@@ -14,6 +14,7 @@ Dagaz.Model.smartTo         = false;
 Dagaz.Model.showGoals       = true;
 Dagaz.Model.showMoves       = true;
 Dagaz.Model.showHints       = true;
+Dagaz.Model.stalemateDraw   = false;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -35,6 +36,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
          (name != "show-moves-list")    &&
          (name != "smart-moves")        &&
          (name != "show-hints")         &&
+         (name != "stalemate-draw")     &&
          (name != "recycle-captures")   &&
          (name != "silent-?-moves")) {
          design.failed = true;
@@ -73,6 +75,9 @@ Dagaz.Model.checkVersion = function(design, name, value) {
      }
      if ((name == "show-hints") && (value == "false")) {
          Dagaz.Model.showHints = false;
+     }
+     if ((name == "stalemate-draw") && (value == "true")) {
+         Dagaz.Model.stalemateDraw = true;
      }
   }
 }
@@ -1285,7 +1290,10 @@ ZrfBoard.prototype.checkGoals = function(design, player) {
   return Dagaz.Model.checkGoals(design, this, player);
 }
 
+Dagaz.Model.setup = function(board) {}
+
 ZrfBoard.prototype.setup = function(view) {
+  Dagaz.Model.setup(this);
   view.clear();
   _.each(_.keys(this.pieces), function(pos) {
      var piece = this.pieces[pos];
@@ -1744,7 +1752,7 @@ Dagaz.Model.moveToString = function(move, part) {
   _.chain(move.actions)
    .filter(n)
    .filter(function(action) {
-       return (action[1] === null);
+       return (action[0] !== null) && (action[1] === null);
     })
    .each(function(action) {
        if (r.length > 0) {
