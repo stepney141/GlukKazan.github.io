@@ -1,0 +1,32 @@
+01/06/2017 - 1.0.7
+  Three Musketeers
+  Maharadja
+  Careful AI
+29/05/2017 - 1.0.6
+  LightOff puzzles
+  Solitaire AI
+  External links
+26/05/2017 - 1.0.5
+  Solitaire puzzles
+  Hunt game
+23/05/2017 - 1.0.4
+  Four-lines Gonu
+  Aggressive AI fixed
+19/05/2017 - 1.0.3
+  Archimedes
+  Aggressive AI
+  More Sliding puzzles
+  Game of Dwarfs
+  Copyrights
+17/05/2017 - 1.0.2
+  Lewthwaite's game
+  Random AI
+10/05/2017 - 1.0.1
+  French Military Game
+  Just You Wait!
+  Breakthrough AI
+20/04/2017 - 1.0.0
+  MIT License
+  Sliding puzzles collection
+  BruteForce AI
+  Zobrist hashing
