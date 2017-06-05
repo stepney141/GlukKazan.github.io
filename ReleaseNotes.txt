@@ -2,9 +2,11 @@
   Three Musketeers
   Maharadja
   Careful AI
+  Turn order customizing
 29/05/2017 - 1.0.6
   LightOff puzzles
   Solitaire AI
+  Promotion on the spot
   External links
 26/05/2017 - 1.0.5
   Solitaire puzzles
@@ -12,11 +14,13 @@
 23/05/2017 - 1.0.4
   Four-lines Gonu
   Aggressive AI fixed
+  Goals customizing
 19/05/2017 - 1.0.3
   Archimedes
   Aggressive AI
   More Sliding puzzles
   Game of Dwarfs
+  Capturing
   Copyrights
 17/05/2017 - 1.0.2
   Lewthwaite's game
@@ -25,8 +29,10 @@
   French Military Game
   Just You Wait!
   Breakthrough AI
+  Positional Goals
 20/04/2017 - 1.0.0
   MIT License
   Sliding puzzles collection
   BruteForce AI
   Zobrist hashing
+  Cascade moves
