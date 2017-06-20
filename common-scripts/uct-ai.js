@@ -82,6 +82,37 @@ UctAi.prototype.uct = function(win, count, all) {
   }
 }
 
+var positions = function(list, board) {
+  var r = "";
+  _.each(list, function(pos) {
+      if (r) {
+          r = r + ",";
+      }
+      r = r + Dagaz.Model.posToString(pos);
+      var piece = board.getPiece(pos);
+      if (piece !== null) {
+          r = r + ":" + piece.getType();
+      }
+  });
+  return r;
+}
+
+var dump = function(design, board) {
+  var w = [];
+  var b = [];
+  _.each(design.allPositions(), function(pos) {
+      var piece = board.getPiece(pos);
+      if (piece !== null) {
+          if (piece.player == 1) {
+              b.push(pos);
+          } else {
+              w.push(pos);
+          }
+      }
+  });
+  return "Player: " + board.player + "; P1: " + positions(b, board) + "; P2: " + positions(w, board);
+}
+
 UctAi.prototype.simulate = function(ctx, node, eval) {
   var deep  = 0;
   var board = node.board;
@@ -91,9 +122,11 @@ UctAi.prototype.simulate = function(ctx, node, eval) {
       if (board.moves.length == 0) {
           if (!Dagaz.Model.stalemateDraw) {
               if (board.player != ctx.board.player) {
+                  console.log("Goal: 1; Player: " + board.player + "; Deep: " + deep + "; " + dump(ctx.design, board));
                   node.win++;
                   ctx.win++;
               } else {
+                  console.log("Goal: -1; Player: " + board.player + "; Deep: " + deep + "; " + dump(ctx.design, board));
                   node.loss++;
                   ctx.loss++;
               }
@@ -108,9 +141,11 @@ UctAi.prototype.simulate = function(ctx, node, eval) {
            var goal = boards[i].checkGoals(ctx.design, ctx.board.player);
            if (goal < 0) {
                isLoss = true;
+               console.log("Goal: " + goal + "; Deep: " + deep + "; " + dump(ctx.design, boards[i]));
            }
            if (goal > 0) {
                isWin = true;
+               console.log("Goal: " + goal + "; Deep: " + deep + "; " + dump(ctx.design, boards[i]));
            }
       }
       if (isLoss) {
@@ -191,6 +226,9 @@ UctAi.prototype.getMove = function(ctx) {
            if (goal > 0) {
                ctx.result = move;
            }
+           if (this.heuristic(ctx.design, ctx.board, move) <= 0) {
+               goal = -1;
+           }
            return {
                move:  move,
                board: board,
@@ -199,7 +237,7 @@ UctAi.prototype.getMove = function(ctx) {
                win:   0,
                all:   0
            };
-      });
+      }, this);
   }
   if (ctx.result) {
       return {
@@ -223,13 +261,16 @@ UctAi.prototype.getMove = function(ctx) {
       if (node === null) {
           var mx = null;
           _.each(ctx.childs, function(child) {
-              var value = this.uct(child.win, child.all, ctx.all);
-              if ((mx === null) || (value > mx)) {
-                   mx = value;
-                   node = child;
+              if (!child.bad) {
+                  var value = this.uct(child.win, child.all, ctx.all);
+                  if ((mx === null) || (value > mx)) {
+                       mx = value;
+                       node = child;
+                  }
               }
           }, this);
       }
+      if (node === null) break;
       if (node.bad) continue;
       this.simulate(ctx, node, eval);
       node.all++;
