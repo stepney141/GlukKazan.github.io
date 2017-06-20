@@ -870,6 +870,13 @@ ZrfDesign.prototype.addPosition = function(name, links) {
   this.positions.push(Dagaz.int32Array(links));
 }
 
+ZrfDesign.prototype.findDirection = function(from, to) {
+  if (from >= this.positions.length) return null;
+  var dir = Dagaz.find(this.positions[from], to - from);
+  if (dir < 0) return null;
+  return dir;
+}
+
 ZrfDesign.prototype.navigate = function(player, pos, dir) {
   if (!_.isUndefined(this.players[player])) {
       dir = this.players[player][dir];
@@ -879,6 +886,12 @@ ZrfDesign.prototype.navigate = function(player, pos, dir) {
   } else {
       return null;
   }
+}
+
+ZrfDesign.prototype.getZone = function(name) {
+  var zone = Dagaz.find(this.zoneNames, name);
+  if (zone < 0) return null;
+  return zone;
 }
 
 ZrfDesign.prototype.addZone = function(name, player, positions) {
