@@ -17,11 +17,17 @@ function UctAi(params, parent) {
   if (_.isUndefined(this.params.LOSS_WEIGHT)) {
       this.params.LOSS_WEIGHT = -0.7;
   }
+  if (_.isUndefined(this.params.PENALTY_WEIGHT)) {
+      this.params.PENALTY_WEIGHT = -0.7;
+  }
   if (_.isUndefined(this.params.HEURISTIC_WEIGHT)) {
       this.params.HEURISTIC_WEIGHT = 0.3;
   }
   if (_.isUndefined(this.params.MAX_DEEP)) {
       this.params.MAX_DEEP = 100;
+  }
+  if (_.isUndefined(this.params.BAD_EXCHANGE_PENALTY)) {
+      this.params.BAD_EXCHANGE_PENALTY = -5;
   }
   if (_.isUndefined(this.params.rand)) {
       this.params.rand = _.random;
@@ -102,6 +108,49 @@ UctAi.prototype.uct = function(win, count, all) {
   } else {
       return MAXVALUE;
   }
+}
+
+var isAttacking = function(move, pos) {
+  return _.filter(move.actions, function(action) {
+     if ((action[0] !== null) && (action[0][0] == pos) && (action[1] === null)) return true;
+     return (action[0] !== null) && (action[1] !== null) && (action[1][0] == pos) && (action[0][0] != pos);
+  }).length > 0;
+}
+
+var getPrice = function(design, board, move) {
+  var actions = _.filter(move.actions, function(action) {
+      return action[0] !== null;
+  });
+  if (actions.length == 0) return 0;
+  var piece = board.getPiece(actions[0][0][0]);
+  if (piece === null) return 0;
+  return design.price[piece.type];
+}
+
+UctAi.prototype.calcExchange = function(ctx, board, move) {
+  if ((move.actions.length > 0) && (move.actions[0][1] !== null)) {
+       var pos = move.actions[0][1][0];
+       var moves = _.filter(Dagaz.AI.generate(ctx, board), function(m) {
+           return isAttacking(m, pos);
+       });
+       while (moves.length > 0) {
+           move = _.reduce(moves, function(acc, move) { 
+               if (acc === null) return move;
+               if (getPrice(ctx.design, board, move) < getPrice(ctx.design, board, acc)) return move;
+               return acc;
+           }, null);
+           if ((move.actions.length > 0) && (move.actions[0][1] !== null)) {
+                board = board.apply(move);
+                pos = move.actions[0][1][0];
+                moves = _.filter(Dagaz.AI.generate(ctx, board), function(m) {
+                    return isAttacking(m, pos);
+                });
+           } else {
+                moves = [];
+           }
+       }
+  }
+  return board;
 }
 
 UctAi.prototype.simulate = function(ctx, node, eval) {
@@ -226,12 +275,13 @@ UctAi.prototype.getMove = function(ctx) {
                goal = -1;
            }
            return {
-               move:  move,
-               board: board,
-               bad:   goal < 0,
-               loss:  0,
-               win:   0,
-               all:   0
+               move:    move,
+               board:   board,
+               bad:     goal < 0,
+               penalty: 0,
+               loss:    0,
+               win:     0,
+               all:     0
            };
       }, this);
   }
@@ -247,6 +297,16 @@ UctAi.prototype.getMove = function(ctx) {
   var eval = 0;
   if (Dagaz.AI.eval) {
       eval = Dagaz.AI.eval(ctx.design, this.params, ctx.board, ctx.board.player);
+      while (ctx.init < ctx.childs.length) {
+          var node = ctx.childs[ctx.init];
+          var b = this.calcExchange(ctx, node.board, node.move);
+          var diff = Dagaz.AI.eval(ctx.design, this.params, b, ctx.board.player) - eval;
+          if (diff < 0) {
+              node.penalty = (this.params.BAD_EXCHANGE_PENALTY * diff) | 0;
+              node.all = node.penalty;
+          }
+          ctx.init++;
+      }
   }
   while (Date.now() - ctx.timestamp < this.params.AI_FRAME) {
       var node = null;
@@ -285,8 +345,12 @@ UctAi.prototype.getMove = function(ctx) {
       if (ctx.childs[i].loss > 0) {
           v = ctx.childs[i].loss / ctx.childs[i].all;
       }
+      var p = 0;
+      if (ctx.childs[i].penalty > 0) {
+          p = ctx.childs[i].penalty / ctx.childs[i].all;
+      }
       var h = this.heuristic(ctx.design, ctx.board, ctx.childs[i].move);
-      var w = this.params.WIN_WEIGHT * u + this.params.LOSS_WEIGHT * v + this.params.HEURISTIC_WEIGHT * h;
+      var w = this.params.WIN_WEIGHT * u + this.params.LOSS_WEIGHT * v + this.params.HEURISTIC_WEIGHT * h + this.params.PENALTY_WEIGHT * p;
       if ((mx === null) || (w > mx)) {
           mx = w;
           ctx.result = ctx.childs[i].move;
