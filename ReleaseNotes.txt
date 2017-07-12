@@ -1,3 +1,9 @@
+12/07/2017 - 1.1.0
+  Qiquo Xiangqi
+  Janggi
+  Move List (version 2)
+  Elephant Hunt
+  Gauntlet
 21/06/2017 - 1.0.9
   Doubutsu Shogi
   XiangQi
