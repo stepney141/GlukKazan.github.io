@@ -1,3 +1,11 @@
+18/07/2017 - 1.1.1
+  English Checkers
+  Italian Checkers
+  Italian Damone
+  Turkish Dama
+  Greek Checkers
+  Composite moves
+  Euclid
 12/07/2017 - 1.1.0
   Qiquo Xiangqi
   Janggi
