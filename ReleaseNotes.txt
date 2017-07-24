@@ -1,3 +1,14 @@
+24/07/2017 - 1.1.2
+  Fox and Geese (4 variants)
+  Asalto
+  Dablot Prejjesne
+  Russian Checkers
+  80-cells Checkers
+  Spanish Checkers
+  Argentinian Checkers
+  Thai Checkers
+  Armenian Tama
+  Deferred capturing option
 18/07/2017 - 1.1.1
   English Checkers
   Italian Checkers
