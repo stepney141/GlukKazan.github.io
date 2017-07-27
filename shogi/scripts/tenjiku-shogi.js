@@ -385,23 +385,214 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(7, ZRF.FUNCTION,	24);	// from
     design.addCommand(7, ZRF.PARAM,	0);	// $1
     design.addCommand(7, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(7, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(7, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	7);
+    design.addCommand(7, ZRF.FORK,	3);
+    design.addCommand(7, ZRF.FUNCTION,	25);	// to
+    design.addCommand(7, ZRF.FUNCTION,	28);	// end
+    design.addCommand(7, ZRF.PARAM,	1);	// $2
+    design.addCommand(7, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(7, ZRF.JUMP,	-8);
+    design.addCommand(7, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	14);
+    design.addCommand(7, ZRF.LITERAL,	32);	// King
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.IF,	6);
+    design.addCommand(7, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.IF,	3);
+    design.addCommand(7, ZRF.LITERAL,	0);	// false
+    design.addCommand(7, ZRF.JUMP,	2);
+    design.addCommand(7, ZRF.LITERAL,	1);	// true
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	3);
+    design.addCommand(7, ZRF.LITERAL,	1);	// true
+    design.addCommand(7, ZRF.JUMP,	2);
+    design.addCommand(7, ZRF.LITERAL,	0);	// false
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	3);
+    design.addCommand(7, ZRF.FUNCTION,	25);	// to
+    design.addCommand(7, ZRF.JUMP,	56);
+    design.addCommand(7, ZRF.LITERAL,	32);	// King
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.IF,	53);
+    design.addCommand(7, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	9);
+    design.addCommand(7, ZRF.LITERAL,	32);	// King
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.IF,	6);
+    design.addCommand(7, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.IF,	3);
+    design.addCommand(7, ZRF.LITERAL,	1);	// true
+    design.addCommand(7, ZRF.JUMP,	2);
+    design.addCommand(7, ZRF.LITERAL,	0);	// false
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.IF,	4);
+    design.addCommand(7, ZRF.FORK,	3);
+    design.addCommand(7, ZRF.FUNCTION,	25);	// to
+    design.addCommand(7, ZRF.FUNCTION,	28);	// end
+    design.addCommand(7, ZRF.LITERAL,	32);	// King
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
     design.addCommand(7, ZRF.FUNCTION,	0);	// not
     design.addCommand(7, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(7, ZRF.MODE,	4);	// left-2-type
-    design.addCommand(7, ZRF.FUNCTION,	25);	// to
+    design.addCommand(7, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	48);	// Vice-General
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	46);	// Rook-General
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	0);	// Rook-General!
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	44);	// Bishop-General
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.LITERAL,	1);	// Bishop-General!
+    design.addCommand(7, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(7, ZRF.FUNCTION,	0);	// not
+    design.addCommand(7, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(7, ZRF.PARAM,	2);	// $3
+    design.addCommand(7, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(7, ZRF.JUMP,	-54);
     design.addCommand(7, ZRF.FUNCTION,	28);	// end
 
     design.addCommand(8, ZRF.FUNCTION,	24);	// from
-    design.addCommand(8, ZRF.PARAM,	0);	// $1
-    design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(8, ZRF.FUNCTION,	1);	// empty?
-    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.PARAM,	0);	// true
+    design.addCommand(8, ZRF.SET_FLAG,	2);	// no-piece
     design.addCommand(8, ZRF.PARAM,	1);	// $2
     design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(8, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.PARAM,	2);	// false
+    design.addCommand(8, ZRF.SET_FLAG,	2);	// no-piece
+    design.addCommand(8, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	14);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	6);
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	2);
+    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
     design.addCommand(8, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(8, ZRF.PARAM,	2);	// $3
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.PARAM,	3);	// $4
+    design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(8, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.PARAM,	4);	// false
+    design.addCommand(8, ZRF.SET_FLAG,	2);	// no-piece
+    design.addCommand(8, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	14);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	6);
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	2);
+    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.PARAM,	5);	// $6
+    design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(8, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.PARAM,	6);	// false
+    design.addCommand(8, ZRF.SET_FLAG,	2);	// no-piece
+    design.addCommand(8, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	14);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	6);
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	2);
+    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.FLAG,	2);	// no-piece
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	12);
+    design.addCommand(8, ZRF.PARAM,	7);	// $8
     design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(8, ZRF.FUNCTION,	1);	// empty?
     design.addCommand(8, ZRF.FUNCTION,	0);	// not
@@ -409,61 +600,223 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(8, ZRF.FORK,	3);
     design.addCommand(8, ZRF.FUNCTION,	25);	// to
     design.addCommand(8, ZRF.FUNCTION,	28);	// end
-    design.addCommand(8, ZRF.PARAM,	3);	// $4
+    design.addCommand(8, ZRF.PARAM,	8);	// $9
     design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(8, ZRF.JUMP,	-8);
-    design.addCommand(8, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(8, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	14);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	6);
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.JUMP,	40);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	37);
+    design.addCommand(8, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	9);
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	6);
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.IF,	3);
+    design.addCommand(8, ZRF.LITERAL,	1);	// true
+    design.addCommand(8, ZRF.JUMP,	2);
+    design.addCommand(8, ZRF.LITERAL,	0);	// false
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.IF,	4);
+    design.addCommand(8, ZRF.FORK,	3);
+    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.FUNCTION,	28);	// end
+    design.addCommand(8, ZRF.LITERAL,	32);	// King
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
     design.addCommand(8, ZRF.FUNCTION,	0);	// not
     design.addCommand(8, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(8, ZRF.FUNCTION,	25);	// to
+    design.addCommand(8, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.LITERAL,	48);	// Vice-General
+    design.addCommand(8, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(8, ZRF.FUNCTION,	0);	// not
+    design.addCommand(8, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(8, ZRF.PARAM,	9);	// $10
+    design.addCommand(8, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(8, ZRF.JUMP,	-38);
     design.addCommand(8, ZRF.FUNCTION,	28);	// end
 
     design.addCommand(9, ZRF.FUNCTION,	24);	// from
     design.addCommand(9, ZRF.PARAM,	0);	// $1
     design.addCommand(9, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(9, ZRF.FUNCTION,	1);	// empty?
-    design.addCommand(9, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(9, ZRF.PARAM,	1);	// $2
-    design.addCommand(9, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(9, ZRF.FUNCTION,	1);	// empty?
-    design.addCommand(9, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(9, ZRF.PARAM,	2);	// $3
-    design.addCommand(9, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(9, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(9, ZRF.FUNCTION,	0);	// not
     design.addCommand(9, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(9, ZRF.MODE,	4);	// left-2-type
     design.addCommand(9, ZRF.FUNCTION,	25);	// to
     design.addCommand(9, ZRF.FUNCTION,	28);	// end
 
     design.addCommand(10, ZRF.FUNCTION,	24);	// from
     design.addCommand(10, ZRF.PARAM,	0);	// $1
     design.addCommand(10, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(10, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(10, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	7);
+    design.addCommand(10, ZRF.FORK,	3);
+    design.addCommand(10, ZRF.FUNCTION,	25);	// to
+    design.addCommand(10, ZRF.FUNCTION,	28);	// end
+    design.addCommand(10, ZRF.PARAM,	1);	// $2
+    design.addCommand(10, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(10, ZRF.JUMP,	-8);
+    design.addCommand(10, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	14);
+    design.addCommand(10, ZRF.LITERAL,	32);	// King
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.IF,	6);
+    design.addCommand(10, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.IF,	3);
+    design.addCommand(10, ZRF.LITERAL,	0);	// false
+    design.addCommand(10, ZRF.JUMP,	2);
+    design.addCommand(10, ZRF.LITERAL,	1);	// true
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	3);
+    design.addCommand(10, ZRF.LITERAL,	1);	// true
+    design.addCommand(10, ZRF.JUMP,	2);
+    design.addCommand(10, ZRF.LITERAL,	0);	// false
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	3);
+    design.addCommand(10, ZRF.FUNCTION,	25);	// to
+    design.addCommand(10, ZRF.JUMP,	36);
+    design.addCommand(10, ZRF.LITERAL,	32);	// King
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.IF,	33);
+    design.addCommand(10, ZRF.FUNCTION,	2);	// enemy?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	9);
+    design.addCommand(10, ZRF.LITERAL,	32);	// King
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.IF,	6);
+    design.addCommand(10, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.IF,	3);
+    design.addCommand(10, ZRF.LITERAL,	1);	// true
+    design.addCommand(10, ZRF.JUMP,	2);
+    design.addCommand(10, ZRF.LITERAL,	0);	// false
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	4);
+    design.addCommand(10, ZRF.FORK,	3);
+    design.addCommand(10, ZRF.FUNCTION,	25);	// to
+    design.addCommand(10, ZRF.FUNCTION,	28);	// end
+    design.addCommand(10, ZRF.LITERAL,	32);	// King
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
     design.addCommand(10, ZRF.FUNCTION,	0);	// not
     design.addCommand(10, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(10, ZRF.MODE,	5);	// left-d-type
-    design.addCommand(10, ZRF.FUNCTION,	25);	// to
+    design.addCommand(10, ZRF.LITERAL,	33);	// Prince
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(10, ZRF.LITERAL,	49);	// Great-General
+    design.addCommand(10, ZRF.FUNCTION,	10);	// piece?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(10, ZRF.PARAM,	2);	// $3
+    design.addCommand(10, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(10, ZRF.JUMP,	-34);
     design.addCommand(10, ZRF.FUNCTION,	28);	// end
 
     design.addCommand(11, ZRF.FUNCTION,	24);	// from
     design.addCommand(11, ZRF.PARAM,	0);	// $1
     design.addCommand(11, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(11, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(11, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(11, ZRF.PARAM,	1);	// $2
+    design.addCommand(11, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(11, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(11, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(11, ZRF.PARAM,	2);	// $3
+    design.addCommand(11, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(11, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(11, ZRF.FUNCTION,	0);	// not
+    design.addCommand(11, ZRF.IF,	7);
+    design.addCommand(11, ZRF.FORK,	3);
+    design.addCommand(11, ZRF.FUNCTION,	25);	// to
+    design.addCommand(11, ZRF.FUNCTION,	28);	// end
+    design.addCommand(11, ZRF.PARAM,	3);	// $4
+    design.addCommand(11, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(11, ZRF.JUMP,	-8);
     design.addCommand(11, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(11, ZRF.FUNCTION,	0);	// not
     design.addCommand(11, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(11, ZRF.MODE,	6);	// left-v-type
     design.addCommand(11, ZRF.FUNCTION,	25);	// to
     design.addCommand(11, ZRF.FUNCTION,	28);	// end
 
     design.addCommand(12, ZRF.FUNCTION,	24);	// from
     design.addCommand(12, ZRF.PARAM,	0);	// $1
     design.addCommand(12, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(12, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(12, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(12, ZRF.PARAM,	1);	// $2
+    design.addCommand(12, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(12, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(12, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(12, ZRF.PARAM,	2);	// $3
+    design.addCommand(12, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(12, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(12, ZRF.FUNCTION,	0);	// not
     design.addCommand(12, ZRF.FUNCTION,	20);	// verify
-    design.addCommand(12, ZRF.MODE,	7);	// left-h-type
     design.addCommand(12, ZRF.FUNCTION,	25);	// to
     design.addCommand(12, ZRF.FUNCTION,	28);	// end
+
+    design.addCommand(13, ZRF.FUNCTION,	24);	// from
+    design.addCommand(13, ZRF.PARAM,	0);	// $1
+    design.addCommand(13, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(13, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(13, ZRF.FUNCTION,	0);	// not
+    design.addCommand(13, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(13, ZRF.MODE,	5);	// left-d-type
+    design.addCommand(13, ZRF.FUNCTION,	25);	// to
+    design.addCommand(13, ZRF.FUNCTION,	28);	// end
+
+    design.addCommand(14, ZRF.FUNCTION,	24);	// from
+    design.addCommand(14, ZRF.PARAM,	0);	// $1
+    design.addCommand(14, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(14, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(14, ZRF.FUNCTION,	0);	// not
+    design.addCommand(14, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(14, ZRF.MODE,	6);	// left-v-type
+    design.addCommand(14, ZRF.FUNCTION,	25);	// to
+    design.addCommand(14, ZRF.FUNCTION,	28);	// end
+
+    design.addCommand(15, ZRF.FUNCTION,	24);	// from
+    design.addCommand(15, ZRF.PARAM,	0);	// $1
+    design.addCommand(15, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(15, ZRF.FUNCTION,	3);	// friend?
+    design.addCommand(15, ZRF.FUNCTION,	0);	// not
+    design.addCommand(15, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(15, ZRF.MODE,	7);	// left-h-type
+    design.addCommand(15, ZRF.FUNCTION,	25);	// to
+    design.addCommand(15, ZRF.FUNCTION,	28);	// end
 
     design.addPriority(0);			// normal-type
 
@@ -845,22 +1198,42 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(43, 1, [5], 0);
 
     design.addPiece("Bishop-General", 44, 21);
+    design.addMove(44, 7, [7, 7, 7], 0);
+    design.addMove(44, 7, [5, 5, 5], 0);
+    design.addMove(44, 7, [6, 6, 6], 0);
+    design.addMove(44, 7, [3, 3, 3], 0);
 
     design.addPiece("Bishop-General!", 45, 21);
+    design.addMove(45, 7, [7, 7, 7], 0);
+    design.addMove(45, 7, [5, 5, 5], 0);
+    design.addMove(45, 7, [6, 6, 6], 0);
+    design.addMove(45, 7, [3, 3, 3], 0);
 
     design.addPiece("Rook-General", 46, 23);
+    design.addMove(46, 7, [4, 4, 4], 0);
+    design.addMove(46, 7, [2, 2, 2], 0);
+    design.addMove(46, 7, [0, 0, 0], 0);
+    design.addMove(46, 7, [1, 1, 1], 0);
 
     design.addPiece("Rook-General!", 47, 23);
+    design.addMove(47, 7, [4, 4, 4], 0);
+    design.addMove(47, 7, [2, 2, 2], 0);
+    design.addMove(47, 7, [0, 0, 0], 0);
+    design.addMove(47, 7, [1, 1, 1], 0);
 
     design.addPiece("Vice-General", 48, 39);
-    design.addMove(48, 7, [4], 0);
-    design.addMove(48, 7, [2], 0);
-    design.addMove(48, 7, [0], 0);
-    design.addMove(48, 7, [1], 0);
-    design.addMove(48, 7, [7], 0);
-    design.addMove(48, 7, [5], 0);
-    design.addMove(48, 7, [6], 0);
-    design.addMove(48, 7, [3], 0);
+    design.addMove(48, 8, [1, 7, 0, 7, 0, 7, 0, 7, 7, 7], 0);
+    design.addMove(48, 8, [1, 5, 0, 5, 0, 5, 0, 5, 5, 5], 0);
+    design.addMove(48, 8, [1, 6, 0, 6, 0, 6, 0, 6, 6, 6], 0);
+    design.addMove(48, 8, [1, 3, 0, 3, 0, 3, 0, 3, 3, 3], 0);
+    design.addMove(48, 9, [4], 0);
+    design.addMove(48, 9, [2], 0);
+    design.addMove(48, 9, [0], 0);
+    design.addMove(48, 9, [1], 0);
+    design.addMove(48, 9, [7], 0);
+    design.addMove(48, 9, [5], 0);
+    design.addMove(48, 9, [6], 0);
+    design.addMove(48, 9, [3], 0);
     design.addMove(48, 3, [4], 4);
     design.addMove(48, 3, [2], 4);
     design.addMove(48, 3, [0], 4);
@@ -879,6 +1252,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(48, 1, [3], 1);
 
     design.addPiece("Great-General", 49, 45);
+    design.addMove(49, 10, [4, 4, 4], 0);
+    design.addMove(49, 10, [2, 2, 2], 0);
+    design.addMove(49, 10, [0, 0, 0], 0);
+    design.addMove(49, 10, [1, 1, 1], 0);
+    design.addMove(49, 10, [7, 7, 7], 0);
+    design.addMove(49, 10, [5, 5, 5], 0);
+    design.addMove(49, 10, [6, 6, 6], 0);
+    design.addMove(49, 10, [3, 3, 3], 0);
 
     design.addPiece("Side-Soldier", 50, 7);
     design.addMove(50, 2, [0, 0], 0);
@@ -941,14 +1322,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(56, 2, [6, 6], 0);
     design.addMove(56, 2, [3, 3], 0);
     design.addMove(56, 2, [5, 5], 0);
-    design.addMove(56, 7, [4], 0);
-    design.addMove(56, 7, [2], 0);
-    design.addMove(56, 7, [0], 0);
-    design.addMove(56, 7, [1], 0);
-    design.addMove(56, 7, [7], 0);
-    design.addMove(56, 7, [5], 0);
-    design.addMove(56, 7, [6], 0);
-    design.addMove(56, 7, [3], 0);
+    design.addMove(56, 9, [4], 0);
+    design.addMove(56, 9, [2], 0);
+    design.addMove(56, 9, [0], 0);
+    design.addMove(56, 9, [1], 0);
+    design.addMove(56, 9, [7], 0);
+    design.addMove(56, 9, [5], 0);
+    design.addMove(56, 9, [6], 0);
+    design.addMove(56, 9, [3], 0);
     design.addMove(56, 3, [4], 4);
     design.addMove(56, 3, [2], 4);
     design.addMove(56, 3, [0], 4);
@@ -967,14 +1348,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(56, 1, [3], 1);
 
     design.addPiece("Free-Eagle", 57, 22);
-    design.addMove(57, 8, [4, 4, 4, 4], 0);
-    design.addMove(57, 8, [2, 2, 2, 2], 0);
-    design.addMove(57, 8, [0, 0, 0, 0], 0);
-    design.addMove(57, 8, [1, 1, 1, 1], 0);
-    design.addMove(57, 8, [7, 7, 7, 7], 0);
-    design.addMove(57, 8, [6, 6, 6, 6], 0);
-    design.addMove(57, 8, [3, 3, 3, 3], 0);
-    design.addMove(57, 8, [5, 5, 5, 5], 0);
+    design.addMove(57, 11, [4, 4, 4, 4], 0);
+    design.addMove(57, 11, [2, 2, 2, 2], 0);
+    design.addMove(57, 11, [0, 0, 0, 0], 0);
+    design.addMove(57, 11, [1, 1, 1, 1], 0);
+    design.addMove(57, 11, [7, 7, 7, 7], 0);
+    design.addMove(57, 11, [6, 6, 6, 6], 0);
+    design.addMove(57, 11, [3, 3, 3, 3], 0);
+    design.addMove(57, 11, [5, 5, 5, 5], 0);
     design.addMove(57, 1, [4], 0);
     design.addMove(57, 1, [2], 0);
     design.addMove(57, 1, [0], 0);
@@ -989,10 +1370,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(57, 1, [5], 1);
 
     design.addPiece("Lion-Hawk", 58, 25);
-    design.addMove(58, 8, [7, 7, 7, 7], 0);
-    design.addMove(58, 8, [6, 6, 6, 6], 0);
-    design.addMove(58, 8, [3, 3, 3, 3], 0);
-    design.addMove(58, 8, [5, 5, 5, 5], 0);
+    design.addMove(58, 11, [7, 7, 7, 7], 0);
+    design.addMove(58, 11, [6, 6, 6, 6], 0);
+    design.addMove(58, 11, [3, 3, 3, 3], 0);
+    design.addMove(58, 11, [5, 5, 5, 5], 0);
     design.addMove(58, 3, [4], 0);
     design.addMove(58, 3, [2], 0);
     design.addMove(58, 3, [0], 0);
@@ -1011,22 +1392,22 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(58, 1, [3], 1);
 
     design.addPiece("Heavenly-Tetrarch", 59, 12);
-    design.addMove(59, 8, [4, 4, 4, 4], 0);
-    design.addMove(59, 8, [2, 2, 2, 2], 0);
-    design.addMove(59, 8, [7, 7, 7, 7], 0);
-    design.addMove(59, 8, [6, 6, 6, 6], 0);
-    design.addMove(59, 8, [3, 3, 3, 3], 0);
-    design.addMove(59, 8, [5, 5, 5, 5], 0);
-    design.addMove(59, 9, [0, 0, 0], 0);
-    design.addMove(59, 9, [1, 1, 1], 0);
-    design.addMove(59, 10, [7], 0);
-    design.addMove(59, 10, [5], 0);
-    design.addMove(59, 10, [6], 0);
-    design.addMove(59, 10, [3], 0);
-    design.addMove(59, 11, [4], 0);
-    design.addMove(59, 11, [2], 0);
-    design.addMove(59, 12, [0], 0);
-    design.addMove(59, 12, [1], 0);
+    design.addMove(59, 11, [4, 4, 4, 4], 0);
+    design.addMove(59, 11, [2, 2, 2, 2], 0);
+    design.addMove(59, 11, [7, 7, 7, 7], 0);
+    design.addMove(59, 11, [6, 6, 6, 6], 0);
+    design.addMove(59, 11, [3, 3, 3, 3], 0);
+    design.addMove(59, 11, [5, 5, 5, 5], 0);
+    design.addMove(59, 12, [0, 0, 0], 0);
+    design.addMove(59, 12, [1, 1, 1], 0);
+    design.addMove(59, 13, [7], 0);
+    design.addMove(59, 13, [5], 0);
+    design.addMove(59, 13, [6], 0);
+    design.addMove(59, 13, [3], 0);
+    design.addMove(59, 14, [4], 0);
+    design.addMove(59, 14, [2], 0);
+    design.addMove(59, 15, [0], 0);
+    design.addMove(59, 15, [1], 0);
     design.addMove(59, 1, [7], 5);
     design.addMove(59, 1, [6], 5);
     design.addMove(59, 1, [3], 5);
@@ -1041,7 +1422,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(60, 2, [6, 6], 0);
     design.addMove(60, 2, [5, 5], 0);
 
-/*  design.setup("White", "Dog", 91);
+    design.setup("White", "Dog", 91);
     design.setup("White", "Dog", 84);
     design.setup("White", "Pawn", 79);
     design.setup("White", "Pawn", 78);
@@ -1072,9 +1453,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Silver-General", 5);
     design.setup("White", "Silver-General", 10);
     design.setup("White", "Gold-General", 6);
-    design.setup("White", "Gold-General", 9); */
+    design.setup("White", "Gold-General", 9);
     design.setup("White", "King", 8);
-/*  design.setup("White", "Drunk-Elephant", 7);
+    design.setup("White", "Drunk-Elephant", 7);
     design.setup("White", "Reverse-Chariot", 16);
     design.setup("White", "Reverse-Chariot", 31);
     design.setup("White", "Chariot-Soldier", 29);
@@ -1084,20 +1465,20 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Blind-Tiger", 26);
     design.setup("White", "Blind-Tiger", 21);
     design.setup("White", "Phoenix", 22);
-    design.setup("White", "Queen", 23); */
+    design.setup("White", "Queen", 23);
     design.setup("White", "Lion", 24);
-/*  design.setup("White", "Kylin", 25);
+    design.setup("White", "Kylin", 25);
     design.setup("White", "Side-Mover", 48);
     design.setup("White", "Side-Mover", 63);
     design.setup("White", "Vertical-Mover", 49);
     design.setup("White", "Vertical-Mover", 62);
     design.setup("White", "Rook", 50);
-    design.setup("White", "Rook", 61); */
+    design.setup("White", "Rook", 61);
     design.setup("White", "Horned-Falcon", 51);
     design.setup("White", "Horned-Falcon", 60);
     design.setup("White", "Soaring-Eagle", 52);
     design.setup("White", "Soaring-Eagle", 59);
-/*  design.setup("White", "Bishop-General", 53);
+    design.setup("White", "Bishop-General", 53);
     design.setup("White", "Bishop-General", 58);
     design.setup("White", "Rook-General", 54);
     design.setup("White", "Rook-General", 57);
@@ -1116,10 +1497,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Water-Buffalo", 37);
     design.setup("White", "Water-Buffalo", 42);
     design.setup("White", "Fire-Demon", 38);
-    design.setup("White", "Fire-Demon", 41); */
+    design.setup("White", "Fire-Demon", 41);
     design.setup("White", "Free-Eagle", 39);
     design.setup("White", "Lion-Hawk", 40);
-/*  design.setup("Black", "Dog", 171);
+    design.setup("Black", "Dog", 171);
     design.setup("Black", "Dog", 164);
     design.setup("Black", "Pawn", 191);
     design.setup("Black", "Pawn", 190);
@@ -1150,9 +1531,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Silver-General", 245);
     design.setup("Black", "Silver-General", 250);
     design.setup("Black", "Gold-General", 246);
-    design.setup("Black", "Gold-General", 249); */
+    design.setup("Black", "Gold-General", 249);
     design.setup("Black", "King", 247);
-/*  design.setup("Black", "Drunk-Elephant", 248);
+    design.setup("Black", "Drunk-Elephant", 248);
     design.setup("Black", "Reverse-Chariot", 224);
     design.setup("Black", "Reverse-Chariot", 239);
     design.setup("Black", "Chariot-Soldier", 237);
@@ -1162,20 +1543,20 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Blind-Tiger", 234);
     design.setup("Black", "Blind-Tiger", 229);
     design.setup("Black", "Phoenix", 233);
-    design.setup("Black", "Queen", 232); */
+    design.setup("Black", "Queen", 232);
     design.setup("Black", "Lion", 231);
-/*  design.setup("Black", "Kylin", 230);
+    design.setup("Black", "Kylin", 230);
     design.setup("Black", "Side-Mover", 192);
     design.setup("Black", "Side-Mover", 207);
     design.setup("Black", "Vertical-Mover", 193);
     design.setup("Black", "Vertical-Mover", 206);
     design.setup("Black", "Rook", 194);
-    design.setup("Black", "Rook", 205); */
+    design.setup("Black", "Rook", 205);
     design.setup("Black", "Horned-Falcon", 195);
     design.setup("Black", "Horned-Falcon", 204);
     design.setup("Black", "Soaring-Eagle", 196);
     design.setup("Black", "Soaring-Eagle", 203);
-/*  design.setup("Black", "Bishop-General", 197);
+    design.setup("Black", "Bishop-General", 197);
     design.setup("Black", "Bishop-General", 202);
     design.setup("Black", "Rook-General", 198);
     design.setup("Black", "Rook-General", 201);
@@ -1194,7 +1575,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Water-Buffalo", 213);
     design.setup("Black", "Water-Buffalo", 218);
     design.setup("Black", "Fire-Demon", 214);
-    design.setup("Black", "Fire-Demon", 217); */
+    design.setup("Black", "Fire-Demon", 217);
     design.setup("Black", "Free-Eagle", 216);
     design.setup("Black", "Lion-Hawk", 215);
 }
