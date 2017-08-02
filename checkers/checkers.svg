@@ -45,8 +45,10 @@
 </g>
 <!-- Senegalese Checkers -->
 <g class="node" id="node9"><title>Senegalese Checkers</title>
+<a xlink:href="senegalese-checkers.htm">
 <ellipse fill="chocolate" stroke="black" cx="256" cy="-378" rx="91.9157" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="256" y="-373.8">Senegalese Checkers</text>
+</a>
 </g>
 <!-- Alquerque&#45;&gt;Senegalese Checkers -->
 <g class="edge" id="edge18"><title>Alquerque-&gt;Senegalese Checkers</title>
@@ -163,8 +165,10 @@
 </g>
 <!-- Harzdame -->
 <g class="node" id="node25"><title>Harzdame</title>
+<a xlink:href="harzdame.htm">
 <ellipse fill="lightblue" stroke="black" cx="335" cy="-90" rx="50.5646" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="335" y="-85.8">Harzdame</text>
+</a>
 </g>
 <!-- Turkish Dama&#45;&gt;Harzdame -->
 <g class="edge" id="edge54"><title>Turkish Dama-&gt;Harzdame</title>
