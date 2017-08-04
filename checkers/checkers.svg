@@ -35,8 +35,10 @@
 </g>
 <!-- Fanorona -->
 <g class="node" id="node8"><title>Fanorona</title>
+<a xlink:href="../checkers-like/fanorona.htm">
 <ellipse fill="green" stroke="black" cx="98" cy="-378" rx="47.2604" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="98" y="-373.8">Fanorona</text>
+</a>
 </g>
 <!-- Alquerque&#45;&gt;Fanorona -->
 <g class="edge" id="edge12"><title>Alquerque-&gt;Fanorona</title>
