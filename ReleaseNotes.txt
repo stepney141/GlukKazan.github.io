@@ -1,3 +1,12 @@
+07/08/2017 - 1.1.4
+  Senegalese Checkers
+  Harzdame
+  Chessence
+  Nam Dinh
+  Konane
+  Walhall
+  Fanorona
+  Pass Partial option
 27/07/2017 - 1.1.3
   Alquerque
   Kharbaga

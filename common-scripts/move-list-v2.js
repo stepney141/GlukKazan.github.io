@@ -40,7 +40,7 @@ MoveList.prototype.isDone = function() {
 }
 
 MoveList.prototype.canPass = function() {
-  return _.chain(this.moves).map(getMaxPart).min().value() < this.level;
+  return _.chain(this.moves).map(getMaxPart).min().value() <= this.level;
 }
 
 MoveList.prototype.getActions = function(move) {
@@ -76,9 +76,6 @@ MoveList.prototype.getTargets = function() {
               });
           }
       }, this);
-      if (this.canPass()) {
-          result.push(this.position);
-      }
   }
   return _.uniq(result);
 }
@@ -127,7 +124,7 @@ MoveList.prototype.getStops = function() {
               }
           }
           if (Dagaz.Model.smartTo) {
-              if (this.isUniqueTo(actions[0][1][0]) && !this.canPass()) {
+              if (this.isUniqueTo(actions[0][1][0])) {
                   result.push(actions[0][1][0]);
               }
           }
@@ -272,10 +269,6 @@ MoveList.prototype.setPosition = function(pos) {
                   this.copyActions(result, actions);
                   return true;
               }
-          }
-          if (this.canPass() && result.isPass() && (pos == this.position)) {
-              // Pass partial
-              return this.getMaxPart(move) + 1 == this.level;
           }
       }, this);
       if (moves.length != 0) {
