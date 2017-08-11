@@ -42,6 +42,18 @@ Dagaz.Controller.createApp = function(canvas) {
   return Dagaz.Controller.app;
 }
 
+var sendStat = function(goal, player) {
+  if (player != 1) {
+      goal = -goal;
+  }
+  if (!_.isUndefined(ga)) {
+      ga('send', 'event', {
+         'eventCategory': 'Game',
+         'eventAction': (goal == 0) ? 'Draw' : ( (goal > 0) ? 'Win' : 'Loss' )
+      });
+  }
+}
+
 App.prototype.done = function() {
   if (this.state != STATE.DONE) {
       this.state = STATE.STOP;
@@ -177,6 +189,7 @@ App.prototype.exec = function() {
                   if (passForced) {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
+                      sendStat(0, this.board.player);
                       alert("Draw");
                   } else {
                       this.board = this.board.apply(this.list.getMoves()[0]);                 
@@ -190,6 +203,7 @@ App.prototype.exec = function() {
              if (this.list.getMoves().length == 0) {
                  this.state = STATE.DONE;
                  Canvas.style.cursor = "default";
+                 sendStat(-1, this.board.player);
                  alert(player + " loss");
                  return;
              }
@@ -208,6 +222,7 @@ App.prototype.exec = function() {
           if (_.isUndefined(result.move)) {
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
+              sendStat(-1, this.board.player);
               alert(player + " loss");
               return;
           }
@@ -216,6 +231,7 @@ App.prototype.exec = function() {
                   if (passForced) {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
+                      sendStat(0, this.board.player);
                       alert("Draw");
                   } else {
                       this.board = this.board.apply(result.move);                 
@@ -255,6 +271,7 @@ App.prototype.exec = function() {
           } else {
               this.doneMessage = player + " loss"
           }
+          sendStat(g, this.board.parent.player);
       } else {
           this.state = STATE.WAIT;
       }
