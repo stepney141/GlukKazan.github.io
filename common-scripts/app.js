@@ -48,8 +48,7 @@ var sendStat = function(goal, player) {
   }
   if (!_.isUndefined(ga)) {
       ga('send', 'event', {
-         'eventCategory': 'Game',
-         'eventAction': (goal == 0) ? 'Draw' : ( (goal > 0) ? 'Win' : 'Loss' )
+         'eventCategory': (goal == 0) ? 'Draw' : ( (goal > 0) ? 'Win' : 'Loss' )
       });
   }
 }
