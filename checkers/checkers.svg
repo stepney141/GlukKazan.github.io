@@ -309,8 +309,10 @@
 </g>
 <!-- Northern Checkers -->
 <g class="node" id="node22"><title>Northern Checkers</title>
+<a xlink:href="northern-checkers.htm">
 <ellipse fill="lightblue" stroke="black" cx="1121" cy="-18" rx="84.3531" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1121" y="-13.8">Northern Checkers</text>
+</a>
 </g>
 <!-- Russian Checkers&#45;&gt;Northern Checkers -->
 <g class="edge" id="edge50"><title>Russian Checkers-&gt;Northern Checkers</title>
