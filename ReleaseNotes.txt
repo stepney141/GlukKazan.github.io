@@ -9,6 +9,7 @@
   Pass Partial option
   Google Analytics
   Northern Checkers (2 variants)
+  Belarusian Chess (2 variants)
 27/07/2017 - 1.1.3
   Alquerque
   Kharbaga
