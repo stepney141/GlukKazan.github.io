@@ -2,8 +2,15 @@ var Dagaz  = {
   Model:      {},
   View:       {},
   AI:         {},
+  KPI:        {},
   Controller: {}
 };
+
+Dagaz.KPI.open  = function(scope, stage) {}
+Dagaz.KPI.stage = function(stage, scope) {}
+Dagaz.KPI.close = function(scope, stage) {}
+Dagaz.KPI.set   = function(name, value, scope, stage) {}
+Dagaz.KPI.dump  = function() {}
 
 Dagaz.AI.findBot = function(type, params, parent) {
   return parent;
