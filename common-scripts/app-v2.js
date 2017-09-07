@@ -308,10 +308,10 @@ App.prototype.exec = function() {
       }
   }
   if (this.state == STATE.EXEC) {
-      this.view.markPositions(Dagaz.View.markType.TARGET, []);
       this.state = STATE.IDLE;
       isDrag = false;
       if (!this.move.isPass()) {
+          this.view.markPositions(Dagaz.View.markType.TARGET, []);
           lastPosition = null;
           if (Dagaz.Model.showMoves) {
               console.log(this.move.toString());
