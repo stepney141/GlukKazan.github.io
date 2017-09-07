@@ -123,7 +123,7 @@ App.prototype.mouseDown = function(view, pos) {
 App.prototype.mouseUp = function(view, pos) {
   if ((this.state == STATE.IDLE) && !_.isUndefined(this.list)) {
       this.setPosition(pos);
-      this.view.markPositions(Dagaz.View.markType.TARGET, []);
+//    this.view.markPositions(Dagaz.View.markType.TARGET, []);
       Canvas.style.cursor = "default";
   }
   isDrag = false;
