@@ -5,6 +5,7 @@ function MoveList(board) {
   this.moves    = board.moves;
   this.level    = 0;
   this.position = null;
+  this.stops    = null;
 }
 
 Dagaz.Model.getMoveList = function(board) {
@@ -28,19 +29,22 @@ var getMaxPart = function(move) {
 }
 
 MoveList.prototype.getMoves = function() {
-  return _.filter(this.moves, function(move) {
+  var result = _.filter(this.moves, function(move) {
      return getMaxPart(move) < this.level + 1;
   }, this);
+  return result;
 }
 
 MoveList.prototype.isDone = function() {
-  return _.filter(this.moves, function(move) {
+  var result = _.filter(this.moves, function(move) {
      return getMaxPart(move) >= this.level + 1;
   }, this).length == 0;
+  return result;
 }
 
 MoveList.prototype.canPass = function() {
-  return _.chain(this.moves).map(getMaxPart).min().value() <= this.level;
+  var result = _.chain(this.moves).map(getMaxPart).min().value() <= this.level;
+  return result;
 }
 
 MoveList.prototype.getActions = function(move) {
@@ -77,7 +81,8 @@ MoveList.prototype.getTargets = function() {
           }
       }, this);
   }
-  return _.uniq(result);
+  result = _.uniq(result);
+  return result;
 }
 
 MoveList.prototype.getStarts = function() {
@@ -90,45 +95,18 @@ MoveList.prototype.getStarts = function() {
           });
       }
   }, this);
-  return _.uniq(_.union(result, this.getCaptures()));
-}
-
-MoveList.prototype.isUniqueFrom = function(pos) {
-  var c = 0;
-  _.each(this.moves, function(move) {
-      _.each(this.getActions(move), function(action) {
-          if ((action[0] !== null) && (_.indexOf(action[0], pos) >= 0)) c++;
-      });
-  }, this);
-  return c == 1;
-}
-
-MoveList.prototype.isUniqueTo = function(pos) {
-  var c = 0;
-  _.each(this.moves, function(move) {
-      _.each(this.getActions(move), function(action) {
-          if ((action[1] !== null) && (_.indexOf(action[1], pos) >= 0)) c++;
-      });
-  }, this);
-  return c == 1;
+  result = _.uniq(_.union(result, this.getCaptures()));
+  return result;
 }
 
 MoveList.prototype.getStops = function() {
+  if (this.stops !== null) {
+      return this.stops;
+  }
   var result = this.getTargets();
   _.each(this.moves, function(move) {
       var actions = _.filter(this.getActions(move), isMove);
-      if ((actions.length > 0) && (actions[0][0].length == 1) && (actions[0][1].length == 1)) {
-          if (Dagaz.Model.smartFrom) {
-              if (this.isUniqueFrom(actions[0][0][0]) && !this.canPass()) {
-                  result.push(actions[0][0][0]);
-              }
-          }
-          if (Dagaz.Model.smartTo) {
-              if (this.isUniqueTo(actions[0][1][0])) {
-                  result.push(actions[0][1][0]);
-              }
-          }
-      } else {
+      if ((actions.length == 0) || (actions[0][0].length > 1) || (actions[0][1].length > 1)) {
           _.chain(this.getActions(move))
            .filter(isNoMove)
            .each(function(action) {
@@ -145,7 +123,27 @@ MoveList.prototype.getStops = function() {
             });
       }
   }, this);
-  return _.uniq(result);
+  if (Dagaz.Model.smartFrom || Dagaz.Model.smartTo) {
+      var positions = [];
+      var canPass   = this.canPass();
+      _.each(this.moves, function(move) {
+            var actions = _.filter(this.getActions(move), isMove);
+            if (!canPass && (actions.length > 0) && (actions[0][0].length == 1)) {
+                positions.push(actions[0][0][0]);
+            }
+            if ((actions.length > 0) && (actions[0][1].length == 1)) {
+                positions.push(actions[0][1][0]);
+            }
+      }, this);
+      positions = _.countBy(positions, _.identity);
+      _.each(_.keys(positions), function(pos) {
+            if (positions[pos] == 1) {
+                result.push(+pos);
+            }
+      });
+  }
+  result = _.uniq(result);
+  return result;
 }
 
 MoveList.prototype.getCaptures = function() {
@@ -163,7 +161,8 @@ MoveList.prototype.getCaptures = function() {
             });
       }
   }, this);
-  return _.uniq(result);
+  result = _.uniq(result);
+  return result;
 }
 
 MoveList.prototype.getDrops = function() {
@@ -282,6 +281,7 @@ MoveList.prototype.setPosition = function(pos) {
           this.position = pos;
       }
   }
+  this.stops = null;
   return result;
 }
 
