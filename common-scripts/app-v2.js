@@ -14,6 +14,7 @@ var isDrag = false;
 var passForced = false;
 var once = false;
 var lastPosition = null;
+var determinated = null;
 
 function App(canvas, params) {
   this.design = Dagaz.Model.getDesign();
@@ -119,6 +120,16 @@ App.prototype.setPosition = function(pos) {
   Canvas.style.cursor = "default";
 }
 
+App.prototype.syncCaptures = function(move) {
+  var m = Dagaz.Model.createMove();
+  _.each(move.actions, function(a) {
+      if ((a[0] !== null) && (a[1] === null)) {
+          m.actions.push(a);
+      }
+  });
+  m.applyAll(this.view);
+}
+
 App.prototype.mouseLocate = function(view, pos) {
   if (this.currPos != pos) {
       if ((this.state == STATE.IDLE) && !_.isUndefined(this.list)) {
@@ -167,10 +178,12 @@ App.prototype.mouseDown = function(view, pos) {
                   var moves = this.list.getMoves();
                   if (moves.length == 1) {
                       this.board = this.board.apply(moves[0]);
+                      this.syncCaptures(moves[0]);
                       this.state = STATE.IDLE;
                       delete this.list;
                       lastPosition = null;
                       this.view.markPositions(Dagaz.View.markType.ATTACKING, []);
+                      this.view.markPositions(Dagaz.View.markType.TARGET, []);
                       return;
                   }
               }
@@ -188,7 +201,6 @@ App.prototype.mouseUp = function(view, pos) {
           this.setPosition(positions[0]);
       }
   }
-//this.view.markPositions(Dagaz.View.markType.TARGET, []);
   Canvas.style.cursor = "default";
   isDrag = false;
 }
@@ -223,6 +235,21 @@ App.prototype.getContext = function(player) {
       this.context[player] = Dagaz.AI.createContext(this.design);
   }
   return this.context[player];
+}
+
+App.prototype.determinate = function(move) {
+  var moves = move.determinate();
+  determinated = null;
+  if (moves.length > 1) {
+      var promote = confirm("Promote piece?");
+      if (promote) {
+          move = moves[1];
+      } else {
+          move = moves[0];
+      }
+      determinated = move;
+  }
+  return move;
 }
 
 App.prototype.exec = function() {
@@ -316,6 +343,7 @@ App.prototype.exec = function() {
           if (Dagaz.Model.showMoves) {
               console.log(this.move.toString());
           }
+          this.move = this.determinate(this.move);
           this.move.applyAll(this.view);
           this.state = STATE.WAIT;
       }
@@ -323,11 +351,14 @@ App.prototype.exec = function() {
           if (this.list.isDone()) {
               var moves = this.list.getMoves();
               delete this.list;
-              if (moves.length > 0) {
-                  this.board = this.board.apply(moves[0]);
-                  _.each(moves, function(m) {
-                       console.log("Debug: " + m.toString());
-                  });
+              if ((moves.length > 0) || (determinated !== null)) {
+                  var m = moves[0];
+                  if (determinated !== null) {
+                      m = determinated;
+                      determinated = null;
+                  }
+                  this.board = this.board.apply(m);
+                  console.log("Debug: " + m.toString());
               }
           }
       }

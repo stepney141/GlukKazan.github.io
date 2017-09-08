@@ -32,6 +32,9 @@ MoveList.prototype.getMoves = function() {
   var result = _.filter(this.moves, function(move) {
      return getMaxPart(move) < this.level + 1;
   }, this);
+  result = _.uniq(result, false, function(move) {
+     return move.toString();
+  });
   return result;
 }
 
