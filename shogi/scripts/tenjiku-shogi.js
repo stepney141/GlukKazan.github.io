@@ -22,7 +22,8 @@ ZRF = {
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("pass-partial", "true");
-    design.checkVersion("smart-moves", "true");
+    design.checkVersion("smart-moves", "false");
+    design.checkVersion("show-captures", "false");
     design.checkVersion("tenjiku-shogi-extension", "true");
     design.checkVersion("tenjiku-shogi-promotion", "true");
 
@@ -1438,7 +1439,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Pawn", 65);
     design.setup("White", "Pawn", 64);
     design.setup("White", "Lance", 0);
-    design.setup("White", "Lance", 15);
+    design.setup("White", "Lance", 15); 
     design.setup("White", "Knight", 1);
     design.setup("White", "Knight", 14);
     design.setup("White", "Ferocious-Leopard", 2);
@@ -1450,7 +1451,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Silver-General", 5);
     design.setup("White", "Silver-General", 10);
     design.setup("White", "Gold-General", 6);
-    design.setup("White", "Gold-General", 9);
+    design.setup("White", "Gold-General", 9); 
     design.setup("White", "King", 8);
     design.setup("White", "Drunk-Elephant", 7);
     design.setup("White", "Reverse-Chariot", 16);
@@ -1528,7 +1529,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Silver-General", 245);
     design.setup("Black", "Silver-General", 250);
     design.setup("Black", "Gold-General", 246);
-    design.setup("Black", "Gold-General", 249);
+    design.setup("Black", "Gold-General", 249); 
     design.setup("Black", "King", 247);
     design.setup("Black", "Drunk-Elephant", 248);
     design.setup("Black", "Reverse-Chariot", 224);
@@ -1574,7 +1575,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Fire-Demon", 214);
     design.setup("Black", "Fire-Demon", 217);
     design.setup("Black", "Free-Eagle", 216);
-    design.setup("Black", "Lion-Hawk", 215);
+    design.setup("Black", "Lion-Hawk", 215); 
 }
 
 Dagaz.View.configure = function(view) {
