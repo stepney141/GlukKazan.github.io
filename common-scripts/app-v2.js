@@ -40,6 +40,24 @@ function App(canvas, params) {
   }
 }
 
+App.prototype.gameOver = function(text, player) {
+  _.delay(alert, 500, [text]);
+  if (this.board) {
+     var captured = [];
+     _.each(this.design.allPositions(), function(pos) {
+        var piece = this.board.getPiece(pos);
+        if (piece !== null) {
+            if ((player == 0) || 
+                ((player < 0) && (piece.player == -player)) ||
+                ((player > 0) && (piece.player != player))) {
+                captured.push(pos);
+            }
+        }
+     }, this);
+     this.view.markPositions(Dagaz.View.markType.ATTACKING, captured);
+  }
+}
+
 Dagaz.Controller.createApp = function(canvas) {
   if (_.isUndefined(Dagaz.Controller.app)) {
       Dagaz.Controller.app = new App(canvas);
@@ -63,7 +81,7 @@ App.prototype.done = function() {
       this.state = STATE.STOP;
   } else {
       if (this.doneMessage) {
-          alert(this.doneMessage);
+          this.gameOver(this.doneMessage, this.winPlayer);
       }
   }
 }
@@ -113,11 +131,12 @@ App.prototype.setPosition = function(pos) {
   if (this.params.SHOW_TARGETS) {
       this.view.markPositions(Dagaz.View.markType.TARGET, this.getTargets());
   }
-  if (this.params.SHOW_ATTACKING) {
+  if (this.params.SHOW_ATTACKING && Dagaz.Model.showCaptures) {
       this.view.markPositions(Dagaz.View.markType.ATTACKING, this.list.getCaptures());
   }
   this.state = STATE.EXEC;
   Canvas.style.cursor = "default";
+  this.view.markPositions(Dagaz.View.markType.CURRENT, [ pos ]);
 }
 
 App.prototype.syncCaptures = function(move) {
@@ -183,6 +202,7 @@ App.prototype.mouseDown = function(view, pos) {
                       delete this.list;
                       lastPosition = null;
                       this.view.markPositions(Dagaz.View.markType.ATTACKING, []);
+                      this.view.markPositions(Dagaz.View.markType.CURRENT, []);
                       this.view.markPositions(Dagaz.View.markType.TARGET, []);
                       return;
                   }
@@ -277,7 +297,7 @@ App.prototype.exec = function() {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
                       sendStat(0, this.board.player);
-                      alert("Draw");
+                      this.gameOver("Draw", 0);
                   } else {
                       this.board = this.board.apply(Dagaz.Model.createMove());                 
                       this.state = STATE.IDLE;
@@ -291,7 +311,7 @@ App.prototype.exec = function() {
                  this.state = STATE.DONE;
                  Canvas.style.cursor = "default";
                  sendStat(-1, this.board.player);
-                 alert(player + " loss");
+                 this.gameOver(player + " loss", -this.board.player);
                  return;
              }
          }
@@ -310,7 +330,7 @@ App.prototype.exec = function() {
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
               sendStat(-1, this.board.player);
-              alert(player + " loss");
+              this.gameOver(player + " loss", -this.board.player);
               return;
           }
           if (result.done || (Date.now() - this.timestamp >= this.params.AI_WAIT)) {
@@ -320,7 +340,7 @@ App.prototype.exec = function() {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
                       sendStat(0, this.board.player);
-                      alert("Draw");
+                      this.gameOver("Draw", 0);
                   } else {
                       this.state = STATE.IDLE;
                       delete this.list;
@@ -339,16 +359,21 @@ App.prototype.exec = function() {
       isDrag = false;
       if (!this.move.isPass()) {
           this.view.markPositions(Dagaz.View.markType.TARGET, []);
+          this.view.markPositions(Dagaz.View.markType.CURRENT, []);
           lastPosition = null;
           if (Dagaz.Model.showMoves) {
               console.log(this.move.toString());
           }
           this.move = this.determinate(this.move);
           this.move.applyAll(this.view);
+          if (!_.isUndefined(this.list)) {
+              this.view.markPositions(Dagaz.View.markType.CURRENT, [ this.move.getTarget() ]);
+          }
           this.state = STATE.WAIT;
       }
       if (!_.isUndefined(this.list)) {
           if (this.list.isDone()) {
+              this.view.markPositions(Dagaz.View.markType.CURRENT, []);
               var moves = this.list.getMoves();
               delete this.list;
               if ((moves.length > 0) || (determinated !== null)) {
@@ -370,8 +395,10 @@ App.prototype.exec = function() {
               Canvas.style.cursor = "default";
               if (g > 0) {
                   this.doneMessage = player + " win"
+                  this.winPlayer   = this.board.parent.player;
               } else {
                   this.doneMessage = player + " loss"
+                  this.winPlayer   = -this.board.parent.player;
               }
               sendStat(g, this.board.parent.player);
           }
