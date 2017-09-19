@@ -1,20 +1,24 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Greek Checkers</title>
+<title>Swedish Checkers</title>
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/turkish.png">
-<img id="WhiteKing" style="display:none" src="images/wdamone.png">
-<img id="BlackKing" style="display:none" src="images/bdamone.png">
-<img id="WhiteMan" style="display:none" src="images/wman.png">
-<img id="BlackMan" style="display:none" src="images/bman.png">
+<img id="Board" style="display:none" src="images/swedish.png">
+<img id="SouthWhiteMan" style="display:none" src="images/wman.png">
+<img id="NorthWhiteMan" style="display:none" src="images/wman.png">
+<img id="SouthBlackMan" style="display:none" src="images/bman.png">
+<img id="NorthBlackMan" style="display:none" src="images/bman.png">
+<img id="SouthWhiteKing" style="display:none" src="images/wdamone.png">
+<img id="NorthWhiteKing" style="display:none" src="images/wdamone.png">
+<img id="SouthBlackKing" style="display:none" src="images/bdamone.png">
+<img id="NorthBlackKing" style="display:none" src="images/bdamone.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
 <tr style="height:404px; vertical-align:top">
-<td id="CanvasCell" style="width:404px">
-<canvas id="Canvas" width="404" height="404" style="cursor:default">Broken canvas...</canvas>
+<td id="CanvasCell" style="width:1004px">
+<canvas id="Canvas" width="1004" height="404" style="cursor:default">Broken canvas...</canvas>
 </td><td style="width:300px;">
 <div style="height:510px; overflow:auto" id="ScrollDiv">
 <img id="GlyphImage"><p id="HelpText"></p>
@@ -41,10 +45,9 @@
 <script src="../common-scripts/zobrist.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
-<script src="../common-scripts/random-ai.js"></script>
-<script src="../common-scripts/maxmin-ai.js"></script>
-<script src="scripts/maximal-captures.js"></script>
-<script src="scripts/greek-checkers.js"></script>
+<script src="scripts/deferred-captures.js"></script>
+<script src="scripts/swedish-checkers-extension.js"></script>
+<script src="scripts/swedish-checkers.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
