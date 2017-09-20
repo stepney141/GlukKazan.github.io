@@ -80,6 +80,12 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("c2", [0, 0, 0, 0, -21, -17, -22, -16]);
     design.addPosition("d2", [0, 0, 0, 0, -21, -17, -22, -16]);
 
+    design.addZone("minus-3", 2, [15, 10, 5, 19, 14, 9, 21, 22, 23, 1, 2, 3]);
+    design.addZone("minus-3", 1, [15, 10, 5, 19, 14, 9, 21, 22, 23, 1, 2, 3]);
+    design.addZone("minus-4", 2, [37, 38, 39, 40, 33, 34, 35, 36, 29, 30, 31, 32, 25, 26, 27, 28]);
+    design.addZone("minus-4", 1, [37, 38, 39, 40, 33, 34, 35, 36, 29, 30, 31, 32, 25, 26, 27, 28]);
+    design.addZone("minus-5", 2, [20, 0, 24, 4]);
+    design.addZone("minus-5", 1, [20, 0, 24, 4]);
 
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
     design.addCommand(0, ZRF.PARAM,	0);	// $1
@@ -105,7 +111,7 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addPriority(0);			// normal-type
 
-    design.addPiece("King", 0);
+    design.addPiece("King", 0, 100);
     design.addMove(0, 0, [3], 0);
     design.addMove(0, 0, [0], 0);
     design.addMove(0, 0, [2], 0);
@@ -131,7 +137,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [7, 7], 1);
     design.addMove(0, 1, [4, 4], 1);
 
-    design.addPiece("Man", 2);
+    design.addPiece("Man", 2, 1);
     design.addMove(2, 0, [3], 0);
     design.addMove(2, 0, [0], 0);
     design.addMove(2, 0, [2], 0);
