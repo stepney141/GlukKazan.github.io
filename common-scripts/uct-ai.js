@@ -1,12 +1,14 @@
 (function() {
 
-var MAXVALUE  = 1000000;
+var MAXVALUE      = 1000000;
+
+Dagaz.AI.AI_FRAME = 3000;
 
 function UctAi(params, parent) {
   this.params = params;
   this.parent = parent;
   if (_.isUndefined(this.params.AI_FRAME)) {
-      this.params.AI_FRAME = 3000;
+      this.params.AI_FRAME = Dagaz.AI.AI_FRAME;
   }
   if (_.isUndefined(this.params.UCT_COEFF)) {
       this.params.UCT_COEFF = Math.sqrt(2);

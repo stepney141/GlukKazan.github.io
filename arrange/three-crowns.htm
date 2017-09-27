@@ -1,25 +1,21 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Cheskers</title>
+<title>Three Crowns</title>
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/8x8.png">
-<img id="WhiteMan" style="display:none" src="images/wman.png">
-<img id="BlackMan" style="display:none" src="images/bman.png">
-<img id="WhiteKing" style="display:none" src="images/cheskers/wking.png">
-<img id="BlackKing" style="display:none" src="images/cheskers/bking.png">
-<img id="WhiteBishop" style="display:none" src="images/cheskers/wbishop.png">
-<img id="BlackBishop" style="display:none" src="images/cheskers/bbishop.png">
-<img id="WhiteCamel" style="display:none" src="images/cheskers/wknight.png">
-<img id="BlackCamel" style="display:none" src="images/cheskers/bknight.png">
+<img id="Board" style="display:none" src="images/three-crowns/board.png">
+<img id="WhiteStone" style="display:none" src="images/three-crowns/wstone.png">
+<img id="BlackStone" style="display:none" src="images/three-crowns/bstone.png">
+<img id="WhiteCrown" style="display:none" src="images/three-crowns/wcrown.png">
+<img id="BlackCrown" style="display:none" src="images/three-crowns/bcrown.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Copyright (c) Solomon W. Golomb in 1948. <a href="cheskers-9x9.htm">&gt;&gt;&gt;</a></td></tr>
-<tr style="height:404px; vertical-align:top">
-<td id="CanvasCell" style="width:404px">
-<canvas id="Canvas" width="404" height="404" style="cursor:default">Broken canvas...</canvas>
+<tr><td>Copyright (c) 2001 Larry Back (<a href="http://www.di.fc.ul.pt/~jpn/gv/3crowns.htm">rules</a>)</td></tr>
+<tr style="height:408px; vertical-align:top">
+<td id="CanvasCell" style="width:408px">
+<canvas id="Canvas" width="408" height="408" style="cursor:default">Broken canvas...</canvas>
 </td><td style="width:300px;">
 <div style="height:510px; overflow:auto" id="ScrollDiv">
 <img id="GlyphImage"><p id="HelpText"></p>
@@ -47,9 +43,10 @@
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
 <script src="../common-scripts/random-ai.js"></script>
-<script src="../common-scripts/maxmin-ai.js"></script>
-<script src="scripts/cheskers-extension.js"></script>
-<script src="scripts/cheskers.js"></script>
+<script src="../common-scripts/uct-ai.js"></script>
+<script src="scripts/three-crowns-invariant.js"></script>
+<script src="scripts/three-crowns-extension.js"></script>
+<script src="scripts/three-crowns.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
