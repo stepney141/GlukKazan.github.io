@@ -9,6 +9,7 @@
   Bahrain Dama
   Swedish Checkers
   Black & White Checkers (2 variants)
+  Altai Shatra (2 variants)
   Three Crowns
   MaxMin AI
   KPI API

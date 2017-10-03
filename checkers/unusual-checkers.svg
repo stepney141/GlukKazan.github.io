@@ -119,8 +119,10 @@
 </g>
 <!-- Altai Shatra -->
 <g class="node" id="node19"><title>Altai Shatra</title>
+<a xlink:href="shatra.htm">
 <ellipse fill="none" stroke="black" cx="477" cy="-162" rx="57.1431" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="477" y="-157.8">Altai Shatra</text>
+</a>
 </g>
 <!-- International Draughts&#45;&gt;Altai Shatra -->
 <g class="edge" id="edge20"><title>International Draughts-&gt;Altai Shatra</title>
