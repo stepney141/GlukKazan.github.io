@@ -13,6 +13,7 @@
   Three Crowns
   MaxMin AI
   KPI API
+  Dameo
 07/08/2017 - 1.1.4
   Senegalese Checkers
   Harzdame
