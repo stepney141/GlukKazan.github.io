@@ -14,6 +14,7 @@
   MaxMin AI
   KPI API
   Dameo
+  Lines of Action
 07/08/2017 - 1.1.4
   Senegalese Checkers
   Harzdame
