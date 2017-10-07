@@ -70,15 +70,13 @@ UctAi.prototype.heuristic = function(design, board, move) {
 }
 
 UctAi.prototype.generate = function(ctx, board) {
-  if (board.moves.length == 0) {
-      board.moves = Dagaz.AI.generate(ctx, board);
-      if ((board.moves.length == 1) && board.moves[0].isPass()) {
-           var moves = Dagaz.AI.generate(ctx, board.apply(board.moves[0]));
-           if ((moves.length == 0) || ((moves.length == 1) && moves[0].isPass())) {
-               board.moves = [];
-           }
-      }
-  }
+   board.moves = Dagaz.AI.generate(ctx, board);
+   if ((board.moves.length == 1) && board.moves[0].isPass()) {
+       var moves = Dagaz.AI.generate(ctx, board.apply(board.moves[0]));
+       if ((moves.length == 0) || ((moves.length == 1) && moves[0].isPass())) {
+           board.moves = [];
+       }
+   }
 }
 
 Dagaz.AI.isForced = function(ai, design, board, move) {

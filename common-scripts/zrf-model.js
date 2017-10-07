@@ -1338,7 +1338,6 @@ function ZrfBoard(game) {
   this.zSign    = 0;
   this.pieces   = [];
   this.forks    = [];
-  this.moves    = [];
   this.turn     = 0;
   this.player   = Dagaz.Model.getDesign().currPlayer(this.turn);
   this.changed  = [];
@@ -1560,6 +1559,11 @@ var CompleteMove = function(board, gen) {
 
 ZrfBoard.prototype.generateInternal = function(callback, cont) {
   var design = this.game.design;
+  if (_.isUndefined(this.moves)) {
+      this.moves = [];
+  } else {
+      return;
+  }
   if ((this.moves.length == 0) && !design.failed && (this.player > 0)) {
       var priors = [];
       _.chain(_.keys(this.pieces))
@@ -1710,6 +1714,7 @@ ZrfBoard.prototype.commit = function() {
 }
 
 ZrfBoard.prototype.apply = function(move) {
+  if (!_.isUndefined(move.result)) return move.result;
   var design = Dagaz.Model.design;
   var r = this.copy();
   move.applyAll(r);

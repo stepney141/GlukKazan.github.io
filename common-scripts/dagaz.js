@@ -27,6 +27,9 @@ Dagaz.AI.createContext = function(design) {
 }
 
 Dagaz.AI.generate = function(ctx, board) {
+  if (!_.isUndefined(board.moves)) {
+      return board.moves;
+  }
   board.generate(ctx.design);
   return _.chain(board.moves)
    .map(function(move) {
