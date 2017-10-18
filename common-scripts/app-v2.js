@@ -140,7 +140,7 @@ App.prototype.setPosition = function(pos) {
 }
 
 App.prototype.syncCaptures = function(move) {
-  var m = Dagaz.Model.createMove();
+  var m = Dagaz.Model.createMove(move.mode);
   _.each(move.actions, function(a) {
       if ((a[0] !== null) && (a[1] === null)) {
           m.actions.push(a);
@@ -389,16 +389,19 @@ App.prototype.exec = function() {
       }
       if (this.board.parent !== null) {
           var g = this.board.checkGoals(this.design, this.board.parent.player);
-          if (g != 0) {
+          if (g !== null) {
               var player = this.design.playerNames[this.board.parent.player];
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
               if (g > 0) {
-                  this.doneMessage = player + " win"
+                  this.doneMessage = player + " win";
                   this.winPlayer   = this.board.parent.player;
-              } else {
-                  this.doneMessage = player + " loss"
+              } else if (g < 0) {
+                  this.doneMessage = player + " loss";
                   this.winPlayer   = -this.board.parent.player;
+              } else {
+                  this.doneMessage = "Draw";
+                  this.winPlayer   = 0;
               }
               sendStat(g, this.board.parent.player);
           }

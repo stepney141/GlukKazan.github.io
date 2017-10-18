@@ -170,7 +170,7 @@ View2D.prototype.markPositions = function(type, positions) {
   this.invalidate();
 }
 
-View2D.prototype.capturePiece = function(pos, phase) {
+View2D.prototype.capturePiece = function(move, pos, phase) {
   if (!phase) { phase = 1; }
   _.chain(this.changes)
    .filter(function(frame) {
@@ -192,7 +192,7 @@ View2D.prototype.capturePiece = function(pos, phase) {
   });
 }
 
-View2D.prototype.dropPiece = function(pos, piece, phase) {
+View2D.prototype.dropPiece = function(move, pos, piece, phase) {
   if (!phase) { phase = 0; }
   var ix = posToIx(this, pos);
   this.changes.push({
@@ -205,12 +205,19 @@ View2D.prototype.dropPiece = function(pos, piece, phase) {
   });
 }
 
-View2D.prototype.addVector = function(from, to, steps) {
+View2D.prototype.addVector = function(from, to, steps, mode, level) {
+  if (!mode) mode = 0;
   if (!steps) { steps = STEP_CNT; }
-  if (_.isUndefined(this.vectors[from])) {
-      this.vectors[from] = [];
+  if (_.isUndefined(this.vectors[mode])) {
+      this.vectors[mode] = [];
   }
-  this.vectors[from][to] = steps;
+  if (_.isUndefined(this.vectors[mode][from])) {
+      this.vectors[mode][from] = [];
+  }
+  this.vectors[mode][from][to] = {
+      steps: steps,
+      level: level
+  };
 }
 
 View2D.prototype.addPhase = function(ix, from, to, piece, phase, steps) {
@@ -227,36 +234,41 @@ View2D.prototype.addPhase = function(ix, from, to, piece, phase, steps) {
   });
 }
 
-View2D.prototype.vectorFound = function(ix, from, to, piece, phase) {
+Dagaz.View.maxSteps = 2;
+
+View2D.prototype.vectorFound = function(ix, from, to, piece, mode, phase) {
   if (!phase) { phase = 1; }
-  if (this.vectors[from]) {
-      if (this.vectors[from][to]) {
-          this.addPhase(ix, from, to, piece, phase, this.vectors[from][to]);
+  if (phase > Dagaz.View.maxSteps) return false;
+  if (this.vectors[mode] && this.vectors[mode][from]) {
+      if (this.vectors[mode][from][to] && (this.vectors[mode][from][to].level == phase)) {
+          this.addPhase(ix, from, to, piece, phase, this.vectors[mode][from][to].steps);
           return true;
       }
-      var list = _.keys(this.vectors[from]);
+      var list = _.keys(this.vectors[mode][from]);
       for (var i = 0; i < list.length; i++) {
           var pos = list[i];
-          this.addPhase(ix, from, pos, piece, phase, this.vectors[from][pos]);
-          if (this.vectorFound(ix, pos, to, piece, phase + 1)) {
-              return true;
+          if (this.vectors[mode][from][pos].level == phase) {
+              this.addPhase(ix, from, pos, piece, phase, this.vectors[mode][from][pos].steps);
+              if (this.vectorFound(ix, pos, to, piece, mode, phase + 1)) {
+                  return true;
+              }
+              this.changes.pop();
           }
-          this.changes.pop();
       }
   }
   return false;
 }
 
-View2D.prototype.movePiece = function(from, to, piece, phase, steps) {
+View2D.prototype.movePiece = function(move, from, to, piece, phase, steps) {
   if (!phase) { phase = 1; }
   if (!steps) { steps = STEP_CNT; }
   var ix = posToIx(this, from);
-  if (!this.vectorFound(ix, from, to, piece)) {
+  if (!this.vectorFound(ix, from, to, piece, move.mode)) {
       this.addPhase(ix, from, to, piece, phase, steps);
   }
 }
 
-View2D.prototype.commit = function() {
+View2D.prototype.commit = function(move) {
    _.chain(this.changes)
     .filter(function(frame) {
        return !_.isUndefined(frame.from) && !_.isUndefined(frame.to);

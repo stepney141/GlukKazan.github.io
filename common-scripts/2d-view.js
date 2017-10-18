@@ -159,7 +159,7 @@ View2D.prototype.markPositions = function(type, positions) {
   this.invalidate();
 }
 
-View2D.prototype.capturePiece = function(pos, phase) {
+View2D.prototype.capturePiece = function(move, pos, phase) {
   if (!phase) { phase = 1; }
   _.chain(this.changes)
    .filter(function(frame) {
@@ -181,7 +181,7 @@ View2D.prototype.capturePiece = function(pos, phase) {
   });
 }
 
-View2D.prototype.dropPiece = function(pos, piece, phase) {
+View2D.prototype.dropPiece = function(move, pos, piece, phase) {
   if (!phase) { phase = 0; }
   var ix = posToIx(this, pos);
   this.changes.push({
@@ -234,7 +234,7 @@ View2D.prototype.vectorFound = function(ix, from, to, piece, phase) {
   return false;
 }
 
-View2D.prototype.movePiece = function(from, to, piece, phase, steps) {
+View2D.prototype.movePiece = function(move, from, to, piece, phase, steps) {
   if (!phase) { phase = 1; }
   if (!steps) { steps = STEP_CNT; }
   var ix = posToIx(this, from);
@@ -243,7 +243,7 @@ View2D.prototype.movePiece = function(from, to, piece, phase, steps) {
   }
 }
 
-View2D.prototype.commit = function() {
+View2D.prototype.commit = function(move) {
    _.chain(this.changes)
     .filter(function(frame) {
        return !_.isUndefined(frame.from) && !_.isUndefined(frame.to);

@@ -59,7 +59,7 @@ MaxMinAi.prototype.eval = function(ctx, board, move, player) {
   var deep = 0;
   while (deep++ < Dagaz.AI.MAX_DEEP) {
       var goal = Dagaz.Model.checkGoals(ctx.design, b, player);
-      if (goal != 0) {
+      if (goal !== null) {
           return (MAXVALUE - deep) * goal;
       }
       b.moves = Dagaz.AI.generate(ctx, b);
@@ -129,6 +129,9 @@ MaxMinAi.prototype.setContext = function(ctx, board) {
 
 MaxMinAi.prototype.getMove = function(ctx) {
   ctx.board.moves = Dagaz.AI.generate(ctx, ctx.board);
+  if (ctx.board.moves.length == 0) {
+      return { done: true, ai: "nothing" };
+  }
   var result = null;
   var mx = 0;
   if (!_.isUndefined(Dagaz.AI.heuristic)) {

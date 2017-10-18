@@ -972,8 +972,9 @@ ZrfMoveTemplate.prototype.addCommand = function(name, param) {
   }
 }
 
-function ZrfMoveGenerator(design) {
-  this.move     = new ZrfMove();
+function ZrfMoveGenerator(design, mode) {
+  this.move     = new ZrfMove(mode);
+  this.start    = mode;
   this.moveType = 1;
   this.template = null;
   this.params   = null;
@@ -991,11 +992,11 @@ function ZrfMoveGenerator(design) {
   this.design   = design;
 }
 
-Dagaz.Model.createGen = function(template, params, design) {
+Dagaz.Model.createGen = function(template, params, design, mode) {
   if (_.isUndefined(design)) {
       design = Dagaz.Model.getDesign();
   }
-  var r = new ZrfMoveGenerator(design);
+  var r = new ZrfMoveGenerator(design, mode);
   r.template = template;
   r.params   = Dagaz.int32Array(params);
   return r;
@@ -1007,7 +1008,7 @@ ZrfMoveGenerator.prototype.init = function(board, pos) {
 }
 
 ZrfMoveGenerator.prototype.clone = function() {
-  var r = new ZrfMoveGenerator(this.design);
+  var r = new ZrfMoveGenerator(this.design, this.start);
   r.template = this.template;
   r.params   = this.params;  
   r.level    = this.level;
@@ -1044,7 +1045,7 @@ ZrfMoveGenerator.prototype.clone = function() {
 }
 
 ZrfMoveGenerator.prototype.copy = function(template, params) {
-  var r = Dagaz.Model.createGen(template, params, this.design);
+  var r = Dagaz.Model.createGen(template, params, this.design, this.move.mode);
   r.level    = this.level + 1;
   r.parent   = this;
   r.board    = this.board;
@@ -1385,7 +1386,7 @@ ZrfBoard.prototype.traceMoves = function() {
 }
 
 Dagaz.Model.checkGoals = function(design, board, player) {
-  var r = 0;
+  var r = null;
   _.each(_.keys(design.goals), function(p) {
       var groups = _.groupBy(design.goals[p], function(goal) {
           return goal.num;
@@ -1576,7 +1577,7 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
            _.chain(design.pieces[piece.type])
             .filter(function(move) { return (move.type == 0); })
             .each(function(move) {
-                var g = Dagaz.Model.createGen(move.template, move.params, this.game.design);
+                var g = Dagaz.Model.createGen(move.template, move.params, this.game.design, move.mode);
                 g.init(this, pos);
                 addPrior(priors, move.mode, g);
             }, this);
@@ -1588,7 +1589,7 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
                _.chain(design.pieces[tp])
                 .filter(function(move) { return (move.type == 1); })
                 .each(function(move) {
-                    var g = Dagaz.Model.createGen(move.template, move.params, this.game.design);
+                    var g = Dagaz.Model.createGen(move.template, move.params, this.game.design, move.mode);
                     g.init(this, pos);
                     g.piece = new ZrfPiece(tp, this.player);
                     addPrior(priors, move.mode, g);
@@ -1673,7 +1674,7 @@ Dagaz.Model.noReserve = function(board, piece) {
   return false;
 }
 
-ZrfBoard.prototype.movePiece = function(from, to, piece) {
+ZrfBoard.prototype.movePiece = function(move, from, to, piece) {
   this.lastf = from;
   this.lastt = to;
   if ((piece === null) && this.parent) {
@@ -1689,14 +1690,14 @@ ZrfBoard.prototype.movePiece = function(from, to, piece) {
   this.changed.push(to);
 }
 
-ZrfBoard.prototype.dropPiece = function(pos, piece) {
+ZrfBoard.prototype.dropPiece = function(move, pos, piece) {
   this.lastt = pos;
   Dagaz.Model.decReserve(this, piece);
   this.setPiece(pos, piece);
   this.changed.push(pos);
 }
 
-ZrfBoard.prototype.capturePiece = function(pos) {
+ZrfBoard.prototype.capturePiece = function(move, pos) {
   if (Dagaz.Model.recycleCaptures) {
       var piece = this.getPiece(pos);
           if (piece != null) {
@@ -1709,7 +1710,7 @@ ZrfBoard.prototype.capturePiece = function(pos) {
   });
 }
 
-ZrfBoard.prototype.commit = function() {
+ZrfBoard.prototype.commit = function(move) {
   this.changed = [];
 }
 
@@ -1724,12 +1725,17 @@ ZrfBoard.prototype.apply = function(move) {
   return r;
 }
 
-function ZrfMove() {
-  this.actions = [];
+function ZrfMove(mode) {
+  this.actions  = [];
+  if (_.isUndefined(mode)) {
+      this.mode = 0;
+  } else {
+      this.mode = mode;
+  }
 }
 
-Dagaz.Model.createMove = function() {
-  return new ZrfMove();
+Dagaz.Model.createMove = function(mode) {
+  return new ZrfMove(mode);
 }
 
 Dagaz.Model.compareMove = function(move, notation) {
@@ -1813,7 +1819,7 @@ ZrfMove.prototype.determinate = function() {
   if (c.length > 1) {
       return _.chain(c)
        .map(function (l) {
-           var r = new ZrfMove();
+           var r = new ZrfMove(this.mode);
            var pos = 0;
            _.each(this.actions, function (action) {
               var x = [];
@@ -1835,13 +1841,13 @@ ZrfMove.prototype.determinate = function() {
 }
 
 ZrfMove.prototype.copy = function() {
-  var r = new ZrfMove();
+  var r = new ZrfMove(this.mode);
   r.actions = _.filter(this.actions);
   return r;
 }
 
 ZrfMove.prototype.clone = function(level) {
-  var r = new ZrfMove();
+  var r = new ZrfMove(this.mode);
   var o = true;
   r.actions = _.chain(this.actions)
    .filter(function(action) {
@@ -1942,27 +1948,27 @@ ZrfMove.prototype.applyTo = function(obj, part) {
       return (action[0] !== null) && (action[1] !== null);
     })
    .each(function (action) {
-      obj.movePiece(action[0][0], action[1][0], (action[2] === null) ? null : action[2][0], action[3]);
+      obj.movePiece(this, action[0][0], action[1][0], (action[2] === null) ? null : action[2][0], action[3]);
       r = true;
-    });
+    }, this);
   _.chain(this.actions)
    .filter(n)
    .filter(function (action) {
       return (action[0] === null) && (action[1] !== null) && (action[2] !== null);
     })
    .each(function (action) {
-      obj.dropPiece(action[1][0], action[2][0], action[3]);
+      obj.dropPiece(this, action[1][0], action[2][0], action[3]);
       r = true;
-    });
+    }, this);
   _.chain(this.actions)
    .filter(n)
    .filter(function (action) {
       return (action[0] !== null) && (action[1] === null);
     })
    .each(function (action) {
-      obj.capturePiece(action[0][0], action[3]);
+      obj.capturePiece(this, action[0][0], action[3]);
       r = true;
-    });
+    }, this);
   _.chain(this.actions)
    .filter(n)
    .filter(function (action) {
@@ -1972,7 +1978,7 @@ ZrfMove.prototype.applyTo = function(obj, part) {
       action[2][0].exec(obj);
     });
   if (r) {
-      obj.commit();
+      obj.commit(this);
   }
   return r;
 }
