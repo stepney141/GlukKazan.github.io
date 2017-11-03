@@ -46,7 +46,7 @@ var checkDirection = function(design, board, player, pos, dir, leapers, riders) 
   var piece = board.getPiece(p);
   if (piece !== null) {
       if (piece.player == player) return false;
-      return _.indexOf(leapers, piece.type) >= 0;
+      return (_.indexOf(leapers, piece.type) >= 0) || (_.indexOf(riders, piece.type) >= 0);
   }
   while (piece === null) {
       p = design.navigate(player, p, dir);
@@ -107,19 +107,12 @@ var getPiece = function(board, action) {
 }
 
 var changePieces = function(design, board, move) {
-  var pawn  = design.getPieceType("Pawn");
-  var queen = design.getPieceType("Queen");
-  var zone  = design.getZone("last-rank");
   _.each(move.actions, function(action) {
       if (action[0] == null) return;
       if (action[1] == null) return;
       var piece = board.getPiece(action[0][0]);
       if (piece !== null) {
-          if ((piece.type == pawn) && design.inZone(zone, board.player, action[1][0])) {
-               piece = piece.promote(queen);
-          }
           piece = piece.setValue(0, true);
-          action[2] = [ piece ];
       }
   });
 }

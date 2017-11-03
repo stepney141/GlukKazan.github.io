@@ -688,7 +688,12 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(10, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(10, ZRF.FUNCTION,	0);	// not
     design.addCommand(10, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(10, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(10, ZRF.FUNCTION,	0);	// not
+    design.addCommand(10, ZRF.IF,	4);
     design.addCommand(10, ZRF.MODE,	1);	// left-1-type
+    design.addCommand(10, ZRF.FUNCTION,	25);	// to
+    design.addCommand(10, ZRF.JUMP,	2);
     design.addCommand(10, ZRF.FUNCTION,	25);	// to
     design.addCommand(10, ZRF.FUNCTION,	28);	// end
 
@@ -1674,7 +1679,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Pawn", 67);
     design.setup("White", "Pawn", 66);
     design.setup("White", "Pawn", 65);
-    design.setup("White", "Pawn", 64);
+    design.setup("White", "Pawn", 64); 
     design.setup("White", "Lance", 0);
     design.setup("White", "Lance", 15);
     design.setup("White", "Knight", 1);

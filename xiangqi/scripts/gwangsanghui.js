@@ -23,7 +23,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("smart-moves", "false");
     design.checkVersion("animate-captures", "false");
+    design.checkVersion("show-captures", "false");
     design.checkVersion("gwangsanghui-extension", "true");
+    design.checkVersion("gwangsanghui-invariant", "true");
 
     design.addDirection("w");
     design.addDirection("e");

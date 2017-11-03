@@ -11,7 +11,7 @@ var STATE = {
 };
 
 var isDrag = false;
-var passForced = false;
+var passForced = 0;
 var once = false;
 var lastPosition = null;
 var determinated = null;
@@ -171,8 +171,10 @@ App.prototype.mouseLocate = function(view, pos) {
           var piece = this.board.getPiece(pos);
           if (piece !== null) {
               var types = Dagaz.Model.getPieceTypes(piece, this.board);
-              var positions = this.design.getGoalPositions(this.board.player, types);
-              this.view.markPositions(Dagaz.View.markType.GOAL, positions);
+              if (Dagaz.Model.showGoals) {
+                  var positions = this.design.getGoalPositions(this.board.player, types);
+                  this.view.markPositions(Dagaz.View.markType.GOAL, positions);
+              }
           }
       }
   }
@@ -293,7 +295,7 @@ App.prototype.exec = function() {
              console.log("Player: " + player);
              this.list = Dagaz.Model.getMoveList(this.board);
              if (this.list.isPassForced()) {
-                  if (passForced) {
+                  if (passForced >= this.design.getPlayersCount()) {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
                       sendStat(0, this.board.player);
@@ -302,11 +304,11 @@ App.prototype.exec = function() {
                       this.board = this.board.apply(Dagaz.Model.createMove());                 
                       this.state = STATE.IDLE;
                       delete this.list;
-                      passForced = true;
+                      passForced++;
                   }
                   return;
              }
-             passForced = false;
+             passForced = 0;
              if (this.list.isEmpty()) {
                  this.state = STATE.DONE;
                  Canvas.style.cursor = "default";
@@ -336,7 +338,7 @@ App.prototype.exec = function() {
           if (result.done || (Date.now() - this.timestamp >= this.params.AI_WAIT)) {
               this.board = this.board.apply(result.move);
               if (result.move.isPass()) {
-                  if (passForced) {
+                  if (passForced >= this.design.getPlayersCount()) {
                       this.state = STATE.DONE;
                       Canvas.style.cursor = "default";
                       sendStat(0, this.board.player);
@@ -344,10 +346,10 @@ App.prototype.exec = function() {
                   } else {
                       this.state = STATE.IDLE;
                       delete this.list;
-                      passForced = true;
+                      passForced++;
                   }
               } else {
-                  passForced = false;
+                  passForced = 0;
               }
               this.move = result.move;
               this.state = STATE.EXEC;
@@ -379,7 +381,7 @@ App.prototype.exec = function() {
               if ((moves.length > 0) || (determinated !== null)) {
                   var m = moves[0];
                   if (determinated !== null) {
-                      m = determinated;
+                      m.clarify(determinated);
                       determinated = null;
                   }
                   this.board = this.board.apply(m);

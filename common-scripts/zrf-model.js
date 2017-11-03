@@ -674,7 +674,7 @@ Dagaz.Model.getPieceTypes = function(piece) {
 }
 
 ZrfDesign.prototype.getGoalPositions = function(player, pieces) {
-  if (Dagaz.Model.showGoals && !_.isUndefined(this.goals[player])) {
+  if (!_.isUndefined(this.goals[player])) {
       return _.chain(this.goals[player])
        .filter(function(goal) {
             return goal.num == 0;
@@ -796,6 +796,10 @@ ZrfDesign.prototype.addPlayer = function(player, symmetries) {
   }
   this.players[ix] = Dagaz.int32Array(symmetries);
   this.playerNames.push(player);
+}
+
+ZrfDesign.prototype.getPlayersCount = function() {
+  return this.playerNames.length - 1;
 }
 
 ZrfDesign.prototype.addTurn = function(player, mode) {
@@ -1677,6 +1681,7 @@ Dagaz.Model.noReserve = function(board, piece) {
 ZrfBoard.prototype.movePiece = function(move, from, to, piece) {
   this.lastf = from;
   this.lastt = to;
+  this.lastc = to;
   if ((piece === null) && this.parent) {
       piece = this.parent.getPiece(from);
   }
@@ -2055,6 +2060,16 @@ ZrfMove.prototype.addValue = function(name, value, part) {
 
 ZrfMove.prototype.isPass = function() {
   return this.actions.length == 0;
+}
+
+ZrfMove.prototype.clarify = function(move) {
+  if ((move.actions.length == 1) && (move.actions[0][0] !== null) && (move.actions[0][1] !== null)) {
+      _.each(this.actions, function(a) {
+          if ((a[0] !== null) && (a[1] !== null) && (a[0][0] == move.actions[0][0][0]) && (a[1][0] == move.actions[0][1][0])) {
+              a[2] = move.actions[0][2];
+          }
+      });
+  }
 }
 
 })();
