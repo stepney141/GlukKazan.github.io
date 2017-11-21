@@ -1,12 +1,12 @@
 (function() {
 
-var MAXVALUE          = 1000000;
+var MAXVALUE           = 1000000;
 
-Dagaz.AI.AI_FRAME     = 3000;
-Dagaz.AI.NOISE_FACTOR = 5;
-Dagaz.AI.NO_MOVE_GOAL = 1;
-Dagaz.AI.MIN_DEEP     = 3;
-Dagaz.AI.MAX_DEEP     = 7;
+Dagaz.AI.AI_FRAME      = 3000;
+Dagaz.AI.NOISE_FACTOR  = 5;
+Dagaz.AI.MAX_DEEP      = 4;
+Dagaz.AI.FORCED_WEIGHT = 10;
+Dagaz.AI.NO_MOVE_GOAL  = -1;
 
 function MaxMinAi(params, parent) {
   this.params = params;
@@ -17,18 +17,18 @@ function MaxMinAi(params, parent) {
   if (_.isUndefined(this.params.NOISE_FACTOR)) {
       this.params.NOISE_FACTOR = Dagaz.AI.NOISE_FACTOR;
   }
-  if (_.isUndefined(this.params.MIN_DEEP)) {
-      this.params.MIN_DEEP = Dagaz.AI.MIN_DEEP;
-  }
   if (_.isUndefined(this.params.MAX_DEEP)) {
       this.params.MAX_DEEP = Dagaz.AI.MAX_DEEP;
+  }
+  if (_.isUndefined(this.params.FORCED_WEIGHT)) {
+      this.params.FORCED_WEIGHT = Dagaz.AI.FORCED_WEIGHT;
   }
 }
 
 var findBot = Dagaz.AI.findBot;
 
 Dagaz.AI.findBot = function(type, params, parent) {
-  if ((type == "maxmin") || (type == "common") || (type == "1")) {
+  if ((type == "maxmin") || (type == "common") || (type == "1") || (type == "2")) {
       return new MaxMinAi(params, parent);
   } else {
       return findBot(type, params, parent);
@@ -50,27 +50,27 @@ Dagaz.AI.eval = function(design, params, board, player) {
   return r;
 }
 
-var price = function(design, piece, player) {
-  if (piece === null) return 0;
-  if (piece.player == player) {
-      return -design.price[piece.type];
-  } else {
-      return design.price[piece.type];
-  }
-}
-
 Dagaz.AI.heuristic = function(ai, design, board, move) {
-  var r = 0;
+  var r = 1;
   _.each(move.actions, function(a) {
       if (a[0] !== null) {
-          var pos = a[0][0];
-          if (a[1] === null) {
-              var piece = board.getPiece(pos);
-              r += price(design, piece, board.player);
-          } else {
-              var target = a[1][0];
-              var piece = board.getPiece(target);
-              r += price(design, piece, board.player);
+          var piece = board.getPiece(a[0][0]);
+          if (piece !== null) {
+              if (a[1] === null) {
+                  r += design.price[piece.type];
+              } else {
+                  var target = board.getPiece(a[1][0]);
+                  if (target !== null) {
+                      r += design.price[target.type] * 2;
+                  }
+                  if (a[2] !== null) {
+                      var promoted = a[2][0];
+                      r += design.price[promoted.type];
+                  }
+                  if ((target !== null) || (a[2] !== null)) {
+                      r -= design.price[piece.type];
+                  }
+              }
           }
       }
   });
@@ -93,55 +93,56 @@ Dagaz.AI.isCheckersForced = function(design, board, move) {
 }
 
 MaxMinAi.prototype.expand = function(ctx, node) {
-  var result = null;
   if (_.isUndefined(node.cache)) {
       node.board.moves = Dagaz.AI.generate(ctx, node.board);
       node.cache = _.chain(node.board.moves)
-       .map(function(m) {
+       .map(function(move) {
            return {
-               move:  m,
-               board: node.board.apply(m),
-               h:     Dagaz.AI.heuristic(this, ctx.design, node.board, m)
+               goal:   null,
+               player: node.board.player,
+               move:   move,
+               board:  node.board.apply(move),
+               weight: Dagaz.AI.heuristic(this, ctx.design, node.board, move)
            };
         }, this)
        .filter(function(n) {
-           return n.h >= 0;
-        })
-       .sortBy(function(n) {
-           return -n.h;
+           return n.weight >= 0;
         }).value();
-      node.hwm = 0;
+      if (this.params.NOISE_FACTOR > 1) {
+           _.each(node.cache, function(n) {
+              n.weight *= this.params.NOISE_FACTOR;
+              n.weight += _.random(0, this.params.NOISE_FACTOR - 1);
+           }, this);
+      }
       for (var ix = 0; ix < node.cache.length; ix++) {
            n = node.cache[ix];
-           var goal = n.board.checkGoals(ctx.design, node.board.player);
-           if (goal !== null) {
-               if (goal > 0) {
-//                 console.log("Best Move: " + n.move.toString() + ", moves = " + moves(n.board) + ", player = " + node.board.player);
-                   node.best = ix;
-                   node.goal = goal;
-                   break;
+           if (!_.isUndefined(Dagaz.AI.isForced) && _.isUndefined(node.forced) && Dagaz.AI.isForced(ctx.design, node.board, n.move)) {
+               n.weight += this.params.FORCED_WEIGHT;
+               node.forced = ix;
+           }
+           n.goal = n.board.checkGoals(ctx.design, n.player);
+           if (n.goal !== null) {
+               if (n.goal > 0) {
+                   node.win = ix;
                }
-               if (n.board.player != node.board.player) {
-                   goal = -goal;
-               }
-               n.goal = goal;
            } else {
                n.board.moves = Dagaz.AI.generate(ctx, n.board);
                if (n.board.moves.length == 0) {
-                   node.goal = Dagaz.AI.NO_MOVE_GOAL;
-                   if (node.goal > 0) {
-//                     console.log("Best Move: " + n.move.toString() + ", moves = " + moves(n.board) + ", player = " + node.board.player);
-                       node.best = ix;
+                   n.goal = -Dagaz.AI.NO_MOVE_GOAL;
+                   if (n.goal > 0) {
+                       node.win  = ix;
                    }
-                   break;
                }
            }
       }
+      node.best = null;
   }
-  if (!_.isUndefined(node.best)) {
-      result = node.best;
+  if (!_.isUndefined(node.win)) {
+      node.best = node.win;
   }
-  return result;
+  if (node.best >= node.cache.length) {
+      node.best = null;
+  }
 }
 
 MaxMinAi.prototype.changeCache = function(ctx, board) {
@@ -153,7 +154,7 @@ MaxMinAi.prototype.changeCache = function(ctx, board) {
                }
                if (!_.isUndefined(ctx.cache[i].cache)) {
                    console.log("Cache found: " + ctx.cache[i].move.toString());
-                   ctx.hwm   = ctx.cache[i].hwm;
+                   ctx.win   = ctx.cache[i].win;
                    ctx.board = ctx.cache[i].board;
                    ctx.cache = ctx.cache[i].cache;
                    return;
@@ -165,109 +166,112 @@ MaxMinAi.prototype.changeCache = function(ctx, board) {
 }
 
 MaxMinAi.prototype.setCache = function(ctx, ix) {
-  ctx.hwm   = ctx.cache[ix].hwm;
+  ctx.win   = ctx.cache[ix].win;
   ctx.board = ctx.cache[ix].board;
   ctx.cache = ctx.cache[ix].cache;
 }
 
-MaxMinAi.prototype.update = function(ctx, node, eval) {
+MaxMinAi.prototype.eval = function(ctx, node) {
+  if (!_.isUndefined(node.forced)) {
+      return null;
+  }
   if (_.isUndefined(node.eval)) {
-      node.eval = eval;
-  } else {
-     if (ctx.board.player == node.board.player) {
-         if (node.eval < eval) {
-             node.eval = eval;
-         }
-     } else {
-         if (node.eval > eval) {
-             node.eval = eval;
-         }
-     }
+      node.eval = Dagaz.AI.eval(ctx.design, this.params, node.board, node.player);
   }
+  return node.eval;
 }
 
-MaxMinAi.prototype.goal = function(ctx, node) {
-  var g = node.goal * MAXVALUE;
-  if (node.board.player == ctx.board.player) {
-      return g;
-  } else {
-      return -g;
-  }
-}
-
-MaxMinAi.prototype.getPrice = function(ctx, board, move) {
-  for (var i = 0; i < move.actions.length; i++) {
-      if ((move.actions[i][0] !== null) && (move.actions[i][1] !== null)) {
-           var piece = board.getPiece(move.actions[i][0][0]);
-           if (piece === null) return 0;
-           return ctx.design.price[piece.type];
+MaxMinAi.prototype.shedule = function(ctx, node) {
+  if (_.isUndefined(node.cache)) return null;
+  if (!_.isUndefined(node.win))  return node.win;
+  if (node.cache.length == 1) return 0;
+  var s = 0;
+  _.each(node.cache, function(n) {
+      if (_.isUndefined(n.win)) {
+          s += n.weight + 1;
       }
-  }
-  return 0;
-}
-
-MaxMinAi.prototype.simulate = function(ctx, node, deep) {
-  if (!_.isUndefined(Dagaz.AI.isForced)) {
-      while (deep < this.params.MAX_DEEP) {
-          this.expand(ctx, node);
-          if (!_.isUndefined(node.goal)) break;
-          var best  = null;
-          var price = null;
-          for (var ix = 0; ix < node.cache.length; ix++) {
-              var n = node.cache[ix];
-              if (!_.isUndefined(n.goal)) {
-                  best = ix;
-                  break;
-              }
-              if (Dagaz.AI.isForced(ctx.design, node.board, n.move)) {
-                  var x = this.getPrice(ctx, node.board, n.move);
-                  if ((best === null) || (price > x)) {
-                      best = ix;
-                      price = x;
-                  }
-              }
+  });
+  if (s == 0) return null;
+  var v = _.random(0, s - 1);
+  s = 0;
+  for (var ix = 0; ix < node.cache.length; ix++) {
+      var n = node.cache[ix];
+      if (_.isUndefined(n.win)) {
+          s += n.weight + 1;
+          if (v < s) {
+              return ix;
           }
-          if (best === null) break;
-          node = node.cache[best];
-          deep++;
       }
   }
-  if (!_.isUndefined(node.goal)) {
-      node.eval = this.goal(ctx, node);
-      return;
-  }
-  return Dagaz.AI.eval(ctx.design, this.params, node.board, ctx.board.player) - ctx.eval;
+  return null;
 }
 
 MaxMinAi.prototype.proceed = function(ctx, node, deep) {
-  if (!deep) deep = 0;
   this.expand(ctx, node);
-  if (!_.isUndefined(node.goal)) {
-      node.eval = this.goal(ctx, node);
+  if (node.goal !== null) {
+      node.val = node.goal * MAXVALUE;
       return;
   }
-  if (deep < this.params.MIN_DEEP) {
-      var f = false;
-      while ((node.hwm < node.cache.length) && (Date.now() - ctx.timestamp < this.params.AI_FRAME)) {
-           var n = node.cache[node.hwm];
-           if (!_.isUndefined(n.eval) && !_.isUndefined(node.eval) && (n.eval == node.eval)) {
-               f = true;
-           }
-           this.proceed(ctx, n, deep + 1);
-           if (!f) {
-               this.update(ctx, node, n.eval);
-           }
-           node.hwm++;
+  if ((deep < this.params.MAX_DEEP) && _.isUndefined(node.forced)) {
+      node.val = this.eval(ctx, node);
+      return;
+  }
+  if (deep <= 0) {
+      if (!_.isUndefined(node.forced)) {
+          node.val = 0;
+      } else {
+          node.val = this.eval(ctx, node);
       }
-      if (f) {
-           delete node.eval;
-           for (var ix = 0; ix < node.hwm; ix++) {
-                var n = node.cache[ix];
-                this.update(ctx, node, n.eval);
-           }
-      }
-  } else {
-      node.eval = this.simulate(ctx, node, deep);
+      return;
+  }
+  var ix = this.shedule(ctx, node);
+  if (ix === null) {
+      node.val = -MAXVALUE;
+      return;
+  }
+  this.proceed(ctx, node.cache[ix], deep - 1);
+  var wins = 0;
+  node.val = null;
+  for (var i = 0; i < node.cache.length; i++) {
+       var n = node.cache[i];
+       if (!_.isUndefined(n.win)) {
+           wins++;
+           continue;
+       }
+       if (_.isUndefined(n.val) || (n.val === null)) continue;
+       if ((node.val === null) || (node.val > -n.val)) {
+           node.val  = -n.val;
+           node.best = i;
+       }
+  }
+  if (wins == node.cache.length) {
+       node.val = MAXVALUE;
+  }
+}
+
+var offset = function(deep) {
+  var r = "";
+  while (deep > 0) {
+      r = "  " + r;
+      deep--;
+  }
+  return r;
+}
+
+MaxMinAi.prototype.dump = function(ctx, node, deep) {
+  if (!deep) {
+       deep = 0;
+  }
+  if (deep > 0) return;
+  if (_.isUndefined(node.cache)) return;
+  for (var i = 0; i < node.cache.length; i++) {
+       var n = node.cache[i];
+       if (!_.isUndefined(n.val)) {
+           console.log("Dump: " + offset(deep) + n.move.toString() + ", player = " + n.player + ", goal = " + n.goal + ", win = " + n.win + ", forced = " + n.forced + ", weight = " + n.weight + ", eval = " + n.eval + ", val = " + n.val);
+       }
+       if (node.cache) {
+           this.dump(ctx, n, deep + 1);
+       }
   }
 }
 
@@ -275,7 +279,8 @@ MaxMinAi.prototype.setContext = function(ctx, board) {
   if (this.parent) {
       this.parent.setContext(ctx, board);
   }
-  ctx.board = board;
+  ctx.goal      = null;
+  ctx.board     = board;
   ctx.timestamp = Date.now();
   this.changeCache(ctx, board);
 }
@@ -285,39 +290,39 @@ MaxMinAi.prototype.getMove = function(ctx) {
   if (ctx.board.moves.length == 0) {
       return { done: true, ai: "nothing" };
   }
-  var ix = this.expand(ctx, ctx);
-  if (ix === null) {
+  this.expand(ctx, ctx);
+  if (ctx.best === null) {
       _.each(ctx.cache, function(node) {
          this.expand(ctx, node);
       }, this);
-      ctx.eval = Dagaz.AI.eval(ctx.design, this.params, ctx.board, ctx.board.player);
       ctx.timestamp = Date.now();
+      var cnt = 0;
       while (Date.now() - ctx.timestamp < this.params.AI_FRAME) {
-          this.proceed(ctx, ctx);
+          this.proceed(ctx, ctx, this.params.MAX_DEEP);
+          cnt++;
       }
-      var eval = -MAXVALUE;
-      for (var i = 0; i < ctx.cache.length; i++) {
-           var node = ctx.cache[i];
-           if (!_.isUndefined(node.best)) continue;
-           if (_.isUndefined(node.eval))  continue;
-           if ((ix === null) || (node.eval > eval)) {
-                ix = i;
-                eval = node.eval;
-           } else {
-                if ((node.eval == eval) && (_.random(0, 10) > this.params.NOISE_FACTOR)) {
-                    ix = i;
-                }
-           }
+      console.log("Cnt = " + cnt + ", Val = " + ctx.val);
+  }
+  if ((ctx.best === null) && (ctx.cache.length > 0)) {
+      ctx.cache = _.filter(ctx.cache, function(n) {
+          return _.isUndefined(n.win);
+      });
+      if (ctx.cache.length == 1) {
+          ctx.best = 0;
+      }
+      if (ctx.cache.length > 1) {
+          ctx.best = _.random(0, ctx.cache.length - 1);
       }
   }
-  if (ix !== null) {
+  this.dump(ctx, ctx);
+  if (ctx.best !== null) {
       var r = {
            done: true,
-           move: ctx.cache[ix].move,
+           move: ctx.cache[ctx.best].move,
            time: Date.now() - ctx.timestamp,
            ai:  "maxmin"
       };
-      this.setCache(ctx, ix);
+      this.setCache(ctx, ctx.best);
       return r;
   } else {
       delete ctx.cache;
