@@ -349,9 +349,9 @@ MaxMinAi.prototype.getMove = function(ctx) {
        var ix = this.shedule(ctx, ctx.cache);
        if (ix === null) break;
        var eval = this.proceed(ctx, ctx.cache, ix).eval;
-       if (eval == MAXVALUE) {
+/*     if (eval == MAXVALUE) {
            result = ix;
-       }
+       } */
   }
 //this.dumpAll(ctx, ctx.board.player, ctx.cache);
   var eval = 0;
