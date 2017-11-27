@@ -281,8 +281,11 @@ MoveList.prototype.setPosition = function(pos) {
       this.position = null;
   } else {
       if (_.indexOf(this.getStarts(), pos) >= 0) {
-          // Initial move
-          this.position = pos;
+          if (this.position == pos) {
+              this.position = null;
+          } else {
+              this.position = pos;
+          }
       }
   }
   this.stops = null;
