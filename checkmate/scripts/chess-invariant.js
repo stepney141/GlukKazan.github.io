@@ -57,6 +57,16 @@ var checkDirection = function(design, board, player, pos, dir, leapers, riders) 
   return _.indexOf(riders, piece.type) >= 0;
 }
 
+var checkLeap = function(design, board, player, pos, o, d, knight) {
+  var p = design.navigate(player, pos, o);
+  if (p === null) return false;
+  p = design.navigate(player, p, d);
+  if (p === null) return false;
+  var piece = board.getPiece(p);
+  if (piece === null) return false;
+  return (piece.player != player) && (piece.type == knight);
+}
+
 var checkPositions = function(design, board, player, positions) {
   var king   = design.getPieceType("King");
   var pawn   = design.getPieceType("Pawn");
@@ -90,22 +100,6 @@ var checkPositions = function(design, board, player, positions) {
   return false;
 }
 
-var checkLeap = function(design, board, player, pos, o, d, knight) {
-  var p = design.navigate(player, pos, o);
-  if (p === null) return false;
-  p = design.navigate(player, p, d);
-  if (p === null) return false;
-  var piece = board.getPiece(p);
-  if (piece === null) return false;
-  return (piece.player != player) && (piece.type == knight);
-}
-
-var getPiece = function(board, action) {
-  if (action[0] === null) return null;
-  if (action[1] === null) return null;
-  return board.getPiece(action[0][0]);
-}
-
 var changePieces = function(design, board, move) {
   _.each(move.actions, function(action) {
       if (action[0] == null) return;
@@ -115,6 +109,12 @@ var changePieces = function(design, board, move) {
           piece = piece.setValue(0, true);
       }
   });
+}
+
+var getPiece = function(board, action) {
+  if (action[0] === null) return null;
+  if (action[1] === null) return null;
+  return board.getPiece(action[0][0]);
 }
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;
@@ -127,8 +127,8 @@ Dagaz.Model.CheckInvariants = function(board) {
       var b = board.apply(move);
       var list = [];
       var pos  = findPiece(design, b, board.player, king);
-      if (pos) {
-          list.push(+pos);
+      if (pos !== null) {
+          list.push(pos);
       }
       if (move.actions.length == 2) {
           var k = getPiece(board, move.actions[0]);
