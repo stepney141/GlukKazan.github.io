@@ -55,7 +55,11 @@ Dagaz.AI.heuristic = function(ai, design, board, move) {
       }
       var piece  = board.getPiece(pos);
       if ((piece !== null) && ((piece.type == 4) || (piece.type == 0))) {
-          if (spockBalance(design, board, board.player, target) < 0) {
+          var l = 0;
+          if (piece.type == 0) {
+              l = 1;
+          }
+          if (spockBalance(design, board, board.player, target) < l) {
               return -1;
           }
       }
