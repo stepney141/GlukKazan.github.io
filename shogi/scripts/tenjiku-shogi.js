@@ -1207,7 +1207,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("Lance", 31, 6);
     design.addMove(31, 2, [4, 4], 0);
 
-    design.addPiece("King", 32, 100);
+    design.addPiece("King", 32, 1000);
     design.addMove(32, 1, [4], 0);
     design.addMove(32, 1, [2], 0);
     design.addMove(32, 1, [0], 0);
@@ -1660,7 +1660,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(60, 2, [6, 6], 0);
     design.addMove(60, 2, [5, 5], 0);
 
-    design.addPiece("None", 61);
+    design.addPiece("None", 61, 0);
 
     design.setup("White", "Dog", 91);
     design.setup("White", "Dog", 84);
