@@ -17,6 +17,7 @@ Dagaz.Model.showMoves       = true;
 Dagaz.Model.showHints       = true;
 Dagaz.Model.stalemateDraw   = false;
 Dagaz.Model.showBlink       = true;
+Dagaz.Model.chessCapturing  = true;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -364,6 +365,7 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_FROM] = function(gen) {
    }
    gen.from  = gen.pos;
    gen.piece = gen.getPiece(gen.pos);
+   delete gen.initial;
    return 0;
 }
 
@@ -373,6 +375,9 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_TO] = function(gen) {
    }
    if (_.isUndefined(gen.piece)) {
        return null;
+   }
+   if (Dagaz.Model.chessCapturing && !_.isUndefined(gen.cover) && !_.isUndefined(gen.from)) {
+        gen.cover[gen.pos].push(gen.from);
    }
    gen.movePiece(gen.from, gen.pos, gen.piece);
    delete gen.from;
@@ -390,6 +395,9 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_CAPTURE] = function(gen) {
    }
    if (!gen.capturePiece(gen.pos)) {
        return null;
+   }
+   if (!_.isUndefined(gen.cover) && !_.isUndefined(gen.from)) {
+       gen.cover[gen.pos].push(gen.from);
    }
    gen.generated = true;
    return 0;
@@ -463,6 +471,9 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_CREATE] = function(gen) {
    }
    if (gen.stack.length == 0) {
        return null;
+   }
+   if (_.isUndefined(gen.initial) && (gen.from == gen.pos)) {
+       gen.initial = gen.pos;
    }
    var type = gen.stack.pop();
    var piece = new ZrfPiece(type, gen.board.player);
@@ -1021,6 +1032,12 @@ ZrfMoveGenerator.prototype.clone = function() {
   r.mode     = this.mode;
   r.board    = this.board;
   r.pos      = this.pos;
+  if (!_.isUndefined(this.cover)) {
+      r.cover   = this.cover;
+  }
+  if (!_.isUndefined(this.initial)) {
+      r.initial = this.initial;
+  }
   _.each(this.marks, function(it) { r.marks.push(it); });
   _.each(this.stack, function(it) { r.stack.push(it); });
   _.each(_.keys(this.pieces), function(pos) {
@@ -1055,6 +1072,12 @@ ZrfMoveGenerator.prototype.copy = function(template, params) {
   r.board    = this.board;
   r.pos      = this.pos;
   r.move     = this.move.copy();
+  if (!_.isUndefined(this.cover)) {
+      r.cover   = this.cover;
+  }
+  if (!_.isUndefined(this.initial)) {
+      r.initial = this.initial;
+  }
   return r;
 }
 
@@ -1545,21 +1568,34 @@ var addPrior = function(priors, mode, gen) {
   }
 }
 
-var CompleteMove = function(board, gen) {
+var CompleteMove = function(board, gen, cover) {
+  var f = false;
+  if (!_.isUndefined(gen.initial)) {
+      f = true;
+      gen.pos   = gen.initial;
+      gen.lastt = gen.initial;
+  }
   var positions = Dagaz.Model.getPartList(board, gen);
   if (!Dagaz.Model.passPartial) { var t = 2; } 
       else { var t = 1; }
   while (positions.length > 0) {
        pos = positions.pop();
        var piece = gen.getPieceInternal(pos);
-       if ((piece !== null) && (Dagaz.Model.isFriend(piece, board.player) || Dagaz.Model.sharedPieces)) {
+       if (f && (piece === null) && (gen.parent !== null)) {
+           piece = gen.parent.getPieceInternal(pos);
+           gen.setPiece(pos, piece);
+       }
+       if ((piece !== null) && (Dagaz.Model.sharedPieces || Dagaz.Model.isFriend(piece, board.player))) {
            _.each(board.game.design.pieces[piece.type], function(move) {
                 if ((move.type == 0) && (move.mode == gen.mode)) {
                     var g = gen.copy(move.template, move.params);
+                    if (!_.isUndefined(cover)) {
+                        g.cover = cover;
+                    }
                     g.moveType = t;
                     g.generate();
                     if (g.completed && (g.moveType == 0)) {
-                        CompleteMove(board, g);
+                        CompleteMove(board, g, cover);
                         t = 1;
                     }
                 }
@@ -1568,7 +1604,7 @@ var CompleteMove = function(board, gen) {
   }
 }
 
-ZrfBoard.prototype.generateInternal = function(callback, cont) {
+ZrfBoard.prototype.generateInternal = function(callback, cont, cover) {
   var design = this.game.design;
   if (_.isUndefined(this.moves)) {
       this.moves = [];
@@ -1579,7 +1615,8 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
       var priors = [];
       _.chain(_.keys(this.pieces))
        .filter(function(pos)  
-          { return Dagaz.Model.sharedPieces || 
+          { return !_.isUndefined(cover) ||
+                   Dagaz.Model.sharedPieces || 
                    Dagaz.Model.isFriend(this.pieces[pos], this.player); 
           }, this)
        .each(function(pos) {
@@ -1588,24 +1625,32 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
             .filter(function(move) { return (move.type == 0); })
             .each(function(move) {
                 var g = Dagaz.Model.createGen(move.template, move.params, this.game.design, move.mode);
+                if (!_.isUndefined(cover)) {
+                    g.cover = cover;
+                }
                 g.init(this, pos);
                 addPrior(priors, move.mode, g);
             }, this);
         }, this);
-      _.each(design.positions, function(pos) {
-        _.chain(design.pieces)
-         .filter(function(tp) { return !Dagaz.Model.noReserve(this, tp); }, this)
-         .each(function(tp) {
-               _.chain(design.pieces[tp])
-                .filter(function(move) { return (move.type == 1); })
-                .each(function(move) {
-                    var g = Dagaz.Model.createGen(move.template, move.params, this.game.design, move.mode);
-                    g.init(this, pos);
-                    g.piece = new ZrfPiece(tp, this.player);
-                    addPrior(priors, move.mode, g);
-                }, this);
-           }, this);
-      }, this);
+      if (_.isUndefined(cover)) {
+          _.each(design.positions, function(pos) {
+            _.chain(design.pieces)
+             .filter(function(tp) { return !Dagaz.Model.noReserve(this, tp); }, this)
+             .each(function(tp) {
+                   _.chain(design.pieces[tp])
+                    .filter(function(move) { return (move.type == 1); })
+                    .each(function(move) {
+                        var g = Dagaz.Model.createGen(move.template, move.params, this.game.design, move.mode);
+                        if (!_.isUndefined(cover)) {
+                            g.cover = cover;
+                        }
+                        g.init(this, pos);
+                        g.piece = new ZrfPiece(tp, this.player);
+                        addPrior(priors, move.mode, g);
+                    }, this);
+               }, this);
+          }, this);
+      }
       this.forks = [];
       if (callback.checkContinue()) {
           for (var i = 0; i <= design.modes.length; i++) {
@@ -1616,7 +1661,7 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
                       g.generate();
                       if (g.completed && !g.move.isPass()) {
                           if (cont && (g.moveType == 0)) {
-                              CompleteMove(this, g);
+                              CompleteMove(this, g, cover);
                           }
                           f = true;
                       }
@@ -1630,7 +1675,7 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
                g.generate();
                if (g.completed) {
                      if (cont && (g.moveType == 0)) {
-                        CompleteMove(this, g);
+                        CompleteMove(this, g, cover);
                      }
                }
           }
@@ -1653,6 +1698,27 @@ ZrfBoard.prototype.generateInternal = function(callback, cont) {
 
 ZrfBoard.prototype.generate = function(design) {
   this.generateInternal(this, true);
+}
+
+Dagaz.Model.GetCover = function(design, board) {
+  if (_.isUndefined(board.cover)) {
+      var b = board.copy();
+      board.cover = [];
+      for (var pos = 0; pos < design.positions.length; pos++) {
+           board.cover[pos] = [];
+           var piece = b.getPiece(pos);
+           if (piece !== null) {
+               piece = piece.changeOwner(0);
+               b.setPiece(pos, piece);
+           }
+      }
+      b.generateInternal(b, true, board.cover);
+  }
+  return board.cover;
+}
+
+ZrfBoard.prototype.getCover = function(design) {
+  return Dagaz.Model.GetCover(design, this);
 }
 
 ZrfBoard.prototype.checkContinue = function() {

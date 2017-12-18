@@ -309,7 +309,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "Queen", 59);
     design.setup("White", "King", 60);
     design.setup("Black", "Maharadja", 28);
-
 }
 
 Dagaz.View.configure = function(view) {
