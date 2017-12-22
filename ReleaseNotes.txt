@@ -1,3 +1,15 @@
+22/12/2017 - 1.1.8
+  Thud!
+  Sokoban (60 levels)
+  Tafl games (Gwyddbwyll, Fidchell, Brandubh, Ard-Ri)
+  Gala
+  Tenjiku Shogi
+  Chess games (Charge of the Light Brigade, Weak!, Dunsany's Chess, Horde Chess)
+  Historical chess (Chaturanga, Shatranj, Makruk, Sittuyin)
+  Gwangsanghui
+  Chess
+  Platform Chess
+  High Jump
 23/11/2017 - 1.1.7
   Towers Puzzles
   Spock
