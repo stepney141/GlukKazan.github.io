@@ -10,6 +10,8 @@
   Chess
   Platform Chess
   High Jump
+  Courier Chess
+  Shisima
 23/11/2017 - 1.1.7
   Towers Puzzles
   Spock
