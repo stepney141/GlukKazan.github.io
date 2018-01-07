@@ -49,7 +49,7 @@ var gameOver = function(text) {
       if (num) {
           var len = num.length;
           num = +num + 1;
-          while (num.length < len) {
+          while (num.toString().length < len) {
               num = "0" + num;
           }
           window.location = str.replace(re, "$1" + num + "$3");
