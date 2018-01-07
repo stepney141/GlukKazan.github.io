@@ -24,6 +24,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("smart-moves", "to");
+    design.checkVersion("progressive-levels", "true");
     design.checkVersion("sokoban-goal", "true");
 
     design.addDirection("w");
