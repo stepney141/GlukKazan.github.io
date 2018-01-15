@@ -69,7 +69,7 @@
 </g>
 <!-- Courier chess -->
 <g class="node" id="node8"><title>Courier chess</title>
-<a xlink:href="courier-chess.htm">
+<a xlink:href="courier-chess-variant.htm">
 <ellipse fill="lightblue" stroke="black" cx="383" cy="-162" rx="63.2927" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="383" y="-157.8">Courier chess</text>
 </a>
