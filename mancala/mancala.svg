@@ -1,1 +1,662 @@
- 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2322 548" width="2322pt" height="548pt">
+<g class="graph" id="graph1" transform="scale(1) rotate(0) translate(4 544)">
+<title>mancala</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-544 2319,-544 2319,5 -4,5" />
+<!-- Mancala -->
+<g class="node" id="node1"><title>Mancala</title>
+<ellipse fill="lightgray" stroke="black" cx="2146" cy="-522" rx="43.9211" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2146" y="-517.8">Mancala</text>
+</g>
+<!-- 2 Ranks Single sowing -->
+<g class="node" id="node2"><title>2 Ranks Single sowing</title>
+<ellipse fill="lightgray" stroke="black" cx="1676" cy="-450" rx="99.2347" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1676" y="-445.8">2 Ranks Single sowing</text>
+</g>
+<!-- Mancala&#45;&gt;2 Ranks Single sowing -->
+<g class="edge" id="edge2"><title>Mancala-&gt;2 Ranks Single sowing</title>
+<path fill="none" stroke="black" d="M 2105.11 -514.91 C 2028.49 -503.499 1861.88 -478.685 1760.29 -463.554" />
+<polygon fill="black" stroke="black" points="1760.77,-460.086 1750.36,-462.075 1759.74,-467.01 1760.77,-460.086" />
+</g>
+<!-- Mancala puzzles -->
+<g class="node" id="node6"><title>Mancala puzzles</title>
+<ellipse fill="lightgray" stroke="black" cx="2146" cy="-450" rx="75.4749" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2146" y="-445.8">Mancala puzzles</text>
+</g>
+<!-- Mancala&#45;&gt;Mancala puzzles -->
+<g class="edge" id="edge4"><title>Mancala-&gt;Mancala puzzles</title>
+<path fill="none" stroke="black" d="M 2146 -503.697 C 2146 -495.983 2146 -486.712 2146 -478.112" />
+<polygon fill="black" stroke="black" points="2149.5,-478.104 2146,-468.104 2142.5,-478.104 2149.5,-478.104" />
+</g>
+<!-- Ruma -->
+<g class="node" id="node20"><title>Ruma</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ruma">
+<ellipse fill="lightblue" stroke="black" cx="2274" cy="-450" rx="34.1562" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2274" y="-445.8">Ruma</text>
+</a>
+</g>
+<!-- Mancala&#45;&gt;Ruma -->
+<g class="edge" id="edge6"><title>Mancala-&gt;Ruma</title>
+<path fill="none" stroke="black" d="M 2171.29 -507.17 C 2191.56 -496.084 2220.13 -480.458 2242 -468.5" />
+<polygon fill="black" stroke="black" points="2243.82,-471.494 2250.92,-463.625 2240.46,-465.352 2243.82,-471.494" />
+</g>
+<!-- 2 Ranks Multiple sowing -->
+<g class="node" id="node3"><title>2 Ranks Multiple sowing</title>
+<ellipse fill="lightgray" stroke="black" cx="1028" cy="-378" rx="108.109" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1028" y="-373.8">2 Ranks Multiple sowing</text>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;2 Ranks Multiple sowing -->
+<g class="edge" id="edge8"><title>2 Ranks Single sowing-&gt;2 Ranks Multiple sowing</title>
+<path fill="none" stroke="black" d="M 1592.94 -440.028 C 1473.49 -427.124 1253.58 -403.369 1126.23 -389.611" />
+<polygon fill="black" stroke="black" points="1126.41,-386.11 1116.09,-388.516 1125.65,-393.069 1126.41,-386.11" />
+</g>
+<!-- Oware -->
+<g class="node" id="node7"><title>Oware</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Oware">
+<ellipse fill="chocolate" stroke="black" cx="1389" cy="-378" rx="36.155" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1389" y="-373.8">Oware</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Oware -->
+<g class="edge" id="edge24"><title>2 Ranks Single sowing-&gt;Oware</title>
+<path fill="none" stroke="black" d="M 1608.63 -436.763 C 1559.95 -427.298 1492.86 -412.967 1435 -396 C 1432.07 -395.141 1429.06 -394.19 1426.05 -393.188" />
+<polygon fill="black" stroke="black" points="1427.12,-389.854 1416.52,-389.872 1424.82,-396.465 1427.12,-389.854" />
+</g>
+<!-- Songo Ewondo -->
+<g class="node" id="node8"><title>Songo Ewondo</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Songo_Ewondo">
+<ellipse fill="chocolate" stroke="black" cx="1514" cy="-378" rx="69.9773" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1514" y="-373.8">Songo Ewondo</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Songo Ewondo -->
+<g class="edge" id="edge28"><title>2 Ranks Single sowing-&gt;Songo Ewondo</title>
+<path fill="none" stroke="black" d="M 1639.24 -433.116 C 1614.99 -422.636 1583.1 -408.857 1557.57 -397.826" />
+<polygon fill="black" stroke="black" points="1558.69,-394.499 1548.13,-393.746 1555.92,-400.925 1558.69,-394.499" />
+</g>
+<!-- Toguz Kumalak -->
+<g class="node" id="node27"><title>Toguz Kumalak</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Toguz_Kumalak">
+<ellipse fill="yellow" stroke="black" cx="1676" cy="-378" rx="73.2797" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1676" y="-373.8">Toguz Kumalak</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Toguz Kumalak -->
+<g class="edge" id="edge32"><title>2 Ranks Single sowing-&gt;Toguz Kumalak</title>
+<path fill="none" stroke="black" d="M 1676 -431.697 C 1676 -423.983 1676 -414.712 1676 -406.112" />
+<polygon fill="black" stroke="black" points="1679.5,-406.104 1676,-396.104 1672.5,-406.104 1679.5,-406.104" />
+</g>
+<!-- Ohojichi -->
+<g class="node" id="node28"><title>Ohojichi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ohojichi">
+<ellipse fill="chocolate" stroke="black" cx="680" cy="-378" rx="44.2487" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="680" y="-373.8">Ohojichi</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Ohojichi -->
+<g class="edge" id="edge14"><title>2 Ranks Single sowing-&gt;Ohojichi</title>
+<path fill="none" stroke="black" d="M 1584.73 -442.804 C 1441.29 -433.037 1154.34 -413.384 911 -396 C 850.217 -391.658 780.452 -386.5 733.637 -383.013" />
+<polygon fill="black" stroke="black" points="733.655,-379.504 723.422,-382.251 733.135,-386.485 733.655,-379.504" />
+</g>
+<!-- Alemungula -->
+<g class="node" id="node37"><title>Alemungula</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Alemungula">
+<ellipse fill="chocolate" stroke="black" cx="1826" cy="-378" rx="58.1643" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1826" y="-373.8">Alemungula</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Alemungula -->
+<g class="edge" id="edge26"><title>2 Ranks Single sowing-&gt;Alemungula</title>
+<path fill="none" stroke="black" d="M 1710.41 -432.941 C 1732.92 -422.44 1762.39 -408.684 1785.95 -397.691" />
+<polygon fill="black" stroke="black" points="1787.73,-400.722 1795.31,-393.321 1784.77,-394.379 1787.73,-400.722" />
+</g>
+<!-- Modiar -->
+<g class="node" id="node39"><title>Modiar</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Modiar">
+<ellipse fill="chocolate" stroke="black" cx="1942" cy="-378" rx="39.1943" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1942" y="-373.8">Modiar</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Modiar -->
+<g class="edge" id="edge30"><title>2 Ranks Single sowing-&gt;Modiar</title>
+<path fill="none" stroke="black" d="M 1737.21 -435.674 C 1780.91 -425.767 1840.92 -411.356 1893 -396 C 1896.15 -395.07 1899.4 -394.06 1902.66 -393.012" />
+<polygon fill="black" stroke="black" points="1903.96,-396.267 1912.35,-389.791 1901.75,-389.624 1903.96,-396.267" />
+</g>
+<!-- Redu -->
+<g class="node" id="node44"><title>Redu</title>
+<a xlink:href="https://skyruk.livejournal.com/408356.html">
+<ellipse fill="chocolate" stroke="black" cx="2031" cy="-378" rx="31.1313" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2031" y="-373.8">Redu</text>
+</a>
+</g>
+<!-- 2 Ranks Single sowing&#45;&gt;Redu -->
+<g class="edge" id="edge34"><title>2 Ranks Single sowing-&gt;Redu</title>
+<path fill="none" stroke="black" d="M 1759.45 -440.124 C 1823.39 -432.078 1913.36 -418.049 1990 -396 C 1992.46 -395.292 1994.98 -394.48 1997.49 -393.605" />
+<polygon fill="black" stroke="black" points="1998.93,-396.803 2007.04,-389.993 1996.45,-390.256 1998.93,-396.803" />
+</g>
+<!-- 4 Ranks Multiple sowing -->
+<g class="node" id="node4"><title>4 Ranks Multiple sowing</title>
+<ellipse fill="lightgray" stroke="black" cx="422" cy="-234" rx="108.109" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="422" y="-229.8">4 Ranks Multiple sowing</text>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;4 Ranks Multiple sowing -->
+<g class="edge" id="edge10"><title>2 Ranks Multiple sowing-&gt;4 Ranks Multiple sowing</title>
+<path fill="none" stroke="black" d="M 924.245 -372.806 C 800.173 -366.597 600.639 -352.484 532 -324 C 522.564 -320.084 478.939 -283.673 449.545 -258.655" />
+<polygon fill="black" stroke="black" points="451.551,-255.765 441.672,-251.937 447.007,-261.09 451.551,-255.765" />
+</g>
+<!-- 2 Ranks Pussa Kanawa sowing -->
+<g class="node" id="node5"><title>2 Ranks Pussa Kanawa sowing</title>
+<ellipse fill="lightgray" stroke="black" cx="767" cy="-306" rx="131.275" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="767" y="-301.8">2 Ranks Pussa Kanawa sowing</text>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;2 Ranks Pussa Kanawa sowing -->
+<g class="edge" id="edge12"><title>2 Ranks Multiple sowing-&gt;2 Ranks Pussa Kanawa sowing</title>
+<path fill="none" stroke="black" d="M 973.604 -362.411 C 932.993 -351.519 877.269 -336.574 833.926 -324.95" />
+<polygon fill="black" stroke="black" points="834.602,-321.507 824.036,-322.297 832.788,-328.268 834.602,-321.507" />
+</g>
+<!-- Congkak -->
+<g class="node" id="node10"><title>Congkak</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Congkak">
+<ellipse fill="darkgreen" stroke="black" cx="962" cy="-306" rx="45.3598" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="962" y="-301.8">Congkak</text>
+</a>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;Congkak -->
+<g class="edge" id="edge36"><title>2 Ranks Multiple sowing-&gt;Congkak</title>
+<path fill="none" stroke="black" d="M 1012.02 -360.055 C 1003.71 -351.243 993.424 -340.328 984.34 -330.694" />
+<polygon fill="black" stroke="black" points="986.782,-328.182 977.375,-323.307 981.689,-332.984 986.782,-328.182" />
+</g>
+<!-- La&#39;b Madjnuni -->
+<g class="node" id="node15"><title>La'b Madjnuni</title>
+<a xlink:href="http://mancala.wikia.com/wiki/La%27b_Madjnuni">
+<ellipse fill="lightgreen" stroke="black" cx="1095" cy="-306" rx="69.3486" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1095" y="-301.8">La'b Madjnuni</text>
+</a>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;La&#39;b Madjnuni -->
+<g class="edge" id="edge40"><title>2 Ranks Multiple sowing-&gt;La'b Madjnuni</title>
+<path fill="none" stroke="black" d="M 1044.22 -360.055 C 1052.53 -351.371 1062.8 -340.644 1071.92 -331.114" />
+<polygon fill="black" stroke="black" points="1074.54,-333.433 1078.93,-323.789 1069.49,-328.593 1074.54,-333.433" />
+</g>
+<!-- Gabata -->
+<g class="node" id="node22"><title>Gabata</title>
+<ellipse fill="chocolate" stroke="black" cx="579" cy="-306" rx="38.0712" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="579" y="-301.8">Gabata</text>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;Gabata -->
+<g class="edge" id="edge38"><title>2 Ranks Multiple sowing-&gt;Gabata</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 930.951 -369.89 C 849.087 -362.537 729.247 -348.577 627 -324 C 623.777 -323.225 620.468 -322.313 617.167 -321.319" />
+<polygon fill="black" stroke="black" points="617.978,-317.903 607.386,-318.154 615.823,-324.563 617.978,-317.903" />
+</g>
+<!-- Giuthi -->
+<g class="node" id="node45"><title>Giuthi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Giuthi">
+<ellipse fill="chocolate" stroke="black" cx="1218" cy="-306" rx="35.5728" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1218" y="-301.8">Giuthi</text>
+</a>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;Giuthi -->
+<g class="edge" id="edge42"><title>2 Ranks Multiple sowing-&gt;Giuthi</title>
+<path fill="none" stroke="black" d="M 1070.87 -361.467 C 1099.76 -350.967 1138.71 -336.745 1173 -324 C 1175.55 -323.051 1178.19 -322.068 1180.84 -321.074" />
+<polygon fill="black" stroke="black" points="1182.28,-324.271 1190.41,-317.476 1179.82,-317.719 1182.28,-324.271" />
+</g>
+<!-- Ayoayo -->
+<g class="node" id="node48"><title>Ayoayo</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ayoayo">
+<ellipse fill="chocolate" stroke="black" cx="1313" cy="-306" rx="41.4122" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1313" y="-301.8">Ayoayo</text>
+</a>
+</g>
+<!-- 2 Ranks Multiple sowing&#45;&gt;Ayoayo -->
+<g class="edge" id="edge44"><title>2 Ranks Multiple sowing-&gt;Ayoayo</title>
+<path fill="none" stroke="black" d="M 1094.5 -363.769 C 1141.58 -353.959 1206.03 -339.625 1262 -324 C 1265.34 -323.068 1268.78 -322.049 1272.23 -320.988" />
+<polygon fill="black" stroke="black" points="1273.4,-324.289 1281.86,-317.922 1271.27,-317.618 1273.4,-324.289" />
+</g>
+<!-- Omweso -->
+<g class="node" id="node29"><title>Omweso</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Omweso">
+<ellipse fill="chocolate" stroke="black" cx="50" cy="-162" rx="45.0441" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="50" y="-157.8">Omweso</text>
+</a>
+</g>
+<!-- 4 Ranks Multiple sowing&#45;&gt;Omweso -->
+<g class="edge" id="edge46"><title>4 Ranks Multiple sowing-&gt;Omweso</title>
+<path fill="none" stroke="black" d="M 341.422 -221.911 C 277.915 -212.558 187.319 -197.854 109 -180 C 104.31 -178.931 99.4404 -177.71 94.6 -176.425" />
+<polygon fill="black" stroke="black" points="95.3425,-173 84.7725,-173.724 93.4873,-179.749 95.3425,-173" />
+</g>
+<!-- Hus -->
+<g class="node" id="node31"><title>Hus</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Hus">
+<ellipse fill="chocolate" stroke="black" cx="145" cy="-162" rx="27" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="145" y="-157.8">Hus</text>
+</a>
+</g>
+<!-- 4 Ranks Multiple sowing&#45;&gt;Hus -->
+<g class="edge" id="edge48"><title>4 Ranks Multiple sowing-&gt;Hus</title>
+<path fill="none" stroke="black" d="M 348.536 -220.698 C 300.723 -211.721 237.373 -197.985 183 -180 C 180.598 -179.206 178.143 -178.311 175.694 -177.358" />
+<polygon fill="black" stroke="black" points="176.98,-174.102 166.403,-173.482 174.285,-180.562 176.98,-174.102" />
+</g>
+<!-- Katra Fandatsaka -->
+<g class="node" id="node33"><title>Katra Fandatsaka</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Katra_Fandatsaka">
+<ellipse fill="chocolate" stroke="black" cx="270" cy="-162" rx="78.0014" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="270" y="-157.8">Katra Fandatsaka</text>
+</a>
+</g>
+<!-- 4 Ranks Multiple sowing&#45;&gt;Katra Fandatsaka -->
+<g class="edge" id="edge50"><title>4 Ranks Multiple sowing-&gt;Katra Fandatsaka</title>
+<path fill="none" stroke="black" d="M 387.128 -216.941 C 365.019 -206.759 336.266 -193.517 312.781 -182.702" />
+<polygon fill="black" stroke="black" points="313.952,-179.388 303.405,-178.384 311.024,-185.746 313.952,-179.388" />
+</g>
+<!-- Tchouba -->
+<g class="node" id="node40"><title>Tchouba</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Tchouba">
+<ellipse fill="chocolate" stroke="black" cx="447" cy="-162" rx="44.2372" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="447" y="-157.8">Tchouba</text>
+</a>
+</g>
+<!-- 4 Ranks Multiple sowing&#45;&gt;Tchouba -->
+<g class="edge" id="edge52"><title>4 Ranks Multiple sowing-&gt;Tchouba</title>
+<path fill="none" stroke="black" d="M 428.18 -215.697 C 430.995 -207.813 434.391 -198.304 437.519 -189.546" />
+<polygon fill="black" stroke="black" points="440.824,-190.699 440.891,-180.104 434.232,-188.345 440.824,-190.699" />
+</g>
+<!-- Bosh -->
+<g class="node" id="node36"><title>Bosh</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Bosh">
+<ellipse fill="chocolate" stroke="black" cx="661" cy="-234" rx="30.3359" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="661" y="-229.8">Bosh</text>
+</a>
+</g>
+<!-- 2 Ranks Pussa Kanawa sowing&#45;&gt;Bosh -->
+<g class="edge" id="edge54"><title>2 Ranks Pussa Kanawa sowing-&gt;Bosh</title>
+<path fill="none" stroke="black" d="M 741.61 -288.233 C 725.797 -277.79 705.433 -264.343 689.13 -253.577" />
+<polygon fill="black" stroke="black" points="690.819,-250.497 680.545,-247.907 686.961,-256.339 690.819,-250.497" />
+</g>
+<!-- Pallankuzhi -->
+<g class="node" id="node46"><title>Pallankuzhi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Pallankuzhi">
+<ellipse fill="darkgreen" stroke="black" cx="767" cy="-234" rx="56.4443" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="767" y="-229.8">Pallankuzhi</text>
+</a>
+</g>
+<!-- 2 Ranks Pussa Kanawa sowing&#45;&gt;Pallankuzhi -->
+<g class="edge" id="edge56"><title>2 Ranks Pussa Kanawa sowing-&gt;Pallankuzhi</title>
+<path fill="none" stroke="black" d="M 767 -287.697 C 767 -279.983 767 -270.712 767 -262.112" />
+<polygon fill="black" stroke="black" points="770.5,-262.104 767,-252.104 763.5,-262.104 770.5,-262.104" />
+</g>
+<!-- Tchuka Ruma -->
+<g class="node" id="node16"><title>Tchuka Ruma</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Tchuka_Ruma">
+<ellipse fill="lightblue" stroke="black" cx="2146" cy="-378" rx="65.2149" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2146" y="-373.8">Tchuka Ruma</text>
+</a>
+</g>
+<!-- Mancala puzzles&#45;&gt;Tchuka Ruma -->
+<g class="edge" id="edge20"><title>Mancala puzzles-&gt;Tchuka Ruma</title>
+<path fill="none" stroke="black" d="M 2146 -431.697 C 2146 -423.983 2146 -414.712 2146 -406.112" />
+<polygon fill="black" stroke="black" points="2149.5,-406.104 2146,-396.104 2142.5,-406.104 2149.5,-406.104" />
+</g>
+<!-- Samann -->
+<g class="node" id="node21"><title>Samann</title>
+<a xlink:href="http://mancala.wikia.com/wiki/S%C3%A4mann">
+<ellipse fill="lightblue" stroke="black" cx="2272" cy="-378" rx="42.2212" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2272" y="-373.8">Samann</text>
+</a>
+</g>
+<!-- Mancala puzzles&#45;&gt;Samann -->
+<g class="edge" id="edge22"><title>Mancala puzzles-&gt;Samann</title>
+<path fill="none" stroke="black" d="M 2174.28 -433.291 C 2193.28 -422.734 2218.41 -408.772 2238.43 -397.651" />
+<polygon fill="black" stroke="black" points="2240.18,-400.68 2247.23,-392.764 2236.78,-394.561 2240.18,-400.68" />
+</g>
+<!-- Leb Bbut Ahbochen -->
+<g class="node" id="node55"><title>Leb Bbut Ahbochen</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Leb_Bbut_Ahbochen">
+<ellipse fill="chocolate" stroke="black" cx="1462" cy="-306" rx="89.0219" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1462" y="-301.8">Leb Bbut Ahbochen</text>
+</a>
+</g>
+<!-- Oware&#45;&gt;Leb Bbut Ahbochen -->
+<g class="edge" id="edge114"><title>Oware-&gt;Leb Bbut Ahbochen</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1405.2 -361.465 C 1414.6 -352.454 1426.63 -340.92 1437.19 -330.788" />
+<polygon fill="black" stroke="black" points="1439.77,-333.161 1444.57,-323.714 1434.93,-328.109 1439.77,-333.161" />
+</g>
+<!-- Songo Douala -->
+<g class="node" id="node9"><title>Songo Douala</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Songo_Douala">
+<ellipse fill="chocolate" stroke="black" cx="1635" cy="-306" rx="66.0275" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1635" y="-301.8">Songo Douala</text>
+</a>
+</g>
+<!-- Songo Ewondo&#45;&gt;Songo Douala -->
+<g class="edge" id="edge58"><title>Songo Ewondo-&gt;Songo Douala</title>
+<path fill="none" stroke="black" d="M 1541.15 -361.291 C 1558.28 -351.383 1580.59 -338.477 1599.16 -327.734" />
+<polygon fill="black" stroke="black" points="1601.03,-330.694 1607.94,-322.657 1597.53,-324.635 1601.03,-330.694" />
+</g>
+<!-- Dakon -->
+<g class="node" id="node11"><title>Dakon</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Dakon">
+<ellipse fill="darkgreen" stroke="black" cx="878" cy="-234" rx="36.1736" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="878" y="-229.8">Dakon</text>
+</a>
+</g>
+<!-- Congkak&#45;&gt;Dakon -->
+<g class="edge" id="edge60"><title>Congkak-&gt;Dakon</title>
+<path fill="none" stroke="black" d="M 943.358 -289.465 C 931.701 -279.751 916.524 -267.104 903.73 -256.442" />
+<polygon fill="black" stroke="black" points="905.651,-253.486 895.728,-249.773 901.169,-258.864 905.651,-253.486" />
+</g>
+<!-- Ohvalhu -->
+<g class="node" id="node12"><title>Ohvalhu</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ohvalhu">
+<ellipse fill="darkgreen" stroke="black" cx="977" cy="-234" rx="43.9398" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="977" y="-229.8">Ohvalhu</text>
+</a>
+</g>
+<!-- Congkak&#45;&gt;Ohvalhu -->
+<g class="edge" id="edge82"><title>Congkak-&gt;Ohvalhu</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 965.631 -288.055 C 967.301 -280.261 969.324 -270.822 971.197 -262.079" />
+<polygon fill="black" stroke="black" points="974.625,-262.787 973.298,-252.275 967.78,-261.32 974.625,-262.787" />
+</g>
+<!-- Sungka -->
+<g class="node" id="node13"><title>Sungka</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Sungka">
+<ellipse fill="darkgreen" stroke="black" cx="1079" cy="-234" rx="40.0081" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1079" y="-229.8">Sungka</text>
+</a>
+</g>
+<!-- Congkak&#45;&gt;Sungka -->
+<g class="edge" id="edge84"><title>Congkak-&gt;Sungka</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 985.959 -290.666 C 1003.62 -280.099 1027.82 -265.618 1047.12 -254.074" />
+<polygon fill="black" stroke="black" points="1049.09,-256.976 1055.87,-248.838 1045.49,-250.969 1049.09,-256.976" />
+</g>
+<!-- Kalah -->
+<g class="node" id="node14"><title>Kalah</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Kalah">
+<ellipse fill="lightblue" stroke="black" cx="1171" cy="-234" rx="34.1403" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1171" y="-229.8">Kalah</text>
+</a>
+</g>
+<!-- Congkak&#45;&gt;Kalah -->
+<g class="edge" id="edge62"><title>Congkak-&gt;Kalah</title>
+<path fill="none" stroke="black" d="M 996.692 -294.226 C 1037.76 -281.421 1103.64 -260.693 1128 -252 C 1130.38 -251.15 1132.83 -250.252 1135.29 -249.33" />
+<polygon fill="black" stroke="black" points="1136.64,-252.559 1144.73,-245.712 1134.14,-246.023 1136.64,-252.559" />
+</g>
+<!-- Tchoukaillon -->
+<g class="node" id="node17"><title>Tchoukaillon</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Tchoukaillon">
+<ellipse fill="lightblue" stroke="black" cx="2078" cy="-306" rx="62.2967" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2078" y="-301.8">Tchoukaillon</text>
+</a>
+</g>
+<!-- Tchuka Ruma&#45;&gt;Tchoukaillon -->
+<g class="edge" id="edge110"><title>Tchuka Ruma-&gt;Tchoukaillon</title>
+<path fill="none" stroke="black" d="M 2129.88 -360.411 C 2121.33 -351.606 2110.67 -340.628 2101.24 -330.919" />
+<polygon fill="black" stroke="black" points="2103.48,-328.204 2094,-323.47 2098.46,-333.082 2103.48,-328.204" />
+</g>
+<!-- Monokalah -->
+<g class="node" id="node19"><title>Monokalah</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Monokalah">
+<ellipse fill="lightblue" stroke="black" cx="2214" cy="-306" rx="55.03" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2214" y="-301.8">Monokalah</text>
+</a>
+</g>
+<!-- Tchuka Ruma&#45;&gt;Monokalah -->
+<g class="edge" id="edge108"><title>Tchuka Ruma-&gt;Monokalah</title>
+<path fill="none" stroke="black" d="M 2162.12 -360.411 C 2170.67 -351.606 2181.33 -340.628 2190.76 -330.919" />
+<polygon fill="black" stroke="black" points="2193.54,-333.082 2198,-323.47 2188.52,-328.204 2193.54,-333.082" />
+</g>
+<!-- Multitchouka -->
+<g class="node" id="node18"><title>Multitchouka</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Multitchouka">
+<ellipse fill="lightblue" stroke="black" cx="2078" cy="-234" rx="63.1066" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="2078" y="-229.8">Multitchouka</text>
+</a>
+</g>
+<!-- Tchoukaillon&#45;&gt;Multitchouka -->
+<g class="edge" id="edge112"><title>Tchoukaillon-&gt;Multitchouka</title>
+<path fill="none" stroke="black" d="M 2078 -287.697 C 2078 -279.983 2078 -270.712 2078 -262.112" />
+<polygon fill="black" stroke="black" points="2081.5,-262.104 2078,-252.104 2074.5,-262.104 2081.5,-262.104" />
+</g>
+<!-- Gabata&#45;&gt;4 Ranks Multiple sowing -->
+<g class="edge" id="edge18"><title>Gabata-&gt;4 Ranks Multiple sowing</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 552.011 -292.967 C 528.797 -282.616 494.822 -267.468 467.425 -255.253" />
+<polygon fill="black" stroke="black" points="468.596,-251.943 458.037,-251.068 465.745,-258.337 468.596,-251.943" />
+</g>
+<!-- Selus -->
+<g class="node" id="node23"><title>Selus</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Selus">
+<ellipse fill="chocolate" stroke="black" cx="580" cy="-234" rx="31.4395" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="580" y="-229.8">Selus</text>
+</a>
+</g>
+<!-- Gabata&#45;&gt;Selus -->
+<g class="edge" id="edge64"><title>Gabata-&gt;Selus</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 579.247 -287.697 C 579.357 -279.983 579.49 -270.712 579.613 -262.112" />
+<polygon fill="black" stroke="black" points="583.112,-262.153 579.756,-252.104 576.113,-262.053 583.112,-262.153" />
+</g>
+<!-- Sulus Aidi -->
+<g class="node" id="node24"><title>Sulus Aidi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Sulus_Aidi">
+<ellipse fill="chocolate" stroke="black" cx="580" cy="-162" rx="52.1236" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="580" y="-157.8">Sulus Aidi</text>
+</a>
+</g>
+<!-- Selus&#45;&gt;Sulus Aidi -->
+<g class="edge" id="edge66"><title>Selus-&gt;Sulus Aidi</title>
+<path fill="none" stroke="black" d="M 580 -215.697 C 580 -207.983 580 -198.712 580 -190.112" />
+<polygon fill="black" stroke="black" points="583.5,-190.104 580,-180.104 576.5,-190.104 583.5,-190.104" />
+</g>
+<!-- Sulus Nishtaw -->
+<g class="node" id="node25"><title>Sulus Nishtaw</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Sulus_Nishtaw">
+<ellipse fill="chocolate" stroke="black" cx="717" cy="-162" rx="67.1441" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="717" y="-157.8">Sulus Nishtaw</text>
+</a>
+</g>
+<!-- Selus&#45;&gt;Sulus Nishtaw -->
+<g class="edge" id="edge68"><title>Selus-&gt;Sulus Nishtaw</title>
+<path fill="none" stroke="black" d="M 602.623 -221.441 C 623.109 -210.973 653.728 -195.329 678.132 -182.86" />
+<polygon fill="black" stroke="black" points="679.834,-185.92 687.146,-178.254 676.649,-179.687 679.834,-185.92" />
+</g>
+<!-- Lame Uweledet -->
+<g class="node" id="node26"><title>Lame Uweledet</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Lam%C3%A8_Uw%C3%A8l%C3%A8d%C3%A8t">
+<ellipse fill="chocolate" stroke="black" cx="726" cy="-90" rx="72.1519" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="726" y="-85.8">Lame Uweledet</text>
+</a>
+</g>
+<!-- Sulus Aidi&#45;&gt;Lame Uweledet -->
+<g class="edge" id="edge72"><title>Sulus Aidi-&gt;Lame Uweledet</title>
+<path fill="none" stroke="black" d="M 609.194 -147.003 C 630.94 -136.577 660.914 -122.205 685.054 -110.632" />
+<polygon fill="black" stroke="black" points="686.822,-113.666 694.326,-106.186 683.795,-107.354 686.822,-113.666" />
+</g>
+<!-- Sulus Nishtaw&#45;&gt;Lame Uweledet -->
+<g class="edge" id="edge70"><title>Sulus Nishtaw-&gt;Lame Uweledet</title>
+<path fill="none" stroke="black" d="M 719.225 -143.697 C 720.217 -135.983 721.408 -126.712 722.514 -118.112" />
+<polygon fill="black" stroke="black" points="725.997,-118.469 723.801,-108.104 719.054,-117.576 725.997,-118.469" />
+</g>
+<!-- Ohojichi&#45;&gt;4 Ranks Multiple sowing -->
+<g class="edge" id="edge16"><title>Ohojichi-&gt;4 Ranks Multiple sowing</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 636.793 -373.529 C 594.99 -368.362 531.453 -355.567 486 -324 C 463.059 -308.068 445.388 -281.153 434.484 -261.085" />
+<polygon fill="black" stroke="black" points="437.545,-259.385 429.818,-252.135 431.338,-262.621 437.545,-259.385" />
+</g>
+<!-- Igisoro -->
+<g class="node" id="node30"><title>Igisoro</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Igisoro">
+<ellipse fill="chocolate" stroke="black" cx="38" cy="-90" rx="38.087" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="38" y="-85.8">Igisoro</text>
+</a>
+</g>
+<!-- Omweso&#45;&gt;Igisoro -->
+<g class="edge" id="edge74"><title>Omweso-&gt;Igisoro</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 47.0337 -143.697 C 45.7113 -135.983 44.1221 -126.712 42.6478 -118.112" />
+<polygon fill="black" stroke="black" points="46.0716,-117.369 40.9322,-108.104 39.1722,-118.552 46.0716,-117.369" />
+</g>
+<!-- Owela -->
+<g class="node" id="node32"><title>Owela</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Owela">
+<ellipse fill="chocolate" stroke="black" cx="131" cy="-90" rx="36.3552" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="131" y="-85.8">Owela</text>
+</a>
+</g>
+<!-- Hus&#45;&gt;Owela -->
+<g class="edge" id="edge76"><title>Hus-&gt;Owela</title>
+<path fill="none" stroke="black" d="M 141.611 -144.055 C 140.069 -136.346 138.205 -127.027 136.473 -118.364" />
+<polygon fill="black" stroke="black" points="139.848,-117.395 134.455,-108.275 132.984,-118.768 139.848,-117.395" />
+</g>
+<!-- Bao la Kiswahili -->
+<g class="node" id="node34"><title>Bao la Kiswahili</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Bao_la_Kiswahili">
+<ellipse fill="chocolate" stroke="black" cx="261" cy="-90" rx="75.4088" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="261" y="-85.8">Bao la Kiswahili</text>
+</a>
+</g>
+<!-- Katra Fandatsaka&#45;&gt;Bao la Kiswahili -->
+<g class="edge" id="edge78"><title>Katra Fandatsaka-&gt;Bao la Kiswahili</title>
+<path fill="none" stroke="black" d="M 267.775 -143.697 C 266.783 -135.983 265.592 -126.712 264.486 -118.112" />
+<polygon fill="black" stroke="black" points="267.946,-117.576 263.199,-108.104 261.003,-118.469 267.946,-117.576" />
+</g>
+<!-- Bawo -->
+<g class="node" id="node35"><title>Bawo</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Bawo">
+<ellipse fill="chocolate" stroke="black" cx="261" cy="-18" rx="33.3445" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="261" y="-13.8">Bawo</text>
+</a>
+</g>
+<!-- Bao la Kiswahili&#45;&gt;Bawo -->
+<g class="edge" id="edge80"><title>Bao la Kiswahili-&gt;Bawo</title>
+<path fill="none" stroke="black" d="M 261 -71.6966 C 261 -63.9827 261 -54.7125 261 -46.1124" />
+<polygon fill="black" stroke="black" points="264.5,-46.1043 261,-36.1043 257.5,-46.1044 264.5,-46.1043" />
+</g>
+<!-- Bechi -->
+<g class="node" id="node38"><title>Bechi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Bechi">
+<ellipse fill="chocolate" stroke="black" cx="1826" cy="-306" rx="33.343" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1826" y="-301.8">Bechi</text>
+</a>
+</g>
+<!-- Alemungula&#45;&gt;Bechi -->
+<g class="edge" id="edge86"><title>Alemungula-&gt;Bechi</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1826 -359.697 C 1826 -351.983 1826 -342.712 1826 -334.112" />
+<polygon fill="black" stroke="black" points="1829.5,-334.104 1826,-324.104 1822.5,-334.104 1829.5,-334.104" />
+</g>
+<!-- Moruba -->
+<g class="node" id="node41"><title>Moruba</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Moruba">
+<ellipse fill="chocolate" stroke="black" cx="397" cy="-90" rx="41.4107" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="397" y="-85.8">Moruba</text>
+</a>
+</g>
+<!-- Tchouba&#45;&gt;Moruba -->
+<g class="edge" id="edge88"><title>Tchouba-&gt;Moruba</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 435.151 -144.411 C 429.048 -135.868 421.485 -125.278 414.705 -115.787" />
+<polygon fill="black" stroke="black" points="417.425,-113.573 408.764,-107.47 411.729,-117.642 417.425,-113.573" />
+</g>
+<!-- Mefuvha -->
+<g class="node" id="node42"><title>Mefuvha</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Mefuvha">
+<ellipse fill="chocolate" stroke="black" cx="503" cy="-90" rx="45.3426" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="503" y="-85.8">Mefuvha</text>
+</a>
+</g>
+<!-- Tchouba&#45;&gt;Mefuvha -->
+<g class="edge" id="edge90"><title>Tchouba-&gt;Mefuvha</title>
+<path fill="none" stroke="black" d="M 459.988 -144.765 C 466.886 -136.143 475.508 -125.365 483.219 -115.727" />
+<polygon fill="black" stroke="black" points="486.179,-117.629 489.693,-107.633 480.713,-113.256 486.179,-117.629" />
+</g>
+<!-- Nsolo -->
+<g class="node" id="node43"><title>Nsolo</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Nsolo">
+<ellipse fill="chocolate" stroke="black" cx="601" cy="-90" rx="34.1562" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="601" y="-85.8">Nsolo</text>
+</a>
+</g>
+<!-- Tchouba&#45;&gt;Nsolo -->
+<g class="edge" id="edge92"><title>Tchouba-&gt;Nsolo</title>
+<path fill="none" stroke="black" d="M 475.605 -147.998 C 501.438 -136.255 539.492 -118.958 566.898 -106.501" />
+<polygon fill="black" stroke="black" points="568.455,-109.638 576.11,-102.314 565.558,-103.265 568.455,-109.638" />
+</g>
+<!-- Ali Guli Mane -->
+<g class="node" id="node47"><title>Ali Guli Mane</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ali_Guli_Mane">
+<ellipse fill="darkgreen" stroke="black" cx="869" cy="-162" rx="67.0358" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="869" y="-157.8">Ali Guli Mane</text>
+</a>
+</g>
+<!-- Pallankuzhi&#45;&gt;Ali Guli Mane -->
+<g class="edge" id="edge94"><title>Pallankuzhi-&gt;Ali Guli Mane</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 789.637 -217.465 C 803.701 -207.813 821.984 -195.266 837.457 -184.647" />
+<polygon fill="black" stroke="black" points="839.454,-187.521 845.719,-178.977 835.493,-181.75 839.454,-187.521" />
+</g>
+<!-- Andada -->
+<g class="node" id="node49"><title>Andada</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Andada">
+<ellipse fill="chocolate" stroke="black" cx="1264" cy="-234" rx="41.1001" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1264" y="-229.8">Andada</text>
+</a>
+</g>
+<!-- Ayoayo&#45;&gt;Andada -->
+<g class="edge" id="edge98"><title>Ayoayo-&gt;Andada</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1301.39 -288.411 C 1295.41 -279.868 1287.99 -269.278 1281.35 -259.787" />
+<polygon fill="black" stroke="black" points="1284.13,-257.655 1275.53,-251.47 1278.4,-261.669 1284.13,-257.655" />
+</g>
+<!-- En Dodoi -->
+<g class="node" id="node50"><title>En Dodoi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/En_Dodoi">
+<ellipse fill="chocolate" stroke="black" cx="1371" cy="-234" rx="47.9799" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1371" y="-229.8">En Dodoi</text>
+</a>
+</g>
+<!-- Ayoayo&#45;&gt;En Dodoi -->
+<g class="edge" id="edge96"><title>Ayoayo-&gt;En Dodoi</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1326.45 -288.765 C 1333.67 -280.056 1342.71 -269.147 1350.75 -259.435" />
+<polygon fill="black" stroke="black" points="1353.53,-261.567 1357.22,-251.633 1348.14,-257.101 1353.53,-261.567" />
+</g>
+<!-- Ba&#45;awa -->
+<g class="node" id="node52"><title>Ba-awa</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Ba-awa">
+<ellipse fill="chocolate" stroke="black" cx="1490" cy="-234" rx="40.2844" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1490" y="-229.8">Ba-awa</text>
+</a>
+</g>
+<!-- Ayoayo&#45;&gt;Ba&#45;awa -->
+<g class="edge" id="edge102"><title>Ayoayo-&gt;Ba-awa</title>
+<path fill="none" stroke="black" d="M 1342.63 -293.284 C 1372.41 -281.503 1418.49 -263.281 1451.18 -250.351" />
+<polygon fill="black" stroke="black" points="1452.85,-253.454 1460.87,-246.522 1450.28,-246.945 1452.85,-253.454" />
+</g>
+<!-- Cross Endodoi -->
+<g class="node" id="node51"><title>Cross Endodoi</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Cross-Endodoi">
+<ellipse fill="lightblue" stroke="black" cx="1365" cy="-162" rx="68.2565" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1365" y="-157.8">Cross Endodoi</text>
+</a>
+</g>
+<!-- En Dodoi&#45;&gt;Cross Endodoi -->
+<g class="edge" id="edge100"><title>En Dodoi-&gt;Cross Endodoi</title>
+<path fill="none" stroke="black" d="M 1369.52 -215.697 C 1368.86 -207.983 1368.06 -198.712 1367.32 -190.112" />
+<polygon fill="black" stroke="black" points="1370.81,-189.769 1366.47,-180.104 1363.83,-190.367 1370.81,-189.769" />
+</g>
+<!-- Anywoli -->
+<g class="node" id="node53"><title>Anywoli</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Anywoli">
+<ellipse fill="chocolate" stroke="black" cx="1496" cy="-162" rx="44.2501" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1496" y="-157.8">Anywoli</text>
+</a>
+</g>
+<!-- Ba&#45;awa&#45;&gt;Anywoli -->
+<g class="edge" id="edge104"><title>Ba-awa-&gt;Anywoli</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1491.48 -215.697 C 1492.14 -207.983 1492.94 -198.712 1493.68 -190.112" />
+<polygon fill="black" stroke="black" points="1497.17,-190.367 1494.53,-180.104 1490.19,-189.769 1497.17,-190.367" />
+</g>
+<!-- Obridjie -->
+<g class="node" id="node54"><title>Obridjie</title>
+<a xlink:href="http://mancala.wikia.com/wiki/Obridjie">
+<ellipse fill="chocolate" stroke="black" cx="1496" cy="-90" rx="43.3265" ry="18" />
+<text font-family="Times,serif" font-size="14" text-anchor="middle" x="1496" y="-85.8">Obridjie</text>
+</a>
+</g>
+<!-- Anywoli&#45;&gt;Obridjie -->
+<g class="edge" id="edge106"><title>Anywoli-&gt;Obridjie</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M 1496 -143.697 C 1496 -135.983 1496 -126.712 1496 -118.112" />
+<polygon fill="black" stroke="black" points="1499.5,-118.104 1496,-108.104 1492.5,-118.104 1499.5,-118.104" />
+</g>
+</g>
+</svg>
