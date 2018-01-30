@@ -260,6 +260,7 @@ App.prototype.exec = function() {
                       this.state = STATE.IDLE;
                       delete this.list;
                       passForced++;
+                      return;
                   }
               } else {
                   passForced = 0;
