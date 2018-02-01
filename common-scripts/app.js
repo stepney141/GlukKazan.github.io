@@ -42,25 +42,18 @@ Dagaz.Controller.createApp = function(canvas) {
   return Dagaz.Controller.app;
 }
 
-var gameOver = function(text) {
+var gameOver = function(text, self) {
   alert(text);
   if (Dagaz.Model.progressive) {
-      var str = window.location.toString();
-      var re  = /^(\D*)(\d+)(.*)$/;
-      var num = str.replace(re, "$2");
-      if (num) {
-          var len = num.length;
-          num = +num + 1;
-          while (num.toString().length < len) {
-              num = "0" + num;
-          }
-          window.location = str.replace(re, "$1" + num + "$3");
+      var str = Dagaz.Model.continue(self.design, self.board, window.location.toString());
+      if (str !== null) {
+          window.location = str;
       }
   }
 }
 
 App.prototype.gameOver = function(text) {
-  _.delay(gameOver, 500, [text]);
+  _.delay(gameOver, 500, text, this);
 }
 
 var sendStat = function(goal, player) {
@@ -203,6 +196,9 @@ App.prototype.exec = function() {
          if (_.isUndefined(this.list)) {
              var player = this.design.playerNames[this.board.player];
              console.log("Player: " + player);
+             if (!_.isUndefined(Dagaz.Model.getSetup)) {
+                 console.log("Setup: " + Dagaz.Model.getSetup(this.design, this.board));
+             }
              this.list  = Dagaz.Model.getMoveList(this.board);
              if (!_.isUndefined(this.move)) {
                  this.list.setLastMove(this.move);
@@ -238,6 +234,9 @@ App.prototype.exec = function() {
       var result = this.getAI().getMove(ctx);
       if (once) {
           console.log("Player: " + player);
+          if (!_.isUndefined(Dagaz.Model.getSetup)) {
+              console.log("Setup: " + Dagaz.Model.getSetup(this.design, this.board));
+          }
           once = false;
       }
       if (result) {

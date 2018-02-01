@@ -92,7 +92,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("f1", [-1, 1, 0, -6, -7, 0, 0, -8]);
     design.addPosition("g1", [-1, 0, 0, 0, -7, 0, 0, -8]);
 
-
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
     design.addCommand(0, ZRF.PARAM,	0);	// $1
     design.addCommand(0, ZRF.FUNCTION,	22);	// navigate
