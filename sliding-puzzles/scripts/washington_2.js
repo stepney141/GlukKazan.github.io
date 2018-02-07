@@ -23,7 +23,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "1");
     design.checkVersion("zrf", "3.0");
     design.checkVersion("smart-moves", "from");
+    design.checkVersion("progressive-levels", "true");
     design.checkVersion("sliding-puzzle", "true");
+    design.checkVersion("washington-extension", "true");
 
     design.addDirection("w");
     design.addDirection("e");
@@ -324,10 +326,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("You", "B010015", 28);
     design.setup("You", "B100015", 29);
 
-    design.goal(0, "You", "R0110F6", [4]);
-    design.goal(0, "You", "R1010F6", [5]);
-    design.goal(0, "You", "R0101F6", [10]);
-    design.goal(0, "You", "R1001F6", [11]);
+    design.goal(0, "You", "R0110F6", [22]);
+    design.goal(0, "You", "R1010F6", [23]);
+    design.goal(0, "You", "R0101F6", [28]);
+    design.goal(0, "You", "R1001F6", [29]);
 }
 
 Dagaz.View.configure = function(view) {

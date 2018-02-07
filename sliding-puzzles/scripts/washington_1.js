@@ -23,7 +23,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "1");
     design.checkVersion("zrf", "3.0");
     design.checkVersion("smart-moves", "from");
+    design.checkVersion("progressive-levels", "true");
     design.checkVersion("sliding-puzzle", "true");
+    design.checkVersion("washington-extension", "true");
 
     design.addDirection("w");
     design.addDirection("e");
@@ -63,11 +65,13 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("e1", [-1, 1, 0, -6]);
     design.addPosition("f1", [-1, 0, 0, -6]);
 
+
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
     design.addCommand(0, ZRF.PARAM,	0);	// $1
     design.addCommand(0, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(0, ZRF.FUNCTION,	25);	// to
     design.addCommand(0, ZRF.FUNCTION,	28);	// end
+
 
     design.addPiece("B01001", 0);
     design.addAttribute(0, 0, 1);
@@ -322,10 +326,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("You", "B010015", 28);
     design.setup("You", "B100015", 29);
 
-    design.goal(0, "You", "R0110F6", [0]);
-    design.goal(0, "You", "R1010F6", [1]);
-    design.goal(0, "You", "R0101F6", [6]);
-    design.goal(0, "You", "R1001F6", [7]);
+    design.goal(0, "You", "R0110F6", [4]);
+    design.goal(0, "You", "R1010F6", [5]);
+    design.goal(0, "You", "R0101F6", [10]);
+    design.goal(0, "You", "R1001F6", [11]);
 }
 
 Dagaz.View.configure = function(view) {
@@ -356,8 +360,8 @@ Dagaz.View.configure = function(view) {
     view.defPiece("YouB010014", "You B010014");
     view.defPiece("YouB100014", "You B100014");
     view.defPiece("YouB010015", "You B010015");
-    view.defPiece("YouB100015", "You B100015"); 
-
+    view.defPiece("YouB100015", "You B100015");
+ 
     view.defPosition("a5", 0, 0, 100, 100);
     view.defPosition("b5", 100, 0, 100, 100);
     view.defPosition("c5", 200, 0, 100, 100);
