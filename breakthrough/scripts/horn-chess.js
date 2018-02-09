@@ -23,6 +23,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("highlight-goals", "false");
     design.checkVersion("show-hints", "false");
+    design.checkVersion("ko", "asymmetric");
 
     design.addDirection("n");
     design.addDirection("s");
@@ -57,18 +58,18 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(0, ZRF.FUNCTION,	28);	// end
 
     design.addPiece("BlackStone", 0);
-    design.addMove(0, 0, [3], 0);
-    design.addMove(0, 0, [2], 0);
     design.addMove(0, 0, [0], 0);
     design.addMove(0, 0, [4], 0);
+    design.addMove(0, 0, [3], 1);
+    design.addMove(0, 0, [2], 1);
 
     design.addPiece("WhiteStone", 1);
-    design.addMove(1, 0, [3], 0);
-    design.addMove(1, 0, [2], 0);
     design.addMove(1, 0, [0], 0);
     design.addMove(1, 0, [4], 0);
-    design.addMove(1, 0, [1], 0);
-    design.addMove(1, 0, [5], 0);
+    design.addMove(1, 0, [3], 1);
+    design.addMove(1, 0, [2], 1);
+    design.addMove(1, 0, [1], 2);
+    design.addMove(1, 0, [5], 2);
 
     design.setup("White", "WhiteStone", 12);
     design.setup("Black", "BlackStone", 0);
