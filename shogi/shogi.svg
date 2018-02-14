@@ -51,8 +51,10 @@
 </g>
 <!-- Shogi -->
 <g class="node" id="node15"><title>Shogi</title>
+<a xlink:href="shogi.htm">
 <ellipse fill="red" stroke="black" cx="738" cy="-234" rx="33.3604" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="738" y="-229.8">Shogi</text>
+</a>
 </g>
 <!-- Sho shogi&#45;&gt;Shogi -->
 <g class="edge" id="edge44"><title>Sho shogi-&gt;Shogi</title>
@@ -113,8 +115,10 @@
 </g>
 <!-- Ko shogi -->
 <g class="node" id="node11"><title>Ko shogi</title>
+<a xlink:href="ko-shogi-board.htm">
 <ellipse fill="red" stroke="black" cx="790" cy="-90" rx="46.2632" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="790" y="-85.8">Ko shogi</text>
+</a>
 </g>
 <!-- Dai dai shogi&#45;&gt;Ko shogi -->
 <g class="edge" id="edge32"><title>Dai dai shogi-&gt;Ko shogi</title>
@@ -153,8 +157,10 @@
 </g>
 <!-- Yonin shogi -->
 <g class="node" id="node16"><title>Yonin shogi</title>
+<a xlink:href="yonin-shogi.htm">
 <ellipse fill="red" stroke="black" cx="469" cy="-162" rx="58.2737" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="469" y="-157.8">Yonin shogi</text>
+</a>
 </g>
 <!-- Shogi&#45;&gt;Yonin shogi -->
 <g class="edge" id="edge30"><title>Shogi-&gt;Yonin shogi</title>
@@ -199,8 +205,10 @@
 </g>
 <!-- Annan shogi -->
 <g class="node" id="node20"><title>Annan shogi</title>
+<a xlink:href="annan-shogi.htm">
 <ellipse fill="orange" stroke="black" cx="994" cy="-162" rx="60.1785" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="994" y="-157.8">Annan shogi</text>
+</a>
 </g>
 <!-- Shogi&#45;&gt;Annan shogi -->
 <g class="edge" id="edge42"><title>Shogi-&gt;Annan shogi</title>
