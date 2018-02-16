@@ -1,3 +1,29 @@
+16/02/2018 - 1.1.9
+  Chess minigames
+  Hex LifghtOff
+  Horn Chess
+  Caissa
+  Apocalypse
+  Alapo
+  Liberian Queah
+  Shogi (2 variants)
+  Annan Shogi
+  Ultima
+  Agon (board only)
+  Ko Shogi (board only)
+  Yonin Shogi (2 variants)
+  Ming Mang (board only)
+  Tablut (board only)
+  Hnefatafl (board only)
+  Alea Evangeli (board only)
+  Hasami Shogi (board only)
+  Jungle (board only)
+  Jeson Mor (board only)
+  Hanga Roa (board only)
+  Epaminondas (board only)
+  Watermelon Chess (board only)
+  progressive levels option
+  common setup option
 22/12/2017 - 1.1.8
   Thud!
   Sokoban (60 levels)

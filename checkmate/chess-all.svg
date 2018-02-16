@@ -580,8 +580,10 @@
 </g>
 <!-- Ultima -->
 <g class="node" id="node54"><title>Ultima</title>
+<a xlink:href="../custodian/ultima.htm">
 <ellipse fill="lightblue" stroke="black" cx="1277" cy="-234" rx="37.2887" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1277" y="-229.8">Ultima</text>
+</a>
 </g>
 <!-- Chess&#45;&gt;Ultima -->
 <g class="edge" id="edge116"><title>Chess-&gt;Ultima</title>

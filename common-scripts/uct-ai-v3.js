@@ -269,10 +269,10 @@ UctAi.prototype.getMove = function(ctx) {
        var r = this.minmax(ctx, node, Dagaz.AI.MIN_DEEP - 1);
        if (r === null) return;
        if (r <= -MAXVALUE) {
-           node.weight = 0;
+           node.weight = -1;
            console.log("Bad Move: " + node.move.toString() + ", weight = " + node.weight + ", eval = " + node.maxmin);
        }
-       if (r >= MAXVALUE) {
+       if (node.maxmin >= MAXVALUE) {
            console.log("Best Move: " + node.move.toString() + ", weight = " + node.weight + ", eval = " + node.maxmin);
            result = node;
        }
