@@ -20,6 +20,32 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+var isAttacked = function(design, board, pos, empty, dir, opposite) {
+  var p = design.navigate(board.player, pos, dir);
+  if ((p === null) || (p == empty)) return false;
+  var piece = board.getPiece(p);
+  if ((p === null) || (p.player == board.player)) return false;
+  p = design.navigate(board.player, pos, opposite);
+  if (p === null) return false;
+  return (p == empty) || (board.getPiece(p) === null);
+}
+
+Dagaz.AI.heuristic = function(ai, design, board, move) {
+  if ((move.actions.length == 1) && (move.actions[0][0] !== null) && (move.actions[0][1] !== null)) {
+      var nw = design.getDirection("nw"); var sw = design.getDirection("sw");
+      var ne = design.getDirection("ne"); var se = design.getDirection("se");
+      var sr = move.actions[0][0][0];
+      var ds = move.actions[0][1][0];
+      if (isAttacked(design, board, ds, sr, nw, se) ||
+          isAttacked(design, board, ds, sr, ne, sw) ||
+          isAttacked(design, board, ds, sr, se, nw) ||
+          isAttacked(design, board, ds, sr, sw, ne)) {
+          return 3;
+      }
+  }
+  return 1;
+}
+
 Dagaz.AI.eval = function(design, params, board, player) {
   var r = 0;
   _.each(design.allPositions(), function(pos) {
@@ -52,6 +78,42 @@ Dagaz.AI.eval = function(design, params, board, player) {
   return r;
 }
 
+var drawBar = function(ctx, x, y, height, val) {
+  var h = (height / val.length) | 0;
+  var w = 2;
+  if (h < 2) {
+      h = 2;
+      w = 1;
+  }
+  var last = null;
+  var offset = 0;
+  for (var i = 0; i < val.length; i++) {
+       var isWhite = ((val[i] % 2) == 0);
+       if (inversed) isWhite = !isWhite;
+       if ((last !== null) && (last == val[i])) {
+           ctx.fillStyle = "#000000";
+           ctx.fillRect(x, y + offset - 1, 3 + 2, w);
+       }
+       if (((val[i] / 2) | 0) == 0) {
+           if (isWhite) {
+               ctx.fillStyle = "#FFFFFF";
+           } else {
+               ctx.fillStyle = "#888888";
+           }
+       } else {
+           if (isWhite) {
+               ctx.fillStyle = "#FFFF00";
+           } else {
+               ctx.fillStyle = "#0000FF";
+           }
+       }
+       ctx.fillRect(x, y + offset, 3, h);
+       offset += h; height -= h;
+       if (height < h) break;
+       last = val[i];
+  }
+}
+
 Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
   var val = null;
   if (model) {
@@ -77,9 +139,10 @@ Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
           ctx.translate(x + frame.dx / 2, y + frame.dy / 2); 
           ctx.scale(0.95, 0.95);
           ctx.translate(-x - frame.dx /2, -y - frame.dy /2);
-          ctx.drawImage(back.h, x - 2, y + 2, piece.dx, piece.dy);
+          ctx.drawImage(back.h, x + 1, y + 2, piece.dx, piece.dy);
+          drawBar(ctx, x + 42, y - 2, 46, val);
           ctx.restore();
-          x += 5;
+          x -= 5;
           y -= 5;
       }
   }
