@@ -24,6 +24,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("smart-moves", "false");
     design.checkVersion("show-blink", "false");
+    design.checkVersion("ko", "situation");
     design.checkVersion("ming-mang-extension", "true");
 
     design.addDirection("w");
@@ -130,7 +131,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(0, ZRF.JUMP,	-8);
     design.addCommand(0, ZRF.FUNCTION,	28);	// end
 
-    design.addPiece("Stone", 0);
+    design.addPiece("Stone", 0, 2);
     design.addMove(0, 0, [3, 3], 0);
     design.addMove(0, 0, [2, 2], 0);
     design.addMove(0, 0, [1, 1], 0);
