@@ -163,8 +163,10 @@
 </g>
 <!-- Ko shogi -->
 <g class="node" id="node29"><title>Ko shogi</title>
+<a xlink:href="../shogi/ko-shogi-board.htm">
 <ellipse fill="red" stroke="black" cx="46" cy="-90" rx="46.2632" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="46" y="-85.8">Ko shogi</text>
+</a>
 </g>
 <!-- Go&#45;&gt;Ko shogi -->
 <g class="edge" id="edge90"><title>Go-&gt;Ko shogi</title>
@@ -304,8 +306,10 @@
 </g>
 <!-- Shogi -->
 <g class="node" id="node38"><title>Shogi</title>
+<a xlink:href="../shogi/shogi.htm">
 <ellipse fill="red" stroke="black" cx="937" cy="-234" rx="33.3604" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="937" y="-229.8">Shogi</text>
+</a>
 </g>
 <!-- Sho shogi&#45;&gt;Shogi -->
 <g class="edge" id="edge46"><title>Sho shogi-&gt;Shogi</title>
@@ -441,8 +445,10 @@
 </g>
 <!-- Yonin shogi -->
 <g class="node" id="node39"><title>Yonin shogi</title>
+<a xlink:href="../shogi/yonin-shogi.htm">
 <ellipse fill="red" stroke="black" cx="1254" cy="-162" rx="58.2737" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1254" y="-157.8">Yonin shogi</text>
+</a>
 </g>
 <!-- Shogi&#45;&gt;Yonin shogi -->
 <g class="edge" id="edge84"><title>Shogi-&gt;Yonin shogi</title>
@@ -487,8 +493,10 @@
 </g>
 <!-- Annan shogi -->
 <g class="node" id="node43"><title>Annan shogi</title>
+<a xlink:href="../shogi/annan-shogi.htm">
 <ellipse fill="orange" stroke="black" cx="965" cy="-162" rx="60.1785" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="965" y="-157.8">Annan shogi</text>
+</a>
 </g>
 <!-- Shogi&#45;&gt;Annan shogi -->
 <g class="edge" id="edge98"><title>Shogi-&gt;Annan shogi</title>
@@ -592,8 +600,10 @@
 </g>
 <!-- Hiashatar -->
 <g class="node" id="node53"><title>Hiashatar</title>
+<a xlink:href="hiashatar-board.htm">
 <ellipse fill="yellow" stroke="black" cx="1525" cy="-162" rx="48.0513" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1525" y="-157.8">Hiashatar</text>
+</a>
 </g>
 <!-- Shatar&#45;&gt;Hiashatar -->
 <g class="edge" id="edge114"><title>Shatar-&gt;Hiashatar</title>

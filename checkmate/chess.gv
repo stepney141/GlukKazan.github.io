@@ -10,12 +10,15 @@ digraph chess {
     "Gala"[style="filled",fillcolor="lightblue"];
     "Rithmomachy"[style="filled",fillcolor="lightblue"];
     "Chess"[style="filled",fillcolor="lightblue"];
+    "Shatar"[style="filled",fillcolor="yellow"];
+    "Hiashatar"[style="filled",fillcolor="yellow"];
     "Mini Chess";
     "Dunsany's Chess";
     "Platform Chess";
     "Maharadja";
     "Russian Checkers"[style="filled",fillcolor="lightblue"];
     "Belarusian Chess";
+    "Omega Chess";
 
     "Chaturanga" -> "Shatranj";
     "Chaturanga" -> "Makruk";
@@ -33,4 +36,7 @@ digraph chess {
     "Chess" -> "Maharadja";
     "Russian Checkers" -> "Belarusian Chess";
     "Chess" -> "Belarusian Chess";
+    "Chess" -> "Shatar";
+    "Shatar" -> "Hiashatar";
+    "Shatar" -> "Omega Chess";
 }
