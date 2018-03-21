@@ -28,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("mancala-setup", "4");
     design.checkVersion("mancala-view", "true");
     design.checkVersion("dearth-extension", "no-full");
+    design.checkVersion("cross-extension", "true");
     design.checkVersion("oware-extension", "true");
     design.checkVersion("mancala-goal", "true");
 
@@ -65,6 +66,7 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addPiece("Seed", 0);
     design.addMove(0, 0, [0], 0);
+    design.addMove(0, 0, [1], 1);
 
     design.addPiece("None", 1);
 
