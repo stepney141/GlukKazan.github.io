@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1695 476" width="1695pt" height="476pt">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1695 476" width="1695pt" height="476pt">
 <g class="graph" id="graph1" transform="scale(1) rotate(0) translate(4 472)">
 <title>mancala</title>
 <polygon fill="white" stroke="white" points="-4,5 -4,-472 1692,-472 1692,5 -4,5" />
@@ -29,8 +29,10 @@
 </g>
 <!-- Oware -->
 <g class="node" id="node8"><title>Oware</title>
+<a xlink:href="oware.htm">
 <ellipse fill="chocolate" stroke="black" cx="445" cy="-306" rx="36.155" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="445" y="-301.8">Oware</text>
+</a>
 </g>
 <!-- Single laps&#45;&gt;Oware -->
 <g class="edge" id="edge14"><title>Single laps-&gt;Oware</title>
@@ -199,8 +201,10 @@
 </g>
 <!-- Cross Wari -->
 <g class="node" id="node9"><title>Cross Wari</title>
+<a xlink:href="cross-wari.htm">
 <ellipse fill="lightblue" stroke="black" cx="496" cy="-234" rx="54.6181" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="496" y="-229.8">Cross Wari</text>
+</a>
 </g>
 <!-- Oware&#45;&gt;Cross Wari -->
 <g class="edge" id="edge42"><title>Oware-&gt;Cross Wari</title>
