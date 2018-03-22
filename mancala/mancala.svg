@@ -71,8 +71,10 @@
 </g>
 <!-- Vai Lung Thlan -->
 <g class="node" id="node26"><title>Vai Lung Thlan</title>
+<a xlink:href="vai-lung-thlan.htm">
 <ellipse fill="darkgreen" stroke="black" cx="72" cy="-306" rx="72.577" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="72" y="-301.8">Vai Lung Thlan</text>
+</a>
 </g>
 <!-- Single laps&#45;&gt;Vai Lung Thlan -->
 <g class="edge" id="edge20"><title>Single laps-&gt;Vai Lung Thlan</title>
@@ -213,8 +215,10 @@
 </g>
 <!-- Alemungula -->
 <g class="node" id="node23"><title>Alemungula</title>
+<a xlink:href="alemungula.htm">
 <ellipse fill="chocolate" stroke="black" cx="228" cy="-234" rx="58.1643" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="228" y="-229.8">Alemungula</text>
+</a>
 </g>
 <!-- Oware&#45;&gt;Alemungula -->
 <g class="edge" id="edge44"><title>Oware-&gt;Alemungula</title>
@@ -223,8 +227,10 @@
 </g>
 <!-- Bohnenspiel -->
 <g class="node" id="node25"><title>Bohnenspiel</title>
+<a xlink:href="bohnenspiel.htm">
 <ellipse fill="lightblue" stroke="black" cx="364" cy="-234" rx="58.9742" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="364" y="-229.8">Bohnenspiel</text>
+</a>
 </g>
 <!-- Oware&#45;&gt;Bohnenspiel -->
 <g class="edge" id="edge50"><title>Oware-&gt;Bohnenspiel</title>
