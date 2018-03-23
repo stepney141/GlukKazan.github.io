@@ -1,3 +1,14 @@
+23/03/2018 - 1.2.0
+  Focus
+  Omega Chess
+  Hiashatar
+  Jasir
+  Oware
+  Cross-Wari
+  Vai Lung Thlan
+  Bohnenspiel
+  Alemungula
+  Toguz Kumalak
 16/02/2018 - 1.1.9
   Chess minigames
   Hex LifghtOff
@@ -12,7 +23,7 @@
   Agon (board only)
   Ko Shogi (board only)
   Yonin Shogi (2 variants)
-  Ming Mang (board only)
+  Ming Mang
   Tablut (board only)
   Hnefatafl (board only)
   Alea Evangeli (board only)
