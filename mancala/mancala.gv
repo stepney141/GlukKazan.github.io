@@ -46,6 +46,7 @@ digraph mancala {
     "Giuthi"[style="filled",fillcolor="chocolate"];
     "Bechi"[style="filled",fillcolor="chocolate"];
     "Modiar"[style="filled",fillcolor="chocolate"];
+    "Al-manqala"[style="filled",fillcolor="lightgreen"];
 
     "Mancala" -> "Single laps";
     "Mancala" -> "Multiple laps";
@@ -54,13 +55,13 @@ digraph mancala {
     "Multiple laps" -> "4 Ranks";
     "Multiple laps" -> "Pussa Kanawa";
 
-    "Single laps" -> "Oware";
     "Single laps" -> "Ohojichi";
     "Single laps" -> "Redu";
-    "Single laps" -> "Vai Lung Thlan";
     "Single laps" -> "Kauri";
     "Single laps" -> "10 Mighty Men";
     "Single laps" -> "Toguz Kumalak";
+    "Single laps" -> "Al-manqala";
+
     "Ohojichi" -> "4 Ranks"[style=dotted];
     "2 Ranks" -> "Congkak";
     "2 Ranks" -> "Ayoayo";
@@ -70,10 +71,8 @@ digraph mancala {
     "Pussa Kanawa" -> "Pallankuzhi";
 
     "Oware" -> "Cross Wari";
-    "Oware" -> "Alemungula"[style=dotted];
     "Alemungula" -> "Bechi"[style=dotted];
-    "Bechi" -> "Modiar"[style=dotted];
-    "Oware" -> "Bohnenspiel";
+    "Alemungula" -> "Modiar"[style=dotted];
     "Congkak" -> "Tchuka Ruma"[style=dotted];
     "Congkak" -> "Dakon";
     "Congkak" -> "Kalah";
@@ -95,4 +94,8 @@ digraph mancala {
     "Pallankuzhi" -> "Ali Guli Mane";
     "O An Quan" -> "Ceelkoqyuqkoqiji";
     "O An Quan" -> "Bay Khom";
+    "Al-manqala" -> "Oware"[style=dotted];
+    "Al-manqala" -> "Bohnenspiel";
+    "Al-manqala" -> "Alemungula"[style=dotted];
+    "Al-manqala" -> "Vai Lung Thlan"[style=dotted];
 }
