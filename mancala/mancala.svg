@@ -39,8 +39,10 @@
 </g>
 <!-- Toguz Kumalak -->
 <g class="node" id="node16"><title>Toguz Kumalak</title>
+<a xlink:href="toguz-kumalak.htm">
 <ellipse fill="yellow" stroke="black" cx="518" cy="-306" rx="73.2797" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="518" y="-301.8">Toguz Kumalak</text>
+</a>
 </g>
 <!-- Single laps&#45;&gt;Toguz Kumalak -->
 <g class="edge" id="edge22"><title>Single laps-&gt;Toguz Kumalak</title>
