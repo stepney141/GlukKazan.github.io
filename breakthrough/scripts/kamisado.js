@@ -21,9 +21,11 @@ ZRF = {
 
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
-    design.checkVersion("zrf", "3.0");
     design.checkVersion("pass-turn", "forced");
     design.checkVersion("highlight-goals", "false");
+    design.checkVersion("smart-moves", "false");
+    design.checkVersion("show-hints", "false");
+    design.checkVersion("show-blink", "false");
     design.checkVersion("progressive-levels", "true");
     design.checkVersion("kamisado-extension", "true");
 

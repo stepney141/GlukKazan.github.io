@@ -21,9 +21,10 @@ ZRF = {
 
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
-    design.checkVersion("zrf", "2.0");
     design.checkVersion("highlight-goals", "false");
+    design.checkVersion("smart-moves", "true");
     design.checkVersion("show-hints", "false");
+    design.checkVersion("show-blink", "false");
     design.checkVersion("ko", "asymmetric");
 
     design.addDirection("n");

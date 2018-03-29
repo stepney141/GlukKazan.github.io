@@ -23,9 +23,11 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "1");
     design.checkVersion("zrf", "3.0");
     design.checkVersion("highlight-goals", "false");
-    design.checkVersion("show-hints", "false");
-    design.checkVersion("jungle-extension", "strict");
+    design.checkVersion("smart-moves", "false");
+    design.checkVersion("show-hints", "true");
+    design.checkVersion("show-blink", "false");
     design.checkVersion("ko", "situation");
+    design.checkVersion("jungle-extension", "strict");
 
     design.addDirection("w");
     design.addDirection("e");
