@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("progressive-levels", "true");
     design.checkVersion("smart-moves", "false");
+    design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("ultima-custodian", "true");
     design.checkVersion("ultima-immobilizer", "true");
