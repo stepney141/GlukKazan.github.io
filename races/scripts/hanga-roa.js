@@ -24,6 +24,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("smart-moves", "false");
     design.checkVersion("show-blink", "true");
+    design.checkVersion("show-hints", "false");
     design.checkVersion("highlight-goals", "false");
     design.checkVersion("pass-partial", "true");
     design.checkVersion("hanga-roa-extension", "true");

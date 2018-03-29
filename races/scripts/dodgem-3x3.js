@@ -23,7 +23,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("zrf", "3.0");
     design.checkVersion("animate-captures", "false");
+    design.checkVersion("smart-moves", "true");
     design.checkVersion("show-hints", "false");
+    design.checkVersion("show-blink", "false");
     design.checkVersion("ko", "true");
     design.checkVersion("dodgem-extension", "true");
 
