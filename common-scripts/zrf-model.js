@@ -14,7 +14,7 @@ Dagaz.Model.smartTo         = false;
 Dagaz.Model.showGoals       = true;
 Dagaz.Model.showCaptures    = true;
 Dagaz.Model.showMoves       = true;
-Dagaz.Model.showHints       = true;
+Dagaz.Model.showHints       = false;
 Dagaz.Model.stalemateDraw   = false;
 Dagaz.Model.showBlink       = true;
 Dagaz.Model.chessCapturing  = true;
@@ -2182,6 +2182,10 @@ ZrfMove.prototype.clarify = function(move) {
 
 ZrfMove.prototype.isSimpleMove = function() {
   return (this.actions.length == 1) && (this.actions[0][0] !== null) && (this.actions[0][1] !== null);
+}
+
+ZrfMove.prototype.isDropMove = function() {
+  return (this.actions.length == 1) && (this.actions[0][0] === null) && (this.actions[0][1] !== null) && (this.actions[0][2] !== null);
 }
 
 Dagaz.Model.getX = function(pos) {

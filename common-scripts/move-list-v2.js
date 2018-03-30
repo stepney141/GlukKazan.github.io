@@ -146,6 +146,7 @@ MoveList.prototype.getStops = function() {
       });
   }
   result = _.uniq(result);
+  this.stops = result;
   return result;
 }
 
