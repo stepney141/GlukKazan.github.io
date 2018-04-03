@@ -108,7 +108,6 @@ Dagaz.Model.CheckInvariants = function(board) {
           cnt++;
       }
   });
-  console.log("Cnt = " + cnt);
   _.each(board.moves, function(move) {
       var isCaptured = false;
       _.each(move.actions, function(a) {
