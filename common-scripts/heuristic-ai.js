@@ -55,6 +55,7 @@ Ai.prototype.getMove = function(ctx) {
       nodes = _.sortBy(nodes, function(n) {
            return -n.weight;
       });
+      console.log("Move: " + nodes[0].move.toString() + ", weight = " + nodes[0].weight);
       return {
            done: true,
            move: nodes[0].move,
