@@ -161,12 +161,12 @@ Dagaz.AI.heuristic = function(ai, design, board, move) {
           } else {
               if (dead.length == 0) {
                   if (alive.length + dist - 1 <= getSteps(board)) {
-                      r += 50 + alive.length;
+                      r += 50 + alive.length - dist;
                   }
               }
           }
       }
-      return r + _.random(0, 10);
+      return r;
   } else {
       return -1;
   }
