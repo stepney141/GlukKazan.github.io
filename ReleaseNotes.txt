@@ -1,3 +1,13 @@
+17/04/2018 - 1.2.1
+  Reversi
+  Renju
+  Atari Go
+  Go (board only)
+  Three Color Go (board only)
+  Paper and Pencil Go (board only)
+  Virus Wars
+  common setup v2
+  Heuristic AI
 23/03/2018 - 1.2.0
   Focus
   Omega Chess
@@ -8,6 +18,7 @@
   Vai Lung Thlan
   Bohnenspiel
   Alemungula
+  Al-Manqala
   Toguz Kumalak
 16/02/2018 - 1.1.9
   Chess minigames
