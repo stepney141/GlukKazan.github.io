@@ -353,7 +353,7 @@ MaxMinAi.prototype.getMove = function(ctx) {
            result = ix;
        } */
   }
-//this.dumpAll(ctx, ctx.board.player, ctx.cache);
+  this.dumpAll(ctx, ctx.board.player, ctx.cache);
   var eval = 0;
   if (result === null) {
       for (var ix = 0; ix < ctx.cache.length; ix++) {
