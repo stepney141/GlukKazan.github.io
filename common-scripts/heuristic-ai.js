@@ -1,7 +1,5 @@
 (function() {
 
-var MAXVALUE          = 1000000;
-
 Dagaz.AI.NOISE_FACTOR = 10;
 
 function Ai(params, parent) {
