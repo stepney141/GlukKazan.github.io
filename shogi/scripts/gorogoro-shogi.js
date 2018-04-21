@@ -25,7 +25,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("highlight-goals", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
-    design.checkVersion("smart-moves", "true");
+    design.checkVersion("smart-moves", "false");
     design.checkVersion("gorogoro-shogi-extension", "true");
     design.checkVersion("gorogoro-shogi-promotion", "true");
 
