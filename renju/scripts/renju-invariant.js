@@ -1,67 +1,10 @@
 (function() {
 
-var NEAR_FACTOR   = 1;
-var FRIEND_FACTOR = 10;
-var ENEMY_FACTOR  = 20;
-
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
   if (name != "renju-invariant") {
       checkVersion(design, name, value);
-  }
-}
-
-Dagaz.AI.heuristic = function(ai, design, board, move) {
-  var r = 0;
-  var dirs   = [];
-  dirs.push(design.getDirection("n")); dirs.push(design.getDirection("ne"));
-  dirs.push(design.getDirection("e")); dirs.push(design.getDirection("se"));
-  dirs.push(design.getDirection("s")); dirs.push(design.getDirection("sw"));
-  dirs.push(design.getDirection("w")); dirs.push(design.getDirection("nw"));
-  if ((move.actions.length > 0) && (move.actions[0][0] === null) && (move.actions[0][1] !== null)) {
-      var pos = move.actions[0][1][0];
-      _.each(design.allDirections(), function(dir) {
-          var ix = _.indexOf(dirs, dir);
-          if (ix > 3) ix -= 4;
-          var p = design.navigate(board.player, pos, dir);
-          if (p !== null) {
-              var piece = board.getPiece(p);
-              if (piece !== null) {
-                  var v = +piece.getValue(ix);
-                  if (v) {
-                      if (v > 2) v = v * v;
-                      if (v > 3) r += 1000;
-                      v *= NEAR_FACTOR;
-                      if (piece.player == board.player) {
-                          v *= FRIEND_FACTOR;
-                      } else {
-                          v *= ENEMY_FACTOR;
-                      }
-                      r += v;
-                  }
-              } else {
-                  p = design.navigate(board.player, p, dir);
-                  var piece = board.getPiece(p);
-                  if (piece !== null) {
-                      var v = +piece.getValue(ix);
-                      if (v) {
-                          if (piece.player == board.player) {
-                              v *= FRIEND_FACTOR;
-                          } else {
-                              v *= ENEMY_FACTOR;
-                          }
-                          r += v;
-                      }
-                  }
-              }
-          }
-      });
-  }
-  if (r != 0) {
-      return r;
-  } else {
-      return -1;
   }
 }
 
@@ -100,29 +43,6 @@ var getLine = function(design, board, player, pos, dir, ix) {
   return r + vl;
 }
 
-var checkGoals = Dagaz.Model.checkGoals;
-
-Dagaz.Model.checkGoals = function(design, board, player) {
-  for (var pos = 0; pos < design.positions.length; pos++) {
-       var piece = board.getPiece(pos);
-       if (piece !== null) {
-           var mx = 0;
-           for (var ix = 0; ix < 4; ix++) {
-                var vl = +piece.getValue(ix);
-                if (mx < vl) mx = vl;
-           }
-           if (mx >= 5) {
-               if (piece.player == player) {
-                   return 1;
-               } else {
-                   return -1;
-               }
-           }
-       }
-  }
-  return checkGoals(design, board, player);
-}
-
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
@@ -156,11 +76,27 @@ Dagaz.Model.CheckInvariants = function(board) {
                       cnt = 0;
                       return;
                   }
-                  if (l >= 3) {
-                      cnt++;
+                  if ((cnt == 0) && (l == 3)) {
+                      cnt = 1;
+                      return;
+                  }
+                  if ((cnt == 0) && (l == 4)) {
+                      cnt = 2;
+                      return;
+                  }
+                  if ((cnt == 2) && (l == 3)) {
+                      cnt = 3;
+                      return;
+                  }
+                  if ((cnt == 1) && (l == 4)) {
+                      cnt = 3;
+                      return;
+                  }
+                  if ((cnt > 0) && (l >= 3)) {
+                      cnt = 4;
                   }
               });
-              if (cnt >= 2) {
+              if (cnt > 3) {
                   move.failed = true;
               }
           }

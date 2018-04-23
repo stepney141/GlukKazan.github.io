@@ -26,9 +26,11 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-drops", "23");
+    design.checkVersion("pass-turn", "forced");
     design.checkVersion("renju-restrictions", "true");
     design.checkVersion("renju-extension", "true");
     design.checkVersion("renju-invariant", "true");
+    design.checkVersion("renju-goal", "true");
 
     design.addDirection("w");
     design.addDirection("e");
@@ -276,7 +278,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(0, ZRF.FUNCTION,	20);	// verify
     design.addCommand(0, ZRF.FUNCTION,	25);	// to
     design.addCommand(0, ZRF.FUNCTION,	28);	// end
-
 
     design.addPiece("Stone", 0);
     design.addDrop(0, 0, [], 0);
