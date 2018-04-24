@@ -3,7 +3,7 @@
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "renju-goal") {
+  if (name != "gomoku-goal") {
      checkVersion(design, name, value);
   }
 }
@@ -52,9 +52,9 @@ Dagaz.AI.heuristic = function(ai, design, board, move) {
            var fw = getLine(design, board, pos, dirs[ix], ix);
            var bk = getLine(design, board, pos, dirs[ix + 4], ix);
            if ((fw.value == 4)  || (bk.value == 4))  r += 1000;
-           if ((fw.value == 1)  && (bk.value >= 3))  r += 1000;
-           if ((fw.value >= 3)  && (bk.value == 1))  r += 1000;
-           if ((fw.value >= 2)  && (bk.value >= 2))  r += 1000;
+           if ((fw.value == 1)  && (bk.value == 3))  r += 1000;
+           if ((fw.value == 3)  && (bk.value == 1))  r += 1000;
+           if ((fw.value == 2)  && (bk.value == 2))  r += 1000;
            if ((fw.value == -4) || (bk.value == -4)) r += 900;
            if ((fw.value == -1) && (bk.value == -3)) r += 900;
            if ((fw.value == -3) && (bk.value == -1)) r += 900;
@@ -98,17 +98,15 @@ Dagaz.Model.checkGoals = function(design, board, player) {
   for (var pos = 0; pos < design.positions.length; pos++) {
        var piece = board.getPiece(pos);
        if (piece !== null) {
-           var mx = 0;
            for (var ix = 0; ix < 4; ix++) {
                 var vl = +piece.getValue(ix);
-                if (mx < vl) mx = vl;
-           }
-           if (mx >= 5) {
-               if (piece.player == player) {
-                   return 1;
-               } else {
-                   return -1;
-               }
+                if (vl == 5) {
+                    if (piece.player == player) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
            }
        }
   }
