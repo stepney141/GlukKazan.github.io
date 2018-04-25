@@ -9,6 +9,8 @@ digraph checkers {
     "Fanorona"[style="filled",fillcolor="green"];
 
     "Senegalese Checkers"[style="filled",fillcolor="chocolate"];
+    "Yote"[style="filled",fillcolor="chocolate"];
+    "Bolotoudou"[style="filled",fillcolor="chocolate"];
     "Turkish Dama"[style="filled",fillcolor="lightgreen"];
     "Armenian Tama"[style="filled",fillcolor="lightblue"];
     "Greek Checkers"[style="filled",fillcolor="lightblue"];
@@ -54,4 +56,6 @@ digraph checkers {
     "Russian Checkers" -> "Northern Checkers";
     "International Draughts" -> "Frisian Draughts";
     "Turkish Dama" -> "Harzdame"[style=dotted];
+    "Senegalese Checkers" -> "Yote"[style=dotted];
+    "Senegalese Checkers" -> "Bolotoudou"[style=dotted];
 }
