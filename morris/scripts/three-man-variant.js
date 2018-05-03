@@ -26,7 +26,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("smart-moves", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
-    design.checkVersion("ko", "asymmetric");
     design.checkVersion("morris-extension", "true");
     design.checkVersion("three-man-goal", "true");
 
@@ -62,7 +61,19 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(1, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(1, ZRF.FUNCTION,	20);	// verify
     design.addCommand(1, ZRF.PARAM,	0);	// $1
+    design.addCommand(1, ZRF.FUNCTION,	21);	// position
+    design.addCommand(1, ZRF.ON_BOARD_DIR,	4);	// name
+    design.addCommand(1, ZRF.FUNCTION,	0);	// not
+    design.addCommand(1, ZRF.IF,	10);
+    design.addCommand(1, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(1, ZRF.FUNCTION,	0);	// not
+    design.addCommand(1, ZRF.IF,	4);
+    design.addCommand(1, ZRF.FORK,	3);
+    design.addCommand(1, ZRF.FUNCTION,	25);	// to
+    design.addCommand(1, ZRF.FUNCTION,	28);	// end
+    design.addCommand(1, ZRF.PARAM,	1);	// $2
     design.addCommand(1, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(1, ZRF.JUMP,	-11);
     design.addCommand(1, ZRF.FUNCTION,	1);	// empty?
     design.addCommand(1, ZRF.FUNCTION,	20);	// verify
     design.addCommand(1, ZRF.FUNCTION,	25);	// to
@@ -73,14 +84,7 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addPiece("Stone", 0);
     design.addDrop(0, 0, [], 1);
-    design.addMove(0, 1, [3], 0);
-    design.addMove(0, 1, [2], 0);
-    design.addMove(0, 1, [0], 0);
-    design.addMove(0, 1, [1], 0);
-    design.addMove(0, 1, [7], 0);
-    design.addMove(0, 1, [8], 0);
-    design.addMove(0, 1, [6], 0);
-    design.addMove(0, 1, [5], 0);
+    design.addMove(0, 1, [0, 4], 0);
 
     design.reserve("Blue", "Stone", 3);
     design.reserve("Red", "Stone", 3);
