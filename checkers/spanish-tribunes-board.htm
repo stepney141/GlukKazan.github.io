@@ -1,18 +1,26 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Northern Checkers</title>
+<title>Spanish Tribunes</title>
 </head>
 <body>
 
 <img id="Board" style="display:none" src="images/8x8.png">
-<img id="WhiteMan" style="display:none" src="images/wman.png">
-<img id="BlackMan" style="display:none" src="images/bman.png">
-<img id="WhiteKing" style="display:none" src="images/wdamone.png">
-<img id="BlackKing" style="display:none" src="images/bdamone.png">
+<img id="WhiteM1" style="display:none" src="images/wman.png">
+<img id="BlackM1" style="display:none" src="images/bman.png">
+<img id="WhiteM2" style="display:none" src="images/wman-2.png">
+<img id="BlackM2" style="display:none" src="images/bman-2.png">
+<img id="WhiteM3" style="display:none" src="images/wman-3.png">
+<img id="BlackM3" style="display:none" src="images/bman-3.png">
+<img id="WhiteK1" style="display:none" src="images/wdamone.png">
+<img id="BlackK1" style="display:none" src="images/bdamone.png">
+<img id="WhiteK2" style="display:none" src="images/wdamone-2.png">
+<img id="BlackK2" style="display:none" src="images/bdamone-2.png">
+<img id="WhiteK3" style="display:none" src="images/wdamone-3.png">
+<img id="BlackK3" style="display:none" src="images/bdamone-3.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Traditional - Russian <a href="northern-checkers-board.htm">no AI</a> <a href="northern-checkers-variant.htm">&gt;&gt;&gt;</a></td></tr>
+<tr><td><a href="spanish-tribunes.htm">AI</a></td></tr>
 <tr style="height:404px; vertical-align:top">
 <td id="CanvasCell" style="width:404px">
 <canvas id="Canvas" width="404" height="404" style="cursor:default">Broken canvas...</canvas>
@@ -40,16 +48,12 @@
 <script src="../common-scripts/dagaz.js"></script>
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
-<script src="../common-scripts/common-setup.js"></script>
+<script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
-<script src="../common-scripts/maxmin-ai-v2.js"></script>
-<script src="../common-scripts/sgf-parser.js"></script>
-<script src="data/russian.js"></script>
-<script src="../common-scripts/sgf-ai.js"></script>
-<script src="scripts/northern-extension.js"></script>
 <script src="scripts/russian-checkers-extension.js"></script>
-<script src="scripts/northern-checkers.js"></script>
+<script src="scripts/tribunes-extension.js"></script>
+<script src="scripts/spanish-tribunes.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
