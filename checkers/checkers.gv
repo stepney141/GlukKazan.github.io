@@ -1,4 +1,6 @@
 digraph checkers {
+    "Morris"[style="filled",fillcolor="lightblue"];
+    "Bagh Chal"[style="filled",fillcolor="darkgreen"];
     "Alquerque"[style="filled",fillcolor="lightgreen"];
     "Zamma"[style="filled",fillcolor="lightgreen"];
     "Dhamet"[style="filled",fillcolor="lightgreen"];
@@ -29,6 +31,9 @@ digraph checkers {
     "Harzdame"[style="filled",fillcolor="lightblue"];
     "Frisian Draughts"[style="filled",fillcolor="lightblue"];
 
+    "Morris" -> "Bagh Chal"[style=dotted];
+    "Morris" -> "Alquerque"[style=dotted];
+    "Bagh Chal" -> "Fox and Geese"[style=dotted];
     "Alquerque" -> "Zamma";
     "Alquerque" -> "Dablot";
     "Zamma" -> "Dhamet";
