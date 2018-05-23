@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-drops", "1");
+    design.checkVersion("pente-restrictions", "true");
     design.checkVersion("renju-extension", "true");
     design.checkVersion("pente-extension", "true");
     design.checkVersion("pente-goal", "true");
@@ -421,6 +422,7 @@ Dagaz.View.configure = function(view) {
     view.defBoard("Board");
     view.defPiece("BlackStone", "Black Stone");
     view.defPiece("WhiteStone", "White Stone");
+    view.defPiece("Ko", "Ko");
  
     view.defPosition("a19", 6, 6, 30, 30);
     view.defPosition("b19", 36, 6, 30, 30);

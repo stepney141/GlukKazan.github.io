@@ -1,5 +1,7 @@
 (function() {
 
+Dagaz.AI.AI_FRAME = 1000;
+
 var prices = [];
 
 prices[ 0] = 1000000;
