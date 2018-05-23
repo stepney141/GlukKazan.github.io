@@ -1,3 +1,21 @@
+23/05/2018 - 1.2.2
+  Omega Chess Advanced (board only)
+  Seega
+  Gomoku
+  Ninuki Renju
+  Pente
+  Gomoku Knights
+  Three Men's Morris
+  Les Pendus
+  Tribunes
+  Bagh-Chal
+  Nine Men's Morris
+  Morabaraba
+  Bolotoudou
+  Yote
+  Mu Torere
+  Ningxia Fangqi (board only)
+  Ko display option
 17/04/2018 - 1.2.1
   Reversi
   Renju
