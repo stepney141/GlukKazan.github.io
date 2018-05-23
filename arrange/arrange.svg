@@ -45,8 +45,10 @@
 </g>
 <!-- Fang Qi -->
 <g class="node" id="node10"><title>Fang Qi</title>
+<a xlink:href="ningxia-fangqi-board.htm">
 <ellipse fill="yellow" stroke="black" cx="154" cy="-18" rx="42.1271" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="154" y="-13.8">Fang Qi</text>
+</a>
 </g>
 <!-- Renju&#45;&gt;Fang Qi -->
 <g class="edge" id="edge22"><title>Renju-&gt;Fang Qi</title>
