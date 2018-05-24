@@ -24,7 +24,7 @@ var isCorner = function(design, board, player, pos, dirs) {
   return r;
 }
 
-var addKo = function(board, move) {
+Dagaz.Model.addKo = function(board, move) {
   if ((move.actions.length > 0) && (move.actions[0][1] !== null)) {
        pos = move.actions[0][1][0];
        if (_.isUndefined(board.ko)) {
@@ -45,7 +45,7 @@ Dagaz.Model.CheckInvariants = function(board) {
   var nw = design.getDirection("nw"); var sw = design.getDirection("sw");
   var ne = design.getDirection("ne"); var se = design.getDirection("se");
   _.each(board.moves, function(move) {
-      if (move.isDropMove()) {
+      if (move.isDropMove() && (board.moves.length > 1)) {
           var pos = move.actions[0][1][0];
           if (!isCorner(design, board, board.player, pos, [n, w, nw]) &&
               !isCorner(design, board, board.player, pos, [n, e, ne]) &&
@@ -56,7 +56,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                   isCorner(design, board, player, pos, [n, e, ne]) ||
                   isCorner(design, board, player, pos, [s, e, se]) ||
                   isCorner(design, board, player, pos, [s, w, sw])) {
-                  addKo(board, move);
+                  Dagaz.Model.addKo(board, move);
                   move.failed = true;
               }
           }

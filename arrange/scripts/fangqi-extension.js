@@ -12,21 +12,21 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
-var isForm = function(board, player, pos, empty, dx, dy, zPart) {
+var incForm = function(board, player, pos, empty, dx, dy, zPart) {
   var v = 0;
   var z = Dagaz.Model.getZobristHash();
   var x = Dagaz.Model.getX(pos);
   var y = Dagaz.Model.getY(pos);
-  if ((x + dx < 0) || (x + dx + 1 >= Dagaz.Model.WIDTH))  return false;
-  if ((y + dy < 0) || (y + dy + 1 >= Dagaz.Model.HEIGHT)) return false;
+  if ((x + dx < 0) || (x + dx + 1 >= Dagaz.Model.WIDTH))  return 0;
+  if ((y + dy < 0) || (y + dy + 1 >= Dagaz.Model.HEIGHT)) return 0;
   for (var i = 0; i < 2; i++) {
        for (var j = 0; j < 2; j++) {
             var p = (y + dy + i) * Dagaz.Model.WIDTH + x + dx + j;
             if (p != pos) {
-                if ((empty !== null) && (p == empty)) return false;
+                if ((empty !== null) && (p == empty)) return 0;
                 var piece = board.getPiece(p);
-                if (piece === null) return false;
-                if (piece.player != player) return false;
+                if (piece === null) return 0;
+                if (piece.player != player) return 0;
             }
             v = z.update(v, player, 0, p);
        }
@@ -34,16 +34,20 @@ var isForm = function(board, player, pos, empty, dx, dy, zPart) {
   if (!_.isUndefined(zPart)) {
       zPart.push(v);
   }
-  return true;
+  return 1;
 }
 
 Dagaz.Model.calcForms = function(board, player, pos, empty, zPart) {
   var r = 0;
-  if (isForm(board, player, pos, empty, -1, -1, zPart)) r++;
-  if (isForm(board, player, pos, empty, -1,  0, zPart)) r++;
-  if (isForm(board, player, pos, empty,  0, -1, zPart)) r++;
-  if (isForm(board, player, pos, empty,  0,  0, zPart)) r++;
+  r += incForm(board, player, pos, empty, -1, -1, zPart);
+  r += incForm(board, player, pos, empty, -1,  0, zPart);
+  r += incForm(board, player, pos, empty,  0, -1, zPart);
+  r += incForm(board, player, pos, empty,  0,  0, zPart);
   return r;
+}
+
+Dagaz.Model.addForm = function(board, player, pos) {
+  return 0;
 }
 
 var changeValue = function(design, board, player, add, move) {
@@ -52,23 +56,12 @@ var changeValue = function(design, board, player, add, move) {
       var piece = board.getPiece(pos);
       if (piece === null) return;
       if (piece.player != player) return;
-      if (isForm(board, player, pos, null, 0, 0)) c++;
+      c += incForm(board, player, pos, null, 0, 0);
+      c += Dagaz.Model.addForm(board, player, pos);
   });
   if (add > 0) c += add;
   if ((add < 0) && (c == 0)) c = -add;
   move.addValue(player, c);
-}
-
-var addKo = function(board, move) {
-  if ((move.actions.length > 0) && (move.actions[0][1] !== null)) {
-       pos = move.actions[0][1][0];
-       if (_.isUndefined(board.ko)) {
-           board.ko = [];
-       }
-       if (_.indexOf(board.ko, pos) < 0) {
-           board.ko.push(pos);
-       }
-  }
 }
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;
@@ -90,7 +83,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                       while (!_.isUndefined(b.move) && !_.isUndefined(b.parent) && (b.parent !== null)) {
                           if ((b.player != board.player) && !_.isUndefined(b.move.zPartial)) {
                               if (_.intersection(b.move.zPartial, move.zPartial).length == move.zPartial.length) {
-                                  addKo(board, move);
+                                  Dagaz.Model.addKo(board, move);
                                   move.failed = true;
                               }
                               break;
