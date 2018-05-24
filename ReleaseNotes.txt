@@ -1,4 +1,4 @@
-23/05/2018 - 1.2.2
+1.2.2
   Omega Chess Advanced (board only)
   Seega
   Gomoku
@@ -15,6 +15,7 @@
   Yote
   Mu Torere
   Ningxia Fangqi (board only)
+  Xinjiang Fangqi (board only)
   Ko display option
 17/04/2018 - 1.2.1
   Reversi
