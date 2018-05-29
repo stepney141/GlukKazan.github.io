@@ -29,6 +29,12 @@ var incForm = function(board, player, pos, empty, dx, dy, zPart) {
                 if (piece.player != player) return 0;
             }
             v = z.update(v, player, 0, p);
+            if (!_.isUndefined(zPart)) {
+                if (_.isUndefined(zPart.positions)) {
+                    zPart.positions = [];
+                }
+                if (_.indexOf(zPart.positions, p) < 0) zPart.positions.push(p);
+            }
        }
   }
   if (!_.isUndefined(zPart)) {
@@ -83,7 +89,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                       while (!_.isUndefined(b.move) && !_.isUndefined(b.parent) && (b.parent !== null)) {
                           if ((b.player != board.player) && !_.isUndefined(b.move.zPartial)) {
                               if (_.intersection(b.move.zPartial, move.zPartial).length == move.zPartial.length) {
-                                  Dagaz.Model.addKo(board, move);
+                                  Dagaz.Model.addKo(board, move, zPart);
                                   move.failed = true;
                               }
                               break;
@@ -91,7 +97,11 @@ Dagaz.Model.CheckInvariants = function(board) {
                           b = b.parent;
                       }
                   }
-                  move.addValue(board.player, c);
+                  var avail = Dagaz.Model.calcAvail(design, board, design.nextPlayer(board.player));
+                  if (avail < c) c = avail;
+                  if (c > 0) {
+                      move.addValue(board.player, c);
+                  }
               }
           }
           if (move.isDropMove()) {
