@@ -29,7 +29,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-captures", "false");
     design.checkVersion("pass-partial", "true");
     design.checkVersion("shared-pieces", "true");
-    design.checkVersion("ko", "true");
     design.checkVersion("drag-n-drop", "false");
     design.checkVersion("progressive-levels", "silent");
     design.checkVersion("magyar-invariant", "true");
@@ -37,6 +36,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("magyar-tiles", "true");
     design.checkVersion("magyar-goal", "true");
     design.checkVersion("magyar-setup", "true");
+    design.checkVersion("magyar-ko", "true");
 
     design.addDirection("nx");
     design.addDirection("w");
