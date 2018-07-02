@@ -1,4 +1,18 @@
-1.2.2
+02/07/2018 - 1.2.3
+  Captain's Mistress
+  Abalone
+  Cannon
+  Ordo (2 variants)
+  Triangle Morris
+  Taacoca
+  Magyar Dama
+  GESS (board only)
+  Rhombic Chess
+  Bear Games
+  Hare Gemes upgraded
+  Kolowisi Awithlaknannai
+  turn modes option
+23/05/2018 - 1.2.2
   Omega Chess Advanced (board only)
   Seega
   Gomoku
@@ -61,7 +75,7 @@
   Jungle (board only)
   Jeson Mor (board only)
   Hanga Roa (board only)
-  Epaminondas (board only)
+  Epaminondas
   Watermelon Chess (board only)
   progressive levels option
   common setup option
