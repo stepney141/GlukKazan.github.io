@@ -28,7 +28,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "true");
     design.checkVersion("show-captures", "false");
     design.checkVersion("pass-partial", "true");
-    design.checkVersion("pass-turn", "forced");
     design.checkVersion("shared-pieces", "true");
     design.checkVersion("drag-n-drop", "false");
     design.checkVersion("progressive-levels", "silent");
@@ -36,6 +35,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("magyar-extension", "true");
     design.checkVersion("magyar-tiles", "true");
     design.checkVersion("magyar-goal", "true");
+    design.checkVersion("magyar-view", "tiles");
 
     design.addDirection("nx");
     design.addDirection("w");
@@ -447,7 +447,6 @@ Dagaz.Model.BuildDesign = function(design) {
 }
 
 Dagaz.View.configure = function(view) {
-    view.defBoard("Board");
     view.defPiece("NTile", "N Tile");
     view.defPiece("RedStone", "Red Stone");
     view.defPiece("WhiteStone", "White Stone");
