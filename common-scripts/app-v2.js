@@ -284,6 +284,7 @@ App.prototype.getAI = function() {
 App.prototype.getBoard = function() {
   if (_.isUndefined(this.board)) {
       this.board  = Dagaz.Model.getInitBoard();
+      Dagaz.Model.Done(this.design, this.board);
   }
   return this.board;
 }
@@ -406,6 +407,7 @@ App.prototype.exec = function() {
           }
           if (result.done || (Date.now() - this.timestamp >= this.params.AI_WAIT)) {
               this.board = this.board.apply(result.move);
+              Dagaz.Model.Done(this.design, this.board);
               if (result.move.isPass()) {
                   if (passForced >= this.design.getPlayersCount()) {
                       this.state = STATE.DONE;
@@ -457,6 +459,7 @@ App.prototype.exec = function() {
                       determinated = null;
                   }
                   this.board = this.board.apply(m);
+                  Dagaz.Model.Done(this.design, this.board);
                   console.log("Debug: " + m.toString());
               }
           }
