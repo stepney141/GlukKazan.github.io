@@ -50,6 +50,17 @@ Dagaz.Controller.createApp = function(canvas) {
   return Dagaz.Controller.app;
 }
 
+var sendStat = function(goal, player) {
+  if (player != 1) {
+      goal = -goal;
+  }
+  if (!_.isUndefined(ga)) {
+      ga('send', 'event', {
+         'eventCategory': (goal == 0) ? 'Draw' : ( (goal > 0) ? 'Win' : 'Loss' )
+      });
+  }
+}
+
 App.prototype.done = function() {
   if (this.state != STATE.DONE) {
       this.state = STATE.STOP;
@@ -170,6 +181,7 @@ App.prototype.exec = function() {
              if (this.list.isEmpty()) {
                  this.state = STATE.DONE;
                  Canvas.style.cursor = "default";
+                 sendStat(-1, this.board.player);
                  this.gameOver(player + " loss", -this.board.player);
                  return;
              }
@@ -191,6 +203,7 @@ App.prototype.exec = function() {
           if (_.isUndefined(result.move)) {
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
+              sendStat(-1, this.board.player);
               this.gameOver(player + " loss", -this.board.player);
               return;
           }
@@ -229,6 +242,7 @@ App.prototype.exec = function() {
                   this.doneMessage = "Draw";
                   this.winPlayer   = 0;
               }
+              sendStat(g, this.board.parent.player);
           }
       }
   }
