@@ -1,16 +1,12 @@
 (function() {
 
-var symmetric = false;
-
 Dagaz.Model.invisible    = [];
 Dagaz.Model.invisibleOld = [];
 
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name == "dark-chess-view") {
-      if (symmetric == "true") symmetric = true;
-  } else {
+  if (name != "dark-chess-view") {
       checkVersion(design, name, value);
   }
 }
