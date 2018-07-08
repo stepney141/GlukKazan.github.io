@@ -1,16 +1,12 @@
 (function() {
 
-var symmetric = false;
-
 Dagaz.Model.invisible    = [];
 Dagaz.Model.invisibleOld = [];
 
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name == "dark-xiangqi-view") {
-      if (symmetric == "true") symmetric = true;
-  } else {
+  if (name != "dark-xiangqi-view") {
       checkVersion(design, name, value);
   }
 }
