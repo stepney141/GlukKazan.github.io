@@ -49,6 +49,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addTurn(1);
     design.addTurn(1);
     design.addTurn(1);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
+    design.addTurn(2);
     design.repeatMark();
     design.addTurn(1);
     design.addTurn(2);
@@ -288,77 +296,11 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "Ne", 21);
     design.setup("Black", "Ne", 22);
     design.setup("Black", "Ne", 23);
-
-    design.setupSelector(7);
-
-    design.setup("Black", "Min-gyi", 10, 1);
-    design.setup("Black", "Sit-ke", 19, 1);
-    design.setup("Black", "Yahhta", 4, 1);
-    design.setup("Black", "Yahhta", 6, 1);
-    design.setup("Black", "Myin", 11, 1);
-    design.setup("Black", "Myin", 13, 1);
-    design.setup("Black", "Sin", 18, 1);
-    design.setup("Black", "Sin", 12, 1);
-
-    design.setup("Black", "Min-gyi", 10, 2);
-    design.setup("Black", "Sit-ke", 19, 2);
-    design.setup("Black", "Yahhta", 5, 2);
-    design.setup("Black", "Yahhta", 6, 2);
-    design.setup("Black", "Myin", 17, 2);
-    design.setup("Black", "Myin", 11, 2);
-    design.setup("Black", "Sin", 18, 2);
-    design.setup("Black", "Sin", 12, 2);
-
-    design.setup("Black", "Min-gyi", 10, 3);
-    design.setup("Black", "Sit-ke", 19, 3);
-    design.setup("Black", "Yahhta", 4, 3);
-    design.setup("Black", "Yahhta", 6, 3);
-    design.setup("Black", "Myin", 11, 3);
-    design.setup("Black", "Myin", 12, 3);
-    design.setup("Black", "Sin", 18, 3);
-    design.setup("Black", "Sin", 13, 3);
-
-    design.setup("Black", "Min-gyi", 9, 4);
-    design.setup("Black", "Sit-ke", 19, 4);
-    design.setup("Black", "Yahhta", 2, 4);
-    design.setup("Black", "Yahhta", 5, 4);
-    design.setup("Black", "Myin", 18, 4);
-    design.setup("Black", "Myin", 11, 4);
-    design.setup("Black", "Sin", 17, 4);
-    design.setup("Black", "Sin", 12, 4);
-
-    design.setup("Black", "Min-gyi", 9, 5);
-    design.setup("Black", "Sit-ke", 19, 5);
-    design.setup("Black", "Yahhta", 3, 5);
-    design.setup("Black", "Yahhta", 5, 5);
-    design.setup("Black", "Myin", 10, 5);
-    design.setup("Black", "Myin", 18, 5);
-    design.setup("Black", "Sin", 17, 5);
-    design.setup("Black", "Sin", 12, 5);
-
-    design.setup("Black", "Min-gyi", 2, 6);
-    design.setup("Black", "Sit-ke", 18, 6);
-    design.setup("Black", "Yahhta", 4, 6);
-    design.setup("Black", "Yahhta", 5, 6);
-    design.setup("Black", "Myin", 11, 6);
-    design.setup("Black", "Myin", 19, 6);
-    design.setup("Black", "Sin", 10, 6);
-    design.setup("Black", "Sin", 14, 6);
-
-    design.setup("Black", "Min-gyi", 9, 7);
-    design.setup("Black", "Sit-ke", 19, 7);
-    design.setup("Black", "Yahhta", 3, 7);
-    design.setup("Black", "Yahhta", 5, 7);
-    design.setup("Black", "Myin", 10, 7);
-    design.setup("Black", "Myin", 12, 7);
-    design.setup("Black", "Sin", 17, 7);
-    design.setup("Black", "Sin", 18, 7);
-
-    design.reserve("Black", "Min-gyi", 0);
-    design.reserve("Black", "Sit-ke", 0);
-    design.reserve("Black", "Yahhta", 0);
-    design.reserve("Black", "Myin", 0);
-    design.reserve("Black", "Sin", 0);
+    design.reserve("Black", "Min-gyi", 1);
+    design.reserve("Black", "Sit-ke", 1);
+    design.reserve("Black", "Yahhta", 2);
+    design.reserve("Black", "Myin", 2);
+    design.reserve("Black", "Sin", 2);
 }
 
 Dagaz.View.configure = function(view) {
