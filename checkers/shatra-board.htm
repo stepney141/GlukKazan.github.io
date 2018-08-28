@@ -18,7 +18,9 @@
 <img id="BlackQueen" style="display:none" src="images/cheskers/bqueen.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td><b>no AI</b> <a href="shatra-variant-board.htm">&gt;&gt;&gt;</a></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+<b>no AI</b> 
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:704px; vertical-align:top">
 <td id="CanvasCell" style="width:354px">
 <canvas id="Canvas" width="354" height="704" style="cursor:default">Broken canvas...</canvas>
@@ -49,6 +51,7 @@
 <script src="../common-scripts/common-setup.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
 <script src="scripts/deferred-captures.js"></script>
 <script src="scripts/shatra-invariant.js"></script>
 <script src="scripts/shatra-extension.js"></script>
