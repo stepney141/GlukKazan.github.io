@@ -140,7 +140,9 @@
 <img id="BlackN" style="display:none" src="images/ko/n.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Copyright (c) XVIII Ogyu Sorai (<a href="https://en.wikipedia.org/wiki/Ko_shogi">rules</a>) <b>no AI</b></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Copyright (c) XVIII Ogyu Sorai (<a href="https://en.wikipedia.org/wiki/Ko_shogi">rules</a>) <b>no AI</b>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:618px; vertical-align:top">
 <td id="CanvasCell" style="width:618px">
 <canvas id="Canvas" width="618" height="618" style="cursor:default">Broken canvas...</canvas>
@@ -171,6 +173,7 @@
 <script src="../common-scripts/common-setup.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v1.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
 <script src="scripts/ko-shogi-priest.js"></script>
 <script src="scripts/ko-shogi-promotion.js"></script>
 <script src="scripts/ko-shogi-invariant.js"></script>
