@@ -60,6 +60,13 @@ Dagaz.Controller.addState = function(move, board) {
   sm.updateButtons();
 }
 
+var noMoves = function(board) {
+  for (var ix = 0; ix < board.moves.length; ix++) {
+       if (!board.moves[ix].isPass()) return false;
+  }
+  return true;
+}
+
 SessionManager.prototype.redo = function(board) {
   if (_.isUndefined(this.current) || _.isUndefined(this.current.current)) return null;
   this.current = this.current.current;
@@ -73,7 +80,7 @@ Dagaz.Controller.redo = function() {
   var current = sm.current;
   var board   = sm.redo();
   if (board !== null) {
-      while (sm.aiPresent() && (board.player != current.board.player)) {
+      while ((sm.aiPresent() && (board.player != current.board.player)) || noMoves(board)) {
          var b = sm.redo();
          if (b === null) {
              sm.current = current;
@@ -99,7 +106,7 @@ Dagaz.Controller.undo = function() {
   var current = sm.current;
   var board   = sm.undo();
   if (board !== null) {
-      while (sm.aiPresent() && (board.player != current.board.player)) {
+      while ((sm.aiPresent() && (board.player != current.board.player)) || noMoves(board)) {
          var b = sm.undo();
          if (b === null) {
              sm.current = current;
