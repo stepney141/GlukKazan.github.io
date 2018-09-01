@@ -340,6 +340,7 @@ App.prototype.setBoard = function(board) {
       this.view.reInit(board);
       delete this.list;
       this.clearPositions();
+      this.view.markPositions(Dagaz.View.markType.TARGET, []);
   }
 }
 
