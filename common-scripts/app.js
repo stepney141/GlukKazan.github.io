@@ -293,6 +293,9 @@ App.prototype.exec = function() {
           Canvas.style.cursor = "default";
           if (g > 0) {
               this.doneMessage = player + " win";
+              if (!_.isUndefined(Dagaz.Controller.play)) {
+                  Dagaz.Controller.play(Dagaz.Sounds.win);
+              }
           } else if (g < 0) {
               this.doneMessage = player + " loss";
           } else {
@@ -301,6 +304,13 @@ App.prototype.exec = function() {
           sendStat(g, this.board.parent.player);
       } else {
           this.state = STATE.WAIT;
+          if (!_.isUndefined(Dagaz.Controller.play)) {
+              var sound = Dagaz.Sounds.move;
+              if (!_.isUndefined(this.move.sound)) {
+                  sound = this.move.sound;
+              }
+              Dagaz.Controller.play(sound);
+          }
       }
   }
 }
