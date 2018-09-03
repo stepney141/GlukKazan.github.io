@@ -5,12 +5,18 @@
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/reversi/8x8.png">
+<img id="Board_0" style="display:none" src="images/reversi/8x8_0.png">
+<img id="Board_1" style="display:none" src="images/reversi/8x8_1.png">
+<img id="Board_2" style="display:none" src="images/reversi/8x8_2.png">
+<img id="Board_3" style="display:none" src="images/reversi/8x8_3.png">
+<img id="Board_4" style="display:none" src="images/reversi/8x8_4.png">
 <img id="WhiteStone" style="display:none" src="images/reversi/wbig.png">
 <img id="BlackStone" style="display:none" src="images/reversi/bbig.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Copyright (c) 1883 Lewis Waterman, John W. Mollett (<a href="https://en.wikipedia.org/wiki/Reversi">rules</a>) <a href="reversi.htm">AI</a></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Copyright (c) 1883 Lewis Waterman, John W. Mollett (<a href="https://en.wikipedia.org/wiki/Reversi">rules</a>) <a href="reversi.htm">AI</a>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:548px; vertical-align:top">
 <td id="CanvasCell" style="width:548px">
 <canvas id="Canvas" width="548" height="548" style="cursor:default">Broken canvas...</canvas>
@@ -38,9 +44,10 @@
 <script src="../common-scripts/dagaz.js"></script>
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
-<script src="../common-scripts/common-setup.js"></script>
+<script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v3.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
 <script src="scripts/reversi-extension.js"></script>
 <script src="scripts/reversi.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
