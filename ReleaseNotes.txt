@@ -1,3 +1,28 @@
+05/09/2018 - 1.2.4
+  Dark Chess
+  Dark XiangQi
+  Dark Mini XiangQi
+  Dark Alapo
+  Dark Yonin Shogi (2 variants)
+  Dark Janggi
+  Dark Gwangsanghui
+  Genesis Chess (2 variants)
+  Dark Courier Chess (2 variants)
+  Passive Chess
+  Dark Passive Chess
+  Pasang (39 variants)
+  Dark Sittuyin
+  Dark Shatranj
+  Alice Chess
+  Triangle Sliding Puzzle
+  Cloack Yonin Shogi
+  Cloack XiangQi
+  Short Assize
+  Chess Puzzles
+  setup selector
+  resource selector
+  session manager
+  sound manager
 02/07/2018 - 1.2.3
   Captain's Mistress
   Abalone
@@ -9,7 +34,7 @@
   GESS (board only)
   Rhombic Chess
   Bear Games
-  Hare Gemes upgraded
+  Hare Games upgraded
   Kolowisi Awithlaknannai
   turn modes option
 23/05/2018 - 1.2.2
