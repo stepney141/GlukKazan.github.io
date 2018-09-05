@@ -19,6 +19,7 @@
   Cloack XiangQi
   Short Assize
   Chess Puzzles
+  BanQi (3 variants)
   setup selector
   resource selector
   session manager
