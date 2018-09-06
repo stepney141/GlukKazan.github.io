@@ -97,6 +97,9 @@ App.prototype.done = function() {
           this.gameOver(this.doneMessage, this.winPlayer);
       }
   }
+  if (!_.isUndefined(Dagaz.Controller.stop)) {
+      Dagaz.Controller.stop();
+  }
 }
 
 App.prototype.getStarts = function() {
@@ -166,7 +169,7 @@ App.prototype.setPosition = function(pos) {
 }
 
 App.prototype.syncCaptures = function(move) {
-  var m = Dagaz.Model.createMove(move.mode, move.sound);
+  var m = Dagaz.Model.createMove(move.mode);
   _.each(move.actions, function(a) {
       if ((a[0] !== null) && (a[1] === null)) {
           m.actions.push(a);
@@ -337,7 +340,6 @@ App.prototype.setBoard = function(board) {
       this.view.reInit(board);
       delete this.list;
       this.clearPositions();
-      this.view.markPositions(Dagaz.View.markType.TARGET, []);
   }
 }
 
@@ -504,6 +506,9 @@ App.prototype.exec = function() {
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
               if (g > 0) {
+                  if (!_.isUndefined(Dagaz.Controller.play)) {
+                      Dagaz.Controller.play(Dagaz.Sounds.win);
+                  }
                   this.doneMessage = player + " win";
                   this.winPlayer   = this.board.parent.player;
               } else if (g < 0) {
