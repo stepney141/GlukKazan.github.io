@@ -97,9 +97,6 @@ App.prototype.done = function() {
           this.gameOver(this.doneMessage, this.winPlayer);
       }
   }
-  if (!_.isUndefined(Dagaz.Controller.stop)) {
-      Dagaz.Controller.stop();
-  }
 }
 
 App.prototype.getStarts = function() {
