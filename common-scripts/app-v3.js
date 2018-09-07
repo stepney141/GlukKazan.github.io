@@ -27,6 +27,7 @@ function App(canvas) {
 
 App.prototype.gameOver = function(text, player) {
   Dagaz.Controller.Done(this.board);
+  this.view.markPositions(Dagaz.View.markType.KO, []);
   _.delay(alert, GAME_OVER_DELAY, text);
   if (this.board) {
       var captured = [];
