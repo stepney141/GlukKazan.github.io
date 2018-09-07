@@ -53,6 +53,7 @@ var gameOver = function(text, self) {
 }
 
 App.prototype.gameOver = function(text) {
+  Dagaz.Controller.Done(this.board);
   _.delay(gameOver, 500, text, this);
 }
 

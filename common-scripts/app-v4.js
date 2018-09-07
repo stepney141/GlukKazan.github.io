@@ -55,6 +55,7 @@ var gameOver = function(text, self, player) {
 }
 
 App.prototype.gameOver = function(text, player) {
+  Dagaz.Controller.Done(this.board);
   _.delay(gameOver, 500, text, this, player);
   if (this.board) {
      var captured = [];
