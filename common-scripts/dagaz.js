@@ -6,6 +6,8 @@ var Dagaz  = {
   Controller: {}
 };
 
+Dagaz.Controller.Done = function(board) {}
+
 Dagaz.KPI.open  = function(scope, stage) {}
 Dagaz.KPI.stage = function(stage, scope) {}
 Dagaz.KPI.close = function(scope, stage) {}
