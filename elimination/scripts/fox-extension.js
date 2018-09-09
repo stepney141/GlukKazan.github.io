@@ -19,7 +19,7 @@ Dagaz.Model.CheckInvariants = function(board) {
           if (piece !== null) {
               if (piece.type == 9) {
                   piece = piece.promote(10);
-                  move.actions[0][2] = [ piece ];
+                  move.dropPiece(pos, piece);
                   move.sound = 1;
               } else {
                   move.failed = true;
@@ -34,7 +34,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                       p = design.navigate(board.player, p, dir);
                   }
               });
-              move.actions[0][2] = [ Dagaz.Model.createPiece(cnt, 1) ];
+              move.dropPiece(pos, Dagaz.Model.createPiece(cnt, 1));
           }
       }
   });
