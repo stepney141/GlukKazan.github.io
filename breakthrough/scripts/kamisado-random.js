@@ -22,6 +22,7 @@ ZRF = {
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("pass-turn", "forced");
     design.checkVersion("highlight-goals", "false");
+    design.checkVersion("show-blink", "false");
     design.checkVersion("kamisado-extension", "true");
     design.checkVersion("kamisado-setup", "30");
 

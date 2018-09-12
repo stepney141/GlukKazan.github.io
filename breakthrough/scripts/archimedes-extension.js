@@ -8,6 +8,11 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0,  "../sounds/slide.ogg");
+    Dagaz.Controller.addSound(10, "../sounds/shoot.wav");
+}
+
 var isAttackedBy = function(design, board, pos, player, dir) {
   var p = design.navigate(player, pos, dir);
   while (p !== null) {
@@ -70,6 +75,7 @@ Dagaz.Model.CheckInvariants = function(board) {
        if (_.isUndefined(move.failed)) {
            _.each(c, function(pos) {
                 move.capturePiece(pos);
+                move.sound = 10;
            });
        }
     });

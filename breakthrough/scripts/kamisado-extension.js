@@ -13,6 +13,11 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+    Dagaz.Controller.addSound(2, "../sounds/gong.wav");
+}
+
 var toChar = function(n) {
   if (n < 10) {
       return String.fromCharCode("0".charCodeAt(0) + n);

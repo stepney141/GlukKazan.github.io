@@ -12,6 +12,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+}
+
 Dagaz.AI.eval = function(design, params, board, player) {
   var r = 0;
   _.each(design.allPositions(), function(pos) {
