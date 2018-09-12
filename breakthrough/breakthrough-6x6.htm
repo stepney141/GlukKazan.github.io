@@ -10,7 +10,9 @@
 <img id="BlackPawn" style="display:none" src="images/breakthrough/bsoldier.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Copyright (c) 2000 Dan Troyka (<a href="https://en.wikipedia.org/wiki/Breakthrough_(board_game)">rules</a>) <a href="breakthrough-6x6-board.htm">no AI</a></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Copyright (c) 2000 Dan Troyka (<a href="https://en.wikipedia.org/wiki/Breakthrough_(board_game)">rules</a>) <a href="breakthrough-6x6-board.htm">no AI</a>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:412px; vertical-align:top">
 <td id="CanvasCell" style="width:412px">
 <canvas id="Canvas" width="412" height="412" style="cursor:default">Broken canvas...</canvas>
@@ -42,6 +44,8 @@
 <script src="../common-scripts/ko.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
+<script src="../common-scripts/sound-manager.js"></script>
 <script src="../common-scripts/random-ai.js"></script>
 <script src="../common-scripts/maxmin-ai-v2.js"></script>
 <script src="scripts/breakthrough-6x6.js"></script>
