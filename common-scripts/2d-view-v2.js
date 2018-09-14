@@ -663,7 +663,7 @@ var mouseMove = function(event) {
 
 Dagaz.View.PKM = function(view, positions) {}
 
-var mouseUp = function() { 
+var mouseUp = function(event) { 
   var pos = self.pointToPositions(mouseX, mouseY);
   if (event.button == 2) return;
   if (pos && self.controller) {
