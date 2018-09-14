@@ -17,7 +17,8 @@ Dagaz.View.PKM = function(view, positions) {
       var app = view.controller;
       var pos = positions[0];
       if (!_.isUndefined(pos)) {
-          if (app.board.getPiece(pos) !== null) return;
+          var piece = app.board.getPiece(pos);
+          if ((piece !== null) && (piece.type != 9)) return;
           if (_.isUndefined(app.board.ko)) {
               app.board.ko = [];
           }
