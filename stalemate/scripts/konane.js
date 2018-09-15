@@ -22,7 +22,6 @@ ZRF = {
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("animate-captures", "false");
-    design.checkVersion("smart-moves", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("konane-extension", "true");
@@ -261,6 +260,7 @@ Dagaz.View.configure = function(view) {
     view.defBoard("Board");
     view.defPiece("WhiteStone", "White Stone");
     view.defPiece("BlackStone", "Black Stone");
+    view.defPiece("Ko", "Ko");
  
     view.defPosition("a8", 2, 2, 80, 80);
     view.defPosition("b8", 82, 2, 80, 80);
