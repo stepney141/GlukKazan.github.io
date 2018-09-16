@@ -652,6 +652,7 @@ Dagaz.View.configure = function(view) {
     view.defPiece("BlackWizard", "Black Wizard");
     view.defPiece("WhiteFool", "White Fool");
     view.defPiece("BlackFool", "Black Fool");
+    view.defPiece("Ko", "Ko");
  
     view.defPosition("a9", 51, 51, 50, 50);
     view.defPosition("b9", 101, 51, 50, 50);
