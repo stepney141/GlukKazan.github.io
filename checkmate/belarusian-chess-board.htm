@@ -24,7 +24,9 @@
 <img id="BlackKing" style="display:none" src="images/shabel/bking.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td><a href="belarusian-chess.htm">AI</a> <a href="shabel-board.htm">Variant &gt;&gt;&gt;</a></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+<a href="belarusian-chess.htm">AI</a> <a href="shabel-board.htm">Variant</a>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:548px; vertical-align:top">
 <td id="CanvasCell" style="width:548px">
 <canvas id="Canvas" width="548" height="548" style="cursor:default">Broken canvas...</canvas>
@@ -55,6 +57,8 @@
 <script src="../common-scripts/common-setup.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
+<script src="../common-scripts/sound-manager.js"></script>
 <script src="scripts/shabel-invariant.js"></script>
 <script src="scripts/belarusian-chess.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
