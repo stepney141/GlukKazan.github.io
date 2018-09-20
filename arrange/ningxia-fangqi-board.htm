@@ -11,7 +11,9 @@
 <img id="Ko" style="display:none" src="images/fangqi/ko.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Traditional - Chinese (<a href="https://en.wikipedia.org/wiki/Fangqi">rules</a>) <b>no AI</b></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Traditional - Chinese (<a href="https://en.wikipedia.org/wiki/Fangqi">rules</a>) <b>no AI</b>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:507px; vertical-align:top">
 <td id="CanvasCell" style="width:447px">
 <canvas id="Canvas" width="447" height="507" style="cursor:default">Broken canvas...</canvas>
@@ -42,6 +44,8 @@
 <script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v3.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
+<script src="../common-scripts/sound-manager.js"></script>
 <script src="scripts/fangqi-goal.js"></script>
 <script src="scripts/fangqi-invariant.js"></script>
 <script src="scripts/fangqi-extension.js"></script>
