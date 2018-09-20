@@ -10,6 +10,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+}
+
 var isLine = function(design, board, player, pos, dir) {
   var p = design.navigate(player, pos, dir);
   if (p === null) return false;
