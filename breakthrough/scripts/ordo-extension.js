@@ -10,6 +10,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+}
+
 var sign = function(x) {
   if (x > 0) return 1;
   if (x < 0) return -1;
