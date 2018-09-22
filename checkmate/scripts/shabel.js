@@ -363,18 +363,18 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [3], 1);
 
     design.addPiece("Dama", 1, 250);
-    design.addMove(1, 2, [7, 7, 7, 7, 7], 0);
-    design.addMove(1, 2, [3, 3, 3, 3, 3], 0);
-    design.addMove(1, 2, [6, 6, 6, 6, 6], 0);
-    design.addMove(1, 2, [5, 5, 5, 5, 5], 0);
-    design.addMove(1, 3, [7, 7, 7, 7, 7], 2);
-    design.addMove(1, 3, [3, 3, 3, 3, 3], 2);
-    design.addMove(1, 3, [6, 6, 6, 6, 6], 2);
-    design.addMove(1, 3, [5, 5, 5, 5, 5], 2);
-    design.addMove(1, 4, [7, 7], 1);
-    design.addMove(1, 4, [3, 3], 1);
-    design.addMove(1, 4, [6, 6], 1);
-    design.addMove(1, 4, [5, 5], 1);
+    design.addMove(1, 2, [7, 7, 7, 7, 7], 0, 10);
+    design.addMove(1, 2, [3, 3, 3, 3, 3], 0, 10);
+    design.addMove(1, 2, [6, 6, 6, 6, 6], 0, 10);
+    design.addMove(1, 2, [5, 5, 5, 5, 5], 0, 10);
+    design.addMove(1, 3, [7, 7, 7, 7, 7], 2, 10);
+    design.addMove(1, 3, [3, 3, 3, 3, 3], 2, 10);
+    design.addMove(1, 3, [6, 6, 6, 6, 6], 2, 10);
+    design.addMove(1, 3, [5, 5, 5, 5, 5], 2, 10);
+    design.addMove(1, 4, [7, 7], 1, 10);
+    design.addMove(1, 4, [3, 3], 1, 10);
+    design.addMove(1, 4, [6, 6], 1, 10);
+    design.addMove(1, 4, [5, 5], 1, 10);
 
     design.addPiece("Pawn", 2, 100);
     design.addMove(2, 5, [4], 1);
