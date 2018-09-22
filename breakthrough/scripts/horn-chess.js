@@ -19,6 +19,10 @@ ZRF = {
     VERIFY:        20
 };
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+}
+
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("highlight-goals", "false");
