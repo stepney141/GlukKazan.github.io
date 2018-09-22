@@ -22,6 +22,10 @@ ZRF = {
     VERIFY:        20
 };
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(10, "../sounds/wind.wav");
+}
+
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("smart-moves", "false");
@@ -391,7 +395,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(2, ZRF.FUNCTION,	28);	// end
 
     design.addPiece("Tile", 0);
-    design.addMove(0, 0, [0, 0], 2);
+    design.addMove(0, 0, [0, 0], 2, 10);
 
     design.addPiece("Stone", 1);
     design.addMove(1, 1, [2], 0);

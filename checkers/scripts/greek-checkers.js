@@ -19,6 +19,10 @@ ZRF = {
     VERIFY:        20
 };
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(10, "../sounds/wind.wav");
+}
+
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("zrf", "2.0");
@@ -175,14 +179,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPriority(1);			// normal-type
 
     design.addPiece("King", 0, 10);
-    design.addMove(0, 0, [3, 3, 3], 0);
-    design.addMove(0, 0, [0, 0, 0], 0);
-    design.addMove(0, 0, [1, 1, 1], 0);
-    design.addMove(0, 0, [2, 2, 2], 0);
-    design.addMove(0, 1, [3, 3], 1);
-    design.addMove(0, 1, [0, 0], 1);
-    design.addMove(0, 1, [1, 1], 1);
-    design.addMove(0, 1, [2, 2], 1);
+    design.addMove(0, 0, [3, 3, 3], 0, 10);
+    design.addMove(0, 0, [0, 0, 0], 0, 10);
+    design.addMove(0, 0, [1, 1, 1], 0, 10);
+    design.addMove(0, 0, [2, 2, 2], 0, 10);
+    design.addMove(0, 1, [3, 3], 1, 10);
+    design.addMove(0, 1, [0, 0], 1, 10);
+    design.addMove(0, 1, [1, 1], 1, 10);
+    design.addMove(0, 1, [2, 2], 1, 10);
 
     design.addPiece("Man", 1, 1);
     design.addMove(1, 2, [3, 3], 0);

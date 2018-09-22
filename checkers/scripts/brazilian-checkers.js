@@ -193,14 +193,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [0], 1);
 
     design.addPiece("King", 1, 10);
-    design.addMove(1, 2, [3, 3, 3, 3, 3], 0);
-    design.addMove(1, 2, [0, 0, 0, 0, 0], 0);
-    design.addMove(1, 2, [2, 2, 2, 2, 2], 0);
-    design.addMove(1, 2, [1, 1, 1, 1, 1], 0);
-    design.addMove(1, 3, [3, 3], 1);
-    design.addMove(1, 3, [0, 0], 1);
-    design.addMove(1, 3, [2, 2], 1);
-    design.addMove(1, 3, [1, 1], 1);
+    design.addMove(1, 2, [3, 3, 3, 3, 3], 0, 10);
+    design.addMove(1, 2, [0, 0, 0, 0, 0], 0, 10);
+    design.addMove(1, 2, [2, 2, 2, 2, 2], 0, 10);
+    design.addMove(1, 2, [1, 1, 1, 1, 1], 0, 10);
+    design.addMove(1, 3, [3, 3], 1, 10);
+    design.addMove(1, 3, [0, 0], 1, 10);
+    design.addMove(1, 3, [2, 2], 1, 10);
+    design.addMove(1, 3, [1, 1], 1, 10);
 
     design.setup("White", "Man", 56);
     design.setup("White", "Man", 58);
