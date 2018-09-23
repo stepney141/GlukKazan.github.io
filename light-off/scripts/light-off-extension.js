@@ -10,6 +10,7 @@ var hexMode    = false;
 if (!_.isUndefined(Dagaz.Controller.play)) {
     Dagaz.Controller.addSound(Dagaz.Sounds.move, "../sounds/off.wav");
     Dagaz.Controller.addSound(Dagaz.Sounds.drop, "../sounds/on.wav");
+    Dagaz.Controller.addSound(Dagaz.Sounds.win,  "../sounds/win.wav");
 }
 
 var checkVersion = Dagaz.Model.checkVersion;
