@@ -218,6 +218,9 @@ App.prototype.exec = function() {
                  this.state = STATE.DONE;
                  Canvas.style.cursor = "default";
                  sendStat(-1, this.board.player);
+                 if (!_.isUndefined(Dagaz.Controller.play)) {
+                     Dagaz.Controller.play(Dagaz.Sounds.lose);
+                 }
                  this.gameOver(player + " lose", -this.board.player);
                  return;
              }
@@ -239,7 +242,10 @@ App.prototype.exec = function() {
           if (_.isUndefined(result.move)) {
               this.state = STATE.DONE;
               Canvas.style.cursor = "default";
-              sendStat(-1, this.board.player);
+              sendStat(1, this.board.player);
+              if (!_.isUndefined(Dagaz.Controller.play)) {
+                  Dagaz.Controller.play(Dagaz.Sounds.win);
+              }
               this.gameOver(player + " lose", -this.board.player);
               return;
           }
@@ -277,14 +283,28 @@ App.prototype.exec = function() {
               Canvas.style.cursor = "default";
               if (g > 0) {
                   if (!_.isUndefined(Dagaz.Controller.play)) {
-                      Dagaz.Controller.play(Dagaz.Sounds.win);
+                      if (this.board.parent.player == 1) {
+                         Dagaz.Controller.play(Dagaz.Sounds.win);
+                      } else {
+                         Dagaz.Controller.play(Dagaz.Sounds.lose);
+                      }
                   }
                   this.doneMessage = player + " win";
                   this.winPlayer   = this.board.parent.player;
               } else if (g < 0) {
+                  if (!_.isUndefined(Dagaz.Controller.play)) {
+                      if (this.board.parent.player != 1) {
+                         Dagaz.Controller.play(Dagaz.Sounds.win);
+                      } else {
+                         Dagaz.Controller.play(Dagaz.Sounds.lose);
+                      }
+                  }
                   this.doneMessage = player + " lose";
                   this.winPlayer   = -this.board.parent.player;
               } else {
+                  if (!_.isUndefined(Dagaz.Controller.play)) {
+                      Dagaz.Controller.play(Dagaz.Sounds.draw);
+                  }
                   this.doneMessage = "Draw";
                   this.winPlayer   = 0;
               }
