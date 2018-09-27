@@ -22,6 +22,7 @@ Dagaz.Model.progressive     = false;
 Dagaz.Model.silent          = false;
 Dagaz.Model.showDrops       = -1;
 Dagaz.Model.dragNdrop       = true;
+Dagaz.Model.detectLoops     = false;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -50,8 +51,12 @@ Dagaz.Model.checkVersion = function(design, name, value) {
          (name != "shared-pieces")      &&
          (name != "show-blink")         &&
          (name != "drag-n-drop")        &&
+         (name != "detect-loops")       &&
          (name != "silent-?-moves")) {
          design.failed = true;
+     }
+     if (name == "detect-loops") {
+         if (value == "true")    Dagaz.Model.detectLoops = true;
      }
      if (name == "drag-n-drop") {
          if (value == "false")   Dagaz.Model.dragNdrop = false;
@@ -409,6 +414,11 @@ Dagaz.Model.functions[Dagaz.Model.ZRF_TO] = function(gen) {
    }
    delete gen.from;
    delete gen.piece;
+   if (Dagaz.Model.detectLoops && (gen.pos !== null)) {
+       if (!gen.notLooped()) {
+           gen.move.failed = true;
+       }
+   }
    gen.generated = true;
    return 0;
 }
@@ -946,6 +956,10 @@ ZrfDesign.prototype.findDirection = function(from, to) {
   return dir;
 }
 
+ZrfDesign.prototype.opposite = function(dir) {
+   return this.players[0][dir];
+}
+
 ZrfDesign.prototype.navigate = function(player, pos, dir) {
   if (!_.isUndefined(this.players[player])) {
       dir = this.players[player][dir];
@@ -1038,6 +1052,7 @@ function ZrfMoveGenerator(design, mode, serial, sound) {
   this.level    = 1;
   this.serial   = serial;
   this.design   = design;
+  this.steps    = [];
 }
 
 Dagaz.Model.createGen = function(template, params, design, mode, serial, sound) {
@@ -1053,6 +1068,9 @@ Dagaz.Model.createGen = function(template, params, design, mode, serial, sound) 
 ZrfMoveGenerator.prototype.init = function(board, pos) {
   this.board    = board;
   this.pos      = +pos;
+  if (Dagaz.Model.detectLoops) {
+      this.steps.push(this.pos);
+  }
 }
 
 ZrfMoveGenerator.prototype.clone = function() {
@@ -1099,6 +1117,16 @@ ZrfMoveGenerator.prototype.clone = function() {
   return r;
 }
 
+var copyArray = function(a) {
+  var r = [];
+  if (Dagaz.Model.detectLoops) {
+      _.each(a, function(x) {
+          r.push(x);
+      });
+  }
+  return r;
+}
+
 ZrfMoveGenerator.prototype.copy = function(template, params) {
   var r = Dagaz.Model.createGen(template, params, this.design, this.move.mode, this.serial, this.move.sound);
   r.level    = this.level + 1;
@@ -1106,6 +1134,10 @@ ZrfMoveGenerator.prototype.copy = function(template, params) {
   r.board    = this.board;
   r.pos      = this.pos;
   r.move     = this.move.copy();
+  r.steps    = copyArray(this.steps);
+  if (Dagaz.Model.detectLoops) {
+      r.steps.push(this.pos);
+  }
   if (!_.isUndefined(this.cover)) {
       r.cover   = this.cover;
       r.serial  = this.serial;
@@ -1114,6 +1146,10 @@ ZrfMoveGenerator.prototype.copy = function(template, params) {
       r.initial = this.initial;
   }
   return r;
+}
+
+ZrfMoveGenerator.prototype.notLooped = function() {
+  return (this.steps.length < 2) || (_.indexOf(this.steps, this.pos) < 0);
 }
 
 ZrfMoveGenerator.prototype.getPos = function() {
@@ -1640,7 +1676,7 @@ var CompleteMove = function(board, gen, cover, serial) {
        }
        if ((piece !== null) && (Dagaz.Model.sharedPieces || Dagaz.Model.isFriend(piece, board.player))) {
            _.each(board.game.design.pieces[piece.type], function(move) {
-                if ((move.type == 0) && (move.mode == gen.mode)) {
+                if ((move.type == 0) && (move.mode == gen.mode) && gen.notLooped()) {
                     var g = gen.copy(move.template, move.params);
                     if (!_.isUndefined(cover)) {
                         g.cover  = cover;
