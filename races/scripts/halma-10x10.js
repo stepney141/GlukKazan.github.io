@@ -24,7 +24,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("smart-moves", "false");
     design.checkVersion("pass-partial", "true");
-
+    design.checkVersion("detect-loops", "true");
+    
     design.addDirection("w");
     design.addDirection("e");
     design.addDirection("s");
