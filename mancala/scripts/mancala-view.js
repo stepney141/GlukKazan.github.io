@@ -14,7 +14,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/seed.ogg");
+    Dagaz.Controller.addSound(0, "../../sounds/seed.ogg");
 }
 
 Dagaz.Model.getPieceType = function(piece) {
@@ -30,7 +30,10 @@ var showPiece = Dagaz.View.showPiece;
 Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
   var val = null;
   if (model) {
-      val = model.getValue(0);
+      val = +model.getValue(0);
+      if (val !== null) {
+          val = Math.abs(val);
+      }
   }
   if (val !== null) {
       var dx = frame.dx; var dy = frame.dy;
