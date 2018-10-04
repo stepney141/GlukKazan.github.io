@@ -11,6 +11,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 if (!_.isUndefined(Dagaz.Controller.play)) {
     Dagaz.Controller.addSound(0, "../sounds/on.wav");
     Dagaz.Controller.addSound(1, "../sounds/shoot.wav");
+    Dagaz.Controller.addSound(3, "../sounds/shoot.wav");
 }
 
 var checkGoals = Dagaz.Model.checkGoals;
