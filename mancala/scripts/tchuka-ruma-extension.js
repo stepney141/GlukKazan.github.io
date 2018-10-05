@@ -1,7 +1,5 @@
 (function() {
 
-Dagaz.Model.WIN_CNT = 24;
-
 Dagaz.View.DX       = 0;
 Dagaz.View.DY       = 0;
 Dagaz.View.MX       = 25;
@@ -74,7 +72,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                    }
                }
           }
-          result[result.length - 1] = -result[result.length - 1];
+          result[ix - 1] = -result[ix - 1];
           var pos = move.actions[0][0][0];
           for (var ix = 0; ix < result.length; ix++) {
                var player = board.player;
