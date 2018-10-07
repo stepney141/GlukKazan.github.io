@@ -237,8 +237,10 @@
 </g>
 <!-- Tchuka Ruma -->
 <g class="node" id="node15"><title>Tchuka Ruma</title>
+<a xlink:href="tchuka-ruma-4x2.htm">
 <ellipse fill="lightblue" stroke="black" cx="1412" cy="-162" rx="65.2149" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1412" y="-157.8">Tchuka Ruma</text>
+</a>
 </g>
 <!-- Congkak&#45;&gt;Tchuka Ruma -->
 <g class="edge" id="edge46"><title>Congkak-&gt;Tchuka Ruma</title>
