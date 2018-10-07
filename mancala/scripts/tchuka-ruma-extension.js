@@ -7,10 +7,6 @@ Dagaz.View.MX       = 25;
 var cache = [];
 var size  = 5;
 
-if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(2, "../sounds/win.wav");
-}
-
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
@@ -72,7 +68,9 @@ Dagaz.Model.CheckInvariants = function(board) {
                    }
                }
           }
-          result[ix - 1] = -result[ix - 1];
+          if ((result[ix - 1] > 1) || (ix < result.length - 1) || (pos == size - 1)) {
+               result[ix - 1] = -result[ix - 1];
+          }
           var pos = move.actions[0][0][0];
           for (var ix = 0; ix < result.length; ix++) {
                var player = board.player;
@@ -124,7 +122,7 @@ Dagaz.Model.CheckInvariants = function(board) {
           var piece = board.getPiece(pos);
           if (piece !== null) {
               var value = +piece.getValue(0);
-              if ((value !== null) && (value < -1)) {
+              if ((value !== null) && (value < 0)) {
                   ko.push(pos);
               }
           }
