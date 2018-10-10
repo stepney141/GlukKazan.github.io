@@ -29,8 +29,10 @@
 </g>
 <!-- Ohojichi -->
 <g class="node" id="node10"><title>Ohojichi</title>
+<a xlink:href="ohojichi-2x6.htm">
 <ellipse fill="chocolate" stroke="black" cx="654" cy="-306" rx="44.2487" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="654" y="-301.8">Ohojichi</text>
+</a>
 </g>
 <!-- Single laps&#45;&gt;Ohojichi -->
 <g class="edge" id="edge14"><title>Single laps-&gt;Ohojichi</title>

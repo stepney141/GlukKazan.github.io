@@ -1,12 +1,13 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Tchuka Ruma (4:5)</title>
+<title>Ohojichi (2x6)</title>
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/4x1.png">
-<img id="YouSeed" style="display:none" src="images/small.png">
+<img id="Board" style="display:none" src="images/2x6.png">
+<img id="SouthSeed" style="display:none" src="images/small.png">
+<img id="NorthSeed" style="display:none" src="images/small.png">
 <img id="0" style="display:none" src="images/0.png">
 <img id="1" style="display:none" src="images/1.png">
 <img id="2" style="display:none" src="images/2.png">
@@ -21,11 +22,11 @@
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
 <tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
-Copyright (c) 1895 Henri-Auguste Delannoy (<a href="http://mancala.wikia.com/wiki/Tchuka_Ruma">rules</a>)
+Traditional - Ivory Coast (<a href="http://mancala.wikia.com/wiki/Ohojichi">rules</a>) <a href="ohojichi-2x6.htm">AI</a>
 <a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
-<tr style="height:96px; vertical-align:top">
-<td id="CanvasCell" style="width:556px">
-<canvas id="Canvas" width="556" height="96" style="cursor:default">Broken canvas...</canvas>
+<tr style="height:596px; vertical-align:top">
+<td id="CanvasCell" style="width:196px">
+<canvas id="Canvas" width="196" height="596" style="cursor:default">Broken canvas...</canvas>
 </td><td style="width:300px;">
 <div style="height:510px; overflow:auto" id="ScrollDiv">
 <img id="GlyphImage"><p id="HelpText"></p>
@@ -56,10 +57,11 @@ Copyright (c) 1895 Henri-Auguste Delannoy (<a href="http://mancala.wikia.com/wik
 <script src="../common-scripts/sound-manager.js"></script>
 <script src="scripts/mancala-view.js"></script>
 <script src="scripts/mancala-setup.js"></script>
-<script src="scripts/tchuka-ruma-goal.js"></script>
-<script src="scripts/tchuka-ruma-restriction.js"></script>
-<script src="scripts/tchuka-ruma-extension.js"></script>
-<script src="scripts/tchuka-ruma-4x5.js"></script>
+<script src="scripts/ohojichi-goal.js"></script>
+<script src="scripts/ohojichi-restrictions.js"></script>
+<script src="scripts/ohojichi-extension.js"></script>
+<script src="scripts/mancala-alt.js"></script>
+<script src="scripts/ohojichi-2x6.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
