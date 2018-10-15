@@ -36,6 +36,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-drops", "1");
     design.checkVersion("xinjiang-restrictions", "true");
     design.checkVersion("xinjiang-extension", "true");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("fangqi-extension", "ko");
     design.checkVersion("fangqi-invariant", "true");
     design.checkVersion("fangqi-goal", "true");

@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("progressive-levels", "true");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("kamisado-extension", "true");
 
     design.addDirection("w");

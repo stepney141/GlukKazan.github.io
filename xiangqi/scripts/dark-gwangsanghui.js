@@ -24,6 +24,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("smart-moves", "false");
     design.checkVersion("animate-captures", "false");
     design.checkVersion("show-captures", "false");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("gwangsanghui-extension", "true");
     design.checkVersion("gwangsanghui-invariant", "true");
 

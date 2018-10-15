@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("ko", "3");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("knights-court-extension", "true");
 
     design.addDirection("wh");

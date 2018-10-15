@@ -25,6 +25,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("ko", "situation");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("xiangqi-extension", "true");
 
     design.addDirection("w");

@@ -29,6 +29,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-captures", "false");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("epaminondas-invariant", "true");
     design.checkVersion("epaminondas-goal", "true");
 

@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("pass-turn", "forced");
     design.checkVersion("ko", "asymmetric");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("high-jump-goal", "true");
 
     design.addDirection("w");
