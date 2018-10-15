@@ -28,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-captures", "true");
     design.checkVersion("show-drops", "all");
     design.checkVersion("shared-pieces", "true");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("cannon-restrictions", "true");
     design.checkVersion("cannon-goal", "true");
 
