@@ -25,6 +25,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("smart-moves", "false");
     design.checkVersion("show-blink", "true");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("abalone-extension", "true");
     design.checkVersion("abalone-goal", "true");
 

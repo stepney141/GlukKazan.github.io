@@ -29,6 +29,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-drops", "true");
     design.checkVersion("show-captures", "false");
     design.checkVersion("ko", "situation");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("janggi-extension", "true");
     design.checkVersion("janggi-setup", "true");
 
