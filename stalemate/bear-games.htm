@@ -10,7 +10,9 @@
 <img id="BlackStone" style="display:none" src="images/bear/black.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Traditional - European (<a href="https://en.wikipedia.org/wiki/Bear_games">rules</a>) <a href="bear-games-board.htm">no AI</a></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Traditional - European (<a href="https://en.wikipedia.org/wiki/Bear_games">rules</a>) <a href="bear-games-board.htm">no AI</a>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:434px; vertical-align:top">
 <td id="CanvasCell" style="width:434px">
 <canvas id="Canvas" width="434" height="434" style="cursor:default">Broken canvas...</canvas>
@@ -41,6 +43,8 @@
 <script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
+<script src="../common-scripts/sound-manager-v2.js"></script>
 <script src="../common-scripts/random-ai.js"></script>
 <script src="scripts/bear-games.js"></script>
 <script src="../common-scripts/app-v2.js"></script>

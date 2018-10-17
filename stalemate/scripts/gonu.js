@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("smart-moves", "true");
     design.checkVersion("animate-captures", "false");
     design.checkVersion("show-hints", "false");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("gonu-extension", "true");
 
     design.addDirection("w");

@@ -23,6 +23,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("smart-moves", "true");
     design.checkVersion("show-blink", "false");
+    design.checkVersion("advisor-wait", "5");
 
     design.addDirection("n");
     design.addDirection("s");

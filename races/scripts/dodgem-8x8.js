@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("ko", "true");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("dodgem-extension", "true");
 
     design.addDirection("w");
