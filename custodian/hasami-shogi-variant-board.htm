@@ -10,7 +10,9 @@
 <img id="BlackStone" style="display:none" src="images/hasami-shogi/spawn.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td>Traditional - Japan (<a href="https://en.wikipedia.org/wiki/Hasami_shogi">rules</a>) <b>no AI</b></td></tr>
+<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+Traditional - Japan (<a href="https://en.wikipedia.org/wiki/Hasami_shogi">rules</a>) <b>no AI</b>
+<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
 <tr style="height:432px; vertical-align:top">
 <td id="CanvasCell" style="width:385px">
 <canvas id="Canvas" width="385" height="432" style="cursor:default">Broken canvas...</canvas>
@@ -38,9 +40,11 @@
 <script src="../common-scripts/dagaz.js"></script>
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
-<script src="../common-scripts/common-setup.js"></script>
+<script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
+<script src="../common-scripts/sound-manager-v2.js"></script>
+<script src="../common-scripts/session-manager.js"></script>
 <script src="scripts/hasami-shogi-extension.js"></script>
 <script src="scripts/hasami-shogi-variant.js"></script>
 <script src="../common-scripts/app-v2.js"></script>

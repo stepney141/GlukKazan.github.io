@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("ko", "situation");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("ming-mang-extension", "true");
 
     design.addDirection("w");
