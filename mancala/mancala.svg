@@ -219,8 +219,10 @@
 </g>
 <!-- Dakon -->
 <g class="node" id="node12"><title>Dakon</title>
+<a xlink:href="dakon.htm">
 <ellipse fill="darkgreen" stroke="black" cx="1639" cy="-162" rx="36.1736" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1639" y="-157.8">Dakon</text>
+</a>
 </g>
 <!-- Congkak&#45;&gt;Dakon -->
 <g class="edge" id="edge48"><title>Congkak-&gt;Dakon</title>
