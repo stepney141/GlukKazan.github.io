@@ -1,0 +1,30 @@
+<!-- begin sidebar scrollbar -->
+<div data-scrollbar="true" data-height="100%">
+    <!-- begin sidebar nav -->
+    <ul class="nav">
+        <li class="nav-header">Games list</li>
+        {{#each games}}
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <span>{{title}}</span>
+                </a>
+                <ul class="sub-menu">
+                    {{#each games}}
+                    <li><a href="{{src}}">{{title}}</a></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+        <li class="nav-header">External links</li>
+        {{#each externallinks}}
+        <li><a href="{{src}}"><span>{{title}}</span></a></li>
+        {{/each}}
+
+        <!-- begin sidebar minify button -->
+        <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+        <!-- end sidebar minify button -->
+    </ul>
+    <!-- end sidebar nav -->
+</div>
+<!-- end sidebar scrollbar -->
