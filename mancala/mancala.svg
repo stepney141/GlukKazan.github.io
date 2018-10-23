@@ -135,8 +135,10 @@
 </g>
 <!-- Congkak -->
 <g class="node" id="node11"><title>Congkak</title>
+<a xlink:href="congkak.htm">
 <ellipse fill="darkgreen" stroke="black" cx="1476" cy="-234" rx="45.3598" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1476" y="-229.8">Congkak</text>
+</a>
 </g>
 <!-- 2 Ranks&#45;&gt;Congkak -->
 <g class="edge" id="edge28"><title>2 Ranks-&gt;Congkak</title>
