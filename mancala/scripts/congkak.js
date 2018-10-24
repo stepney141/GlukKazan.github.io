@@ -31,6 +31,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("dakon-extension", "simulate");
     design.checkVersion("dakon-extension", "mati-bela");
     design.checkVersion("dakon-restrictions", "extended");
+    design.checkVersion("advisor-wait", "5");
     design.checkVersion("dakon-goal", "extended");
 
     design.addDirection("sx");
@@ -43,6 +44,10 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addPlayer("South", [1, 0, 2, 3, 5, 4, 6]);
     design.addPlayer("North", [1, 0, 3, 2, 5, 4, 6]);
+    design.addTurn(1);
+    design.repeatMark();
+    design.addTurn(1);
+    design.addTurn(2);
 
     design.addPosition("a2", [1, 1, 14, 15, 0, 7, 0]);
     design.addPosition("b2", [1, 1, 0, 0, 0, 7, -1]);
@@ -75,6 +80,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("Seed", 0);
     design.addMove(0, 0, [0], 0);
 
+    design.addPiece("None", 1);
+
     design.setup("South", "Seed", 7);
     design.setup("South", "Seed", 8);
     design.setup("South", "Seed", 9);
@@ -95,6 +102,8 @@ Dagaz.View.configure = function(view) {
     view.defBoard("Board");
     view.defPiece("SouthSeed", "South Seed");
     view.defPiece("NorthSeed", "North Seed");
+    view.defPiece("SouthNone", "South None");
+    view.defPiece("NorthNone", "North None");
     view.defPiece("0", "0");
     view.defPiece("1", "1");
     view.defPiece("2", "2");
