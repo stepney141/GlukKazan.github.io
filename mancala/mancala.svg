@@ -233,8 +233,10 @@
 </g>
 <!-- Kalah -->
 <g class="node" id="node13"><title>Kalah</title>
+<a xlink:href="kalah.htm">
 <ellipse fill="lightblue" stroke="black" cx="1283" cy="-162" rx="34.1403" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1283" y="-157.8">Kalah</text>
+</a>
 </g>
 <!-- Congkak&#45;&gt;Kalah -->
 <g class="edge" id="edge50"><title>Congkak-&gt;Kalah</title>
@@ -265,8 +267,10 @@
 </g>
 <!-- Cross Kalah -->
 <g class="node" id="node14"><title>Cross Kalah</title>
+<a xlink:href="cross-kalah.htm">
 <ellipse fill="lightblue" stroke="black" cx="1278" cy="-90" rx="58.2535" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1278" y="-85.8">Cross Kalah</text>
+</a>
 </g>
 <!-- Kalah&#45;&gt;Cross Kalah -->
 <g class="edge" id="edge54"><title>Kalah-&gt;Cross Kalah</title>
