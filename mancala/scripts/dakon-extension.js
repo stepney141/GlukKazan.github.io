@@ -173,7 +173,6 @@ Dagaz.Model.CheckInvariants = function(board) {
                        }
                    }
               }
-              console.log(result);
           } else {
               if ((!isSimple && (result[ix] > 1)) || isPool) {
                   result[ix] = -result[ix];
