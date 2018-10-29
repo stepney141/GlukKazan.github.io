@@ -167,8 +167,10 @@
 </g>
 <!-- Abalala&#39;e -->
 <g class="node" id="node20"><title>Abalala'e</title>
+<a xlink:href="abalalae.htm">
 <ellipse fill="chocolate" stroke="black" cx="896" cy="-234" rx="48.3477" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="896" y="-229.8">Abalala'e</text>
+</a>
 </g>
 <!-- 3 Ranks&#45;&gt;Abalala&#39;e -->
 <g class="edge" id="edge34"><title>3 Ranks-&gt;Abalala'e</title>
