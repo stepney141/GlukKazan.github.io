@@ -8,6 +8,7 @@ Dagaz.Sounds.draw  = 4;
 Dagaz.Sounds.page  = 5;
 Dagaz.Sounds.start = 6;
 Dagaz.Sounds.hint  = 7;
+Dagaz.Sounds.popup = 8;
 
 (function() {
 
@@ -56,3 +57,4 @@ Dagaz.Controller.addSound(Dagaz.Sounds.lose, "../sounds/loss.wav");
 Dagaz.Controller.addSound(Dagaz.Sounds.draw, "../sounds/draw.ogg");
 Dagaz.Controller.addSound(Dagaz.Sounds.page, "../sounds/page.wav");
 Dagaz.Controller.addSound(Dagaz.Sounds.hint, "../sounds/bird.wav");
+Dagaz.Controller.addSound(Dagaz.Sounds.popup, "../sounds/popup.wav");
