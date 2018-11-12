@@ -1,3 +1,5 @@
+Dagaz.Model.WIDTH = 8;
+
 ZRF = {
     JUMP:          0,
     IF:            1,
@@ -26,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("pass-partial", "true");
     design.checkVersion("detect-loops", "true");
     design.checkVersion("advisor-wait", "5");
+    design.checkVersion("halma-restrictions", "strong");
 
     design.addDirection("w");
     design.addDirection("e");
