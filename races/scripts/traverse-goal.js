@@ -3,7 +3,7 @@
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "halma-goal") {
+  if (name != "traverse-goal") {
      checkVersion(design, name, value);
   }
 }
@@ -16,19 +16,13 @@ var getTarget = function(design, board, player) {
   if (_.isUndefined(board.targetPos)) {
       board.targetPos = null;
       _.each(design.allPositions(), function(pos) {
-           if ((board.targetPos === null) && (design.inZone(2, player, pos))) {
-                board.targetPos = pos;
+           if ((board.targetPos === null) && (design.inZone(0, player, pos))) {
+               var piece = board.getPiece(pos);
+               if ((piece === null) || (piece.player != player)) {
+                   board.targetPos = pos;
+               }
            }
       });
-      var nx = design.getDirection("nx");
-      if (board.targetPos !== null) {
-          var p = board.targetPos;
-          while (p !== null) {
-              board.targetPos = p;
-              if (board.getPiece(p) === null) break;
-              p = design.navigate(player, p, nx);
-          }
-      }
   }
   return board.targetPos;
 }

@@ -61,7 +61,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addTurn(1);
     design.addTurn(2);
 
-
     design.addPosition("a8", [9, 1, 0, 0]);
     design.addPosition("b8", [9, 1, -1, 0]);
     design.addPosition("c8", [9, 1, -1, 0]);
