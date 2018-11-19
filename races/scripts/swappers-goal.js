@@ -8,6 +8,11 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(Dagaz.Sounds.move, "../sounds/slide.ogg");
+    Dagaz.Controller.addSound(Dagaz.Sounds.win,  "../sounds/win.wav");
+}
+
 Dagaz.Model.checkGoals = function(design, board, player) {
   var result = 1;
   _.each(design.allPositions(), function(pos) {

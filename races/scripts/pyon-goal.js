@@ -11,7 +11,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
 }
 
 var checkGoals = Dagaz.Model.checkGoals;
