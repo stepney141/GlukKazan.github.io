@@ -24,6 +24,7 @@ Dagaz.Model.showDrops       = -1;
 Dagaz.Model.dragNdrop       = true;
 Dagaz.Model.detectLoops     = false;
 Dagaz.Model.advisorWait     = null;
+Dagaz.Model.remapPromote    = false;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -54,8 +55,12 @@ Dagaz.Model.checkVersion = function(design, name, value) {
          (name != "drag-n-drop")        &&
          (name != "detect-loops")       &&
          (name != "advisor-wait")       &&
+         (name != "promote-dialog")     &&
          (name != "silent-?-moves")) {
          design.failed = true;
+     }
+     if (name == "promote-dialog") {
+         if (value == "remap") Dagaz.Model.remapPromote = true;
      }
      if (name == "advisor-wait") {
          Dagaz.Model.advisorWait = +value * 1000;
@@ -685,6 +690,10 @@ ZrfDesign.prototype.allPositions = function() {
 
 ZrfDesign.prototype.allDirections = function() {
   return _.range(this.dirs.length);
+}
+
+ZrfDesign.prototype.allPlayers = function() {
+  return _.range(1, this.playerNames.length);
 }
 
 ZrfDesign.prototype.reserve = function(player, piece, cnt) {
