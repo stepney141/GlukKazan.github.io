@@ -29,6 +29,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("advisor-wait", "5");
     design.checkVersion("gorogoro-shogi-extension", "true");
     design.checkVersion("gorogoro-shogi-promotion", "true");
+    design.checkVersion("promote-dialog", "remap");
 
     design.addDirection("nx"); // 0
     design.addDirection("n");  // 1

@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "true");
     design.checkVersion("show-captures", "false");
     design.checkVersion("advisor-wait", "5");
+    design.checkVersion("promote-dialog", "remap");
     design.checkVersion("tenjiku-shogi-extension", "true");
     design.checkVersion("tenjiku-shogi-promotion", "true");
 
