@@ -1,11 +1,11 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Kyoto Shogi</title>
+<title>Renge Shogi</title>
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/5x5.png">
+<img id="Board" style="display:none" src="images/7x7.png">
 <img id="SouthKing" style="display:none" src="images/sking.png">
 <img id="NorthKing" style="display:none" src="images/nking.png">
 <img id="SouthGold" style="display:none" src="images/sgold.png">
@@ -14,24 +14,24 @@
 <img id="NorthKnight" style="display:none" src="images/nknight.png">
 <img id="SouthSilver" style="display:none" src="images/ssilver.png">
 <img id="NorthSilver" style="display:none" src="images/nsilver.png">
-<img id="SouthBishop" style="display:none" src="images/sbishop.png">
-<img id="NorthBishop" style="display:none" src="images/nbishop.png">
-<img id="SouthPawn" style="display:none" src="images/spawn.png">
-<img id="NorthPawn" style="display:none" src="images/npawn.png">
-<img id="SouthRook" style="display:none" src="images/srook.png">
-<img id="NorthRook" style="display:none" src="images/nrook.png">
-<img id="SouthTokin" style="display:none" src="images/stokin.png">
-<img id="NorthTokin" style="display:none" src="images/ntokin.png">
 <img id="SouthLance" style="display:none" src="images/slance.png">
 <img id="NorthLance" style="display:none" src="images/nlance.png">
+<img id="SouthLeftPawn" style="display:none" src="images/spawn.png">
+<img id="NorthLeftPawn" style="display:none" src="images/npawn.png">
+<img id="SouthBishop" style="display:none" src="images/sbishop.png">
+<img id="NorthBishop" style="display:none" src="images/nbishop.png">
+<img id="SouthRightPawn" style="display:none" src="images/spawn.png">
+<img id="NorthRightPawn" style="display:none" src="images/npawn.png">
+<img id="SouthRook" style="display:none" src="images/srook.png">
+<img id="NorthRook" style="display:none" src="images/nrook.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
 <tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
-Copyright (c) 1976 Tamiya Katsuya (<a href="https://en.wikipedia.org/wiki/Kyoto_shogi">rules</a>) <a href="kyoto-shogi-board.htm">no AI</a>
+Copyright (c) 1999 Michel Sandeman. <a href="renge-shogi-board.htm">no AI</a>
 <a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
-<tr style="height:260px; vertical-align:top">
-<td id="CanvasCell" style="width:469px">
-<canvas id="Canvas" width="469" height="260" style="cursor:default">Broken canvas...</canvas>
+<tr style="height:352px; vertical-align:top">
+<td id="CanvasCell" style="width:551px">
+<canvas id="Canvas" width="551" height="352" style="cursor:default">Broken canvas...</canvas>
 </td><td style="width:300px;">
 <div style="height:510px; overflow:auto" id="ScrollDiv">
 <img id="GlyphImage"><p id="HelpText"></p>
@@ -57,16 +57,15 @@ Copyright (c) 1976 Tamiya Katsuya (<a href="https://en.wikipedia.org/wiki/Kyoto_
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
 <script src="../common-scripts/common-setup-v2.js"></script>
-<script src="../common-scripts/ko.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
 <script src="../common-scripts/move-list-v2.js"></script>
 <script src="../common-scripts/session-manager.js"></script>
 <script src="../common-scripts/sound-manager-v2.js"></script>
 <script src="../common-scripts/random-ai.js"></script>
 <script src="../common-scripts/maxmin-ai-v2.js"></script>
-<script src="scripts/micro-shogi-invariant.js"></script>
+<script src="scripts/renge-shogi-invariant.js"></script>
 <script src="scripts/micro-shogi-extension.js"></script>
-<script src="scripts/kyoto-shogi.js"></script>
+<script src="scripts/renge-shogi.js"></script>
 <script src="../common-scripts/app-v2.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
