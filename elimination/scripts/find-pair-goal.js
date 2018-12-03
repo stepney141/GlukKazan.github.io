@@ -61,10 +61,6 @@ Dagaz.Model.CheckInvariants = function(board) {
       }
       if (move.mode > 0) {
           var v = 1;
-          var bonus = board.getValue(0);
-          if (bonus !== null) {
-              v += bonus;
-          }
           if (!Dagaz.Model.easy) {
               v = v * 2;
           }
