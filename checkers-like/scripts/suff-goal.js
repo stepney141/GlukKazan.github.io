@@ -13,7 +13,7 @@ if (!_.isUndefined(Dagaz.Controller.addSound)) {
 }
 
 var allDirections = function() {
-  return _.range(7);
+  return _.range(8);
 }
 
 var isDiagonal = function(dir)  {
