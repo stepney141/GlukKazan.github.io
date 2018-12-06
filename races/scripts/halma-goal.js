@@ -14,9 +14,9 @@ if (!_.isUndefined(Dagaz.Controller.addSound)) {
 
 var allDirections = function(design) {
   if (design.dirs.length >= 8) {
-      return _.range(7);
+      return _.range(8);
   } else {
-      return _.range(3);
+      return _.range(4);
   }
 }
 
