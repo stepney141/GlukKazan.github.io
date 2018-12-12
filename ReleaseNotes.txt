@@ -1,3 +1,34 @@
+12/12/2018 - 1.2.5
+  Fox Hunting
+  Double Alquerque
+  Mine Sweeper
+  Pyon Pyon Shogi
+  Neutral King Chess
+  Anti King Chess
+  Halma (3 variants)
+  Halma Puzzles
+  Game of Generals
+  Descent
+  Tchuka Ruma (4 variants)
+  Ohojichi (2 variants)
+  Dakon
+  Congkak
+  Kalah
+  Cross Kalah
+  Abalala'e
+  Shakti
+  Treasure Shogi
+  Simple Shogi
+  Rocket Shogi
+  LeShogi
+  Ikusa Shogi
+  Renge Shogi
+  Hexagonal Kyoto Shogi
+  Rhombic Chess (variant)
+  Find Pair puzzle
+  Suffragetto
+  advisor option
+  promotion dialog
 05/09/2018 - 1.2.4
   Dark Chess
   Dark XiangQi

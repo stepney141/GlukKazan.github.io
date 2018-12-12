@@ -229,7 +229,7 @@ AbAi.prototype.dump = function(ctx, node, deep) {
   if (_.isUndefined(node.cache)) return;
   for (var i = 0; i < node.cache.length; i++) {
        var n = node.cache[i];
-       console.log("Dump: " + offset(deep) + n.move.toString() + ", goal = " + n.goal + ", win = " + n.win + ", eval = " + n.m);
+       console.log("Dump: " + offset(deep) + n.move.toString() + ", goal = " + n.goal + ", win = " + n.win + ", weight = " + n.h + ", eval = " + n.m);
        if (node.cache) {
            this.dump(ctx, n, deep + 1);
        }
