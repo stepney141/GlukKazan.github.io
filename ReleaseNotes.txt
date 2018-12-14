@@ -7,7 +7,6 @@
   Anti King Chess
   Halma (3 variants)
   Halma Puzzles
-  Game of Generals
   Descent
   Tchuka Ruma (4 variants)
   Ohojichi (2 variants)
