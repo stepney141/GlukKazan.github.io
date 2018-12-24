@@ -46,7 +46,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPlayer("Blue", [6, 7, 5, 4, 3, 2, 0, 1, 8, 9, 10, 11]);
     design.addPlayer("White", [0, 1, 2, 3, 4, 5, 6, 7, 9, 8, 10, 11]);
     design.addPlayer("Red", [0, 1, 2, 3, 4, 5, 6, 7, 10, 9, 8, 11]);
-    design.addPlayer("Black", [0, 1, 2, 3, 4, 5, 6, 7, 11, 9, 10, 8]);
+    design.addPlayer("Green", [0, 1, 2, 3, 4, 5, 6, 7, 11, 9, 10, 8]);
 
     design.addPosition("a10", [11, 10, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0]);
     design.addPosition("b10", [11, 10, 9, 1, -1, 0, 0, 0, 9, 0, 0, 0]);
@@ -232,21 +232,21 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Red", "Man", 30);
     design.setup("Red", "Man", 31);
     design.setup("Red", "Man", 40);
-    design.setup("Black", "Man", 5);
-    design.setup("Black", "Man", 6);
-    design.setup("Black", "Man", 7);
-    design.setup("Black", "Man", 8);
-    design.setup("Black", "Man", 9);
-    design.setup("Black", "Man", 16);
-    design.setup("Black", "Man", 17);
-    design.setup("Black", "Man", 18);
-    design.setup("Black", "Man", 19);
-    design.setup("Black", "Man", 27);
-    design.setup("Black", "Man", 28);
-    design.setup("Black", "Man", 29);
-    design.setup("Black", "Man", 38);
-    design.setup("Black", "Man", 39);
-    design.setup("Black", "Man", 49);
+    design.setup("Green", "Man", 5);
+    design.setup("Green", "Man", 6);
+    design.setup("Green", "Man", 7);
+    design.setup("Green", "Man", 8);
+    design.setup("Green", "Man", 9);
+    design.setup("Green", "Man", 16);
+    design.setup("Green", "Man", 17);
+    design.setup("Green", "Man", 18);
+    design.setup("Green", "Man", 19);
+    design.setup("Green", "Man", 27);
+    design.setup("Green", "Man", 28);
+    design.setup("Green", "Man", 29);
+    design.setup("Green", "Man", 38);
+    design.setup("Green", "Man", 39);
+    design.setup("Green", "Man", 49);
     design.setup("Blue", "Man", 95);
     design.setup("Blue", "Man", 96);
     design.setup("Blue", "Man", 97);
@@ -268,7 +268,7 @@ Dagaz.View.configure = function(view) {
     view.defBoard("Board");
     view.defPiece("WhiteMan", "White Man");
     view.defPiece("RedMan", "Red Man");
-    view.defPiece("BlackMan", "Black Man");
+    view.defPiece("GreenMan", "Green Man");
     view.defPiece("BlueMan", "Blue Man");
  
     view.defPosition("a10", 2, 2, 50, 50);

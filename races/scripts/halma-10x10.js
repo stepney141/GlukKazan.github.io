@@ -37,8 +37,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addDirection("nx");
     design.addDirection("nb");
 
-    design.addPlayer("White", [3, 2, 1, 0, 4, 5]);
-    design.addPlayer("Black", [0, 1, 2, 3, 5, 4]);
+    design.addPlayer("Red", [3, 2, 1, 0, 4, 5]);
+    design.addPlayer("Blue", [0, 1, 2, 3, 5, 4]);
 
     design.addPosition("a10", [10, 1, 0, 0, 1, 0]);
     design.addPosition("b10", [10, 1, -1, 0, 9, 0]);
@@ -180,38 +180,38 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [2, 2], 1);
     design.addMove(0, 1, [0, 0], 1);
 
-    design.setup("White", "Man", 96);
-    design.setup("White", "Man", 97);
-    design.setup("White", "Man", 98);
-    design.setup("White", "Man", 99);
-    design.setup("White", "Man", 86);
-    design.setup("White", "Man", 87);
-    design.setup("White", "Man", 88);
-    design.setup("White", "Man", 89);
-    design.setup("White", "Man", 77);
-    design.setup("White", "Man", 78);
-    design.setup("White", "Man", 79);
-    design.setup("White", "Man", 68);
-    design.setup("White", "Man", 69);
-    design.setup("Black", "Man", 0);
-    design.setup("Black", "Man", 1);
-    design.setup("Black", "Man", 2);
-    design.setup("Black", "Man", 3);
-    design.setup("Black", "Man", 10);
-    design.setup("Black", "Man", 11);
-    design.setup("Black", "Man", 12);
-    design.setup("Black", "Man", 13);
-    design.setup("Black", "Man", 20);
-    design.setup("Black", "Man", 21);
-    design.setup("Black", "Man", 22);
-    design.setup("Black", "Man", 30);
-    design.setup("Black", "Man", 31);
+    design.setup("Red", "Man", 96);
+    design.setup("Red", "Man", 97);
+    design.setup("Red", "Man", 98);
+    design.setup("Red", "Man", 99);
+    design.setup("Red", "Man", 86);
+    design.setup("Red", "Man", 87);
+    design.setup("Red", "Man", 88);
+    design.setup("Red", "Man", 89);
+    design.setup("Red", "Man", 77);
+    design.setup("Red", "Man", 78);
+    design.setup("Red", "Man", 79);
+    design.setup("Red", "Man", 68);
+    design.setup("Red", "Man", 69);
+    design.setup("Blue", "Man", 0);
+    design.setup("Blue", "Man", 1);
+    design.setup("Blue", "Man", 2);
+    design.setup("Blue", "Man", 3);
+    design.setup("Blue", "Man", 10);
+    design.setup("Blue", "Man", 11);
+    design.setup("Blue", "Man", 12);
+    design.setup("Blue", "Man", 13);
+    design.setup("Blue", "Man", 20);
+    design.setup("Blue", "Man", 21);
+    design.setup("Blue", "Man", 22);
+    design.setup("Blue", "Man", 30);
+    design.setup("Blue", "Man", 31);
 }
 
 Dagaz.View.configure = function(view) {
     view.defBoard("Board");
-    view.defPiece("WhiteMan", "White Man");
-    view.defPiece("BlackMan", "Black Man");
+    view.defPiece("RedMan", "Red Man");
+    view.defPiece("BlueMan", "Blue Man");
  
     view.defPosition("a10", 2, 2, 50, 50);
     view.defPosition("b10", 52, 2, 50, 50);

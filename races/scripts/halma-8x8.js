@@ -41,8 +41,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addDirection("nx"); // 8
     design.addDirection("nb"); // 9
 
-    design.addPlayer("White", [6, 7, 5, 4, 3, 2, 0, 1, 8, 9]);
-    design.addPlayer("Black", [0, 1, 2, 3, 4, 5, 6, 7, 9, 8]);
+    design.addPlayer("Red", [6, 7, 5, 4, 3, 2, 0, 1, 8, 9]);
+    design.addPlayer("Blue", [0, 1, 2, 3, 4, 5, 6, 7, 9, 8]);
 
     design.addPosition("a8", [9, 8, 0, 1, 0, 0, 0, 0, 0, 0]);
     design.addPosition("b8", [9, 8, 7, 1, -1, 0, 0, 0, 0, 0]);
@@ -156,30 +156,30 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [2, 2], 1);
     design.addMove(0, 1, [5, 5], 1);
 
-    design.setup("White", "Man", 56);
-    design.setup("White", "Man", 57);
-    design.setup("White", "Man", 58);
-    design.setup("White", "Man", 48);
-    design.setup("White", "Man", 49);
-    design.setup("White", "Man", 50);
-    design.setup("White", "Man", 40);
-    design.setup("White", "Man", 41);
-    design.setup("White", "Man", 42);
-    design.setup("Black", "Man", 5);
-    design.setup("Black", "Man", 6);
-    design.setup("Black", "Man", 7);
-    design.setup("Black", "Man", 13);
-    design.setup("Black", "Man", 14);
-    design.setup("Black", "Man", 15);
-    design.setup("Black", "Man", 21);
-    design.setup("Black", "Man", 22);
-    design.setup("Black", "Man", 23);
+    design.setup("Red", "Man", 56);
+    design.setup("Red", "Man", 57);
+    design.setup("Red", "Man", 58);
+    design.setup("Red", "Man", 48);
+    design.setup("Red", "Man", 49);
+    design.setup("Red", "Man", 50);
+    design.setup("Red", "Man", 40);
+    design.setup("Red", "Man", 41);
+    design.setup("Red", "Man", 42);
+    design.setup("Blue", "Man", 5);
+    design.setup("Blue", "Man", 6);
+    design.setup("Blue", "Man", 7);
+    design.setup("Blue", "Man", 13);
+    design.setup("Blue", "Man", 14);
+    design.setup("Blue", "Man", 15);
+    design.setup("Blue", "Man", 21);
+    design.setup("Blue", "Man", 22);
+    design.setup("Blue", "Man", 23);
 }
 
 Dagaz.View.configure = function(view) {
     view.defBoard("Board");
-    view.defPiece("WhiteMan", "White Man");
-    view.defPiece("BlackMan", "Black Man");
+    view.defPiece("RedMan", "Red Man");
+    view.defPiece("BlueMan", "Blue Man");
  
     view.defPosition("a8", 2, 2, 50, 50);
     view.defPosition("b8", 52, 2, 50, 50);
