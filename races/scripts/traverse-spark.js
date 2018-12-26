@@ -9,7 +9,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(7,  "../sounds/magic.wav");
+    Dagaz.Controller.addSound(6,  "../sounds/magic.wav");
     Dagaz.Controller.addSound(10, "../sounds/clack.ogg");
 }
 
