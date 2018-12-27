@@ -29,10 +29,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("advisor-wait", "5");
     design.checkVersion("damone-extension", "true");
 
-    design.addDirection("ne");
-    design.addDirection("se");
-    design.addDirection("sw");
-    design.addDirection("nw");
+    design.addDirection("ne"); // 0
+    design.addDirection("se"); // 1
+    design.addDirection("sw"); // 2
+    design.addDirection("nw"); // 3
 
     design.addPlayer("Black", [2, 3, 0, 1]);
     design.addPlayer("White", [2, 3, 0, 1]);
@@ -283,7 +283,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPriority(0);			// jump-type
     design.addPriority(1);			// normal-type
 
-    design.addPiece("Man", 0, 1);
+    design.addPiece("Man", 0, 20);
     design.addMove(0, 0, [3, 3], 0);
     design.addMove(0, 0, [0, 0], 0);
     design.addMove(0, 0, [2, 2], 0);
@@ -291,7 +291,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [0], 1);
     design.addMove(0, 1, [2], 1);
 
-    design.addPiece("PromotedMan", 1, 2);
+    design.addPiece("PromotedMan", 1, 100);
     design.addMove(1, 2, [3, 3], 0);
     design.addMove(1, 2, [0, 0], 0);
     design.addMove(1, 2, [2, 2], 0);
@@ -301,7 +301,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(1, 3, [2], 1);
     design.addMove(1, 3, [1], 1);
 
-    design.addPiece("Dama", 2, 2);
+    design.addPiece("Dama", 2, 100);
     design.addMove(2, 4, [3, 3], 0);
     design.addMove(2, 4, [0, 0], 0);
     design.addMove(2, 4, [2, 2], 0);
@@ -311,7 +311,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(2, 5, [2], 1);
     design.addMove(2, 5, [1], 1);
 
-    design.addPiece("PromotedDama", 3, 100);
+    design.addPiece("PromotedDama", 3, 1000);
     design.addMove(3, 6, [3, 3], 0);
     design.addMove(3, 6, [0, 0], 0);
     design.addMove(3, 6, [2, 2], 0);
@@ -321,7 +321,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(3, 7, [2], 1);
     design.addMove(3, 7, [1], 1);
 
-    design.addPiece("Damone", 4, 100);
+    design.addPiece("Damone", 4, 1000);
     design.addMove(4, 8, [3, 3], 0);
     design.addMove(4, 8, [0, 0], 0);
     design.addMove(4, 8, [2, 2], 0);
