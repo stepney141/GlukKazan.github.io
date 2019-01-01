@@ -30,14 +30,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("deferred-captures", "true");
     design.checkVersion("advisor-wait", "5");
 
-    design.addDirection("w");
-    design.addDirection("e");
-    design.addDirection("s");
-    design.addDirection("ne");
-    design.addDirection("n");
-    design.addDirection("se");
-    design.addDirection("sw");
-    design.addDirection("nw");
+    design.addDirection("w");  // 0
+    design.addDirection("e");  // 1
+    design.addDirection("s");  // 2
+    design.addDirection("ne"); // 3
+    design.addDirection("n");  // 4
+    design.addDirection("se"); // 5
+    design.addDirection("sw"); // 6
+    design.addDirection("nw"); // 7
 
     design.addPlayer("White", [1, 0, 4, 6, 2, 7, 3, 5]);
     design.addPlayer("Black", [1, 0, 4, 6, 2, 7, 3, 5]);
@@ -235,7 +235,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPriority(0);			// jump-type
     design.addPriority(1);			// normal-type
 
-    design.addPiece("Man", 0, 1);
+    design.addPiece("Man", 0, 20);
     design.addMove(0, 0, [4, 4], 0);
     design.addMove(0, 0, [0, 0], 0);
     design.addMove(0, 0, [1, 1], 0);
@@ -245,7 +245,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(0, 1, [3], 1);
     design.addMove(0, 1, [7], 1);
 
-    design.addPiece("King", 1, 10);
+    design.addPiece("King", 1, 100);
     design.addMove(1, 2, [4, 4, 4, 4, 4], 0, 10);
     design.addMove(1, 2, [0, 0, 0, 0, 0], 0, 10);
     design.addMove(1, 2, [1, 1, 1, 1, 1], 0, 10);

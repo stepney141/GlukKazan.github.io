@@ -1,7 +1,8 @@
 (function() {
 
 Dagaz.AI.AI_FRAME      = 2000;
-Dagaz.AI.MIN_DEEP      = 4;
+Dagaz.AI.MIN_DEEP      = 2;
+Dagaz.AI.MAX_DEEP      = 3;
 
 var MAX_FORCED_FACTOR  = 1;
 
@@ -10,7 +11,7 @@ var strictMode = false;
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "turkish-extension") {
+  if (name != "armenian-extension") {
      checkVersion(design, name, value);
   }
 }
@@ -34,9 +35,9 @@ Dagaz.AI.heuristic = function(ai, design, board, move) {
 
 var getDirs = function(type) {
   if (type == 0) {
-      return [0, 1, 3];
+      return [0, 1, 4];
   } else {
-      return [0, 1, 2, 3];
+      return [0, 1, 2, 4];
   }
 }
 
@@ -47,16 +48,9 @@ Dagaz.AI.isForced = function(design, board, move) {
       var c = 0;
       _.each(design.allPositions(), function(pos) {
           var piece = b.getPiece(pos);
-          if ((piece !== null) && (piece.player == b.player)) {
+          if ((piece !== null) && (piece.type == 0) && (piece.player == b.player)) {
               _.each(getDirs(piece.type), function(dir) {
-                   var piece = b.getPiece(pos);
                    var p = design.navigate(b.player, pos, dir);
-                   if (piece.type == 1) {
-                       while (p !== null) {
-                           if (b.getPiece(p) !== null) break;
-                           p = design.navigate(b.player, p, dir);
-                       }
-                   }
                    if (p !== null) {
                        piece = b.getPiece(p);
                        if ((piece !== null) && (piece.type == 0) && (piece.player != b.player)) {
