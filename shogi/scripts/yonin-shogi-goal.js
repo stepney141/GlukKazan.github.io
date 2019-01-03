@@ -48,39 +48,39 @@ Dagaz.Model.GetCover = function(design, board) {
       _.each(design.allPositions(), function(pos) {
            var piece = board.getPiece(pos);
            if (piece !== null) {
-               if (_.indexOf([0, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, n, board.cover);
                }
-               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, e, board.cover);
                }
-               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, w, board.cover);
                }
-               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 6, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, s, board.cover);
                }
-               if (_.indexOf([0, 1, 2, 5, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 2, 5, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, nw, board.cover);
                }
-               if (_.indexOf([0, 1, 2, 5, 8, 9, 10, 11, 12, 13], piece.type) >= 0) {
+               if (_.indexOf([0, 1, 2, 5, 8, 9, 10, 11, 12, 13], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, ne, board.cover);
                }
-               if (_.indexOf([0, 2, 5, 11, 12], piece.type) >= 0) {
+               if (_.indexOf([0, 2, 5, 11, 12], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, sw, board.cover);
                }
-               if (_.indexOf([0, 2, 5, 11, 12], piece.type) >= 0) {
+               if (_.indexOf([0, 2, 5, 11, 12], +piece.type) >= 0) {
                    checkStep(design, board, piece.player, pos, se, board.cover);
                }
-               if (_.indexOf([4, 6, 12], piece.type) >= 0) {
+               if (_.indexOf([4, 6, 12], +piece.type) >= 0) {
                    checkSlide(design, board, piece.player, pos, n, board.cover);
                }
-               if (_.indexOf([6, 12], piece.type) >= 0) {
+               if (_.indexOf([6, 12], +piece.type) >= 0) {
                    checkSlide(design, board, piece.player, pos, e, board.cover);
                    checkSlide(design, board, piece.player, pos, w, board.cover);
                    checkSlide(design, board, piece.player, pos, s, board.cover);
                }
-               if (_.indexOf([5, 11], piece.type) >= 0) {
+               if (_.indexOf([5, 11], +piece.type) >= 0) {
                    checkSlide(design, board, piece.player, pos, nw, board.cover);
                    checkSlide(design, board, piece.player, pos, ne, board.cover);
                    checkSlide(design, board, piece.player, pos, sw, board.cover);

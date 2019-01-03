@@ -86,17 +86,17 @@ Dagaz.Model.CheckInvariants = function(board) {
                       var dy = Math.abs(getY(pos) - getY(dst));
                       if ((dx == 0) || (dy == 0) || (dx == dy)) {
                           // 8, 41, 56, 57, 58, 59, 60, 61, 62 <-- 43, 45
-                          if ((_.indexOf([43, 45], piece.type) >= 0) && (_.indexOf([8, 41, 56, 57, 58, 59, 60, 61, 62], target.type) >= 0)) {
+                          if ((_.indexOf([43, 45], +piece.type) >= 0) && (_.indexOf([8, 41, 56, 57, 58, 59, 60, 61, 62], +target.type) >= 0)) {
                               move.failed = true;
                           }
                           // 8 <-- 47, 48 (> 5)
-                          if ((Math.max(dx, dy) <= 5) && (target.type == 8) && (_.indexOf([47, 48], piece.type) >= 0)) {
+                          if ((Math.max(dx, dy) <= 5) && (target.type == 8) && (_.indexOf([47, 48], +piece.type) >= 0)) {
                               move.failed = true;
                           }
                       }
                       // IL, SM, TF, TP <-- IL, SM, TF, TP (only)
-                      if ((Math.max(dx, dy) > 1) && (_.indexOf([6, 7, 8, 9], piece.type) >= 0)) {
-                           if (_.indexOf([6, 7, 8, 9], target.type) < 0) {
+                      if ((Math.max(dx, dy) > 1) && (_.indexOf([6, 7, 8, 9], +piece.type) >= 0)) {
+                           if (_.indexOf([6, 7, 8, 9], +target.type) < 0) {
                                 move.failed = true;
                            }
                       }
