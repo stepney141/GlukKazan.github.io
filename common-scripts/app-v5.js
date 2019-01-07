@@ -370,9 +370,10 @@ App.prototype.exec = function() {
                      var result = ai.getMove(ctx);
                      if (result && result.done) {
                          delete Dagaz.AI.advisorStamp;
+                         console.log("Advisor: " + result.move);
                          var board = this.board.apply(result.move);
                          Dagaz.Controller.pushState(result.move, board);
-                         if (!_.isUndefined(Dagaz.Sounds.hint)) {
+                         if (!_.isUndefined(Dagaz.Sounds) && !_.isUndefined(Dagaz.Sounds.hint)) {
                              Dagaz.Controller.play(Dagaz.Sounds.hint);
                          }
                      }
@@ -494,7 +495,7 @@ App.prototype.exec = function() {
       isDrag = false;
       if (!_.isUndefined(this.list) && this.list.isDone()) {
           var moves = this.list.filterDrops(this.list.getMoves(), dropIndex);
-          if (moves.length == 1) this.move = moves[0];
+          if ((moves.length == 1) && (moves[0].isDropMove())) this.move = moves[0];
       }
       if (!this.move.isPass()) {
           this.move = this.clarify(this.move);

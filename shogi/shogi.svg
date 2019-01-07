@@ -63,8 +63,10 @@
 </g>
 <!-- Chu shogi -->
 <g class="node" id="node6"><title>Chu shogi</title>
+<a xlink:href="chu-shogi-board.htm">
 <ellipse fill="red" stroke="black" cx="181" cy="-162" rx="50.209" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="181" y="-157.8">Chu shogi</text>
+</a>
 </g>
 <!-- Dai shogi&#45;&gt;Chu shogi -->
 <g class="edge" id="edge10"><title>Dai shogi-&gt;Chu shogi</title>
