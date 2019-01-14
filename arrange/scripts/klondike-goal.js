@@ -12,6 +12,7 @@ if (!_.isUndefined(Dagaz.Controller.addSound)) {
     Dagaz.Controller.addSound(0, "../sounds/card.ogg");
     Dagaz.Controller.addSound(1, "../sounds/card.wav");
     Dagaz.Controller.addSound(2,  "../sounds/win.wav");
+    Dagaz.Controller.addSound(3,  "../sounds/win.wav");
 }
 
 var countStack = function(board, pos) {
