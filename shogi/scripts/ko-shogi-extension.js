@@ -78,7 +78,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                   var piece  = board.getPiece(src);
                   var target = board.getPiece(dst);
                   if ((piece !== null) && (target !== null)) {
-                      if (!_.isUndefined(immunity[target.type]) && (_.indexOf(immunity[target.type], piece.type) >= 0)) {
+                      if (!_.isUndefined(immunity[target.type]) && (_.indexOf(immunity[target.type], +piece.type) >= 0)) {
                           move.failed = true;
                       }
                       var pos = a[0][0];

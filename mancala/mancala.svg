@@ -311,8 +311,10 @@
 </g>
 <!-- Selus -->
 <g class="node" id="node21"><title>Selus</title>
+<a xlink:href="selus.htm">
 <ellipse fill="chocolate" stroke="black" cx="863" cy="-162" rx="31.4395" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="863" y="-157.8">Selus</text>
+</a>
 </g>
 <!-- Abalala&#39;e&#45;&gt;Selus -->
 <g class="edge" id="edge62"><title>Abalala'e-&gt;Selus</title>

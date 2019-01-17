@@ -31,6 +31,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("shogi-promotion", "true");
     design.checkVersion("common-shogi-invariant", "true");
     design.checkVersion("yonin-shogi-invariant", "true");
+    design.checkVersion("yonin-shogi-goal", "true");
 
     design.addDirection("w");
     design.addDirection("e");
