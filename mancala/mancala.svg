@@ -63,8 +63,10 @@
 </g>
 <!-- Kauri -->
 <g class="node" id="node29"><title>Kauri</title>
+<a xlink:href="kauri.htm">
 <ellipse fill="lightblue" stroke="black" cx="830" cy="-306" rx="33.0323" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="830" y="-301.8">Kauri</text>
+</a>
 </g>
 <!-- Single laps&#45;&gt;Kauri -->
 <g class="edge" id="edge18"><title>Single laps-&gt;Kauri</title>

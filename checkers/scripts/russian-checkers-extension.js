@@ -5,8 +5,6 @@ Dagaz.AI.MIN_DEEP      = 6;
 
 var MAX_FORCED_FACTOR  = 2;
 
-var strictMode = false;
-
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
