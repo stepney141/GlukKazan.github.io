@@ -77,6 +77,9 @@ var getRank = function(design, board, pos, dir, ix, forced) {
   piece = createPiece(design, board, board.player, p);
   if (piece.getValue(ix) == 5) return 4;
   if (forced) {
+  p = design.navigate(board.player, p, dir);
+  if ((p === null) || (board.getPiece(p) !== null)) return 0;
+  if (piece.getValue(ix) == 4) return 3;
       board.setPiece(p, piece);
       var a = getRank(design, board, p, dirs[ix], ix, false);
       var b = getRank(design, board, p, dirs[ix + 4], ix, false);
