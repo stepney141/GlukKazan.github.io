@@ -1,3 +1,21 @@
+12/02/2019 - 1.2.6
+  Camelot
+  Grand Camelot
+  Chivalry
+  Cam
+  Grand Cam
+  Traverse
+  Game of Generals
+  Kantorai
+  Chu Shogi (2 variants)
+  Klondike
+  Selus
+  8x3 Solitaire
+  Chinese Checkers (3 variants)
+  Choko
+  Kauri
+  ab-ai-v4
+  forced-ai
 12/12/2018 - 1.2.5
   Fox Hunting
   Double Alquerque
