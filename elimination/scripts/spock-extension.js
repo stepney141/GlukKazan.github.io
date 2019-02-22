@@ -197,7 +197,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                 var target = m.actions[0][1][0];
                 var piece = board.getPiece(target);
                 if (piece !== null) {
-                    var type = piece.type + 1;
+                    var type = +piece.type + 1;
                     if (type >= 5) {
                         type = 0;
                     }

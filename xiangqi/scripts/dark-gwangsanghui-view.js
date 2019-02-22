@@ -112,14 +112,14 @@ var checkShoot = function(design, board, player, pos, dir, visible) {
       var piece = board.getPiece(p);
       p = design.navigate(player, p, dir);
       if (piece !== null) {
-          if (isCannon(piece.type)) return;
+          if (isCannon(+piece.type)) return;
           break;
       }
   }
   while (p !== null) {
       var piece = board.getPiece(p);
       if (piece !== null) {
-          if ((piece.player != player) && !isCannon(piece.type)) {
+          if ((piece.player != player) && !isCannon(+piece.type)) {
               visible.push(p);
           }
           return;
@@ -137,7 +137,7 @@ var checkShootZone = function(design, board, player, pos, dir, zone, visible) {
       var piece = board.getPiece(p);
       p = design.navigate(player, p, dir);
       if (piece !== null) {
-          if (isCannon(piece.type)) return;
+          if (isCannon(+piece.type)) return;
           break;
       }
   }
@@ -145,7 +145,7 @@ var checkShootZone = function(design, board, player, pos, dir, zone, visible) {
       if (!design.inZone(zone, player, p)) return;
       var piece = board.getPiece(p);
       if (piece !== null) {
-          if ((piece.player != player) && !isCannon(piece.type)) {
+          if ((piece.player != player) && !isCannon(+piece.type)) {
               visible.push(p);
           }
           return;
