@@ -204,17 +204,23 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(2, ZRF.PARAM,	0);	// $1
     design.addCommand(2, ZRF.FUNCTION,	22);	// navigate
     design.addCommand(2, ZRF.FUNCTION,	1);	// empty?
-    design.addCommand(2, ZRF.FUNCTION,	0);	// not
-    design.addCommand(2, ZRF.IF,	7);
-    design.addCommand(2, ZRF.FORK,	3);
-    design.addCommand(2, ZRF.FUNCTION,	25);	// to
-    design.addCommand(2, ZRF.FUNCTION,	28);	// end
+    design.addCommand(2, ZRF.FUNCTION,	20);	// verify
     design.addCommand(2, ZRF.PARAM,	1);	// $2
     design.addCommand(2, ZRF.FUNCTION,	22);	// navigate
-    design.addCommand(2, ZRF.JUMP,	-8);
+    design.addCommand(2, ZRF.FUNCTION,	1);	// empty?
+    design.addCommand(2, ZRF.FUNCTION,	0);	// not
+    design.addCommand(2, ZRF.IF,	8);
+    design.addCommand(2, ZRF.FORK,	4);
+    design.addCommand(2, ZRF.PROMOTE,	14);	// ScoutOpened
+    design.addCommand(2, ZRF.FUNCTION,	25);	// to
+    design.addCommand(2, ZRF.FUNCTION,	28);	// end
+    design.addCommand(2, ZRF.PARAM,	2);	// $3
+    design.addCommand(2, ZRF.FUNCTION,	22);	// navigate
+    design.addCommand(2, ZRF.JUMP,	-9);
     design.addCommand(2, ZRF.FUNCTION,	3);	// friend?
     design.addCommand(2, ZRF.FUNCTION,	0);	// not
     design.addCommand(2, ZRF.FUNCTION,	20);	// verify
+    design.addCommand(2, ZRF.PROMOTE,	14);	// ScoutOpened
     design.addCommand(2, ZRF.FUNCTION,	25);	// to
     design.addCommand(2, ZRF.FUNCTION,	28);	// end
 
@@ -234,10 +240,14 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addPiece("Scout", 2, 50);
     design.addDrop(2, 0, [], 1);
-    design.addMove(2, 2, [3, 3], 2);
-    design.addMove(2, 2, [1, 1], 2);
-    design.addMove(2, 2, [2, 2], 2);
-    design.addMove(2, 2, [0, 0], 2);
+    design.addMove(2, 1, [3], 2);
+    design.addMove(2, 1, [1], 2);
+    design.addMove(2, 1, [2], 2);
+    design.addMove(2, 1, [0], 2);
+    design.addMove(2, 2, [3, 3, 3], 2);
+    design.addMove(2, 2, [1, 1, 1], 2);
+    design.addMove(2, 2, [2, 2, 2], 2);
+    design.addMove(2, 2, [0, 0, 0], 2);
 
     design.addPiece("Disarmer", 3, 200);
     design.addDrop(3, 0, [], 1);
@@ -298,6 +308,74 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("Bomb", 11, 2);
     design.addDrop(11, 0, [], 0);
 
+    design.addPiece("FlagOpened", 12, 10000);
+
+    design.addPiece("SpyOpened", 13, 100);
+    design.addMove(13, 1, [3], 2);
+    design.addMove(13, 1, [1], 2);
+    design.addMove(13, 1, [2], 2);
+    design.addMove(13, 1, [0], 2);
+
+    design.addPiece("ScoutOpened", 14, 50);
+    design.addMove(14, 1, [3], 2);
+    design.addMove(14, 1, [1], 2);
+    design.addMove(14, 1, [2], 2);
+    design.addMove(14, 1, [0], 2);
+    design.addMove(14, 2, [3, 3, 3], 2);
+    design.addMove(14, 2, [1, 1, 1], 2);
+    design.addMove(14, 2, [2, 2, 2], 2);
+    design.addMove(14, 2, [0, 0, 0], 2);
+
+    design.addPiece("DisarmerOpened", 15, 200);
+    design.addMove(15, 1, [3], 2);
+    design.addMove(15, 1, [1], 2);
+    design.addMove(15, 1, [2], 2);
+    design.addMove(15, 1, [0], 2);
+
+    design.addPiece("SergeantOpened", 16, 40);
+    design.addMove(16, 1, [3], 2);
+    design.addMove(16, 1, [1], 2);
+    design.addMove(16, 1, [2], 2);
+    design.addMove(16, 1, [0], 2);
+
+    design.addPiece("LieutenantOpened", 17, 50);
+    design.addMove(17, 1, [3], 2);
+    design.addMove(17, 1, [1], 2);
+    design.addMove(17, 1, [2], 2);
+    design.addMove(17, 1, [0], 2);
+
+    design.addPiece("CaptainOpened", 18, 60);
+    design.addMove(18, 1, [3], 2);
+    design.addMove(18, 1, [1], 2);
+    design.addMove(18, 1, [2], 2);
+    design.addMove(18, 1, [0], 2);
+
+    design.addPiece("MajorOpened", 19, 70);
+    design.addMove(19, 1, [3], 2);
+    design.addMove(19, 1, [1], 2);
+    design.addMove(19, 1, [2], 2);
+    design.addMove(19, 1, [0], 2);
+
+    design.addPiece("BrigadierOpened", 20, 80);
+    design.addMove(20, 1, [3], 2);
+    design.addMove(20, 1, [1], 2);
+    design.addMove(20, 1, [2], 2);
+    design.addMove(20, 1, [0], 2);
+
+    design.addPiece("GeneralOpened", 21, 90);
+    design.addMove(21, 1, [3], 2);
+    design.addMove(21, 1, [1], 2);
+    design.addMove(21, 1, [2], 2);
+    design.addMove(21, 1, [0], 2);
+
+    design.addPiece("CommandantOpened", 22, 100);
+    design.addMove(22, 1, [3], 2);
+    design.addMove(22, 1, [1], 2);
+    design.addMove(22, 1, [2], 2);
+    design.addMove(22, 1, [0], 2);
+
+    design.addPiece("BombOpened", 23, 2);
+
     design.reserve("Red", "Flag", 1);
     design.reserve("Red", "Spy", 1);
     design.reserve("Red", "Scout", 8);
@@ -350,6 +428,30 @@ Dagaz.View.configure = function(view) {
     view.defPiece("BlueCommandant", "Blue Commandant");
     view.defPiece("RedBomb", "Red Bomb");
     view.defPiece("BlueBomb", "Blue Bomb");
+    view.defPiece("RedFlagOpened", "Red FlagOpened");
+    view.defPiece("BlueFlagOpened", "Blue FlagOpened");
+    view.defPiece("RedSpyOpened", "Red SpyOpened");
+    view.defPiece("BlueSpyOpened", "Blue SpyOpened");
+    view.defPiece("RedScoutOpened", "Red ScoutOpened");
+    view.defPiece("BlueScoutOpened", "Blue ScoutOpened");
+    view.defPiece("RedDisarmerOpened", "Red DisarmerOpened");
+    view.defPiece("BlueDisarmerOpened", "Blue DisarmerOpened");
+    view.defPiece("RedSergeantOpened", "Red SergeantOpened");
+    view.defPiece("BlueSergeantOpened", "Blue SergeantOpened");
+    view.defPiece("RedLieutenantOpened", "Red LieutenantOpened");
+    view.defPiece("BlueLieutenantOpened", "Blue LieutenantOpened");
+    view.defPiece("RedCaptainOpened", "Red CaptainOpened");
+    view.defPiece("BlueCaptainOpened", "Blue CaptainOpened");
+    view.defPiece("RedMajorOpened", "Red MajorOpened");
+    view.defPiece("BlueMajorOpened", "Blue MajorOpened");
+    view.defPiece("RedBrigadierOpened", "Red BrigadierOpened");
+    view.defPiece("BlueBrigadierOpened", "Blue BrigadierOpened");
+    view.defPiece("RedGeneralOpened", "Red GeneralOpened");
+    view.defPiece("BlueGeneralOpened", "Blue GeneralOpened");
+    view.defPiece("RedCommandantOpened", "Red CommandantOpened");
+    view.defPiece("BlueCommandantOpened", "Blue CommandantOpened");
+    view.defPiece("RedBombOpened", "Red BombOpened");
+    view.defPiece("BlueBombOpened", "Blue BombOpened");
     view.defPiece("Ko", "Ko");
  
     view.defPosition("a9", 1, 1, 40, 40);
