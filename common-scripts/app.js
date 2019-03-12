@@ -131,7 +131,7 @@ App.prototype.mouseLocate = function(view, pos) {
           }
       }
   }
-  currPos = pos;
+  this.currPos = pos;
 }
 
 App.prototype.boardApply = function(move) {
