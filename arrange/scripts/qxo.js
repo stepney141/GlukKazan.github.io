@@ -18,7 +18,7 @@ ZRF = {
     LITERAL:       16,
     VERIFY:        20
 };
-
+ 
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("animate-drops", "false");
