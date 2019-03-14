@@ -7,6 +7,10 @@ function BreakthroughAi(params, parent) {
   this.parent = parent;
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+}
+
 var findBot = Dagaz.AI.findBot;
 
 Dagaz.AI.findBot = function(type, params, parent) {

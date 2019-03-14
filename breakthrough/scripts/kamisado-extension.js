@@ -15,6 +15,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+}
+
 var getColor = function(design, player, pos) {
   for (var i = 0; i < 8; i++) {
        if (design.inZone(i, player, pos)) {
