@@ -85,7 +85,7 @@
 </g>
 <!-- Wa shogi -->
 <g class="node" id="node7"><title>Wa shogi</title>
-<a xlink:href="wa-shogi-no-drops.htm">
+<a xlink:href="wa-shogi.htm">
 <ellipse fill="red" stroke="black" cx="51" cy="-90" rx="47.1688" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="51" y="-85.8">Wa shogi</text>
 </a>
