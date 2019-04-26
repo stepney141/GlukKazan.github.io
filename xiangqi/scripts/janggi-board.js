@@ -28,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-drops", "true");
     design.checkVersion("show-captures", "false");
+    design.checkVersion("pass-turn", "forced");
     design.checkVersion("ko", "situation");
     design.checkVersion("janggi-extension", "true");
     design.checkVersion("janggi-setup", "true");
