@@ -1,8 +1,9 @@
 (function() {
 
-Dagaz.AI.AI_FRAME      = 2000;
-Dagaz.Model.showBlink  = false;
-Dagaz.AI.getForcedMove = Dagaz.AI.getChessForcedMove;
+Dagaz.AI.AI_FRAME     = 1000;
+Dagaz.AI.MIN_DEEP     = 5;
+Dagaz.AI.MAX_DEEP     = 20;
+Dagaz.AI.CHECK_GOALS  = true;
 
 var checkVersion = Dagaz.Model.checkVersion;
 
@@ -12,23 +13,35 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
-if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+var checkKing = function(design, board, pos, dir, type, list) {
+  if (_.indexOf(list, +type) < 0) return false;
+  var p = design.navigate(board.player, pos, dir);
+  if (p === null) return false;
+  var piece = board.getPiece(p);
+  if (piece === null) return false;
+  if (piece.player == board.player) return false;
+  return piece.type == 0;
 }
 
-Dagaz.AI.eval = function(design, params, board, player) {
-  var r = 0;
-  _.each(design.allPositions(), function(pos) {
-      var piece = board.getPiece(pos);
-      if (piece !== null) {
-          var v = design.price[piece.type];
-          if (!design.inZone(0, player, pos)) {
-             v = v * 1.5;
+Dagaz.AI.heuristic = function(ai, design, board, move) {
+  var r = 1;
+  _.each(move.actions, function(a) {
+      if ((a[0] !== null) && (a[1] !== null)) {
+          var target = board.getPiece(a[1][0]);
+          if (target !== null) {
+              r += design.price[+target.type];
           }
-          if (piece.player != player) {
-             v = -v;
+          var piece = board.getPiece(a[0][0]);
+          if ((piece !== null) && (piece.type != 0)) {
+              if (checkKing(design, board, a[1][0], 1, piece.type, [1, 3, 4]) ||
+                  checkKing(design, board, a[1][0], 4, piece.type, [3, 4]) ||
+                  checkKing(design, board, a[1][0], 3, piece.type, [3, 4]) ||
+                  checkKing(design, board, a[1][0], 2, piece.type, [3, 4]) ||
+                  checkKing(design, board, a[1][0], 7, piece.type, [2, 4]) ||
+                  checkKing(design, board, a[1][0], 5, piece.type, [2, 4]) ||
+                  checkKing(design, board, a[1][0], 6, piece.type, [2]) ||
+                  checkKing(design, board, a[1][0], 8, piece.type, [2])) r += 100;
           }
-          r += v;
       }
   });
   return r;
@@ -42,40 +55,12 @@ var checkDirection = function(design, board, player, pos, dir, types, from) {
   }
   var piece = board.getPiece(p);
   if (piece == null) return 0;
-  if (_.indexOf(types, piece.type) < 0) return 0;
+  if (_.indexOf(types, +piece.type) < 0) return 0;
   if (piece.player != player) {
       return 1;
   } else {
       return -1;
   }
-}
-
-var heuristic = Dagaz.AI.heuristic;
-
-Dagaz.AI.heuristic = function(ai, design, board, move) {
-  var za   = design.getPieceType("Za");
-  var sang = design.getPieceType("Sang");
-  var jang = design.getPieceType("Jang");
-  var hu   = design.getPieceType("Hu");
-  var n  = design.getDirection("n");  var w  = design.getDirection("w");
-  var s  = design.getDirection("s");  var e  = design.getDirection("e");
-  var nw = design.getDirection("nw"); var sw = design.getDirection("sw");
-  var ne = design.getDirection("ne"); var se = design.getDirection("se");
-  if ((move.actions.length == 1) && (move.actions[0][0] !== null) && (move.actions[0][1] !== null)) {
-      var from = move.actions[0][0][0];
-      var pos  = move.actions[0][1][0];
-      var s = 0;
-      s += checkDirection(design, board, board.player, pos, n,  [za, jang, hu], from);
-      s += checkDirection(design, board, board.player, pos, s,  [jang, hu], from);
-      s += checkDirection(design, board, board.player, pos, w,  [jang, hu], from);
-      s += checkDirection(design, board, board.player, pos, e,  [jang, hu], from);
-      s += checkDirection(design, board, board.player, pos, nw, [sang, hu], from);
-      s += checkDirection(design, board, board.player, pos, ne, [sang, hu], from);
-      s += checkDirection(design, board, board.player, pos, sw, [sang], from);
-      s += checkDirection(design, board, board.player, pos, se, [sang], from);
-      if (s > 0) return 0;
-  }
-  return 1;
 }
 
 var checkGoals = Dagaz.Model.checkGoals;
