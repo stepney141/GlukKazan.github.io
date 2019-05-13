@@ -1,3 +1,23 @@
+13/05/2019 - 1.2.7
+  Nat Klab Al-shawk (2 variants)
+  Gate
+  Stratego
+  Hex (board only)
+  Mahjong solitaire
+  Salt and Pepper
+  Quantum Tic-Tac-Toe
+  Mana
+  Nutty Shogi
+  Troitzky Chess (2 variants)
+  Chess Swappers (3 variants)
+  Pyramid solitaire
+  Wa Shogi (2 variants)
+  Yitongqi
+  Amazons
+  5 Tigers
+  Balbo's Game
+  checkmate
+  uct-ai-v5
 12/02/2019 - 1.2.6
   Camelot
   Grand Camelot
