@@ -111,6 +111,7 @@ Dagaz.Model.BuildDesign = function(design) {
 
     design.addZone("last-rank", 1, [0, 1, 2, 3, 4, 5, 6, 7]);
     design.addZone("last-rank", 2, [56, 57, 58, 59, 60, 61, 62, 63]);
+    design.addZone("third-rank", 1, [40, 41, 42, 43, 44, 45, 46, 47]);
     design.addZone("third-rank", 2, [16, 17, 18, 19, 20, 21, 22, 23]);
 
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
