@@ -25,6 +25,7 @@ Dagaz.Model.dragNdrop       = true;
 Dagaz.Model.detectLoops     = false;
 Dagaz.Model.advisorWait     = null;
 Dagaz.Model.remapPromote    = false;
+Dagaz.Model.passForcedDraw  = true;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -875,6 +876,18 @@ ZrfDesign.prototype.addTurn = function(player, modes) {
       this.turns = [];
   }
   this.turns.push({
+      random: false,
+      player: player,
+      modes:  modes
+  });
+}
+
+ZrfDesign.prototype.addRandom = function(player, modes) {
+  if (_.isUndefined(this.turns)) {
+      this.turns = [];
+  }
+  this.turns.push({
+      random: true,
       player: player,
       modes:  modes
   });
@@ -2197,7 +2210,9 @@ ZrfMove.prototype.applyTo = function(obj, part) {
       return (action[0] === null) && (action[1] === null) && (action[2] !== null);
     })
    .each(function (action) {
-      action[2][0].exec(obj);
+      if (!_.isUndefined(action[2][0].exec)) {
+          action[2][0].exec(obj);
+      }
     });
   if (r) {
       obj.commit(this);
@@ -2273,6 +2288,21 @@ ZrfMove.prototype.addValue = function(name, value, part) {
           }
       }
   }], part]);
+}
+
+ZrfMove.prototype.playSound = function(ix, delay, part) {
+  if (!part) part = 1;
+  if (!_.isUndefined(Dagaz.Controller.play)) {
+      this.actions.push([ null, null, [{
+          exec: function() {
+             if (_.isUndefined(delay)) {
+                 Dagaz.Controller.play(ix);
+             } else {
+                 _.delay(Dagaz.Controller.play, delay, ix);
+             }
+          }
+      }], part]);
+  }
 }
 
 ZrfMove.prototype.isPass = function() {
