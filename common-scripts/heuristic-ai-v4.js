@@ -15,24 +15,10 @@ Dagaz.AI.findBot = function(type, params, parent) {
   }
 }
 
-var dump = function(node, deep) {
-  var r = "*** ";
-  for (var i = 0; i < deep; i++) {
-      r = r + "  ";
-  }
-  r = r + "player = " + node.o;
-  if (!_.isUndefined(node.e)) {
-      r = r + ", eval = " + node.e;
-  }
-  r = r + ", move = " + node.m.toString();
-  console.log(r);
-}
-
 var simulate = function(ctx, node, player, deep) {
   node.b.moves = Dagaz.AI.generate(ctx, node.b);
   if (node.b.moves.length == 0) {
       node.e = Dagaz.AI.eval(ctx.design, node.b, player);
-//    dump(node, deep);
       return node;
   }
   if (node.b.player != player) {
@@ -41,12 +27,10 @@ var simulate = function(ctx, node, player, deep) {
            return simulate(ctx, node, player);
       }
       node.e = Dagaz.AI.eval(ctx.design, node.b, player);
-//    dump(node, deep);
       return node;
   }
   if ((node.b.moves.length == 1) && node.b.moves[0].isPass()) {
       node.e = Dagaz.AI.eval(ctx.design, node.b, player);
-//    dump(node, deep);
       return node;
   }
   node.n = _.map(node.b.moves, function(move) {
@@ -67,7 +51,6 @@ var simulate = function(ctx, node, player, deep) {
   if (best !== null) {
       node.e = best.e;
   }
-//dump(node, deep);
   return best;
 }
 
