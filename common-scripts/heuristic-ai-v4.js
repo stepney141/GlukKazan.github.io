@@ -68,6 +68,7 @@ Ai.prototype.getMove = function(ctx) {
       return { done: true, ai: "nothing" };
   }
   if (_.isUndefined(ctx.moves) || (ctx.moves.length == 0)) {
+      Dagaz.Model.noRecursive = false;
       var nodes = _.map(ctx.board.moves, function(move) {
           return {
              o: ctx.board.player,
@@ -90,6 +91,7 @@ Ai.prototype.getMove = function(ctx) {
           ctx.moves.push(best.m);
           best = best.p;
       }
+      Dagaz.Model.noRecursive = true;
   }
   if (ctx.moves.length > 0) {
       return {
