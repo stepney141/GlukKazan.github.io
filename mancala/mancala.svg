@@ -181,8 +181,10 @@
 </g>
 <!-- Hawalis -->
 <g class="node" id="node22"><title>Hawalis</title>
+<a xlink:href="hawalis.htm">
 <ellipse fill="chocolate" stroke="black" cx="706" cy="-162" rx="42.5127" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="706" y="-157.8">Hawalis</text>
+</a>
 </g>
 <!-- 4 Ranks&#45;&gt;Hawalis -->
 <g class="edge" id="edge36"><title>4 Ranks-&gt;Hawalis</title>
