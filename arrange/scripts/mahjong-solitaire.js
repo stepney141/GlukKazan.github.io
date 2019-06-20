@@ -28,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-captures", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("progressive-levels", "true");
+    design.checkVersion("animate-redo", "false");
 
     design.addDirection("s"); // 0
     design.addDirection("e"); // 1

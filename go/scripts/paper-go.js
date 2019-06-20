@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-captures", "false");
+    design.checkVersion("animate-redo", "false");
     design.checkVersion("paper-go-extension", "true");
 
     design.addDirection("w");

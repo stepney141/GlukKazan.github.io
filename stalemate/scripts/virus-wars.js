@@ -26,6 +26,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("advisor-wait", "5");
+    design.checkVersion("animate-redo", "false");
     design.checkVersion("virus-wars-invariant", "true");
     design.checkVersion("virus-wars-extension", "true");
 

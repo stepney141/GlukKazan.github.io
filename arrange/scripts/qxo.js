@@ -32,6 +32,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("smart-moves", "from");
     design.checkVersion("pass-turn", "forced");
     design.checkVersion("shared-pieces", "true");
+    design.checkVersion("animate-redo", "false");
 
     design.addDirection("n");  // 0
     design.addDirection("e");  // 1

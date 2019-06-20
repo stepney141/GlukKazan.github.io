@@ -28,6 +28,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("animate-drops", "false");
     design.checkVersion("show-drops", "all");
     design.checkVersion("advisor-wait", "5");
+    design.checkVersion("animate-redo", "false");
     design.checkVersion("connect-four-restrictions", "true");
     design.checkVersion("connect-four-extension", "true");
     design.checkVersion("connect-four-goal", "true");

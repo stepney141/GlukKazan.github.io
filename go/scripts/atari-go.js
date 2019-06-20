@@ -29,6 +29,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-captures", "false");
     design.checkVersion("advisor-wait", "5");
     design.checkVersion("go-extension", "true");
+    design.checkVersion("animate-redo", "false");
     design.checkVersion("atari-go-goal", "true");
 
     design.addDirection("w");
