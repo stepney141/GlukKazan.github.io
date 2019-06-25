@@ -114,27 +114,6 @@ var isAttacked = function(design, board, player, pos) {
   return false;
 }
 
-var checkGoals = Dagaz.Model.checkGoals;
-
-Dagaz.Model.checkGoals = function(design, board, player) {
-  board.generate(design);
-  if (board.moves.length > 0) return checkGoals(design, board, player);
-  var r = 0;
-  _.each(positions, function(pos) {
-      var piece = board.getPiece(pos);
-      if (piece === null) return;
-      if (notCastle(design, board, piece.player, pos)) return;
-      if (isAttacked(design, board, piece.player, pos)) {
-          if (piece.player != player) {
-              return 1;
-          } else {
-              return -1;
-          }
-      }
-  });
-  return r;
-}
-
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
