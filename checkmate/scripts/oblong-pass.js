@@ -12,18 +12,20 @@ var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
   var design = Dagaz.Model.design;
-  var f = true;
+  var pos = design.positions.length - 1;
   _.each(board.moves, function(move) {
-      if (!_.isUndefined(move.failed)) return;
-      if ((move.mode <= 1) || (move.mode >= 6)) return;
-      f = false;
-  });
-  _.each(board.moves, function(move) {
-      if (move.mode != 7) return;
-      if (f) {
-          move.failed = true;
-      } else {
-          board.ko.push(move.actions[0][0][0]);
+      if (move.mode == 0) {
+          var dice = design.price[move.actions[0][2][0].type];
+          if (dice > 1) {
+              var piece = Dagaz.Model.createPiece(12, board.player);
+              move.dropPiece(pos, piece);
+          }
+      }
+      if ((move.mode > 0) && (move.mode < 7)) {
+          var piece = board.getPiece(pos);
+          if (piece !== null) {
+              move.capturePiece(pos);
+          }
       }
   });
   CheckInvariants(board);

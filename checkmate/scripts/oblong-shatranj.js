@@ -110,6 +110,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("c1", [0, 0, 0, -1, 1, -5, -3, -4]);
     design.addPosition("a1", [0, 0, 0, -1, 0, -5, 0, -4]);
     design.addPosition("DICE", [0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("PASS", [0, 0, 0, 0, 0, 0, 0, 0]);
 
     design.addZone("promotion", 1, [3, 1, 2, 0]);
     design.addZone("promotion", 2, [63, 61, 62, 60]);
@@ -194,6 +195,11 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addCommand(6, ZRF.FUNCTION,	25);	// to
     design.addCommand(6, ZRF.FUNCTION,	28);	// end
 
+    design.addCommand(7, ZRF.FUNCTION,	24);	// from
+    design.addCommand(7, ZRF.FUNCTION,	26);	// capture
+    design.addCommand(7, ZRF.FUNCTION,	25);	// to
+    design.addCommand(7, ZRF.FUNCTION,	28);	// end
+
     design.addPiece("D1", 0, 1);
     design.addDrop(0, 0, [], 0, 10);
 
@@ -221,7 +227,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(6, 1, [2], 6);
     design.addMove(6, 1, [5], 6);
     design.addMove(6, 1, [0], 6);
-    design.addMove(6, 6, [], 7);
 
     design.addPiece("Fers", 7, 24);
     design.addMove(7, 1, [6], 5);
@@ -255,6 +260,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(11, 4, [7], 1);
     design.addMove(11, 5, [6], 1);
     design.addMove(11, 5, [5], 1);
+
+    design.addPiece("Pass", 12);
+    design.addMove(12, 7, [], 7);
 
     design.setupSelector(4);
 
@@ -417,6 +425,8 @@ Dagaz.View.configure = function(view) {
     view.defPiece("BlackAsb", "Black Asb");
     view.defPiece("WhiteSarbaz", "White Sarbaz");
     view.defPiece("BlackSarbaz", "Black Sarbaz");
+    view.defPiece("WhitePass", "White Pass");
+    view.defPiece("BlackPass", "Black Pass");
     view.defPiece("Ko", "Ko");
  
     view.defPosition("d16", 1, 2, 50, 50);
@@ -483,5 +493,6 @@ Dagaz.View.configure = function(view) {
     view.defPosition("b1", 751, 52, 50, 50);
     view.defPosition("c1", 751, 102, 50, 50);
     view.defPosition("a1", 751, 152, 50, 50);
-    view.defPosition("DICE", 811, 86, 28, 28);
+    view.defPosition("DICE", 811, 14, 28, 28);
+    view.defPosition("PASS", 814, 109, 22, 80);
 }
