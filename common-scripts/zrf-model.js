@@ -1932,9 +1932,9 @@ ZrfBoard.prototype.apply = function(move) {
   if (!_.isUndefined(move.result)) return move.result;
   var design = Dagaz.Model.design;
   var r = this.copy();
-  move.applyAll(r);
   r.turn = design.nextTurn(this);
   r.player = design.currPlayer(r.turn);
+  move.applyAll(r);
   r.move = move;
   return r;
 }
@@ -2276,6 +2276,19 @@ ZrfMove.prototype.setValue = function(name, value, part) {
       exec: function(obj) {
           if (obj.setValue) {
               obj.setValue(name, value);
+          }
+      }
+  }], part]);
+}
+
+ZrfMove.prototype.goTo = function(turn, part) {
+  if (!part) part = 1;
+  this.actions.push([ null, null, [{
+      exec: function(obj) {
+          var design = Dagaz.Model.design;
+          if (!_.isUndefined(obj.turn) && !_.isUndefined(obj.player)) {
+              obj.turn = turn;
+              obj.player = design.currPlayer(turn);
           }
       }
   }], part]);
