@@ -96,7 +96,7 @@ Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
   if (model) {
       value = model.getValue(0);
   }
-  if (Dagaz.Model.showBlink && (_.indexOf(view.curr, pos) >= 0)) {
+  if (Dagaz.Model.showBlink && (_.indexOf(view.current, pos) >= 0)) {
       dx = blink;
       blink = -blink;
   }

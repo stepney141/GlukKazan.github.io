@@ -29,7 +29,7 @@ Dagaz.Model.CheckInvariants = function(board) {
                             var f = a[0][0]; var t = a[1][0];
                             if ((f == lastt) && (t != lastf)) {
                                 moves.push(move);
-                                Dagaz.View.getView().curr = [f];
+                                Dagaz.View.getView().current = [f];
                             }
                         }
                    });
