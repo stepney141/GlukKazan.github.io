@@ -27,6 +27,7 @@ Dagaz.Model.advisorWait     = null;
 Dagaz.Model.remapPromote    = false;
 Dagaz.Model.passForcedDraw  = true;
 Dagaz.Model.animateRedo     = true;
+Dagaz.Model.completePartial = false;
 
 Dagaz.Model.checkVersion = function(design, name, value) {  
   if (name == "z2j") {
@@ -58,9 +59,13 @@ Dagaz.Model.checkVersion = function(design, name, value) {
          (name != "detect-loops")       &&
          (name != "advisor-wait")       &&
          (name != "promote-dialog")     &&
+         (name != "complete-partial")   &&
          (name != "animate-redo")       &&
          (name != "silent-?-moves")) {
          design.failed = true;
+     }
+     if (name == "complete-partial") {
+         if (value == "true") Dagaz.Model.completePartial = true;
      }
      if (name == "animate-redo") {
          if (value == "false") Dagaz.Model.animateRedo = false;
