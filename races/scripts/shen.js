@@ -20,8 +20,8 @@ ZRF = {
 };
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../../sounds/slide.ogg", true);
-    Dagaz.Controller.addSound(10, "../../sounds/dice.wav", true);
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+    Dagaz.Controller.addSound(10, "../sounds/dice.wav", true);
 }
 
 Dagaz.Model.BuildDesign = function(design) {
