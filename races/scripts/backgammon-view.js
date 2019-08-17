@@ -1,6 +1,7 @@
 (function() {
 
-Dagaz.View.MARK_R = 10;
+var cache = [];
+var zSign = 0;
 
 var checkVersion = Dagaz.Model.checkVersion;
 
@@ -10,25 +11,46 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
-Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
+var getRank = function(design, board, pos) {
+  var x = 0; var y = 0;
+  var p = design.navigate(board.player, pos, 5);
+  if (p === null) return null;
+  while (p !== null) {
+      if (board.getPiece(p) === null) y++;
+      x++;
+      p = design.navigate(board.player, p, 5);
+  }
+  return {
+      size: 17 - y,
+      pos:  16 - x
+  };
+}
+
+Dagaz.View.deltaY = function(pos) {
   var design = Dagaz.Model.design;
-  var s = 30;
-  if (design.inZone(4, 1, pos)) {
-      y -= (frame.dy - piece.dy) / 2 | 0;
-  } else {
-      y += (frame.dy - piece.dy) / 2 | 0;
-      s = -s;
+  var board  = Dagaz.Controller.app.board;
+  if (board.zSign != zSign) {
+      cache = [];
+      zSign = board.zSign;
   }
-  var v = 1;
-  if (model) {
-      v = model.getValue(0);
-      if ((v === null) || (v == 0)) v = 1;
+  if (_.isUndefined(cache[pos])) {
+      var dy = 0;
+      var r = getRank(design, board, pos);
+      if (r !== null) {
+          if (r.size > 5) {
+              dy = 38 - ((2 * r.size) | 0);
+          } else {
+              dy = 32;
+          }
+          dy -= 10;
+          if (!design.inZone(4, board.player, +pos)) {
+              dy = -dy;
+          }
+          dy *= r.pos;
+      }
+      cache[pos] = dy;
   }
-  for (var i = 0; i < v; i++) {
-      ctx.drawImage(piece.h, x, y, piece.dx, piece.dy);
-      if (model.type != 0) break;
-      y += s;
-  }
+  return cache[pos];
 }
 
 })();
