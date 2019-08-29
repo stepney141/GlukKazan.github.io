@@ -416,6 +416,9 @@ App.prototype.exec = function() {
       if ((ctx !== null) && (ai !== null)) {
          ai.setContext(ctx, this.board);
          this.state = STATE.BUZY;
+         if (!_.isUndefined(Dagaz.Controller.AI_DELAY)) {
+             Dagaz.Controller.delayTimestamp = Date.now();
+         }
          Canvas.style.cursor = "wait";
          this.timestamp = Date.now();
          once = true;
@@ -507,6 +510,10 @@ App.prototype.exec = function() {
       }
   }
   if (this.state == STATE.BUZY) {
+      if (!_.isUndefined(Dagaz.Controller.delayTimestamp)) {
+          if (Date.now() - Dagaz.Controller.delayTimestamp < Dagaz.Controller.AI_DELAY) return;
+          delete Dagaz.Controller.delayTimestamp;
+      }
       var ctx = this.getContext(this.board.player);
       var player = this.design.playerNames[this.board.player];
       var result = this.getAI().getMove(ctx);
