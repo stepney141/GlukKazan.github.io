@@ -1,3 +1,9 @@
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+    Dagaz.Controller.addSound(10, "../sounds/once.ogg", true);
+    Dagaz.Controller.addSound(11, "../sounds/twice.ogg", true);
+}
+
 ZRF = {
     JUMP:          0,
     IF:            1,

@@ -27,6 +27,7 @@ Dagaz.Model.CheckInvariants = function(board) {
           pos = design.navigate(board.player, pos, 4);
       }
       if ((last !== null) && (last != move.actions[1][0][0])) {
+          move.sound = 10;
           move.actions[1][1] = [last];
       } else {
           var actions = [];
