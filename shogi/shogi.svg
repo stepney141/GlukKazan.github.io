@@ -129,8 +129,10 @@
 </g>
 <!-- Maka dai dai shogi -->
 <g class="node" id="node12"><title>Maka dai dai shogi</title>
+<a xlink:href="makadaidaishogi-board.htm">
 <ellipse fill="red" stroke="black" cx="348" cy="-90" rx="84.1829" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="348" y="-85.8">Maka dai dai shogi</text>
+</a>
 </g>
 <!-- Dai dai shogi&#45;&gt;Maka dai dai shogi -->
 <g class="edge" id="edge16"><title>Dai dai shogi-&gt;Maka dai dai shogi</title>
@@ -139,8 +141,10 @@
 </g>
 <!-- Hishigata shogi -->
 <g class="node" id="node13"><title>Hishigata shogi</title>
+<a xlink:href="hishigata-shogi-board.htm">
 <ellipse fill="red" stroke="black" cx="269" cy="-18" rx="71.0761" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="269" y="-13.8">Hishigata shogi</text>
+</a>
 </g>
 <!-- Maka dai dai shogi&#45;&gt;Hishigata shogi -->
 <g class="edge" id="edge18"><title>Maka dai dai shogi-&gt;Hishigata shogi</title>
@@ -149,8 +153,10 @@
 </g>
 <!-- Macadamia shogi -->
 <g class="node" id="node14"><title>Macadamia shogi</title>
+<a xlink:href="macadamia-shogi-board.htm">
 <ellipse fill="red" stroke="black" cx="438" cy="-18" rx="79.1263" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="438" y="-13.8">Macadamia shogi</text>
+</a>
 </g>
 <!-- Maka dai dai shogi&#45;&gt;Macadamia shogi -->
 <g class="edge" id="edge20"><title>Maka dai dai shogi-&gt;Macadamia shogi</title>
