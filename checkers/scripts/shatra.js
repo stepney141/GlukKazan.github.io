@@ -25,6 +25,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("smart-moves", "false");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "true");
+    design.checkVersion("show-captures", "false");
     design.checkVersion("deferred-captures", "true");
     design.checkVersion("advisor-wait", "10");
 
