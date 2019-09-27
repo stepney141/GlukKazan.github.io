@@ -431,7 +431,8 @@ Dagaz.Model.BuildDesign = function(design) {
 }
 
 Dagaz.View.configure = function(view) {
-    view.defBoard("Board");
+    view.defBoard("WhiteBoard", 0, 0, undefined, [0]);
+    view.defBoard("BlackBoard", 0, 0, undefined, [1]);
     view.defPiece("GoldPawn", "Gold Pawn");
     view.defPiece("SilverPawn", "Silver Pawn");
     view.defPiece("GoldBishop", "Gold Bishop");
