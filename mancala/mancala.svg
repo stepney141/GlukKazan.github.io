@@ -263,8 +263,10 @@
 </g>
 <!-- Ohvalhu -->
 <g class="node" id="node41"><title>Ohvalhu</title>
+<a xlink:href="ohvalhu.htm">
 <ellipse fill="darkgreen" stroke="black" cx="1540" cy="-162" rx="43.9398" ry="18" />
 <text font-family="Times,serif" font-size="14" text-anchor="middle" x="1540" y="-157.8">Ohvalhu</text>
+</a>
 </g>
 <!-- Congkak&#45;&gt;Ohvalhu -->
 <g class="edge" id="edge52"><title>Congkak-&gt;Ohvalhu</title>
