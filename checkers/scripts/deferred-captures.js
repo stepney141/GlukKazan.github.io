@@ -1,7 +1,5 @@
 (function() {
 
-//Dagaz.Model.deferredStrike = true;
-
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {

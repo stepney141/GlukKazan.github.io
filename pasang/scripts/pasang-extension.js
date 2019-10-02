@@ -1,5 +1,7 @@
 (function() {
 
+Dagaz.View.CLEAR_KO = true;
+
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
