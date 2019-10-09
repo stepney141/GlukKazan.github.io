@@ -271,35 +271,6 @@ var isCheckmated = function(castles) {
   return tryCheckmate(castles, stack);
 }
 
-var checkGoals = Dagaz.Model.checkGoals;
-
-Dagaz.Model.checkGoals = function(design, board, player) {
-  board.generate(design);
-  if (board.moves.length > 0) return checkGoals(design, board, player);
-  var f = []; var e = []; 
-  var fc = 0; var ec = 0;
-  _.each(positions, function(pos) {
-      var piece = board.getPiece(pos);
-      if (piece === null) return;
-      if (notCastle(design, board, piece.player, pos)) return;
-      var r = getAttacking(design, board, piece.player, pos);
-      if (piece.player != player) {
-          if (r.length > 0) {
-              return e.push(r);
-              ec++;
-          }
-      } else {
-          if (r.length > 0) {
-              return f.push(r);
-              fc++;
-          }
-      }
-  });
-  if ((e.length == ec) && isCheckmated(e)) return 1;
-  if ((f.length == fc) && isCheckmated(f)) return -1;
-  return r;
-}
-
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
