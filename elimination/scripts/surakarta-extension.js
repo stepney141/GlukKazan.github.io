@@ -10,6 +10,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(10, "../sounds/roll.wav", true);
+}
+
 var navigate = function(design, pos, dirs) {
   var r = design.navigate(1, pos, dirs.dir);
   if (r === null) {
@@ -33,6 +37,7 @@ var tryMove = function(design, board, pos, v, h) {
       if (piece !== null) {
           if (piece.player == board.player) return null;
           if (f) return null;
+          m.sound = 10;
           m.movePiece(pos, p, board.getPiece(pos));
           return m;
       }
@@ -51,6 +56,17 @@ Dagaz.Model.CheckInvariants = function(board) {
       if ((piece === null) || (piece.player != board.player)) return;
       var a = tryMove(design, board, pos, 8, 9);
       var b = tryMove(design, board, pos, 10, 11);
+      if (a !== null) {
+          board.moves.push(a);
+      }
+      if (b !== null) {
+          if (a !== null) {
+              if (a.actions[0][1][0] == b.actions[0][1][0]) return;
+          }
+          board.moves.push(b);
+      }
+      a = tryMove(design, board, pos, 9, 8);
+      b = tryMove(design, board, pos, 11, 10);
       if (a !== null) {
           board.moves.push(a);
       }
