@@ -99,13 +99,28 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(4, 2, [2, 2], 0);
     design.addMove(4, 2, [0, 0], 0);
 
-    design.setup("You", "Rook", 6);
-    design.setup("You", "Pawn", 0);
-    design.setup("You", "Bishop", 7);
-    design.setup("You", "Knight", 4);
+    design.addPiece("Silver", 5);
+    design.addMove(5, 0, [7], 0);
+    design.addMove(5, 0, [6], 0);
+    design.addMove(5, 0, [5], 0);
+    design.addMove(5, 0, [2], 0);
+    design.addMove(5, 0, [0], 0);
+
+    design.addPiece("Gold", 6);
+    design.addMove(6, 0, [7], 0);
+    design.addMove(6, 0, [3], 0);
+    design.addMove(6, 0, [4], 0);
+    design.addMove(6, 0, [1], 0);
+    design.addMove(6, 0, [6], 0);
+    design.addMove(6, 0, [5], 0);
+
+    design.setup("You", "Rook", 7);
+    design.setup("You", "Pawn", 4);
+    design.setup("You", "Gold", 3);
+    design.setup("You", "Silver", 6);
     design.setup("You", "Lance", 8);
 
-    design.goal(0, "You", "Rook", [5]);
+    design.goal(0, "You", "Rook", [2]);
 }
 
 Dagaz.View.configure = function(view) {
@@ -115,6 +130,8 @@ Dagaz.View.configure = function(view) {
     view.defPiece("YouLance", "You Lance");
     view.defPiece("YouRook", "You Rook");
     view.defPiece("YouBishop", "You Bishop");
+    view.defPiece("YouSilver", "You Silver");
+    view.defPiece("YouGold", "You Gold");
  
     view.defPosition("c1", 4, 4, 64, 65);
     view.defPosition("b1", 76, 4, 64, 65);
