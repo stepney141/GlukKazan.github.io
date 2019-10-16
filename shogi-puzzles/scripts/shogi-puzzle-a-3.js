@@ -1,3 +1,7 @@
+if (!_.isUndefined(Dagaz.Controller.addSound)) {
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+}
+
 ZRF = {
     JUMP:          0,
     IF:            1,
@@ -115,7 +119,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(6, 0, [5], 0);
 
     design.setup("You", "Rook", 7);
-    design.setup("You", "Pawn", 4);
+    design.setup("You", "Knight", 4);
     design.setup("You", "Gold", 3);
     design.setup("You", "Silver", 6);
     design.setup("You", "Lance", 8);
