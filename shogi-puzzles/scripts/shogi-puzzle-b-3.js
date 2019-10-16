@@ -118,14 +118,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(6, 0, [6], 0);
     design.addMove(6, 0, [5], 0);
 
-    design.setup("You", "Rook", 5);
-    design.setup("You", "Bishop", 3);
+    design.setup("You", "Rook", 7);
+    design.setup("You", "Bishop", 1);
     design.setup("You", "Pawn", 4);
-    design.setup("You", "Lance", 7);
-    design.setup("You", "Gold", 1);
+    design.setup("You", "Silver", 3);
+    design.setup("You", "Gold", 5);
 
-    design.goal(0, "You", "Rook", [3]);
-    design.goal(0, "You", "Bishop", [5]);
+    design.goal(0, "You", "Rook", [1]);
+    design.goal(0, "You", "Bishop", [7]);
 }
 
 Dagaz.View.configure = function(view) {

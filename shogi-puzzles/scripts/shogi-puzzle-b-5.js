@@ -26,7 +26,6 @@ ZRF = {
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");
     design.checkVersion("smart-moves", "false");
-    design.checkVersion("progressive-levels", "true");
 
     design.addDirection("se");
     design.addDirection("s");
@@ -118,14 +117,40 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(6, 0, [6], 0);
     design.addMove(6, 0, [5], 0);
 
-    design.setup("You", "Rook", 5);
-    design.setup("You", "Bishop", 3);
-    design.setup("You", "Pawn", 4);
-    design.setup("You", "Lance", 7);
-    design.setup("You", "Gold", 1);
+    design.addPiece("RookOther", 7);
+    design.addMove(7, 2, [7, 7], 0);
+    design.addMove(7, 2, [3, 3], 0);
+    design.addMove(7, 2, [4, 4], 0);
+    design.addMove(7, 2, [1, 1], 0);
 
-    design.goal(0, "You", "Rook", [3]);
-    design.goal(0, "You", "Bishop", [5]);
+    design.addPiece("BishopOther", 8);
+    design.addMove(8, 2, [6, 6], 0);
+    design.addMove(8, 2, [5, 5], 0);
+    design.addMove(8, 2, [2, 2], 0);
+    design.addMove(8, 2, [0, 0], 0);
+
+    design.addPiece("King", 9);
+    design.addMove(9, 0, [7], 0);
+    design.addMove(9, 0, [3], 0);
+    design.addMove(9, 0, [4], 0);
+    design.addMove(9, 0, [1], 0);
+    design.addMove(9, 0, [6], 0);
+    design.addMove(9, 0, [5], 0);
+    design.addMove(9, 0, [2], 0);
+    design.addMove(9, 0, [0], 0);
+
+    design.setup("You", "Rook", 8);
+    design.setup("You", "RookOther", 6);
+    design.setup("You", "Bishop", 2);
+    design.setup("You", "BishopOther", 0);
+    design.setup("You", "Pawn", 5);
+    design.setup("You", "Pawn", 3);
+    design.setup("You", "King", 4);
+
+    design.goal(0, "You", "Rook", [2]);
+    design.goal(0, "You", "RookOther", [0]);
+    design.goal(0, "You", "Bishop", [6]);
+    design.goal(0, "You", "BishopOther", [8]);
 }
 
 Dagaz.View.configure = function(view) {
@@ -137,6 +162,9 @@ Dagaz.View.configure = function(view) {
     view.defPiece("YouBishop", "You Bishop");
     view.defPiece("YouSilver", "You Silver");
     view.defPiece("YouGold", "You Gold");
+    view.defPiece("YouRook", "You RookOther");
+    view.defPiece("YouBishop", "You BishopOther");
+    view.defPiece("YouKing", "You King");
  
     view.defPosition("c1", 4, 4, 64, 65);
     view.defPosition("b1", 76, 4, 64, 65);
