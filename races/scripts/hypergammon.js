@@ -43,18 +43,18 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addRandom(1, [7]); // 0
     design.addRandom(2, [7]); // 1
     design.repeatMark();
+    design.addRandom(1, [0]); // 2
     design.addRandom(1, [0]); // 3
-    design.addRandom(1, [0]); // 4
+    design.addTurn(1, [1, 2, 3, 4, 5, 6]); // 4
     design.addTurn(1, [1, 2, 3, 4, 5, 6]); // 5
     design.addTurn(1, [1, 2, 3, 4, 5, 6]); // 6
     design.addTurn(1, [1, 2, 3, 4, 5, 6]); // 7
-    design.addTurn(1, [1, 2, 3, 4, 5, 6]); // 8
+    design.addRandom(2, [0]); // 8
     design.addRandom(2, [0]); // 9
-    design.addRandom(2, [0]); // 10
+    design.addTurn(2, [1, 2, 3, 4, 5, 6]); // 10
     design.addTurn(2, [1, 2, 3, 4, 5, 6]); // 11
     design.addTurn(2, [1, 2, 3, 4, 5, 6]); // 12
     design.addTurn(2, [1, 2, 3, 4, 5, 6]); // 13
-    design.addTurn(2, [1, 2, 3, 4, 5, 6]); // 14
 
     design.addPosition("m1a", [87, 86, 78, 36, 3, 1, 69, 33]);
     design.addPosition("m1b", [0, 0, 0, 35, 2, 1, 0, 0]);
@@ -313,8 +313,8 @@ Dagaz.Model.BuildDesign = function(design) {
 }
 
 Dagaz.View.configure = function(view) {
-    view.defBoard("WhiteBoard", 0, 0, undefined, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
-    view.defBoard("BlackBoard", 0, 0, undefined, [9, 10, 11, 12, 13, 14]);
+    view.defBoard("WhiteBoard", 0, 0, undefined, [0, 1, 2, 3, 4, 5, 6, 7]);
+    view.defBoard("BlackBoard", 0, 0, undefined, [8, 9, 10, 11, 12, 13]);
     view.defPiece("WhiteMan", "White Man");
     view.defPiece("BlackMan", "Black Man");
     view.defPiece("WhiteD1", "White D1");
