@@ -2711,6 +2711,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("White", "T25", 98);
     design.setup("White", "T42", 100);
     design.setup("White", "T49", 101);
+    design.setup("White", "T72", 94);
     design.setup("White", "T81", 95);
     design.setup("White", "S15", 96);
     design.setup("White", "S25", 104);
