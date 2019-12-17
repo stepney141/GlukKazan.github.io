@@ -2730,7 +2730,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.setup("Black", "C49", 35);
     design.setup("Black", "C81", 34);
     design.setup("Black", "T12", 38);
-    design.setup("Black", "T12", 39);
+    design.setup("Black", "T16", 39);
     design.setup("Black", "T30", 28);
     design.setup("Black", "T36", 29);
     design.setup("Black", "T56", 27);
