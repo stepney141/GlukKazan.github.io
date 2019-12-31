@@ -1,3 +1,16 @@
+31/12/2019 - 1.3.2
+  Surakarta
+  Shogi puzzles
+  Netwalk
+  Lines
+  Martian Chess
+  North American Checkers
+  Alaska Checkers
+  Russian Backgammon
+  Senet
+  Rithmomachia
+  Longgammon
+  deferred-captures option fixed
 02/10/2019 - 1.3.1
   Backgammon (3 variants)
   Ultimate tic-tac-toe
