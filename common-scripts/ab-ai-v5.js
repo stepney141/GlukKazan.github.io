@@ -4,6 +4,7 @@ Dagaz.AI.inProgress = false;
 Dagaz.AI.AI_FRAME   = 5000;
 Dagaz.AI.IDLE_FRAME = 1000;
 
+var MAX_LEVEL = 25;
 var MAX_VALUE = 2000000;
 var HASH_MASK = (1 << 22) - 1;
 
@@ -18,7 +19,7 @@ function Ai(parent) {
 var findBot = Dagaz.AI.findBot;
 
 Dagaz.AI.findBot = function(type, params, parent) {
-  if ((type == "ab") || (type == "common") || (type == "1") /*|| (type == "2")*/) {
+  if ((type == "ab") || (type == "common") || (type == "1") || (type == "2")) {
       return new Ai(parent);
   } else {
       return findBot(type, params, parent);
@@ -246,6 +247,7 @@ Ai.prototype.acn = function(ctx, board, maxLevel, level, beta, allowNull) {
 }
 
 Ai.prototype.qs = function(ctx, board, alpha, beta, maxLevel, level) {
+  if (level > MAX_LEVEL) return 0;
   ctx.qNodeCount++;
   if (level > ctx.qLevel) ctx.qLevel = level;
   var inCheck = Dagaz.AI.inCheck(ctx.design, board);
