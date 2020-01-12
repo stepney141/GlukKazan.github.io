@@ -63,7 +63,7 @@ Ai.prototype.getBaseEval = function(ctx, board) {
            if (Dagaz.AI.isMajorPiece(piece.type)) {
                board.isZugzwang = false;
            }
-           if (piece.player == ctx.player) {
+           if (piece.player == board.player) {
                board.baseEval += v;
            } else {
                board.baseEval -= v;
@@ -74,7 +74,7 @@ Ai.prototype.getBaseEval = function(ctx, board) {
 }
 
 Ai.prototype.getCompleteEval = function(ctx, board) {
-  return Dagaz.AI.eval(ctx.design, [], board, ctx.board.player);
+  return Dagaz.AI.eval(ctx.design, [], board, board.player);
 }
 
 Ai.prototype.noZugzwang = function(ctx, board) {
@@ -378,16 +378,6 @@ Ai.prototype.getMove = function(ctx) {
            time: Date.now() - ctx.timestamp,
            ai:  "once"
       };
-  }
-  for (var i = 0; i < ctx.board.moves.length; i++) {
-       var b = ctx.board.apply(ctx.board.moves[i]);
-       if (Dagaz.Model.checkGoals(ctx.design, b, ctx.board.player) > 0)
-           return {
-               done: true,
-               move: ctx.board.moves[i],
-               time: Date.now() - ctx.timestamp,
-               ai:  "goal"
-           };
   }
   ctx.timestamp = Date.now();
   ctx.best = null;
