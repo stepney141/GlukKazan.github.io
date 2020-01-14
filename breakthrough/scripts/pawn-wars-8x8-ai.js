@@ -1,6 +1,6 @@
 (function() {
 
-Dagaz.AI.AI_FRAME = 3000;
+Dagaz.AI.AI_FRAME = 4000;
 Dagaz.AI.REP_DEEP = 10;
 
 var penalty = 
