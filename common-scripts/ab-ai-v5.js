@@ -379,6 +379,16 @@ Ai.prototype.getMove = function(ctx) {
            ai:  "once"
       };
   }
+  for (var i = 0; i < ctx.board.moves.length; i++) {
+       var b = ctx.board.apply(ctx.board.moves[i]);
+       if (Dagaz.Model.checkGoals(ctx.design, b, ctx.board.player) > 0)
+           return {
+               done: true,
+               move: ctx.board.moves[i],
+               time: Date.now() - ctx.timestamp,
+               ai:  "goal"
+           };
+  }
   ctx.timestamp = Date.now();
   ctx.best = null;
   Dagaz.AI.inProgress = true;
