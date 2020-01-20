@@ -2,6 +2,7 @@
 
 Dagaz.AI.AI_FRAME = 2000;
 Dagaz.AI.REP_DEEP = 10;
+Dagaz.AI.MAX_QS_LEVEL = 5;
 
 var penalty = 
   [   0,   0,   0,   0,

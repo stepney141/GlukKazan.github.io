@@ -5,6 +5,7 @@ Dagaz.AI.AI_FRAME     = 5000;
 Dagaz.AI.IDLE_FRAME   = 1000;
 Dagaz.AI.START_DEEP   = 1;
 Dagaz.AI.NOISE_FACTOR = 0;
+Dagaz.AI.MAX_QS_LEVEL = 1;
 
 var MAX_LEVEL = 25;
 var MAX_VALUE = 2000000;
@@ -284,6 +285,7 @@ Ai.prototype.qs = function(ctx, board, alpha, beta, maxLevel, level) {
   var e = inCheck ? (-MAX_VALUE + 1) : this.getCompleteEval(ctx, board);
   if (e >= beta) return e;
   if (e > alpha) alpha = e;
+  if (maxLevel < -Dagaz.AI.MAX_QS_LEVEL) return e;
   board.moves = generate(ctx, board); 
   var moves = [];
   _.each(board.moves, function(move) {
