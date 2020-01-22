@@ -85,6 +85,14 @@ var checkHorse = function(design, board, player, pos, d, o, horse) {
   return (piece.player != player) && (piece.type == horse);
 }
 
+var checkGoals = Dagaz.Model.checkGoals;
+
+Dagaz.Model.checkGoals = function(design, board, player) {
+  board.generate(design);
+  if (board.moves.length == 0) return 1;
+  return checkGoals(design, board, player);
+}
+
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
