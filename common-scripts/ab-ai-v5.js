@@ -6,6 +6,7 @@ Dagaz.AI.IDLE_FRAME   = 1000;
 Dagaz.AI.START_DEEP   = 1;
 Dagaz.AI.NOISE_FACTOR = 0;
 Dagaz.AI.MAX_QS_LEVEL = 1;
+Dagaz.AI.STALEMATE    = 0;
 
 var MAX_LEVEL = 25;
 var MAX_VALUE = 2000000;
@@ -261,7 +262,7 @@ Ai.prototype.acn = function(ctx, board, maxLevel, level, beta, allowNull) {
           return -MAX_VALUE + level;
       else
           // Stalemate
-          return 0;
+          return Dagaz.AI.STALEMATE * (MAX_VALUE - level);
   }
   this.store(ctx, board, e, ALPHA_FLAG, maxLevel, best, level);
   return e;
@@ -367,7 +368,7 @@ Ai.prototype.ab = function(ctx, board, maxLevel, level, alpha, beta) {
            return -MAX_VALUE + level;
        else 
            // Stalemate
-           return 0;
+           return Dagaz.AI.STALEMATE * (MAX_VALUE - level);
   }
   this.store(ctx, board, e, flag, maxLevel, best, level);
   return e;
