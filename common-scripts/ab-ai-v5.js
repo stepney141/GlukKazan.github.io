@@ -16,6 +16,8 @@ var ALPHA_FLAG = 1;
 var BETA_FLAG  = 2;
 var EXACT_FLAG = 3;
 
+var AI_FRAME   = null;
+
 function Ai(parent) {
   this.parent = parent;
 }
@@ -28,6 +30,19 @@ Dagaz.AI.findBot = function(type, params, parent) {
   } else {
       return findBot(type, params, parent);
   }
+}
+
+var getAiFrame = function() {
+  if (AI_FRAME === null) {
+      var str = window.location.search.toString();
+      var result = str.match(/[?&]ai=([^&]*)/);
+      if (result) {
+          AI_FRAME = result[1];
+      } else {
+          AI_FRAME = Dagaz.AI.AI_FRAME;
+      }
+  }
+  return AI_FRAME;
 }
 
 Dagaz.AI.getPrice = function(design, piece, pos) {
@@ -312,7 +327,7 @@ Ai.prototype.ab = function(ctx, board, maxLevel, level, alpha, beta) {
        var v = null;
        if (f) {
            if ((ctx.nodeCount & 127) == 127) {
-               if (Date.now() - ctx.timestamp > Dagaz.AI.AI_FRAME) {
+               if (Date.now() - ctx.timestamp > getAiFrame()) {
                    Dagaz.AI.inProgress = false;
                }
            }
@@ -388,7 +403,10 @@ Ai.prototype.getMove = function(ctx) {
   }
   if (Dagaz.AI.NOISE_FACTOR > 0) {
       ctx.board.moves = _.sortBy(ctx.board.moves, function(m) {
-          return _.random(0, Dagaz.AI.NOISE_FACTOR);
+          if (_.isUndefined(m.weight)) {
+              m.weight = _.random(0, Dagaz.AI.NOISE_FACTOR);
+          }
+          return m.weight;
       });
   }
   ctx.timestamp = Date.now();
