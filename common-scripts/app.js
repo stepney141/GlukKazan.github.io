@@ -43,10 +43,21 @@ Dagaz.Controller.createApp = function(canvas) {
   return Dagaz.Controller.app;
 }
 
-var gameOver = function(text, self, result) {
-  alert(text);
+var gameOver = function(text, self, player) {
+  if (!Dagaz.Model.silent || (player != 0)) {
+      alert(text);
+  }
   if (Dagaz.Model.progressive) {
-      var str = Dagaz.Model.continue(self.design, self.board, window.location.toString(), result);
+      if (Dagaz.Model.silent && (player != 0)) return;
+      if (player < 0) {
+          window.location = window.location.toString();
+          return;
+      }
+      if (Dagaz.Model.progressiveUrl !== null) {
+          window.location = Dagaz.Model.progressiveUrl;
+          return;
+      }
+      var str = Dagaz.Model.continue(self.design, self.board, window.location.toString());
       if (str !== null) {
           window.location = str;
       }
@@ -285,7 +296,7 @@ App.prototype.exec = function() {
                  if (!_.isUndefined(Dagaz.Controller.play)) {
                      Dagaz.Controller.play(Dagaz.Sounds.lose);
                  }
-                 this.gameOver(player + " loses", -1);
+                 this.gameOver(player + " lose", -1);
                  return;
              }
          }
@@ -310,7 +321,7 @@ App.prototype.exec = function() {
               if (!_.isUndefined(Dagaz.Controller.play)) {
                   Dagaz.Controller.play(Dagaz.Sounds.win);
               }
-              this.gameOver(player + " loses", -1);
+              this.gameOver(player + " lose", -1);
               return;
           }
           if (result.done || (Date.now() - this.timestamp >= this.params.AI_WAIT)) {
@@ -369,7 +380,7 @@ App.prototype.exec = function() {
                       Dagaz.Controller.play(Dagaz.Sounds.lose);
                   }
               }
-              this.doneMessage = player + " wins";
+              this.doneMessage = player + " won";
               this.doneResult  = 1;
               if (!_.isUndefined(Dagaz.Controller.play)) {
                   Dagaz.Controller.play(Dagaz.Sounds.win);
@@ -382,7 +393,7 @@ App.prototype.exec = function() {
                      Dagaz.Controller.play(Dagaz.Sounds.lose);
                   }
               }
-              this.doneMessage = player + " loses";
+              this.doneMessage = player + " lose";
               this.doneResult  = -1;
           } else {
               if (!_.isUndefined(Dagaz.Controller.play)) {
