@@ -148,6 +148,15 @@ Ai.prototype.store = function(ctx, board, value, flag, maxLevel, best, level) {
   };
 }
 
+Dagaz.AI.getSource = function(move) {
+  for (var i = 0; i < move.actions.length; i++) {
+       if ((move.actions[i][0] !== null) && (move.actions[i][1] !== null)) {
+           return move.actions[i][0][0];
+       }
+  }
+  return null;
+}
+
 Dagaz.AI.getTarget = function(move) {
   for (var i = 0; i < move.actions.length; i++) {
        if (move.actions[i][0] !== null) {
