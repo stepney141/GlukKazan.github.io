@@ -7,8 +7,9 @@ Dagaz.AI.START_DEEP   = 1;
 Dagaz.AI.NOISE_FACTOR = 100;
 Dagaz.AI.MAX_QS_LEVEL = 3;
 Dagaz.AI.STALEMATE    = 0;
-Dagaz.AI.MAX_AB_VARS  = 100;
+Dagaz.AI.MAX_AB_VARS  = 7;
 Dagaz.AI.MAX_QS_VARS  = 3;
+Dagaz.AI.NO_PRUNING   = 2;
 
 var MAX_LEVEL = 25;
 var MAX_VALUE = 2000000;
@@ -168,7 +169,7 @@ Dagaz.AI.getTarget = function(move) {
   return null;
 }
 
-function MovePicker(ctx, board, best, k1, k2) {
+function MovePicker(ctx, board, best, k1, k2, allowPruning) {
   this.list = []; var loosing = []; var done = [];
   if (!_.isUndefined(best) && (best !== null)) {
       best.weight = 100000;
@@ -210,15 +211,15 @@ function MovePicker(ctx, board, best, k1, k2) {
       this.list.push(b);
   }, this);
   this.prune = this.list.length;
-  if (this.list.length >= Dagaz.AI.MAX_AB_VARS) return;
+  if (allowPruning && (this.list.length >= Dagaz.AI.MAX_AB_VARS)) return;
   _.each(board.moves, function(move) {
-      if (this.list.length >= Dagaz.AI.MAX_AB_VARS) return;
+      if (allowPruning && (this.list.length >= Dagaz.AI.MAX_AB_VARS)) return;
       if (_.indexOf(done, move.getZ()) >= 0) return;
       var b = applyMove(ctx, board, move);
       this.list.push(b);
   }, this);
   _.each(loosing, function(b) {
-      if (this.list.length >= Dagaz.AI.MAX_AB_VARS) return;
+      if (allowPruning && (this.list.length >= Dagaz.AI.MAX_AB_VARS)) return;
       this.list.push(b);
   }, this);
 }
@@ -274,7 +275,7 @@ Ai.prototype.acn = function(ctx, board, maxLevel, level, beta, allowNull) {
   var inCheck = Dagaz.AI.inCheck(ctx.design, board);
   var g = checkGoal(ctx, board);
   if ((g !== null) && (g < 0)) inCheck = true;
-  var m = new MovePicker(ctx, board, best, ctx.killer[0][board.level], ctx.killer[1][board.level]);
+  var m = new MovePicker(ctx, board, best, ctx.killer[0][board.level], ctx.killer[1][board.level], true);
   for (var i = 0; i < m.list.length; i++) {
        var b = m.list[i];
        var ltos = maxLevel - 1;
@@ -414,7 +415,7 @@ Ai.prototype.ab = function(ctx, board, maxLevel, level, alpha, beta) {
   if ((g !== null) && (g < 0)) inCheck = true;
   var f = false;
   var e = -MAX_VALUE;
-  var m = new MovePicker(ctx, board, best, ctx.killer[0][board.level], ctx.killer[1][board.level]);
+  var m = new MovePicker(ctx, board, best, ctx.killer[0][board.level], ctx.killer[1][board.level], level >= Dagaz.AI.NO_PRUNING);
   for (var i = 0; i < m.list.length; i++) {
        var b = m.list[i];
        var ltos = maxLevel - 1;

@@ -1,10 +1,10 @@
 (function() {
 
-Dagaz.AI.AI_FRAME     = 1500;
+Dagaz.AI.AI_FRAME     = 2000;
 Dagaz.AI.REP_DEEP     = 30;
-Dagaz.AI.MAX_QS_LEVEL = 5;
-Dagaz.AI.MAX_AB_VARS  = 10;
-Dagaz.AI.MAX_QS_VARS  = 1;
+Dagaz.AI.MAX_QS_LEVEL = 3;
+Dagaz.AI.MAX_AB_VARS  = 30;
+Dagaz.AI.MAX_QS_VARS  = 3;
 Dagaz.AI.STALEMATE    = 0;
 
 var penalty = [
@@ -16,10 +16,18 @@ var penalty = [
     -95, -15,  15,  75,  75,  15, -15, -95, 
    -100, -20,  10,  70,  70,  10, -20,-100, 
       0,   0,   0,   0,   0,   0,   0,   0 ],
-  [ 140, 170, 190, 220, 220, 190, 170, 140,
-    190, 220, 240, 270, 270, 240, 220, 190,
+  [   0,   0,   0,   0,   0,   0,   0,   0,
+    -25, 105, 135, 270, 270, 135, 105, -25,
+    -80,   0,  30, 176, 176,  30,   0, -80,
+    -85,  -5,  25, 175, 175,  25,  -5, -85,
+    -90, -10,  20, 125, 125,  20, -10, -90,
+    -95, -15,  15,  75,  75,  15, -15, -95, 
+   -100, -20,  10,  70,  70,  10, -20,-100, 
+      0,   0,   0,   0,   0,   0,   0,   0 ],
+  [ -60, -30, -10,  20,  20, -10, -30, -60,
      40,  70,  90, 120, 120,  90,  70,  40,
-    -10,  20,  10,  70,  70,  10,  20, -10,
+    -60, -30, -10,  20,  20, -10, -30, -60,
+    -60, -30, -10,  20,  20, -10, -30, -60,
     -60, -30, -10,  20,  20, -10, -30, -60,
     -60, -30, -10,  20,  20, -10, -30, -60,
     -60, -30, -10,  20,  20, -10, -30, -60,
@@ -40,10 +48,10 @@ var penalty = [
     -25, -10,   0,  25,  25,   0, -10, -25,
     -50, -25, -10,   0,   0, -10, -25, -50,
     -50, -50, -25, -10, -10, -25, -50, -50 ],
-  [ 150, 150, 175, 190, 190, 175, 150, 150,
-    100, 125, 140, 150, 150, 140, 125, 100,
-     75,  90, 100, 125, 125, 100,  90,  75,
-     40,  50,  75,  90,  90,  75,  50,  40,
+  [ -50, -50, -25, -10, -10, -25, -50, -50,
+    -50, -25, -10,   0,   0, -10, -25, -50,
+    -25, -10,   0,  25,  25,   0, -10, -25,
+    -10,   0,  25,  40,  40,  25,   0, -10,
     -10,   0,  25,  40,  40,  25,   0, -10,
     -25, -10,   0,  25,  25,   0, -10, -25,
     -50, -25, -10,   0,   0, -10, -25, -50,
@@ -60,79 +68,98 @@ var penalty = [
 
 Dagaz.AI.getPrice = function(design, piece, pos) {
   var r = design.price[piece.type];
-  if (piece.player == 1) {
-      r += penalty[piece.type][pos];
-  } else {
-      r += penalty[piece.type][63 - pos];
+  if ((pos >= 16) && (pos < 80) && (piece.type > 0)) {
+      if (piece.player == 1) {
+          r += penalty[+piece.type - 1][pos - 16];
+      } else {
+          r += penalty[+piece.type - 1][79 - pos];
+      }
   }
   return r;
 }
 
 Dagaz.AI.isMajorPiece = function(type) {
-  if (type == 0) return false;
-  if (type == 5) return false;
+  if (type < 3) return false;
+  if (type > 6) return false;
   return true;
 }
 
-Dagaz.AI.isRepDraw = function(board) {
-  var z = board.zSign;
-  for (var i = 0; i < Dagaz.AI.REP_DEEP; i++) {
-       if (board.parent === null) return false;
-       var pos = Dagaz.AI.getTarget(board.move);
-       board = board.parent;
-       if (board.zSign == z) return true;
-       if (pos === null) continue;
-       if (board.getPiece(pos) !== null) return false;
-  }
-  return true;
-}
-
-var checkStep = function(design, board, player, pos, dir) {
+var checkStep = function(design, board, player, pos, dir, types) {
   var p = design.navigate(player, pos, dir);
   if  (p === null) return false;
   var piece = board.getPiece(p);
   if (piece === null) return false;
   if (piece.player == player) return false;
-  if (piece.type != 0) return false;
+  if (_.indexOf(types, +piece.type) < 0) return false;
   return true;
 }
 
-var checkSlide = function(design, board, player, pos, dir) {
+var checkSlide = function(design, board, player, pos, dir, types) {
   var p = design.navigate(player, pos, dir);
   if  (p === null) return false;
   var piece = board.getPiece(p);
   while (piece === null) {
+      var q = design.navigate(player, p, 9);
+      if (q === null) return false;
+      if (board.getPiece(q) === null) return false;
       p = design.navigate(player, p, dir);
       if  (p === null) return false;
       piece = board.getPiece(p);
   }
   if (piece.player == player) return false;
-  if (piece.type != 4) return false;
+  if (_.indexOf(types, +piece.type) < 0) return false;
   return true;
+}
+
+var checkJump = function(design, board, player, pos, d, o, type) {
+  var p = design.navigate(player, pos, d);
+  if  (p === null) return false;
+  p = design.navigate(player, p, o);
+  if  (p === null) return false;
+  var piece = board.getPiece(p);
+  if (piece === null) return false;
+  if (piece.player == player) return false;
+  if (piece.type != type) return false;
+  return true;
+}
+
+var isAttacked = function(design, board, player, pos) {
+return checkStep(design, board, board.player, pos, 4, [1, 7])  ||
+       checkStep(design, board, board.player, pos, 7, [1, 7])  ||
+       checkStep(design, board, board.player, pos, 0, [7])     ||
+       checkStep(design, board, board.player, pos, 1, [7])     ||
+       checkStep(design, board, board.player, pos, 2, [7])     ||
+       checkStep(design, board, board.player, pos, 3, [7])     ||
+       checkStep(design, board, board.player, pos, 5, [7])     ||
+       checkStep(design, board, board.player, pos, 6, [7])     ||
+       checkSlide(design, board, board.player, pos, 0, [6, 3]) ||
+       checkSlide(design, board, board.player, pos, 1, [6, 3]) ||
+       checkSlide(design, board, board.player, pos, 2, [6, 3]) ||
+       checkSlide(design, board, board.player, pos, 3, [6, 3]) ||
+       checkSlide(design, board, board.player, pos, 4, [6, 5]) ||
+       checkSlide(design, board, board.player, pos, 5, [6, 5]) ||
+       checkSlide(design, board, board.player, pos, 6, [6, 5]) ||
+       checkSlide(design, board, board.player, pos, 7, [6, 5]) ||
+       checkJump(design, board, board.player, pos, 0, 6, 4)    ||
+       checkJump(design, board, board.player, pos, 0, 7, 4)    ||
+       checkJump(design, board, board.player, pos, 1, 4, 4)    ||
+       checkJump(design, board, board.player, pos, 1, 5, 4)    ||
+       checkJump(design, board, board.player, pos, 2, 5, 4)    ||
+       checkJump(design, board, board.player, pos, 2, 6, 4)    ||
+       checkJump(design, board, board.player, pos, 3, 4, 4)    ||
+       checkJump(design, board, board.player, pos, 3, 7, 4);
 }
 
 Dagaz.AI.see = function(design, board, move) {
   if (!move.isSimpleMove()) return false;
-  var pos = move.actions[0][1][0];
-  if (board.lastt === null) return false;
-  if (board.lastt != pos) return false;
-  pos = move.actions[0][0][0];
+  var pos = move.actions[0][0][0];
   var piece = board.getPiece(pos);
   if (piece === null) return false;
   if (piece.type == 0) return true;
   pos = move.actions[0][1][0];
   piece = board.getPiece(pos);
   if (piece === null) return false;
-  if (checkStep(design, board, board.player, pos, 3)) return false;
-  if (checkStep(design, board, board.player, pos, 7)) return false;
-  if (checkSlide(design, board, board.player, pos, 0)) return false;
-  if (checkSlide(design, board, board.player, pos, 1)) return false;
-  if (checkSlide(design, board, board.player, pos, 2)) return false;
-  if (checkSlide(design, board, board.player, pos, 3)) return false;
-  if (checkSlide(design, board, board.player, pos, 4)) return false;
-  if (checkSlide(design, board, board.player, pos, 5)) return false;
-  if (checkSlide(design, board, board.player, pos, 6)) return false;
-  if (checkSlide(design, board, board.player, pos, 7)) return false;
+  if (isAttacked(design, board, piece.player, pos)) return false;
   return true;
 }
 
@@ -142,22 +169,13 @@ Dagaz.AI.inCheck = function(design, board) {
       var king = null;
       for (var pos = 0; pos < design.positions.length; pos++) {
           var piece = board.getPiece(pos);
-          if ((piece !== null) && (piece.player == board.player) && (piece.type == 5)) {
+          if ((piece !== null) && (piece.player == board.player) && (piece.type == 7)) {
               if (king !== null) return false;
               king = pos;
           }
       }
       if (king === null) return false;
-      board.inCheck = checkStep(design, board, board.player, king, 3) ||
-                      checkStep(design, board, board.player, king, 7) ||
-                      checkSlide(design, board, board.player, king, 0) ||
-                      checkSlide(design, board, board.player, king, 1) ||
-                      checkSlide(design, board, board.player, king, 2) ||
-                      checkSlide(design, board, board.player, king, 3) ||
-                      checkSlide(design, board, board.player, king, 4) ||
-                      checkSlide(design, board, board.player, king, 5) ||
-                      checkSlide(design, board, board.player, king, 6) ||
-                      checkSlide(design, board, board.player, king, 7);
+      board.inCheck = isAttacked(design, board, board.player, king);
   }
   return board.inCheck;
 }

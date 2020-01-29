@@ -1,10 +1,10 @@
 (function() {
 
-Dagaz.AI.AI_FRAME     = 1000;
+Dagaz.AI.AI_FRAME     = 1500;
 Dagaz.AI.REP_DEEP     = 30;
-Dagaz.AI.MAX_QS_LEVEL = 2;
-Dagaz.AI.MAX_AB_VARS  = 20;
-Dagaz.AI.MAX_QS_VARS  = 1;
+Dagaz.AI.MAX_QS_LEVEL = 3;
+Dagaz.AI.MAX_AB_VARS  = 10;
+Dagaz.AI.MAX_QS_VARS  = 2;
 Dagaz.AI.STALEMATE    = 0;
 
 var penalty = [
@@ -87,17 +87,17 @@ Dagaz.AI.isRepDraw = function(board) {
   return true;
 }
 
-var checkStep = function(design, board, player, pos, dir) {
+var checkStep = function(design, board, player, pos, dir, types) {
   var p = design.navigate(player, pos, dir);
   if  (p === null) return false;
   var piece = board.getPiece(p);
   if (piece === null) return false;
   if (piece.player == player) return false;
-  if (piece.type != 0) return false;
+  if (_.indexOf(types, +piece.type) < 0) return false;
   return true;
 }
 
-var checkSlide = function(design, board, player, pos, dir) {
+var checkSlide = function(design, board, player, pos, dir, types) {
   var p = design.navigate(player, pos, dir);
   if  (p === null) return false;
   var piece = board.getPiece(p);
@@ -107,11 +107,11 @@ var checkSlide = function(design, board, player, pos, dir) {
       piece = board.getPiece(p);
   }
   if (piece.player == player) return false;
-  if (piece.type != 4) return false;
+  if (_.indexOf(types, +piece.type) < 0) return false;
   return true;
 }
 
-var checkJump = function(design, board, player, pos, d, o) {
+var checkJump = function(design, board, player, pos, d, o, type) {
   var p = design.navigate(player, pos, d);
   if  (p === null) return false;
   p = design.navigate(player, p, o);
@@ -119,29 +119,35 @@ var checkJump = function(design, board, player, pos, d, o) {
   var piece = board.getPiece(p);
   if (piece === null) return false;
   if (piece.player == player) return false;
-  if (piece.type != 0) return false;
+  if (piece.type != type) return false;
   return true;
 }
 
 var isAttacked = function(design, board, player, pos) {
-return checkStep(design, board, board.player, pos, 3) ||
-       checkStep(design, board, board.player, pos, 7) ||
-       checkSlide(design, board, board.player, pos, 0) ||
-       checkSlide(design, board, board.player, pos, 1) ||
-       checkSlide(design, board, board.player, pos, 2) ||
-       checkSlide(design, board, board.player, pos, 3) ||
-       checkSlide(design, board, board.player, pos, 4) ||
-       checkSlide(design, board, board.player, pos, 5) ||
-       checkSlide(design, board, board.player, pos, 6) ||
-       checkSlide(design, board, board.player, pos, 7) ||
-       checkJump(design, board, board.player, pos, 0, 6) ||
-       checkJump(design, board, board.player, pos, 0, 7) ||
-       checkJump(design, board, board.player, pos, 1, 3) ||
-       checkJump(design, board, board.player, pos, 1, 5) ||
-       checkJump(design, board, board.player, pos, 2, 5) ||
-       checkJump(design, board, board.player, pos, 2, 6) ||
-       checkJump(design, board, board.player, pos, 4, 3) ||
-       checkJump(design, board, board.player, pos, 4, 7);
+return checkStep(design, board, board.player, pos, 3, [0, 5])  ||
+       checkStep(design, board, board.player, pos, 7, [0, 5])  ||
+       checkStep(design, board, board.player, pos, 0, [5])     ||
+       checkStep(design, board, board.player, pos, 1, [5])     ||
+       checkStep(design, board, board.player, pos, 2, [5])     ||
+       checkStep(design, board, board.player, pos, 4, [5])     ||
+       checkStep(design, board, board.player, pos, 5, [5])     ||
+       checkStep(design, board, board.player, pos, 6, [5])     ||
+       checkSlide(design, board, board.player, pos, 0, [4, 1]) ||
+       checkSlide(design, board, board.player, pos, 1, [4, 1]) ||
+       checkSlide(design, board, board.player, pos, 2, [4, 1]) ||
+       checkSlide(design, board, board.player, pos, 3, [4, 3]) ||
+       checkSlide(design, board, board.player, pos, 4, [4, 1]) ||
+       checkSlide(design, board, board.player, pos, 5, [4, 3]) ||
+       checkSlide(design, board, board.player, pos, 6, [4, 3]) ||
+       checkSlide(design, board, board.player, pos, 7, [4, 3]) ||
+       checkJump(design, board, board.player, pos, 0, 6, 2)    ||
+       checkJump(design, board, board.player, pos, 0, 7, 2)    ||
+       checkJump(design, board, board.player, pos, 1, 3, 2)    ||
+       checkJump(design, board, board.player, pos, 1, 5, 2)    ||
+       checkJump(design, board, board.player, pos, 2, 5, 2)    ||
+       checkJump(design, board, board.player, pos, 2, 6, 2)    ||
+       checkJump(design, board, board.player, pos, 4, 3, 2)    ||
+       checkJump(design, board, board.player, pos, 4, 7, 2);
 }
 
 Dagaz.AI.see = function(design, board, move) {
