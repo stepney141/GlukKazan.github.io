@@ -250,7 +250,7 @@ Dagaz.View.configure = function(view) {
     view.defPosition("a20", 67, 184, 29, 29);
     view.defPosition("b20", 133, 186, 29, 29);
     view.defPosition("c20", 201, 186, 29, 29);
-    view.defPosition("c21", 198, 181, 28, 28);
+    view.defPosition("c21", 198, 182, 28, 28);
     view.defPosition("c22", 194, 177, 28, 28);
     view.defPosition("c23", 190, 173, 28, 28);
     view.defPosition("d20", 268, 185, 29, 29);
