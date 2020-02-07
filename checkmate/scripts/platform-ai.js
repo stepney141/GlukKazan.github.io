@@ -315,19 +315,6 @@ Dagaz.AI.eval = function(design, params, board, player) {
            var attackers = getAttackers(design, board, piece.player, pos);
            if ((attackers !== null) && (attackers.length > 0)) {
                v = (v / 2) | 0;
-               var defenders = getAttackers(design, board, design.nextPlayer(piece.player), pos);
-               if ((defenders !== null) && (defenders.length > 0)) {
-                   var mn = null;
-                   _.each(defenders, function(p) {
-                       var piece = board.getPiece(p);
-                       if (piece === null) return;
-                       var x = Dagaz.AI.getPrice(design, piece, p);
-                       if ((mn === null) || (mn > x)) mn = x;
-                   });
-                   if (mn !== null) {
-                       v += (mn / 2) | 0;
-                   }
-               }
            }
            if (piece.player == board.player) {
                board.completeEval += v;
