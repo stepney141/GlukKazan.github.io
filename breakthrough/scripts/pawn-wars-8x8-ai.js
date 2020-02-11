@@ -1,8 +1,9 @@
 (function() {
 
-Dagaz.AI.AI_FRAME = 4000;
-Dagaz.AI.REP_DEEP = 10;
+Dagaz.AI.AI_FRAME     = 4000;
+Dagaz.AI.REP_DEEP     = 10;
 Dagaz.AI.MAX_QS_LEVEL = 5;
+Dagaz.AI.STALEMATE    = -1;
 
 var penalty = 
   [   0,   0,   0,   0,   0,   0,   0,   0,
