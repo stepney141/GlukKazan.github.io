@@ -1,5 +1,7 @@
 (function() {
 
+Dagaz.Model.showLose = false;
+
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
     Dagaz.Controller.addSound(10, "../sounds/slide.ogg", true);
     Dagaz.Controller.addSound(11, "../sounds/shoot.wav", true);

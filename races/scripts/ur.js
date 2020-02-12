@@ -20,8 +20,11 @@ ZRF = {
 };
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
-    Dagaz.Controller.addSound(10, "../sounds/dice.wav", true);
+    Dagaz.Controller.addSound(10, "sounds/roll.wav", true);
+    Dagaz.Controller.addSound(11, "sounds/push_short.wav", true);
+    Dagaz.Controller.addSound(12, "sounds/push_double.wav", true);
+    Dagaz.Controller.addSound(13, "sounds/push_medium.wav", true);
+    Dagaz.Controller.addSound(14, "sounds/push_long.wav", true);
 }
 
 Dagaz.Model.BuildDesign = function(design) {
@@ -44,9 +47,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addDirection("free");       // 6
     design.addDirection("home");       // 7
     design.addDirection("dice");       // 8
+    design.addDirection("sh");         // 9
 
-    design.addPlayer("White", [0, 1, 2, 3, 4, 5, 6, 7, 8]);
-    design.addPlayer("Black", [0, 1, 3, 0, 5, 1, 7, 6, 2]);
+    design.addPlayer("White", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    design.addPlayer("Black", [0, 1, 3, 0, 5, 1, 7, 6, 2, 9]);
 
     design.addTurn(1, [1, 2, 3, 4]); // 0
     design.repeatMark();
@@ -59,65 +63,85 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addRandom(1, [0]); // 7
     design.addTurn(1, [1, 2, 3, 4]); // 8
 
-    design.addPosition("x3", [0, 0, 0, 0, 0, 0, 3, 52, 0]);
-    design.addPosition("x2", [0, 0, 0, 0, 0, 0, 0, 0, -1]);
-    design.addPosition("x1", [0, 0, 0, 0, 0, 0, 0, 0, -1]);
-    design.addPosition("a40", [1, 0, 0, 13, 0, 0, 1, 0, 0]);
-    design.addPosition("b40", [1, 0, 0, 12, 0, 0, 1, 0, 0]);
-    design.addPosition("c40", [1, 0, 0, 11, 0, 0, 1, 0, 0]);
-    design.addPosition("d40", [1, 0, 0, 10, 0, 0, 1, 0, 0]);
-    design.addPosition("e40", [1, 0, 0, 9, 0, 0, 1, 0, 0]);
-    design.addPosition("f40", [1, 0, 0, 8, 0, 0, 1, 0, 0]);
-    design.addPosition("g40", [0, 0, 0, 7, 0, 0, 0, 0, 0]);
-    design.addPosition("a30", [0, 0, 0, 13, 0, 0, 0, 0, 0]);
-    design.addPosition("b30", [1, 0, 0, -1, 0, 0, 0, 0, 0]);
-    design.addPosition("b31", [1, -1, 0, -2, 0, 0, 0, 0, 0]);
-    design.addPosition("b32", [1, -1, 0, -3, 0, 0, 0, 0, 0]);
-    design.addPosition("b33", [0, -1, 0, -4, 0, 0, 0, 0, 0]);
-    design.addPosition("c30", [0, 0, 0, -4, 0, 0, 0, 0, 0]);
-    design.addPosition("d30", [1, 0, 0, -1, 0, 0, 0, 0, 0]);
-    design.addPosition("d31", [1, -1, 0, -2, 0, 0, 0, 0, 0]);
-    design.addPosition("d32", [1, -1, 0, -3, 0, 0, 0, 0, 0]);
-    design.addPosition("d33", [0, -1, 0, -4, 0, 0, 0, 0, 0]);
-    design.addPosition("g30", [0, 0, 15, 1, 15, 0, 0, 0, 0]);
-    design.addPosition("h30", [0, 0, -1, 18, -1, 0, 0, 0, 0]);
-    design.addPosition("z0", [0, 0, 0, 0, 0, 0, -19, 30, 0]);
-    design.addPosition("a20", [0, 0, 1, 1, -1, -1, 0, 0, 0]);
-    design.addPosition("b20", [0, 0, 1, 1, -1, -1, 0, 0, 0]);
-    design.addPosition("c20", [1, 0, 4, 4, -1, -1, 0, 0, 0]);
-    design.addPosition("c21", [1, -1, 3, 3, -2, -2, 0, 0, 0]);
-    design.addPosition("c22", [1, -1, 2, 2, -3, -3, 0, 0, 0]);
-    design.addPosition("c23", [0, -1, 1, 1, -4, -4, 0, 0, 0]);
-    design.addPosition("d20", [0, 0, 1, 1, -4, -4, 0, 0, 0]);
-    design.addPosition("e20", [0, 0, 1, 1, -1, -1, 0, 0, 0]);
-    design.addPosition("f20", [1, 0, 4, 4, -1, -1, 0, 0, 0]);
-    design.addPosition("f21", [1, -1, 3, 3, -2, -2, 0, 0, 0]);
-    design.addPosition("f22", [1, -1, 2, 2, -3, -3, 0, 0, 0]);
-    design.addPosition("f23", [0, -1, 1, 1, -4, -4, 0, 0, 0]);
-    design.addPosition("g20", [1, 0, 15, -15, -4, -4, 0, 0, 0]);
-    design.addPosition("g21", [1, -1, 14, -16, -5, -5, 0, 0, 0]);
-    design.addPosition("g22", [1, -1, 13, -17, -6, -6, 0, 0, 0]);
-    design.addPosition("g23", [0, -1, 12, -18, -7, -7, 0, 0, 0]);
-    design.addPosition("h20", [0, 0, -18, 12, -18, 12, 0, 0, 0]);
-    design.addPosition("a10", [0, 0, -17, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("b10", [1, 0, -1, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("b11", [1, -1, -2, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("b12", [1, -1, -3, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("b13", [0, -1, -4, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("c10", [0, 0, -4, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("d10", [1, 0, -1, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("d11", [1, -1, -2, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("d12", [1, -1, -3, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("d13", [0, -1, -4, 0, 0, 0, 0, 0, 0]);
-    design.addPosition("g10", [0, 0, 1, -15, 0, -15, 0, 0, 0]);
-    design.addPosition("h10", [0, 0, -12, -1, 0, -1, 0, 0, 0]);
-    design.addPosition("a00", [1, 0, -6, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("b00", [1, 0, -7, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("c00", [1, 0, -8, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("d00", [1, 0, -9, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("e00", [1, 0, -10, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("f00", [1, 0, -11, 0, 0, 0, 0, 1, 0]);
-    design.addPosition("g00", [0, 0, -12, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("x3", [0, 0, 0, 0, 0, 0, 3, 52, 0, 0]);
+    design.addPosition("x2", [0, 0, 0, 0, 0, 0, 0, 0, -1, 0]);
+    design.addPosition("x1", [0, 0, 0, 0, 0, 0, 0, 0, -1, 0]);
+    design.addPosition("a40", [1, 0, 0, 13, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("b40", [1, 0, 0, 12, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("c40", [1, 0, 0, 11, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("d40", [1, 0, 0, 10, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("e40", [1, 0, 0, 9, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("f40", [1, 0, 0, 8, 0, 0, 1, 0, 0, 0]);
+    design.addPosition("g40", [0, 0, 0, 7, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("a30", [0, 0, 0, 13, 0, 0, 0, 0, 0, 49]);
+    design.addPosition("b30", [1, 0, 0, -1, 0, 0, 0, 0, 0, 49]);
+    design.addPosition("b31", [1, -1, 0, -2, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b32", [1, -1, 0, -3, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b33", [0, -1, 0, -4, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("c30", [0, 0, 0, -4, 0, 0, 0, 0, 0, 46]);
+    design.addPosition("d30", [1, 0, 0, -1, 0, 0, 0, 0, 0, 46]);
+    design.addPosition("d31", [1, -1, 0, -2, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d32", [1, -1, 0, -3, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d33", [0, -1, 0, -4, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("g30", [0, 0, 15, 1, 15, 0, 0, 0, 0, 43]);
+    design.addPosition("h30", [0, 0, -1, 18, -1, 0, 0, 0, 0, 43]);
+    design.addPosition("z0", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("a20", [0, 0, 1, 1, -1, -1, 0, 0, 0, 42]);
+    design.addPosition("b20", [0, 0, 1, 1, -1, -1, 0, 0, 0, 42]);
+    design.addPosition("c20", [1, 0, 4, 4, -1, -1, 0, 0, 0, 42]);
+    design.addPosition("c21", [1, -1, 3, 3, -2, -2, 0, 0, 0, 0]);
+    design.addPosition("c22", [1, -1, 2, 2, -3, -3, 0, 0, 0, 0]);
+    design.addPosition("c23", [0, -1, 1, 1, -4, -4, 0, 0, 0, 0]);
+    design.addPosition("d20", [0, 0, 1, 1, -4, -4, 0, 0, 0, 39]);
+    design.addPosition("e20", [0, 0, 1, 1, -1, -1, 0, 0, 0, 39]);
+    design.addPosition("f20", [1, 0, 4, 4, -1, -1, 0, 0, 0, 39]);
+    design.addPosition("f21", [1, -1, 3, 3, -2, -2, 0, 0, 0, 0]);
+    design.addPosition("f22", [1, -1, 2, 2, -3, -3, 0, 0, 0, 0]);
+    design.addPosition("f23", [0, -1, 1, 1, -4, -4, 0, 0, 0, 0]);
+    design.addPosition("g20", [1, 0, 15, -15, -4, -4, 0, 0, 0, 36]);
+    design.addPosition("g21", [1, -1, 14, -16, -5, -5, 0, 0, 0, 0]);
+    design.addPosition("g22", [1, -1, 13, -17, -6, -6, 0, 0, 0, 0]);
+    design.addPosition("g23", [0, -1, 12, -18, -7, -7, 0, 0, 0, 0]);
+    design.addPosition("h20", [0, 0, -18, 12, -18, 12, 0, 0, 0, 33]);
+    design.addPosition("a10", [0, 0, -17, 0, 0, 0, 0, 0, 0, 33]);
+    design.addPosition("b10", [1, 0, -1, 0, 0, 0, 0, 0, 0, 33]);
+    design.addPosition("b11", [1, -1, -2, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b12", [1, -1, -3, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b13", [0, -1, -4, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("c10", [0, 0, -4, 0, 0, 0, 0, 0, 0, 30]);
+    design.addPosition("d10", [1, 0, -1, 0, 0, 0, 0, 0, 0, 30]);
+    design.addPosition("d11", [1, -1, -2, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d12", [1, -1, -3, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d13", [0, -1, -4, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("g10", [0, 0, 1, -15, 0, -15, 0, 0, 0, 27]);
+    design.addPosition("h10", [0, 0, -12, -1, 0, -1, 0, 0, 0, 27]);
+    design.addPosition("a00", [1, 0, -6, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("b00", [1, 0, -7, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("c00", [1, 0, -8, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("d00", [1, 0, -9, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("e00", [1, 0, -10, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("f00", [1, 0, -11, 0, 0, 0, 0, 1, 0, 0]);
+    design.addPosition("g00", [0, 0, -12, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("a3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("c3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("g3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("h3h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("a2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("c2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("e2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("f2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("g2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("h2h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("a1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("b1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("c1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("d1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("g1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    design.addPosition("h1h", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     design.addZone("end", 1, [22]);
     design.addZone("end", 2, [22]);
@@ -183,16 +207,16 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addDrop(1, 0, [], 0, 10);
 
     design.addPiece("Man", 2);
-    design.addMove(2, 1, [2], 1);
-    design.addMove(2, 2, [2, 2], 2);
-    design.addMove(2, 3, [2, 2, 2], 3);
-    design.addMove(2, 4, [2, 2, 2, 2], 4);
+    design.addMove(2, 1, [2], 1, 11);
+    design.addMove(2, 2, [2, 2], 2, 12);
+    design.addMove(2, 3, [2, 2, 2], 3, 13);
+    design.addMove(2, 4, [2, 2, 2, 2], 4, 14);
 
     design.addPiece("King", 3);
-    design.addMove(3, 1, [4], 1);
-    design.addMove(3, 2, [4, 4], 2);
-    design.addMove(3, 3, [4, 4, 4], 3);
-    design.addMove(3, 4, [4, 4, 4, 4], 4);
+    design.addMove(3, 1, [4], 1, 11);
+    design.addMove(3, 2, [4, 4], 2, 12);
+    design.addMove(3, 3, [4, 4, 4], 3, 13);
+    design.addMove(3, 4, [4, 4, 4, 4], 4, 14);
 
     design.setup("White", "Man", 52);
     design.setup("White", "Man", 53);
@@ -283,4 +307,24 @@ Dagaz.View.configure = function(view) {
     view.defPosition("e00", 335, 330, 29, 29);
     view.defPosition("f00", 402, 330, 29, 29);
     view.defPosition("g00", 469, 330, 29, 29);
+    view.defPosition("a3h", 67, 115, 29, 29);
+    view.defPosition("b3h", 134, 115, 29, 29);
+    view.defPosition("c3h", 201, 115, 29, 29);
+    view.defPosition("d3h", 268, 115, 29, 29);
+    view.defPosition("g3h", 469, 115, 29, 29);
+    view.defPosition("h3h", 536, 115, 29, 29);
+    view.defPosition("a2h", 67, 184, 29, 29);
+    view.defPosition("b2h", 134, 184, 29, 29);
+    view.defPosition("c2h", 201, 184, 29, 29);
+    view.defPosition("d2h", 268, 184, 29, 29);
+    view.defPosition("e2h", 335, 184, 29, 29);
+    view.defPosition("f2h", 402, 184, 29, 29);
+    view.defPosition("g2h", 469, 184, 29, 29);
+    view.defPosition("h2h", 536, 184, 29, 29);
+    view.defPosition("a1h", 67, 253, 29, 29);
+    view.defPosition("b1h", 134, 253, 29, 29);
+    view.defPosition("c1h", 201, 253, 29, 29);
+    view.defPosition("d1h", 268, 253, 29, 29);
+    view.defPosition("g1h", 469, 254, 29, 29);
+    view.defPosition("h1h", 536, 254, 29, 29);
 }
