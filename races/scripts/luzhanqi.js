@@ -30,6 +30,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "true");
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-drops", "true");
+    design.checkVersion("show-lose", "false");
     design.checkVersion("show-captures", "false");
     design.checkVersion("detect-loops", "true");
     design.checkVersion("advisor-wait", "5");
