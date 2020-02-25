@@ -29,8 +29,8 @@ var getSetup = function() {
   if (result) {
       return result[1];
   } else {
-      str = getCookie();
-      result = str.match(/[?&]setup=([^&]*)/);
+//    str = getCookie();
+//    result = str.match(/[?&]setup=([^&]*)/);
       if (result) {
           return result[1];
       } else {
@@ -45,8 +45,8 @@ var getTurn = function() {
   if (result) {
       return result[1];
   } else {
-      str = getCookie();
-      result = str.match(/[?&]turn=(\d+)/);
+//    str = getCookie();
+//    result = str.match(/[?&]turn=(\d+)/);
       if (result) {
           return result[1];
       } else {
