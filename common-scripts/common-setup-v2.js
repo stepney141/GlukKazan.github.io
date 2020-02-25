@@ -1,7 +1,7 @@
 (function() {
 
 Dagaz.Controller.persistense = "setup";
-Dagaz.Controller.defaultLife = 3600;
+Dagaz.Controller.defaultLife = 0;
 
 var getCookie = function() {
   var str = document.cookie;
