@@ -23,7 +23,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "1");
     design.checkVersion("zrf", "3.0");
     design.checkVersion("smart-moves", "from");
-    design.checkVersion("progressive-levels", "true");
+    design.checkVersion("progressive-levels", "schreiber_6.htm");
     design.checkVersion("sliding-puzzle", "true");
 
     design.addDirection("w");
