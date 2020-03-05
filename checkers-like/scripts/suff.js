@@ -1,3 +1,5 @@
+Dagaz.Controller.persistense = "session";
+
 Dagaz.Model.WIDTH = 17;
 
 ZRF = {

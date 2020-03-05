@@ -1,3 +1,4 @@
+Dagaz.Controller.persistense = "session";
 Dagaz.View.CLEAR_KO = true;
 
 ZRF = {

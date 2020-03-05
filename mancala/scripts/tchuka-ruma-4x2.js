@@ -1,3 +1,4 @@
+Dagaz.Controller.persistense = "none";
 Dagaz.View.CLEAR_KO = true;
 
 ZRF = {

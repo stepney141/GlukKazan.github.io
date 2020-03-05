@@ -1,3 +1,5 @@
+Dagaz.Controller.persistense = "session";
+
 Dagaz.Model.PIECE_CNT = 3;
 
 ZRF = {

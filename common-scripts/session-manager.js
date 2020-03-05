@@ -14,6 +14,47 @@ Dagaz.Controller.getSessionManager = function(controller) {
   return sessionManager;
 }
 
+var getName = function() {
+  var str = window.location.pathname.toString();
+  var result = str.match(/\/([^.\/]+)\./);
+  if (result) {
+      return result[1].replace("-board", "").replace("-ai", "");
+  } else {
+      return str;
+  }
+}
+
+var badName = function(str) {
+  var result = str.match(/[?&]game=([^&]*)/);
+  if (result) {
+      return result[1] != getName();
+  } else {
+      return true;
+  }
+}
+
+var getCookie = function() {
+  var str = document.cookie;
+  var result = str.match(/dagaz\.(session=[^*]*)/);
+  if (result) {
+      var r = decodeURIComponent(result[1]);
+      if (badName(r)) return "";
+      return "?" + r;
+  } else {
+      return "";
+  }
+}
+
+var getMaxage = function() {
+  var str = window.location.search.toString();
+  var result = str.match(/[?&]cookie=(\d+)/);
+  if (result) {
+      return result[1];
+  } else {
+      return "";
+  }
+}
+
 SessionManager.prototype.aiPresent = function() {
   return this.controller.getAI() !== null;
 }
@@ -29,6 +70,80 @@ SessionManager.prototype.updateButtons = function() {
   } else {
       redo.style.display = "none";
   }
+}
+
+Dagaz.Model.playerToString = function(player) {
+  if (player == 1) {
+      return "W";
+  } else {
+      return "B";
+  }
+}
+
+Dagaz.Model.moveToString = function(move) {
+  var r = "";
+  for (var i = 0; i < move.actions.length; i++) {
+       if (move.actions[i][1] !== null) {
+           if (r != "") {
+               r = r + "-";
+           }
+           if (move.actions[i][0] !== null) {
+               r = r + Dagaz.Model.posToString(move.actions[i][0][0]);
+           }
+           if (move.actions[i][1] !== null) {
+               r = r + Dagaz.Model.posToString(move.actions[i][1][0]);
+           }
+       }
+  }
+  return r;
+}
+
+SessionManager.prototype.save = function() {
+  if (_.isUndefined(this.current) || _.isUndefined(this.current.board)) return null;
+  var states = [];
+  var board  = this.current.board;
+  while (board.parent !== null) {
+      states.push(board);
+      board = board.parent;
+  }
+  var r = "(";
+  while (states.length > 0) {
+      var board = states.pop();
+      r = r + ";" + Dagaz.Model.playerToString(board.parent.player);
+      r = r + "[" + Dagaz.Model.moveToString(board.move) + "]";
+  }
+  r = r + ")";
+  return r;
+}
+
+SessionManager.prototype.locateMove = function(board, notation) {
+  board.generate(Dagaz.Model.getDesign());
+  for (var i = 0; i < board.moves.length; i++) {
+       if (Dagaz.Model.moveToString(board.moves[i]) == notation) {
+           return board.moves[i];
+       }
+  }
+  return null;
+}
+
+SessionManager.prototype.load = function(sgf) {
+  if (_.isUndefined(Dagaz.Model.parseSgf)) return false;
+  var res = Dagaz.Model.parseSgf(sgf);
+  this.states = [];
+  delete this.current;
+  var board = Dagaz.Model.getInitBoard();
+  this.addState(Dagaz.Model.createMove(), board);
+  for (var i = 0; i < res.length; i++) {
+       var p = res[i].name;
+       if (p != Dagaz.Model.playerToString(board.player)) return false;
+       if (res[i].arg.length != 1) return false;
+       var move = this.locateMove(board, res[i].arg[0]);
+       if (move === null) return false;
+       board = board.apply(move);
+       this.addState(move, board);
+  }  
+  this.controller.setBoard(board, true);
+  return true;
 }
 
 SessionManager.prototype.addState = function(move, board) {
@@ -52,6 +167,18 @@ SessionManager.prototype.addState = function(move, board) {
       this.states.push(current);
   }
   this.current = current;
+  if (Dagaz.Controller.persistense == "session") {
+      var maxage = getMaxage();
+      if (!maxage && (Dagaz.Controller.defaultLife > 0)) maxage = Dagaz.Controller.defaultLife;
+      var str = Dagaz.Controller.getSessionManager().save();
+      if (str == "()") return;
+      str = str + "&game=" + getName();
+      if (maxage) {
+          document.cookie = "dagaz.session=" + encodeURIComponent(str + "*") + "; max-age=" + maxage;
+      } else {
+          document.cookie = "dagaz.session=" + encodeURIComponent(str + "*");
+      }
+  }
 }
 
 Dagaz.Controller.addState = function(move, board) {  
@@ -160,6 +287,25 @@ Dagaz.Controller.undo = function() {
   }
   sm.controller.setBoard(board);
   sm.updateButtons();
+}
+
+var clearGame = Dagaz.Controller.clearGame;
+
+Dagaz.Controller.clearGame = function() {
+   document.cookie = "dagaz.session=" + encodeURIComponent("*") + "; max-age=0";
+   if (!_.isUndefined(clearGame)) {
+       clearGame();
+   }
+}
+
+Dagaz.Model.load = function(board) {
+  var str = getCookie();
+  var result = str.match(/session=([^&]*)/);
+  if (result) {
+      var sm = Dagaz.Controller.getSessionManager();
+      sm.load(result[1]);
+      sm.updateButtons();
+  }
 }
 
 })();
