@@ -63,11 +63,11 @@ var gameOver = function(text, self, player) {
           window.location = window.location.toString();
           return;
       }
+      var str = window.location.toString();
       if (Dagaz.Model.progressiveUrl !== null) {
-          window.location = Dagaz.Model.progressiveUrl;
-          return;
+          str = Dagaz.Model.progressiveUrl;
       }
-      var str = Dagaz.Model.continue(self.design, self.board, window.location.toString());
+      var str = Dagaz.Model.continue(self.design, self.board, str);
       if (str !== null) {
           window.location = str;
       }
