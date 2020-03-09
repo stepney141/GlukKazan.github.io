@@ -59,7 +59,7 @@ var gameOver = function(text, self, player) {
   }
   if (Dagaz.Model.progressive) {
       if (Dagaz.Model.silent && (player != 0)) return;
-      if (player < 0) {
+      if (Dagaz.Controller.loseRefresh && (player < 0)) {
           window.location = window.location.toString();
           return;
       }
