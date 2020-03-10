@@ -1,4 +1,5 @@
 Dagaz.Controller.persistense = "session";
+Dagaz.View.CLEAR_KO = true;
 
 ZRF = {
     JUMP:          0,
@@ -29,17 +30,17 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-blink", "false");
     design.checkVersion("progressive-levels", "true");
-    design.checkVersion("advisor-wait", "5");
+    design.checkVersion("advisor-wait", "15");
     design.checkVersion("kamisado-extension", "true");
 
-    design.addDirection("w");
-    design.addDirection("e");
-    design.addDirection("s");
-    design.addDirection("ne");
-    design.addDirection("n");
-    design.addDirection("se");
-    design.addDirection("sw");
-    design.addDirection("nw");
+    design.addDirection("w");  // 0
+    design.addDirection("e");  // 1
+    design.addDirection("s");  // 2
+    design.addDirection("ne"); // 3
+    design.addDirection("n");  // 4
+    design.addDirection("se"); // 5
+    design.addDirection("sw"); // 6
+    design.addDirection("nw"); // 7
 
     design.addPlayer("White", [1, 0, 4, 6, 2, 7, 3, 5]);
     design.addPlayer("Black", [0, 1, 4, 5, 2, 3, 7, 6]);
@@ -551,6 +552,7 @@ Dagaz.View.configure = function(view) {
     view.defPiece("BlackBrownDragon", "Black BrownDragon");
     view.defPiece("WhiteBrownSumo", "White BrownSumo");
     view.defPiece("BlackBrownSumo", "Black BrownSumo");
+    view.defPiece("Ko", "Ko");
  
     view.defPosition("a8", 5, 5, 48, 48);
     view.defPosition("b8", 54, 5, 48, 48);

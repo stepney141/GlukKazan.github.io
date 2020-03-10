@@ -1,7 +1,6 @@
 (function() {
 
 Dagaz.Controller.persistense = "setup";
-Dagaz.Controller.defaultLife = 3600;
 
 var getName = function() {
   var str = window.location.pathname.toString();
@@ -23,22 +22,10 @@ var badName = function(str) {
 }
 
 var getCookie = function() {
-  var str = document.cookie;
-  var result = str.match(/dagaz\.(setup=[^*]*)/);
+  var result = localStorage.getItem('dagaz.setup');
   if (result) {
-      var r = decodeURIComponent(result[1]);
-      if (badName(r)) return "";
-      return "?" + r;
-  } else {
-      return "";
-  }
-}
-
-var getMaxage = function() {
-  var str = window.location.search.toString();
-  var result = str.match(/[?&]cookie=(\d+)/);
-  if (result) {
-      return result[1];
+      if (badName(result)) return "";
+      return "?setup=" + result;
   } else {
       return "";
   }
@@ -358,13 +345,7 @@ Dagaz.Model.getSetup = function(design, board) {
   }
   if (Dagaz.Controller.persistense == "setup") {
       var s = str + "&game=" + getName() + "*";
-      var maxage = getMaxage();
-      if (!maxage && (Dagaz.Controller.defaultLife > 0)) maxage = Dagaz.Controller.defaultLife;
-      if (maxage) {
-          document.cookie = "dagaz.setup=" + encodeURIComponent(s) + "; max-age=" + maxage;
-      } else {
-          document.cookie = "dagaz.setup=" + encodeURIComponent(s);
-      }
+      localStorage.setItem('dagaz.setup', s);
   }
   return "?setup=" + str;
 }
@@ -372,7 +353,7 @@ Dagaz.Model.getSetup = function(design, board) {
 var clearGame = Dagaz.Controller.clearGame;
 
 Dagaz.Controller.clearGame = function() {
-   document.cookie = "dagaz.setup=" + encodeURIComponent("*") + "; max-age=0";
+   localStorage.setItem('dagaz.setup', '');
    if (!_.isUndefined(clearGame)) {
        clearGame();
    }

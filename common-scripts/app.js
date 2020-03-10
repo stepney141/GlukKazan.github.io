@@ -47,7 +47,12 @@ Dagaz.Controller.newGame = function() {
   if (!_.isUndefined(Dagaz.Controller.clearGame)) {
       Dagaz.Controller.clearGame();
   }
-  window.location = window.location.toString();
+  var str = window.location.toString();
+  var result = str.match(/^([^?]+)/);
+  if (result) {
+      str = result[1];
+  }
+  window.location = str;
 }
 
 var gameOver = function(text, self, player) {
@@ -67,7 +72,7 @@ var gameOver = function(text, self, player) {
       if (Dagaz.Model.progressiveUrl !== null) {
           str = Dagaz.Model.progressiveUrl;
       }
-      var str = Dagaz.Model.continue(self.design, self.board, str);
+      str = Dagaz.Model.continue(self.design, self.board, str);
       if (str !== null) {
           window.location = str;
       }
