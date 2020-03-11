@@ -1,3 +1,4 @@
+Dagaz.Controller.persistense = "none";
 Dagaz.View.MARK_R = 12;
 
 ZRF = {

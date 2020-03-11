@@ -1,4 +1,4 @@
-Dagaz.Controller.persistense = "none";
+Dagaz.Controller.randomized = true;
 
 ZRF = {
     JUMP:          0,
