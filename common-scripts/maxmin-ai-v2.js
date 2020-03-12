@@ -1,9 +1,9 @@
 (function() {
 
-var MAXVALUE          = 1000000;
+var MAXVALUE          = 200000000;
 
-Dagaz.AI.MAX_DEEP     = 5;
-Dagaz.AI.NOISE_FACTOR = 5;
+Dagaz.AI.MAX_DEEP     = 100000000;
+Dagaz.AI.NOISE_FACTOR = 10000;
 Dagaz.AI.AI_FRAME     = 1000;
 
 function MaxMinAi(params, parent) {

@@ -34,17 +34,6 @@ function Sound(src) {
 Dagaz.Controller.addSound = function(ix, src) {
     sounds[ix] = src;
 }
-
-var getMaxage = function() {
-  var str = window.location.search.toString();
-  var result = str.match(/[?&]cookie=(\d+)/);
-  if (result) {
-      return result[1];
-  } else {
-      return "";
-  }
-}
-
 Dagaz.Controller.play = function(ix) {
     if (Dagaz.Controller.soundOff) return;
     Dagaz.Controller.stop();
@@ -62,30 +51,20 @@ Dagaz.Controller.stop = function() {
 }
 
 Dagaz.Controller.sound = function() {
-    var maxage = getMaxage();
     if (Dagaz.Controller.soundOff) {
         sound.innerHTML = "no Sound";
         Dagaz.Controller.soundOff = false;
-        if (maxage) {
-            document.cookie = "dagaz.sound=on; max-age=" + maxage;
-        } else {
-            document.cookie = "dagaz.sound=on";
-        }
+        localStorage.setItem('dagaz.sound', 'on');
     } else {
         sound.innerHTML = "Sound";
         Dagaz.Controller.soundOff = true;
-        if (maxage) {
-            document.cookie = "dagaz.sound=off; max-age=" + maxage;
-        } else {
-            document.cookie = "dagaz.sound=off";
-        }
+        localStorage.setItem('dagaz.sound', 'off');
     }
 }
 
 Dagaz.Controller.checkSound = function() {
-   var str = document.cookie;
-   var result = str.match(/dagaz\.sound=off/);
-   if (result) {
+   var result = localStorage.getItem('dagaz.sound');
+   if (result == 'off') {
        sound.innerHTML = "Sound";
        Dagaz.Controller.soundOff = true;
    } else {

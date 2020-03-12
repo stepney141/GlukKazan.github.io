@@ -1,3 +1,4 @@
+Dagaz.Controller.persistense = "session";
 Dagaz.View.MARK_R = 15;
 
 Dagaz.Controller.addSound(10, "sounds/turnover/pawn.wav", true);

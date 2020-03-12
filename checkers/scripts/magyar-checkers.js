@@ -1,4 +1,4 @@
-Dagaz.Controller.persistense = "session";
+Dagaz.View.CLEAR_KO = true;
 
 Dagaz.Model.WIDTH  = 15;
 Dagaz.Model.HEIGHT = 9;
