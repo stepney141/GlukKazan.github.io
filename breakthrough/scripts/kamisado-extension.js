@@ -205,7 +205,6 @@ Dagaz.Model.continue = function(design, board, text) {
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
-// TODO: ѕроверить баг при выполнении толкающего хода
 Dagaz.Model.CheckInvariants = function(board) {
   var design = Dagaz.Model.design;
   var color  = -1;

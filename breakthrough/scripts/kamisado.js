@@ -1,4 +1,5 @@
 Dagaz.View.CLEAR_KO = true;
+Dagaz.Controller.saveLastTo = true;
 
 ZRF = {
     JUMP:          0,
