@@ -14,6 +14,37 @@ if (!_.isUndefined(Dagaz.Controller.addSound)) {
     Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
 }
 
+var go = Dagaz.Controller.go;
+
+Dagaz.Controller.go = function(url) {
+  var design = Dagaz.Model.design;
+  var board = Dagaz.Controller.app.board;
+  url = url + "?setup="; 
+  var prev = null; var cnt = 0;
+  _.each(design.allPositions(), function(pos) {
+      var piece = board.getPiece(pos);
+      var s = "";
+      if (piece !== null) {
+          var type = piece.player - 1;
+          s = s + type + ":1";
+      }
+      if ((prev === null) || (prev != s)) {
+          if (prev !== null) {
+              url = url + prev;
+              if (cnt > 0) {
+                  url = url + "+" + cnt;
+              }
+              url = url + ";";
+          }
+          prev = s;
+          cnt = 0;
+      } else {
+          cnt++;
+      }
+  });
+  go(url);
+}
+
 var sign = function(x) {
   if (x > 0) return 1;
   if (x < 0) return -1;
@@ -89,10 +120,25 @@ var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
   var design = Dagaz.Model.design;
+  var f = false;
+  _.each(board.moves, function(move) {
+      if (f) return;
+      if (move.mode == 1) {
+          f = true;
+      }
+  });
+  if (f) {
+      f = isCoherence(design, board, board.player);
+  }
   _.each(board.moves, function(move) {
       var b = board.apply(move);
+      if (f && (move.mode == 1)) {
+          move.failed = true;
+          return;
+      }
       if (!isCoherence(design, b, board.player)) {
           move.failed = true;
+          return;
       }
   });
   CheckInvariants(board);
