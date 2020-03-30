@@ -42,6 +42,9 @@ Dagaz.Controller.go = function(url) {
           cnt++;
       }
   });
+  if (cnt > 0) {
+      url = url + "+" + cnt + ";";
+  }
   go(url);
 }
 
