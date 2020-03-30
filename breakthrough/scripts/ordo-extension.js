@@ -135,10 +135,10 @@ Dagaz.Model.CheckInvariants = function(board) {
   }
   _.each(board.moves, function(move) {
       var b = board.apply(move);
-      if (f && (move.mode == 1)) {
+/*    if (f && (move.mode == 1)) {
           move.failed = true;
           return;
-      }
+      }*/
       if (!isCoherence(design, b, board.player)) {
           move.failed = true;
           return;
