@@ -126,7 +126,7 @@ Dagaz.Model.CheckInvariants = function(board) {
   var f = false;
   _.each(board.moves, function(move) {
       if (f) return;
-      if (move.mode == 1) {
+      if (move.mode == board.player) {
           f = true;
       }
   });
@@ -135,10 +135,10 @@ Dagaz.Model.CheckInvariants = function(board) {
   }
   _.each(board.moves, function(move) {
       var b = board.apply(move);
-/*    if (f && (move.mode == 1)) {
+      if (f && (move.mode == board.player)) {
           move.failed = true;
           return;
-      }*/
+      }
       if (!isCoherence(design, b, board.player)) {
           move.failed = true;
           return;
