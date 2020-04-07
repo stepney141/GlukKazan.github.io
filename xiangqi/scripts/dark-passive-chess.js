@@ -1,3 +1,5 @@
+Dagaz.Controller.persistense = "none";
+
 Dagaz.View.SHIFT_X      = 1;
 Dagaz.View.SHIFT_Y      = 1;
 
