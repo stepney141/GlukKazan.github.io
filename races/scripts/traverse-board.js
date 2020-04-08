@@ -1,3 +1,5 @@
+Dagaz.Model.DETAIL_MOVE_DESCRIPTION = true;
+
 Dagaz.Model.WIDTH = 10;
 
 ZRF = {

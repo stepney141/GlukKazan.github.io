@@ -1,3 +1,5 @@
+Dagaz.Model.DETAIL_MOVE_DESCRIPTION = true;
+
 ZRF = {
     JUMP:          0,
     IF:            1,
