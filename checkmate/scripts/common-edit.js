@@ -3,7 +3,7 @@
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "shatranj-edit") {
+  if (name != "common-edit") {
      checkVersion(design, name, value);
   }
 }

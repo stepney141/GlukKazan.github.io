@@ -20,13 +20,11 @@
 <img id="BlackBia" style="display:none" src="images/bpawn.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
+<tr><td>
 Traditional - Thai (<a target="_blank" href="https://en.wikipedia.org/wiki/Makruk">rules</a>)
-<a href="javascript:Dagaz.Controller.newGame()">New Game</a>
-<a href="makruk-alt.htm">AI</a>
-<a href="javascript:Dagaz.Controller.sound()" id="sound">no Sound</a>
-<a href="javascript:Dagaz.Controller.go('makruk-alt-editor.htm')">Edit</a>
-<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
+<a href="javascript:Dagaz.Controller.newGame()">Clear</a>
+<a href="javascript:Dagaz.Controller.go('makruk-alt.htm')">Play</a>
+</td></tr>
 <tr style="height:548px; vertical-align:top">
 <td id="CanvasCell" style="width:548px">
 <canvas id="Canvas" width="548" height="548" style="cursor:default">Broken canvas...</canvas>
@@ -54,15 +52,12 @@ Traditional - Thai (<a target="_blank" href="https://en.wikipedia.org/wiki/Makru
 <script src="../common-scripts/dagaz.js"></script>
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
-<script src="../common-scripts/common-setup-v3.js"></script>
+<script src="../common-scripts/common-setup-v2.js"></script>
 <script src="../common-scripts/2d-view-v2.js"></script>
-<script src="../common-scripts/move-list-v2.js"></script>
-<script src="../common-scripts/session-manager.js"></script>
-<script src="../common-scripts/sound-manager-v2.js"></script>
-<script src="scripts/common-edit.js"></script>
-<script src="scripts/makruk-invariant.js"></script>
-<script src="scripts/makruk-alt.js"></script>
-<script src="../common-scripts/app-v2.js"></script>
+<script src="../common-scripts/move-list-v3.js"></script>
+<script src="scripts/editor-extension.js"></script>
+<script src="scripts/makruk-alt-editor.js"></script>
+<script src="../common-scripts/app-v5.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
 

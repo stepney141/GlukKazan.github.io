@@ -3,7 +3,7 @@
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "shatranj-alt-editor-extension") {
+  if (name != "editor-extension") {
      checkVersion(design, name, value);
   }
 }
