@@ -1,5 +1,7 @@
 (function() {
 
+var inProgress = false;
+
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
@@ -85,6 +87,7 @@ Dagaz.Model.checkPositions = function(design, board, player, positions, attacker
 var CheckInvariants = Dagaz.Model.CheckInvariants;
 
 Dagaz.Model.CheckInvariants = function(board) {
+  if (inProgress) return;
   var design = Dagaz.Model.design;
   var king   = design.getPieceType("King");
   _.each(board.moves, function(move) {
@@ -108,6 +111,23 @@ Dagaz.Model.CheckInvariants = function(board) {
       if (Dagaz.Model.checkPositions(design, b, design.nextPlayer(board.player), [pos], attackers)) {
           move.failed = true;
           return;
+      }
+      if (Dagaz.Model.checkPositions(design, b, design.nextPlayer(board.player), [pos], null)) {
+          inProgress = true;
+          b.generate(design);
+          var f = true;
+          _.each(b.moves, function(m) {
+              if (!f) return;
+              if (m.mode != 2) return;
+              var t = b.apply(m);
+              if (!Dagaz.Model.checkPositions(design, t, design.nextPlayer(board.player), [pos], null)) {
+                  f = false;
+              }
+          });
+          if (f) {
+              move.failed = true;
+          }
+          inProgress = false;
       }
   });
   CheckInvariants(board);
