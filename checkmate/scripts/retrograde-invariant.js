@@ -19,11 +19,12 @@ Dagaz.Model.findPiece = function(design, board, player, type) {
   return null;
 }
 
-var checkDirection = function(design, board, player, pos, dir, leapers, riders) {
+var checkDirection = function(design, board, player, pos, dir, leapers, riders, attackers) {
   var p = design.navigate(player, pos, dir);
   if (p === null) return false;
   var piece = board.getPiece(p);
   if (piece !== null) {
+      if ((attackers !== null) && (_.indexOf(attackers, p) < 0)) return false;
       if (piece.player == player) return false;
       return (_.indexOf(leapers, +piece.type) >= 0) || (_.indexOf(riders, +piece.type) >= 0);
   }
@@ -32,21 +33,23 @@ var checkDirection = function(design, board, player, pos, dir, leapers, riders) 
       if (p === null) return false;
       piece = board.getPiece(p);
   }
+  if ((attackers !== null) && (_.indexOf(attackers, p) < 0)) return false;
   if (piece.player == player) return false;
   return _.indexOf(riders, +piece.type) >= 0;
 }
 
-var checkLeap = function(design, board, player, pos, o, d, knight) {
+var checkLeap = function(design, board, player, pos, o, d, knight, attackers) {
   var p = design.navigate(player, pos, o);
   if (p === null) return false;
   p = design.navigate(player, p, d);
   if (p === null) return false;
   var piece = board.getPiece(p);
   if (piece === null) return false;
+  if ((attackers !== null) && (_.indexOf(attackers, p) < 0)) return false;
   return (piece.player != player) && (piece.type == knight);
 }
 
-Dagaz.Model.checkPositions = function(design, board, player, positions) {
+Dagaz.Model.checkPositions = function(design, board, player, positions, attackers) {
   var king   = design.getPieceType("King");
   var pawn   = design.getPieceType("Pawn");
   var rook   = design.getPieceType("Rook");
@@ -59,22 +62,22 @@ Dagaz.Model.checkPositions = function(design, board, player, positions) {
   var ne = design.getDirection("ne"); var se = design.getDirection("se");
   for (var i = 0; i < positions.length; i++) {
        var pos = positions[i];
-       if (checkDirection(design, board, player, pos, n,  [king], [rook, queen])) return true;
-       if (checkDirection(design, board, player, pos, s,  [king], [rook, queen])) return true;
-       if (checkDirection(design, board, player, pos, w,  [king], [rook, queen])) return true;
-       if (checkDirection(design, board, player, pos, e,  [king], [rook, queen])) return true;
-       if (checkDirection(design, board, player, pos, nw, [king, pawn], [bishop, queen])) return true;
-       if (checkDirection(design, board, player, pos, ne, [king, pawn], [bishop, queen])) return true;
-       if (checkDirection(design, board, player, pos, sw, [king], [bishop, queen])) return true;
-       if (checkDirection(design, board, player, pos, se, [king], [bishop, queen])) return true;
-       if (checkLeap(design, board, player, pos, n, nw, knight)) return true;
-       if (checkLeap(design, board, player, pos, n, ne, knight)) return true;
-       if (checkLeap(design, board, player, pos, s, sw, knight)) return true;
-       if (checkLeap(design, board, player, pos, s, se, knight)) return true;
-       if (checkLeap(design, board, player, pos, w, nw, knight)) return true;
-       if (checkLeap(design, board, player, pos, w, sw, knight)) return true;
-       if (checkLeap(design, board, player, pos, e, ne, knight)) return true;
-       if (checkLeap(design, board, player, pos, e, se, knight)) return true;
+       if (checkDirection(design, board, player, pos, n,  [king], [rook, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, s,  [king], [rook, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, w,  [king], [rook, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, e,  [king], [rook, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, nw, [king, pawn], [bishop, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, ne, [king, pawn], [bishop, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, sw, [king], [bishop, queen], attackers)) return true;
+       if (checkDirection(design, board, player, pos, se, [king], [bishop, queen], attackers)) return true;
+       if (checkLeap(design, board, player, pos, n, nw, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, n, ne, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, s, sw, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, s, se, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, w, nw, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, w, sw, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, e, ne, knight, attackers)) return true;
+       if (checkLeap(design, board, player, pos, e, se, knight, attackers)) return true;
   }
   return false;
 }
@@ -86,9 +89,23 @@ Dagaz.Model.CheckInvariants = function(board) {
   var king   = design.getPieceType("King");
   _.each(board.moves, function(move) {
       var b = board.apply(move);
+      if (move.mode == 2) {
+          var pos = Dagaz.Model.findPiece(design, b, board.player, king);
+          if (pos === null) return;
+          if (Dagaz.Model.checkPositions(design, b, board.player, [pos], null)) {
+              move.failed = true;
+          }
+          return;
+      }
       var pos = Dagaz.Model.findPiece(design, b, design.nextPlayer(board.player), king);
       if (pos === null) return;
-      if (Dagaz.Model.checkPositions(design, b, design.nextPlayer(board.player), [pos])) {
+      var attackers = [];
+      _.each(move.actions, function(a) {
+          if ((a[0] !== null) && (a[1] !== null)) {
+               attackers.push(a[1][0]);
+          }
+      });
+      if (Dagaz.Model.checkPositions(design, b, design.nextPlayer(board.player), [pos], attackers)) {
           move.failed = true;
           return;
       }
