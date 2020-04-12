@@ -58,17 +58,18 @@ Dagaz.Model.CheckInvariants = function(board) {
           types = _.without(types, 0);
       }
       var piece = board.move.actions[0][2][0];
-      if ((piece.type == 0) && (board.move.mode != 1)) return;
-      var target = null; var mode = board.move.mode;
-      if (design.inZone(0, board.parent.player, pos) && (_.indexOf([3, 4], +piece.type) >= 0)) {
-          if (checkDir(design, board, board.parent.player, pos, 0, target) ||
-              checkDir(design, board, board.parent.player, pos, 2, target)) {
-              mode = 1;
-          } else {
-              target = null;
+      if ((piece.type != 0) || (board.move.mode == 1)) {
+          var target = null; var mode = board.move.mode;
+          if (design.inZone(0, board.parent.player, pos) && (_.indexOf([3, 4], +piece.type) >= 0)) {
+              if (checkDir(design, board, board.parent.player, pos, 0, target) ||
+                  checkDir(design, board, board.parent.player, pos, 2, target)) {
+                  mode = 1;
+              } else {
+                  target = null;
+              }
           }
+          addDrops(board, pos, types, mode, target);
       }
-      addDrops(board, pos, types, mode, target);
   }
   _.each(board.moves, function(move) {
       if ((board.parent !== null) && !_.isUndefined(board.move) && (board.move.mode == 4)) {
