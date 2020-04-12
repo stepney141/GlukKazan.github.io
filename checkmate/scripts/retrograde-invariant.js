@@ -92,7 +92,7 @@ Dagaz.Model.CheckInvariants = function(board) {
   var king   = design.getPieceType("King");
   _.each(board.moves, function(move) {
       var b = board.apply(move);
-      if (move.mode == 2) {
+      if (move.mode >= 3) {
           var pos = Dagaz.Model.findPiece(design, b, board.player, king);
           if (pos === null) return;
           if (Dagaz.Model.checkPositions(design, b, board.player, [pos], null)) {
@@ -118,7 +118,7 @@ Dagaz.Model.CheckInvariants = function(board) {
           var f = true;
           _.each(b.moves, function(m) {
               if (!f) return;
-              if (m.mode != 2) return;
+              if (m.mode < 3) return;
               var t = b.apply(m);
               if (!Dagaz.Model.checkPositions(design, t, design.nextPlayer(board.player), [pos], null)) {
                   f = false;
