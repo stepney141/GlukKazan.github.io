@@ -71,6 +71,12 @@ Dagaz.Model.CheckInvariants = function(board) {
       addDrops(board, pos, types, mode, target);
   }
   _.each(board.moves, function(move) {
+      if ((board.parent !== null) && !_.isUndefined(board.move) && (board.move.mode == 4)) {
+          if (move.mode != 2) {
+              move.failed = true;
+              return;
+          }
+      }
       if (move.isSimpleMove()) {
           var pos = move.actions[0][0][0];
           var piece = move.actions[0][2][0];
