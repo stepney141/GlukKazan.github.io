@@ -1,3 +1,5 @@
+Dagaz.Controller.persistense = "session";
+
 Dagaz.View.MARK_R = 18;
 Dagaz.Model.showLose = false;
 
