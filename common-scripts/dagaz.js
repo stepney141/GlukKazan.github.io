@@ -36,17 +36,25 @@ Dagaz.AI.createContext = function(design) {
   };
 }
 
-Dagaz.AI.generate = function(ctx, board) {
-  if (!_.isUndefined(board.moves)) {
-      return board.moves;
-  }
-  board.generate(ctx.design);
-  return _.chain(board.moves)
+Dagaz.Model.Determinate = function(moves) {
+  return _.chain(moves)
    .map(function(move) {
        return move.determinate();
     })
    .flatten()
    .value();
+}
+
+Dagaz.AI.generate = function(ctx, board) {
+  if (!_.isUndefined(board.moves)) {
+      return board.moves;
+  }
+  board.generate(ctx.design);
+  board.moves = Dagaz.Model.Determinate(board.moves);
+  if (!_.isUndefined(Dagaz.Model.PostProcessing)) {
+      Dagaz.Model.PostProcessing(board, board.moves);
+  }
+  return board.moves;
 }
 
 Dagaz.AI.reject = function(ctx, move) {
