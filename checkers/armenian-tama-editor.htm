@@ -1,24 +1,22 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Thai Checkers</title>
+<title>Armenian Tama</title>
 </head>
 <body>
 
-<img id="Board" style="display:none" src="images/8x8.png">
+<img id="Board" style="display:none" src="images/armenian.png">
 <img id="WhiteMan" style="display:none" src="images/wman.png">
 <img id="BlackMan" style="display:none" src="images/bman.png">
 <img id="WhiteKing" style="display:none" src="images/wdamone.png">
 <img id="BlackKing" style="display:none" src="images/bdamone.png">
 
 <table style="margin:auto; font-family:sans-serif; font-size:14px" id="Table">
-<tr><td><a href="javascript:Dagaz.Controller.undo()" style="display:none" id="undo"><img src="../images/undo.png"/></a>
-Traditional - Thai (<a target="_blank" href="https://checkers.fandom.com/wiki/Mak-hot">rules</a>)
-<a href="javascript:Dagaz.Controller.newGame()">New Game</a>
-<a href="thai-checkers.htm">AI</a>
-<a href="javascript:Dagaz.Controller.sound()" id="sound">no Sound</a>
-<a href="javascript:Dagaz.Controller.go('thai-checkers-editor.htm')">Edit</a>
-<a href="javascript:Dagaz.Controller.redo()" style="display:none" id="redo"><img src="../images/redo.png"/></a></td></tr>
+<tr><td>
+Traditional - Turkish
+<a href="javascript:Dagaz.Controller.newGame()">Clear</a>
+<a href="javascript:Dagaz.Controller.go('armenian-tama-board.htm')">Play</a>
+</td></tr>
 <tr style="height:404px; vertical-align:top">
 <td id="CanvasCell" style="width:404px">
 <canvas id="Canvas" width="404" height="404" style="cursor:default">Broken canvas...</canvas>
@@ -47,14 +45,11 @@ Traditional - Thai (<a target="_blank" href="https://checkers.fandom.com/wiki/Ma
 <script src="../common-scripts/zrf-model.js"></script>
 <script src="../common-scripts/zobrist.js"></script>
 <script src="../common-scripts/common-setup-v2.js"></script>
-<script src="../common-scripts/2d-view-v2.js"></script>
-<script src="../common-scripts/move-list-v1.js"></script>
-<script src="../common-scripts/session-manager.js"></script>
-<script src="../common-scripts/sound-manager-v2.js"></script>
-<script src="scripts/editor-extension.js"></script>
-<script src="scripts/deferred-captures.js"></script>
-<script src="scripts/thai-checkers.js"></script>
-<script src="../common-scripts/app-v2.js"></script>
+<script src="../common-scripts/2d-view-v3.js"></script>
+<script src="../common-scripts/move-list-v3.js"></script>
+<script src="scripts/checkers-editor-extension.js"></script>
+<script src="scripts/turkish-dama-editor.js"></script>
+<script src="../common-scripts/app-v5.js"></script>
 
 <script src="../common-scripts/analytics.js"></script>
 

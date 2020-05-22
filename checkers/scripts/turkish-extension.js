@@ -1,7 +1,7 @@
 (function() {
 
-Dagaz.AI.AI_FRAME      = 2000;
-Dagaz.AI.MIN_DEEP      = 4;
+Dagaz.AI.AI_FRAME      = 1500;
+Dagaz.AI.MIN_DEEP      = 3;
 
 var MAX_FORCED_FACTOR  = 1;
 
