@@ -9,10 +9,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/card.ogg");
-    Dagaz.Controller.addSound(1, "../sounds/card.wav");
-    Dagaz.Controller.addSound(2,  "../sounds/win.wav");
-    Dagaz.Controller.addSound(3,  "../sounds/win.wav");
+    Dagaz.Controller.addSound(0, "../sounds/card.ogg", true);
+    Dagaz.Controller.addSound(1, "../sounds/card.wav", true);
+    Dagaz.Controller.addSound(2,  "../sounds/win.wav", true);
+    Dagaz.Controller.addSound(3,  "../sounds/win.wav", true);
 }
 
 var countStack = function(board, pos) {
