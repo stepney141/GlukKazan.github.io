@@ -11,7 +11,7 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 var checkGoals = Dagaz.Model.checkGoals;
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
 }
 
 Dagaz.Model.checkGoals = function(design, board, player) {

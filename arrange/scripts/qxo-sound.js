@@ -9,10 +9,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/step.ogg");
-    Dagaz.Controller.addSound(1, "../sounds/step.ogg");
-    Dagaz.Controller.addSound(2, "../sounds/step.ogg");
-    Dagaz.Controller.addSound(3, "../sounds/step.ogg");
+    Dagaz.Controller.addSound(0, "../sounds/step.ogg", true);
+    Dagaz.Controller.addSound(1, "../sounds/step.ogg", true);
+    Dagaz.Controller.addSound(2, "../sounds/step.ogg", true);
+    Dagaz.Controller.addSound(3, "../sounds/step.ogg", true);
 }
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;

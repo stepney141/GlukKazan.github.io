@@ -9,8 +9,10 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.play)) {
-    Dagaz.Controller.addSound(0, "../sounds/on.wav");
-    Dagaz.Controller.addSound(1, "../sounds/shoot.wav");
+    Dagaz.Controller.addSound(0, "../sounds/on.wav", true);
+    Dagaz.Controller.addSound(1, "../sounds/shoot.wav", true);
+    Dagaz.Controller.addSound(2,  "../sounds/tadam.wav", true);
+    Dagaz.Controller.addSound(3, "../sounds/loss.wav", true);
 }
 
 var checkGoals = Dagaz.Model.checkGoals;

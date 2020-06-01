@@ -2,7 +2,9 @@ Dagaz.View.CLEAR_KO = true;
 Dagaz.Controller.AI_DELAY = 500;
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/step.ogg");
+    Dagaz.Controller.addSound(0, "../sounds/step.ogg", true);
+    Dagaz.Controller.addSound(2, "../sounds/step.ogg", true);
+    Dagaz.Controller.addSound(3, "../sounds/step.ogg", true);
 }
 
 ZRF = {

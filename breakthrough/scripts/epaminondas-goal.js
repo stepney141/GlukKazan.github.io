@@ -9,8 +9,9 @@ Dagaz.Model.checkVersion = function(design, name, value) {
 }
 
 if (!_.isUndefined(Dagaz.Controller.addSound)) {
-    Dagaz.Controller.addSound(0, "../sounds/slide.ogg");
-    Dagaz.Controller.addSound(2, "../sounds/gong.wav");
+    Dagaz.Controller.addSound(0, "../sounds/slide.ogg", true);
+    Dagaz.Controller.addSound(2, "../sounds/gong.wav", true);
+    Dagaz.Controller.addSound(3, "../sounds/loss.wav", true);
 }
 
 Dagaz.AI.heuristic = function(ai, design, board, move) {
