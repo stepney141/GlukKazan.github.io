@@ -1,6 +1,5 @@
 Dagaz.Model.WEST_POS = 33;
 Dagaz.Model.EAST_POS = 794;
-Dagaz.Model.WIN_CNT = 400;
 
 ZRF = {
     JUMP:          0,
@@ -860,10 +859,28 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("s40", [0, 1, -1, -20]);
     design.addPosition("t40", [0, 0, -1, -20]);
 
+    design.setupSelector(2);
+
     design.addZone("start", 1, [33]);
     design.addZone("start", 2, [794]);
     design.addZone("home", 1, [0, 1, 2, 3, 4, 5, 6]);
     design.addZone("home", 2, [7, 8, 9, 10, 11, 12, 13]);
+
+    design.addZone("wall", 1, [119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,139,159,179,199,219,239,242,243,244,245,246,247,248,259,262,268,279,282,288,299,302,305,308,319,322,325,328,342,345,362,365,382,385,402,405,422,425,442,445,462,465,482,485,499,502,505,508,519,522,525,528,539,545,548,559,565,568,579,580,581,582,583,584,585,588,608,628,648,668,688,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708], 1);
+    design.addZone("dark", 1, [], 1);
+    design.addZone("fire", 1, [], 1);
+    design.addZone("ice", 1, [], 1);
+    design.addZone("blue", 1, [], 1);
+    design.addZone("red", 1, [], 1);
+    design.addZone("gold", 1, [263,264,283,284,303,304,323,324,343,344,363,364,383,384,403,404,423,424,443,444,463,464,483,484,503,504,523,524,543,544,563,564], 1);
+
+    design.addZone("wall", 1, [97,98,99,106,117,126,137,146,157,166,177,182,186,202,206,222,226,242,246,259,260,261,262,266,339,340,341,342,343,344,345,346,347,348,479,480,481,482,483,484,485,486,487,488,561,565,566,567,568,581,585,601,605,621,625,641,645,650,661,670,681,690,701,710,721,728,729,730], 2);
+    design.addZone("dark", 1, [], 2);
+    design.addZone("fire", 1, [], 2);
+    design.addZone("ice", 1, [], 2);
+    design.addZone("blue", 1, [118,119,120,121,138,139,140,141,158,159,160,161,178,179,180,181,198,199,200,201,218,219,220,221,238,239,240,241], 2);
+    design.addZone("red", 1, [586,587,588,589,606,607,608,609,626,627,628,629,646,647,648,649,666,667,668,669,686,687,688,689,706,707,708,709], 2);
+    design.addZone("gold", 1, [359,360,361,362,363,364,365,366,367,368,379,380,381,382,383,384,385,386,387,388,399,400,401,402,403,404,405,406,407,408,419,420,421,422,423,424,425,426,427,428,439,440,441,442,443,444,445,446,447,448,459,460,461,462,463,464,465,466,467,468], 2);
 
     design.addPiece("Blue", 0);
     design.addPiece("Red", 1);
@@ -874,6 +891,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("Light", 6);
 
     design.addPiece("Mark", 7);
+
+    design.addPiece("Wall", 8);
 }
 
 Dagaz.View.configure = function(view) {
@@ -901,6 +920,7 @@ Dagaz.View.configure = function(view) {
     view.defPiece("NoneLight", "None Light");
     view.defPiece("WestMark", "West Mark");
     view.defPiece("EastMark", "East Mark");
+    view.defPiece("NoneWall", "None Wall");
     view.defPiece("Ko", "Ko");
  
     view.defPosition("AX", 5, 358, 30, 30);
