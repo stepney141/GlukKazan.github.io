@@ -859,7 +859,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("s40", [0, 1, -1, -20]);
     design.addPosition("t40", [0, 0, -1, -20]);
 
-    design.setupSelector(4);
+    design.setupSelector(5);
 
     design.addZone("start", 1, [33]);
     design.addZone("start", 2, [794]);
@@ -898,6 +898,14 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addZone("red", 1, [129,149,169,189,209,229,249,269,289,309,329,349,369,389,409,429,449,469,489,509,529,549,569,589,609,629,649,669,689,709], 4);
     design.addZone("gold", 1, [282,283,284,285,303,304,323,324,343,344,363,364,383,384,403,404,423,424,443,444,463,464,483,484,503,504,523,524,542,543,544,545], 4);
 
+    design.addZone("wall", 1, [109,110,111,131,149,151,169,171,189,191,209,211,216,218,229,231,236,238,249,251,256,258,269,271,276,278,289,291,296,298,309,311,316,318,329,331,336,338,349,351,356,358,369,371,376,378,389,391,396,398,399,400,401,402,404,405,406,407,408,409,411,416,418,429,431,436,438,439,440,441,442,444,445,446,447,448,449,451,456,458,469,471,476,478,489,491,496,498,509,511,516,518,529,531,536,538,549,551,556,558,569,571,576,578,589,591,596,598,609,611,616,618,636,638,656,658,676,678,696,716,717,718], 5);
+    design.addZone("dark", 1, [130,697], 5);
+    design.addZone("fire", 1, [129,698], 5);
+    design.addZone("ice", 1, [419,428], 5);
+    design.addZone("blue", 1, [], 5);
+    design.addZone("red", 1, [], 5);
+    design.addZone("gold", 1, [420,421,422,423,424,425,426,427], 5);
+
     design.addPiece("Blue", 0);
     design.addPiece("Red", 1);
     design.addPiece("Yellow", 2);
@@ -909,6 +917,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("Mark", 7);
 
     design.addPiece("Wall", 8);
+    design.addPiece("Dark", 9);
+    design.addPiece("Fire", 10);
+    design.addPiece("Ice", 11);
 }
 
 Dagaz.View.configure = function(view) {
@@ -937,6 +948,9 @@ Dagaz.View.configure = function(view) {
     view.defPiece("WestMark", "West Mark");
     view.defPiece("EastMark", "East Mark");
     view.defPiece("NoneWall", "None Wall");
+    view.defPiece("NoneDark", "None Dark");
+    view.defPiece("NoneFire", "None Fire");
+    view.defPiece("NoneIce", "None Ice");
     view.defPiece("Ko", "Ko");
  
     view.defPosition("AX", 5, 358, 30, 30);
