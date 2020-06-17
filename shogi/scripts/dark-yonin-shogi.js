@@ -503,7 +503,10 @@ Dagaz.Model.BuildDesign = function(design) {
 }
 
 Dagaz.View.configure = function(view) {
-    view.defBoard("Board");
+    view.defBoard("SouthBoard", 0, 0, undefined, [0]);
+    view.defBoard("WestBoard", 0, 0, undefined, [1]);
+    view.defBoard("NorthBoard", 0, 0, undefined, [2]);
+    view.defBoard("EastBoard", 0, 0, undefined, [3]);
     view.defPiece("SouthKing", "South King");
     view.defPiece("WestKing", "West King");
     view.defPiece("NorthKing", "North King");
