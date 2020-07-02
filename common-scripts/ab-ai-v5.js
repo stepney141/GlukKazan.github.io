@@ -468,6 +468,9 @@ Ai.prototype.ab = function(ctx, board, maxLevel, level, alpha, beta) {
 }
 
 Ai.prototype.setContext = function(ctx, board) {
+  if (this.parent) {
+      this.parent.setContext(ctx, board);
+  }
   ctx.board = board;
   ctx.timestamp  = Date.now();
   ctx.nodeCount  = 0;
@@ -475,13 +478,15 @@ Ai.prototype.setContext = function(ctx, board) {
   ctx.tNodeCount = 0;
   ctx.mLevel     = 0;
   ctx.qLevel     = 0;
-  if (_.isUndefined(ctx.cache)) {
-      ctx.cache = [];     
-  }
-  if (_.isUndefined(ctx.killer)) {
-      ctx.killer = [];
-      ctx.killer[0] = [];
-      ctx.killer[1] = [];
+  if (!Dagaz.AI.selector || (Dagaz.Model.getSetupSelector(2) == 2)) {
+      if (_.isUndefined(ctx.cache)) {
+          ctx.cache = [];     
+      }
+      if (_.isUndefined(ctx.killer)) {
+          ctx.killer = [];
+          ctx.killer[0] = [];
+          ctx.killer[1] = [];
+      }
   }
 }
 
