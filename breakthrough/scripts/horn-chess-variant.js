@@ -55,10 +55,10 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("a4", [2, -2, 1, 0, 0, -1]);
     design.addPosition("b4", [2, -2, 0, -1, 1, 0]);
     design.addPosition("a5", [2, -2, 1, 0, 0, -1]);
-    design.addPosition("b5", [2, -2, 0, -1, 1, 0]);
-    design.addPosition("a6", [2, -2, 1, 0, 0, -1]);
-    design.addPosition("b6", [0, -2, 0, -1, 1, 0]);
-    design.addPosition("a7", [0, -2, 0, 0, 0, -1]);
+    design.addPosition("b5", [3, -2, 0, -1, 1, 0]);
+    design.addPosition("a6", [0, -2, 0, 0, 2, -1]);
+    design.addPosition("b6", [0, 0, 0, 0, 0, 0]);
+    design.addPosition("a7", [0, -3, 0, 0, 0, -2]);
 
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
     design.addCommand(0, ZRF.PARAM,	0);	// $1
