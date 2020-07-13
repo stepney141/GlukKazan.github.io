@@ -33,12 +33,12 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-blink", "false");
     design.checkVersion("ko", "asymmetric");
 
-    design.addDirection("n");
-    design.addDirection("s");
-    design.addDirection("e");
-    design.addDirection("w");
-    design.addDirection("nw");
-    design.addDirection("se");
+    design.addDirection("n");  // 0
+    design.addDirection("s");  // 1
+    design.addDirection("e");  // 2
+    design.addDirection("w");  // 3
+    design.addDirection("nw"); // 4
+    design.addDirection("se"); // 5
 
     design.addPlayer("Black", [1, 0, 3, 2, 5, 4]);
     design.addPlayer("White", [0, 1, 2, 3, 4, 5]);
@@ -71,7 +71,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("BlackStone", 0);
     design.addMove(0, 0, [0], 0);
     design.addMove(0, 0, [4], 0);
-    design.addMove(0, 0, [5], 0);
+//  design.addMove(0, 0, [5], 0);
     design.addMove(0, 0, [3], 1);
     design.addMove(0, 0, [2], 1);
 
