@@ -626,7 +626,6 @@ Dagaz.View.configure = function(view) {
     view.defPiece("WhiteMandarin", "White Mandarin");
     view.defPiece("BlackGeneral", "Black General");
     view.defPiece("WhiteGeneral", "White General");
-    view.defPiece("Ko", "Ko");
  
     view.defPosition("a19", 6, 6, 30, 30);
     view.defPosition("b19", 36, 6, 30, 30);
