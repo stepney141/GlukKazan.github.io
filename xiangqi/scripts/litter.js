@@ -1,3 +1,5 @@
+Dagaz.Model.WIDTH = 8;
+
 ZRF = {
     JUMP:          0,
     IF:            1,
@@ -173,7 +175,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPosition("f1", [0, 0, 0, 1, -1, -7, -9, -8]);
     design.addPosition("g1", [0, 0, 0, 1, -1, -7, -9, -8]);
     design.addPosition("h1", [0, 0, 0, 0, -1, 0, -9, -8]);
-
 
     design.addCommand(0, ZRF.FUNCTION,	24);	// from
     design.addCommand(0, ZRF.PARAM,	0);	// $1
