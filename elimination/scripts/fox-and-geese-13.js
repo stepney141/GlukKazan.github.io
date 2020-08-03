@@ -35,8 +35,8 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addDirection("sw");
     design.addDirection("nw");
 
-    design.addPlayer("Soldiers", [1, 0, 4, 6, 2, 7, 3, 5]);
-    design.addPlayer("Defenders", [0, 1, 2, 3, 4, 5, 6, 7]);
+    design.addPlayer("Goose", [1, 0, 4, 6, 2, 7, 3, 5]);
+    design.addPlayer("Fox", [0, 1, 2, 3, 4, 5, 6, 7]);
 
     design.addPosition("a7", [0, 1, 2, 3, 4, 5, 6, 7]);
     design.addPosition("b7", [0, 1, 2, 3, 4, 5, 6, 7]);
@@ -138,26 +138,26 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(1, 1, [6, 6], 1);
     design.addMove(1, 1, [3, 3], 1);
 
-    design.setup("Defenders", "Defender", 24);
-    design.setup("Soldiers", "Soldier", 28);
-    design.setup("Soldiers", "Soldier", 29);
-    design.setup("Soldiers", "Soldier", 44);
-    design.setup("Soldiers", "Soldier", 37);
-    design.setup("Soldiers", "Soldier", 30);
-    design.setup("Soldiers", "Soldier", 45);
-    design.setup("Soldiers", "Soldier", 38);
-    design.setup("Soldiers", "Soldier", 31);
-    design.setup("Soldiers", "Soldier", 46);
-    design.setup("Soldiers", "Soldier", 39);
-    design.setup("Soldiers", "Soldier", 32);
-    design.setup("Soldiers", "Soldier", 33);
-    design.setup("Soldiers", "Soldier", 34);
+    design.setup("Fox", "Defender", 24);
+    design.setup("Goose", "Soldier", 28);
+    design.setup("Goose", "Soldier", 29);
+    design.setup("Goose", "Soldier", 44);
+    design.setup("Goose", "Soldier", 37);
+    design.setup("Goose", "Soldier", 30);
+    design.setup("Goose", "Soldier", 45);
+    design.setup("Goose", "Soldier", 38);
+    design.setup("Goose", "Soldier", 31);
+    design.setup("Goose", "Soldier", 46);
+    design.setup("Goose", "Soldier", 39);
+    design.setup("Goose", "Soldier", 32);
+    design.setup("Goose", "Soldier", 33);
+    design.setup("Goose", "Soldier", 34);
 }
 
 Dagaz.View.configure = function(view) {
     view.defBoard("Board");
-    view.defPiece("SoldiersSoldier", "Soldiers Soldier");
-    view.defPiece("DefendersDefender", "Defenders Defender");
+    view.defPiece("SoldiersSoldier", "Goose Soldier");
+    view.defPiece("DefendersDefender", "Fox Defender");
  
     view.defPosition("a7", 12, 12, 48, 48);
     view.defPosition("b7", 60, 12, 48, 48);
