@@ -1,4 +1,5 @@
 Dagaz.AI.selector = true;
+Dagaz.Controller.persistense = "none";
 
 ZRF = {
     JUMP:          0,
