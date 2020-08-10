@@ -155,21 +155,21 @@ Dagaz.Model.CheckInvariants = function(board) {
                 if (_.indexOf(done, p) >= 0) return;
                 var player = getPlayer(board, p, pos);
                 if (player === null) return;
-                var dame = 0; var group = [p];
+                var dame = []; var group = [p];
                 for (var i = 0; i < group.length; i++) {
                      _.each(design.allDirections(), function(dir) {
                           var q = design.navigate(1, group[i], dir);
                           if ((q === null) || (_.indexOf(group, q) >= 0)) return;
                           var x = getPlayer(board, q, pos);
                           if ((x === null) || (_.indexOf(captured, q) >= 0)) {
-                              dame++;
+                              if (_.indexOf(dame, q)) dame.push(q);
                               return;
                           }
                           if (x != player) return;
                           group.push(q);
                      });
                 }
-                change(move, board, group, dame, pos);
+                change(move, board, group, dame.length, pos);
            });
       }
   });

@@ -26,14 +26,14 @@ Dagaz.Model.CheckInvariants = function(board) {
                isSuicide = false;
                return;
           }
-          var group = [p]; var dame = 0;
+          var group = [p]; var dame = [];
           for (var i = 0; i < group.length; i++) {
                _.each([1, 3, 4, 7], function(dir) {
                     var q = design.navigate(board.player, group[i], dir);
                     if ((q === null) || (_.indexOf(group, q) >= 0)) return;
                     var x = b.getPiece(q);
                     if (x === null) {
-                        dame++;
+                        if (_.indexOf(dame, q)) dame.push(q);
                         return;
                     }
                     if (x.player != piece.player) return;
@@ -41,10 +41,10 @@ Dagaz.Model.CheckInvariants = function(board) {
                });
           }
           if (piece.player == board.player) {
-              if (dame > 0) isSuicide = false;
+              if (dame.length > 0) isSuicide = false;
               return;
           }
-          if (dame == 0) {
+          if (dame.length == 0) {
                _.each(group, function(pos) {
                     move.capturePiece(pos);
                });
@@ -62,21 +62,21 @@ Dagaz.Model.CheckInvariants = function(board) {
                     if ((p === null) || (_.indexOf(done, p) >= 0)) return;
                     var x = b.getPiece(p);
                     if ((x === null) || (x.player != board.player)) return;
-                    var group = [p]; var dame = 0;
+                    var group = [p]; var dame = [];
                     for (var i = 0; i < group.length; i++) {
                         _.each([1, 3, 4, 7], function(dir) {
                              var q = design.navigate(board.player, group[i], dir);
                              if ((q === null) || (_.indexOf(group, q) >= 0)) return;
                              var x = b.getPiece(q);
                              if (x === null) {
-                                 dame++;
+                                 if (_.indexOf(dame, q)) dame.push(q);
                                  return;
                              }
                              if (x.player != board.player) return;
                              group.push(q);
                         });
                     }
-                    if (dame == 0) isSuicide = true;
+                    if (dame.length == 0) isSuicide = true;
                     done = _.union(done, group);
                });
           }

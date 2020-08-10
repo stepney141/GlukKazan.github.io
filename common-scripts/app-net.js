@@ -6,8 +6,8 @@ var STATE = {
 };
 
 var SERVICE  = "http://192.168.101.137:3000/api/";
-var USERNAME = "root";
-var PASSWORD = "joker";
+var USERNAME = "admin";
+var PASSWORD = "admin";
 var WAIT_FRAME = 100;
 
 var once = true;
