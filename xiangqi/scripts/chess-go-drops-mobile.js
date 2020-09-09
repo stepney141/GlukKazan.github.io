@@ -1,5 +1,5 @@
 (function() {
-
+ 
 var once = false;
 
 var checkVersion = Dagaz.Model.checkVersion;

@@ -444,5 +444,5 @@ Dagaz.View.configure = function(view) {
     view.defPosition("X2", 5, 317, 45, 48);
     view.defPosition("Y2", 471, 317, 45, 48);
     view.defPosition("X1", 5, 362, 45, 48);
-    view.defPosition("Y1", 471, 362, 45, 48);
+    view.defPosition("Y1", 471, 362, 45, 48); 
 }
