@@ -1,14 +1,20 @@
 (function() {
 
+var STATE = {
+    INIT: 0,
+    IDLE: 1,
+    EXEC: 2,
+    WAIT: 3
+};
+
 Dagaz.Controller.WAIT_FRAME  = 100;
-Dagaz.Controller.turnChanged = false;
 
 var mouseX          = 0;
 var mouseY          = 0;
 var mousePressed    = false;
 
 function App() {
-  this.state  = 0;
+  this.state  = STATE.INIT;
   this.states = [];
 }
 
@@ -43,8 +49,7 @@ var mouseMove = function(event) {
   }
 }
 
-var mouseUp = function(event) { 
-}
+var mouseUp = function(event) {}
 
 var mouseCallback = function(app, code, event, x, y, pos) {
   var p = Dagaz.Model.stringToPos(pos.name, app.design);
@@ -57,7 +62,7 @@ var mouseCallback = function(app, code, event, x, y, pos) {
       app.view.send(Dagaz.Controller.Event.MARK_TARGETS, targets);
   }
   if (!app.move.isPass()) {
-       app.state = 2;
+       app.state = STATE.EXEC;
   }
   return true;
 }
@@ -71,7 +76,7 @@ var mouseDown = function(event) {
 }
 
 App.prototype.isReady = function() {
-  return this.state == 1;
+  return this.state == STATE.IDLE;
 }
 
 var init = function(app) {
@@ -83,7 +88,7 @@ var init = function(app) {
   app.board = Dagaz.Model.getInitBoard();  
   Dagaz.Model.setup(app.board);
   app.view.setup(app.board);
-  app.state = 1;
+  app.state = STATE.IDLE;
   return false;
 }
 
@@ -99,19 +104,20 @@ var idle = function(app) {
 }
 
 App.prototype.done = function() {
+  var app = Dagaz.Controller.app;
   this.board = this.board.apply(this.move);
   if (Dagaz.Controller.turnChanged && !_.isUndefined(app.view)) {
       this.view.send(Dagaz.Controller.Event.TURN_CHANGED, this.board.turn);
   }
   delete this.move;
-  this.state = 1;
+  this.state = STATE.IDLE;
 }
 
 var exec = function(app) {
   if (!_.isUndefined(app.move)) {
       app.view.apply(app.move);
       delete app.list;
-      app.state = 3;
+      app.state = STATE.WAIT;
   }
   return false;
 }
@@ -121,10 +127,10 @@ var wait = function(app) {
 }
 
 Dagaz.Controller.app = new App();
-Dagaz.Controller.app.states[0] = init;
-Dagaz.Controller.app.states[1] = idle;
-Dagaz.Controller.app.states[2] = exec;
-Dagaz.Controller.app.states[3] = wait;
+Dagaz.Controller.app.states[STATE.INIT] = init;
+Dagaz.Controller.app.states[STATE.IDLE] = idle;
+Dagaz.Controller.app.states[STATE.EXEC] = exec;
+Dagaz.Controller.app.states[STATE.WAIT] = wait;
 
 canvas.onmousemove = mouseMove;
 canvas.onmouseup   = mouseUp;
