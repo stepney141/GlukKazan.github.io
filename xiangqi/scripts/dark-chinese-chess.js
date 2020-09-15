@@ -1,4 +1,4 @@
-Dagaz.AI.AI_FRAME = 3000;
+Dagaz.AI.AI_FRAME = 1000;
 
 ZRF = {
     JUMP:          0,
