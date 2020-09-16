@@ -107,6 +107,7 @@ Dagaz.Model.CheckInvariants = function(board) {
   var nw = design.getDirection("nw"); var sw = design.getDirection("sw");
   var ne = design.getDirection("ne"); var se = design.getDirection("se");
   _.each(board.moves, function(move) {
+      if (Dagaz.AI.inProgress) return;
       var b = board.apply(move);
       var pos = findGeneral(design, b, board.player);
       if ((pos === null) ||
