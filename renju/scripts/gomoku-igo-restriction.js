@@ -42,7 +42,7 @@ var calcLine = function(design, board, player, pos, dir) {
 }
 
 var isLine = function(design, board, player, pos, d, o) {
-  return calcLine(design, board, player, pos, d) + calcLine(design, board, player, pos, o) == 4;
+  return calcLine(design, board, player, pos, d) + calcLine(design, board, player, pos, o) >= 4;
 }
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;
