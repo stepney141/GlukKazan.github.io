@@ -171,7 +171,6 @@ Dagaz.Model.CheckInvariants = function(board) {
   _.each(design.allPositions(), function(pos) {
       var piece = board.getPiece(pos);
       if (piece === null) return;
-      if (piece.player != board.player) return;
       isLine(design, board, piece.player, pos, 0, 6);
       isLine(design, board, piece.player, pos, 1, 7);
       isLine(design, board, piece.player, pos, 2, 5);
