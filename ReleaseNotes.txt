@@ -1,5 +1,17 @@
-1.3.5
-  Filler
+24/09/2020 - 1.3.5
+  Filler (variants)
+  Constitutional Checkers
+  Rock Chess
+  Storm the Ivory Tower
+  Littera Chinese Chess
+  Chess Go
+  Custom Passive Chess
+  Tibetian Go
+  Tibetian checkers
+  Escalation
+  Dark Chinese Chess
+  Labyrinth Chess
+  app-net
 27/05/2020 - 1.3.4
   Bakuk
   Progressive Chess

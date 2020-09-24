@@ -1,15 +1,53 @@
 (function() {
 
 var capturePieces = false;
+var orthodox = false;
 
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
   if (name == "gogomoku-extension") {
       if (value == "capture") capturePieces = true;
+      if (value == "orthodox") orthodox = true;
   } else {
       checkVersion(design, name, value);
   }
+}
+
+var go = Dagaz.Controller.go;
+
+Dagaz.Controller.go = function(url) {
+  var design = Dagaz.Model.design;
+  var board = Dagaz.Controller.app.board;
+  url = url + "?setup="; 
+  var prev = null; var cnt = 0;
+  _.each(design.allPositions(), function(pos) {
+      var piece = board.getPiece(pos);
+      var s = "";
+      if (piece !== null) {
+          var type = piece.player - 1;
+          s = s + type + ":1";
+      }
+      if ((prev === null) || (prev != s)) {
+          if (prev !== null) {
+              url = url + prev;
+              if (cnt > 0) {
+                  url = url + "+" + cnt;
+              }
+              url = url + ";";
+          }
+          prev = s;
+          cnt = 0;
+      } else {
+          cnt++;
+      }
+  });
+  url = url + prev;
+  if (cnt > 0) {
+      url = url + "+" + cnt;
+  }
+  url = url + ";";
+  go(url);
 }
 
 var isDead = function(design, board, player, group, dirs) {
@@ -38,12 +76,10 @@ Dagaz.Model.CheckInvariants = function(board) {
       if (!move.isDropMove()) return;
       var pos = move.actions[0][1][0];
       var piece = move.actions[0][2][0];
-      var failed = false;
+      var oSuicide = false; var dSuicide = false;
       board.setPiece(pos, piece);
-      if (isDead(design, board, piece.player, [pos], [1, 3, 4, 7]) ||
-          isDead(design, board, piece.player, [pos], [0, 2, 5, 6])) {
-          failed = true;
-      }
+      if (isDead(design, board, piece.player, [pos], [1, 3, 4, 7])) oSuicide = true;
+      if (isDead(design, board, piece.player, [pos], [0, 2, 5, 6])) dSuicide = true;
       var captured = [];
       _.each([1, 3, 4, 7], function(dir) {
           var p = design.navigate(1, pos, dir);
@@ -54,6 +90,7 @@ Dagaz.Model.CheckInvariants = function(board) {
           var group = [p];
           if (!isDead(design, board, piece.player, group, [1, 3, 4, 7])) return;
           captured = _.union(captured, group);
+          oSuicide = false;
       });
       _.each([0, 2, 5, 6], function(dir) {
           var p = design.navigate(1, pos, dir);
@@ -64,9 +101,13 @@ Dagaz.Model.CheckInvariants = function(board) {
           var group = [p];
           if (!isDead(design, board, piece.player, group, [0, 2, 5, 6])) return;
           captured = _.union(captured, group);
+          dSuicide = false;
       });
       _.each(captured, function(p) {
-          failed = false;
+          if (!orthodox) {
+              oSuicide = false;
+              dSuicide = false;
+          }
           var piece = board.getPiece(p);
           if (piece === null) return;
           if (piece.player == board.player) return;
@@ -76,7 +117,7 @@ Dagaz.Model.CheckInvariants = function(board) {
               move.movePiece(p, p, piece.changeOwner(board.player));
           }
       });
-      if (failed) {
+      if (oSuicide || dSuicide) {
           move.failed = true;
       }
       board.setPiece(pos, null);

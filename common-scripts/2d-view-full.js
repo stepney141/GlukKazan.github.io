@@ -513,10 +513,15 @@ View.prototype.createChanges = function() {
            o.p.setup.x = 0; o.p.setup.y = 0;
            if (!_.isUndefined(this.move.hints)) {
                 for (var i = 0; i < this.move.hints.length; i++) {
-                     var loc = this.root.findAndLocate(this.move.hints[i]);
-                     if (loc !== null) {
-                         o.p.setup.hints.push(loc.x - o.x);
-                         o.p.setup.hints.push(loc.y - o.y);
+                     if (_.isObject(this.move.hints[i])) {
+                         o.p.setup.hints.push(this.move.hints[i].x);
+                         o.p.setup.hints.push(this.move.hints[i].y);
+                     } else {
+                         var loc = this.root.findAndLocate(this.move.hints[i]);
+                         if (loc !== null) {
+                             o.p.setup.hints.push(loc.x - o.x);
+                             o.p.setup.hints.push(loc.y - o.y);
+                         }
                      }
                      c++;
                 }
@@ -546,7 +551,10 @@ View.prototype.animate = function() {
   if (!_.isUndefined(this.changes) && !_.isUndefined(this.move)) {
        var f = true;
        _.each(this.changes, function(c) {
-           if (c.c <= 0) return;
+           if ((c.c <= 2) && (c.n !== null) && (c.o !== null) && c.n.p.setup) {
+               delete c.n.p.setup;
+           }
+           if (c.c <= 1) return;
            c.c--;
            f = false;
        });
