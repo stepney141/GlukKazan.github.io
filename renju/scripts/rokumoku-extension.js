@@ -1,9 +1,13 @@
 (function() {
 
+var capturePieces = false;
+
 var checkVersion = Dagaz.Model.checkVersion;
 
 Dagaz.Model.checkVersion = function(design, name, value) {
-  if (name != "gogomoku-extension") {
+  if (name == "gogomoku-extension") {
+      if (value == "capture") capturePieces = true;
+  } else {
       checkVersion(design, name, value);
   }
 }
@@ -34,12 +38,11 @@ Dagaz.Model.CheckInvariants = function(board) {
       if (!move.isDropMove()) return;
       var pos = move.actions[0][1][0];
       var piece = move.actions[0][2][0];
+      var failed = false;
       board.setPiece(pos, piece);
-      var group = [pos];
-      if (isDead(design, board, piece.player, group, [1, 3, 4, 7]) ||
-          isDead(design, board, piece.player, group, [0, 2, 5, 6])) {
-          move.failed = true;
-          return;
+      if (isDead(design, board, piece.player, [pos], [1, 3, 4, 7]) ||
+          isDead(design, board, piece.player, [pos], [0, 2, 5, 6])) {
+          failed = true;
       }
       var captured = [];
       _.each([1, 3, 4, 7], function(dir) {
@@ -63,11 +66,19 @@ Dagaz.Model.CheckInvariants = function(board) {
           captured = _.union(captured, group);
       });
       _.each(captured, function(p) {
+          failed = false;
           var piece = board.getPiece(p);
           if (piece === null) return;
           if (piece.player == board.player) return;
-          move.movePiece(p, p, piece.changeOwner(board.player));
+          if (capturePieces) {
+              move.capturePiece(p);
+          } else {
+              move.movePiece(p, p, piece.changeOwner(board.player));
+          }
       });
+      if (failed) {
+          move.failed = true;
+      }
       board.setPiece(pos, null);
   });
   CheckInvariants(board);
