@@ -27,6 +27,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-drops", "true");
     design.checkVersion("show-captures", "false");
+    design.checkVersion("ko", "situation");
     design.checkVersion("gogomoku-extension", "capture");
     design.checkVersion("gogomoku-extension", "orthodox");
 
