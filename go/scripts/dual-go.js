@@ -31,6 +31,7 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("pass-turn", "true");
     design.checkVersion("dual-go-extension", "capture");
     design.checkVersion("dual-go-extension", "orthodox");
+    design.checkVersion("dual-go-extension", "separate");
 
     design.addDirection("se"); // 0
     design.addDirection("s");  // 1
