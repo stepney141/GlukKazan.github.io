@@ -33,12 +33,14 @@ Dagaz.Model.PostProcessing = function(board, moves) {
   var design = Dagaz.Model.design;
   _.each(moves, function(move) {
       var b = board.apply(move);
-      var black = []; var white = [];
+      var black = []; var white = []; var done = [];
       _.each(design.allPositions(), function(pos) {
+          if (_.indexOf(done, pos) >= 0) return;
           var piece = b.getPiece(pos);
           if ((piece !== null) && (piece.type < 2)) return;
           var group = [pos];
           var player = checkTerritory(design, b, group);
+          done = _.union(done, group);
           if (player === null) return;
           if (player == 1) {
               black = _.union(black, group);

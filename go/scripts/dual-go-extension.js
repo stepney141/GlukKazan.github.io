@@ -38,12 +38,14 @@ var go = Dagaz.Controller.go;
 Dagaz.Controller.go = function(url, scoring) {
   var design = Dagaz.Model.design;
   var board = Dagaz.Controller.app.board;
-  var black = []; var white = [];
+  var black = []; var white = []; var done = [];
   if (scoring) {
       _.each(design.allPositions(), function(pos) {
+          if (_.indexOf(done, pos) >= 0) return;
           if (board.getPiece(pos) !== null) return;
           var group = [pos];
           var player = checkTerritory(design, board, group);
+          done = _.union(done, group);
           if (player === null) return;
           if (player == 1) {
               black = _.union(black, group);
