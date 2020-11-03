@@ -25,7 +25,7 @@ Dagaz.View.showPiece = function(view, ctx, frame, pos, piece, model, x, y) {
       var sy = y + 16;
       while (val > 0) {
           var name = "Black";
-          if (model.player > 1) {
+          if (model.type > 0) {
               name = "White";
           }
           name = name + (val % 10);
@@ -51,9 +51,6 @@ Dagaz.Model.CheckInvariants = function(board) {
       if (val === null) return;
       if (val >= v) v = val + 1;
   });
-/*for (var b = board; b.parent !== null; b = b.parent) {
-       if (!b.move.isPass()) v++;
-  }*/
   _.each(board.moves, function(move) {
        if (!move.isDropMove()) return;
        var piece = move.actions[0][2][0];
