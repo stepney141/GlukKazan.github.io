@@ -111,11 +111,6 @@ var sendStat = function(goal, player) {
   if (player != 1) {
       goal = -goal;
   }
-  if (!_.isUndefined(ga)) {
-      ga('send', 'event', {
-         'eventCategory': (goal == 0) ? 'Draw' : ( (goal > 0) ? 'Win' : 'Loss' )
-      });
-  }
 }
 
 App.prototype.done = function() {
