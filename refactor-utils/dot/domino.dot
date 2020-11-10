@@ -1,7 +1,6 @@
 digraph "graph" {
 graph[ ranksep=10, rankdir = LR ];
   "pyramid-solitaire.htm" -> "../common-scripts/2d-view.js";
-  "pyramid-solitaire.htm" -> "../common-scripts/analytics.js";
   "pyramid-solitaire.htm" -> "../common-scripts/app.js";
   "pyramid-solitaire.htm" -> "../common-scripts/common-setup-v2.js";
   "pyramid-solitaire.htm" -> "../common-scripts/dagaz.js";

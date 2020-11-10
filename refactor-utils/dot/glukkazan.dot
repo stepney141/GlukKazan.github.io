@@ -7,6 +7,7 @@ graph[ ranksep=10, rankdir = LR ];
 graph[ ranksep=10, rankdir = LR ];
 graph[ ranksep=10, rankdir = LR ];
 graph[ ranksep=10, rankdir = LR ];
+graph[ ranksep=10, rankdir = LR ];
   graph[ranksep=10,
   rankdir = LR];
   "bolotoudou-board.htm" -> "../common-scripts/2d-view-v2.js";
