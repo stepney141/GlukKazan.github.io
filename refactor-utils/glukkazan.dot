@@ -11205,12 +11205,6 @@ digraph "graph" {
   "windmill.htm" -> "scripts/morris-invariant.js";
   "windmill.htm" -> "scripts/morris-restrictions.js";
   "windmill.htm" -> "scripts/windmill.js";
-  "README.md" -> "ajv.min.js";
-  "README.md" -> "esprima.js";
-  "README.md" -> "js-yaml.min.js";
-  "angular.html" -> "../src/angular-sprintf.js";
-  "angular.html" -> "../src/sprintf.js";
-  "angular.html" -> "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.3/angular.min.js";
   "pasang-01-board.htm" -> "../common-scripts/2d-view-v2.js";
   "pasang-01-board.htm" -> "../common-scripts/app-v2.js";
   "pasang-01-board.htm" -> "../common-scripts/common-setup-v2.js";

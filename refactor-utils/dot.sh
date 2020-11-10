@@ -24,4 +24,5 @@ for name3 in $dirs;
 do
     echo $name3
     dot -Tpng ./dot/${name3}.dot -o ./dot/svg/${name3}.svg
+    dot -Tpng ./dot/${name3}.dot -o ./dot/png/${name3}.png
 done
