@@ -1,0 +1,3 @@
+digraph "graph" {
+graph[ ranksep=10, rankdir = LR ];
+}

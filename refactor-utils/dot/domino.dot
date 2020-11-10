@@ -1,0 +1,20 @@
+digraph "graph" {
+graph[ ranksep=10, rankdir = LR ];
+  "pyramid-solitaire.htm" -> "../common-scripts/2d-view.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/analytics.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/app.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/common-setup-v2.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/dagaz.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/move-list.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/session-manager.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/sound-manager-v2.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/zobrist.js";
+  "pyramid-solitaire.htm" -> "../common-scripts/zrf-model.js";
+  "pyramid-solitaire.htm" -> "https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js";
+  "pyramid-solitaire.htm" -> "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js";
+  "pyramid-solitaire.htm" -> "scripts/pyramid-extension.js";
+  "pyramid-solitaire.htm" -> "scripts/pyramid-goal.js";
+  "pyramid-solitaire.htm" -> "scripts/pyramid-restrictions.js";
+  "pyramid-solitaire.htm" -> "scripts/pyramid-setup.js";
+  "pyramid-solitaire.htm" -> "scripts/pyramid-solitaire.js";
+}
