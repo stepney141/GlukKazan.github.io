@@ -27,7 +27,6 @@ Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("show-hints", "false");
     design.checkVersion("show-captures", "false");
     design.checkVersion("show-drops", "true");
-    design.checkVersion("ko", "true");
     design.checkVersion("animate-redo", "false");
     design.checkVersion("go-extension", "true");
 
