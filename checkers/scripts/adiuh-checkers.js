@@ -1,4 +1,4 @@
-Dagaz.Controller.persistense = "session";
+Dagaz.Controller.persistense = "none";
 Dagaz.View.TARGET_COLOR = "#FFC44E";
 
 ZRF = {
