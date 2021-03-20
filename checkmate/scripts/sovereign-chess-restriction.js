@@ -74,8 +74,8 @@ Dagaz.Model.CheckInvariants = function(board) {
       }
       _.each(all, function(c) {
           if (_.indexOf(colors.enemy, c) == 0) return;
-          if (design.inZone(c, 1, pos) && (board.getPiece(pos) === null)) {
-              move.failed = true;            
+          if (design.inZone(c, 1, pos)) {
+              if ((board.getPiece(pos) === null) || (_.indexOf(colors.friend, c) == 0)) move.failed = true;
           }
       });
       if (v === null) {
