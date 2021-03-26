@@ -421,12 +421,52 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addPiece("White", 1);
     design.addDrop(1, 0, [], 0);
     design.addMove(1, 1, [], 0);
+
+    design.addPiece("BlackD", 2);
+    design.addDrop(2, 0, [], 0);
+    design.addMove(2, 1, [], 0);
+
+    design.addPiece("WhiteD", 3);
+    design.addDrop(3, 0, [], 0);
+    design.addMove(3, 1, [], 0);
+
+    design.addPiece("BlackO", 4);
+    design.addDrop(4, 0, [], 0);
+    design.addMove(4, 1, [], 0);
+
+    design.addPiece("WhiteO", 5);
+    design.addDrop(5, 0, [], 0);
+    design.addMove(5, 1, [], 0);
+
+    design.addPiece("BlackF", 6);
+    design.addDrop(6, 0, [], 0);
+    design.addMove(6, 1, [], 0);
+
+    design.addPiece("WhiteF", 7);
+    design.addDrop(7, 0, [], 0);
+    design.addMove(7, 1, [], 0);
+
+    design.addPiece("BlackC", 8);
+    design.addDrop(8, 0, [], 0);
+    design.addMove(8, 1, [], 0);
+
+    design.addPiece("WhiteC", 9);
+    design.addDrop(9, 0, [], 0);
+    design.addMove(9, 1, [], 0);
 }
 
 Dagaz.View.configure = function(view) {
     view.defBoard("Board");
     view.defPiece("BlackStone", "You Black");
     view.defPiece("WhiteStone", "You White");
+    view.defPiece("BlackD", "You BlackD");
+    view.defPiece("WhiteD", "You WhiteD");
+    view.defPiece("BlackO", "You BlackO");
+    view.defPiece("WhiteO", "You WhiteO");
+    view.defPiece("BlackF", "You BlackF");
+    view.defPiece("WhiteF", "You WhiteF");
+    view.defPiece("BlackC", "You BlackC");
+    view.defPiece("WhiteC", "You WhiteC");
  
     view.defPosition("a19", 41, 41, 42, 42);
     view.defPosition("b19", 83, 41, 42, 42);
