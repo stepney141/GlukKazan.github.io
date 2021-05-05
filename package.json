@@ -1,0 +1,9 @@
+{
+  "name": "GlukKazan.github.io",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "^1.13.1"
+  },
+  "type": "module"
+}
