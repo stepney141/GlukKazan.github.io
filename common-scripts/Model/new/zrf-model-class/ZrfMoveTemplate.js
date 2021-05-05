@@ -1,7 +1,7 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../../dagaz.js';
 
-class ZrfMoveTemplate {
+export class ZrfMoveTemplate {
   constructor() {
     this.commands = [];
   }

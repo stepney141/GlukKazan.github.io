@@ -1,7 +1,7 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../dagaz.js';
 
-class App {
+export class App {
   constructor(canvas, params) {
     this.design = Dagaz.Model.getDesign();
     this.canvas = canvas;

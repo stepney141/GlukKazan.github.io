@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../dagaz.js';
 
 (function () {
   var STATE = {
@@ -89,6 +89,7 @@ import { Dagaz } from 'dagaz.js';
 
   var sendStat = function(goal, player) {
     if (player != 1) {
+      
       goal = -goal;
     }
   };
@@ -104,5 +105,6 @@ import { Dagaz } from 'dagaz.js';
   }
 
   Dagaz.Controller.app.view.init(Dagaz.Controller.app.canvas, Dagaz.Controller.app);
+
   Dagaz.Controller.app.run();
 })();

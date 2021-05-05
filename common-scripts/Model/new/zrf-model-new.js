@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../dagaz.js';
 
 (function() {
   var Z2J_VERSION = 2;
@@ -205,6 +205,8 @@ import { Dagaz } from 'dagaz.js';
   Dagaz.Model.ZRF_IS_PIECE  = 10;
   Dagaz.Model.ZRF_CREATE    = 11;
 
+  /* setting up commands */
+
   Dagaz.Model.commands = {};
 
   Dagaz.Model.commands[Dagaz.Model.ZRF_JUMP] = function(gen, param) {
@@ -352,6 +354,8 @@ import { Dagaz } from 'dagaz.js';
     gen.stack.push(param);
     return 0;
   };
+
+  /* setting up functions */
 
   Dagaz.Model.functions = {};
 

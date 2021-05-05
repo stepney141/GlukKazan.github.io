@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-class ZrfGrid {
+export class ZrfGrid {
   constructor(design) {
     this.design = design;
     this.scales = [];

@@ -1,7 +1,7 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../../dagaz.js';
 
-class ZrfPiece {
+export class ZrfPiece {
   constructor(type, player) {
     this.type   = type;
     this.player = player;

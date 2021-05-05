@@ -1,7 +1,7 @@
 import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
+import { Dagaz } from '../../dagaz.js';
 
-class View2D {
+export class View2D {
   constructor() {
     this.pos     = [];
     this.res     = [];
