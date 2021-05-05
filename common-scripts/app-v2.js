@@ -684,6 +684,11 @@ App.prototype.exec = function() {
       }
       if (this.board.parent !== null) {
           var g = this.board.checkGoals(this.design, this.board.parent.player);
+          var message = '';
+          if (_.isObject(g)) {
+              message = g.message;
+              g = g.result;
+          }
           if (g !== null) {
               var player = this.design.playerNames[this.board.parent.player];
               this.state = STATE.DONE;
@@ -696,7 +701,7 @@ App.prototype.exec = function() {
                          Dagaz.Controller.play(Dagaz.Sounds.lose);
                       }
                   }
-                  this.doneMessage = player + " won";
+                  this.doneMessage = player + " won" + message;
                   this.winPlayer   = this.board.parent.player;
               } else if (g < 0) {
                   if (!_.isUndefined(Dagaz.Controller.play)) {
@@ -706,13 +711,13 @@ App.prototype.exec = function() {
                          Dagaz.Controller.play(Dagaz.Sounds.lose);
                       }
                   }
-                  this.doneMessage = player + " lose";
+                  this.doneMessage = player + " lose" + message;
                   this.winPlayer   = -this.board.parent.player;
               } else {
                   if (!_.isUndefined(Dagaz.Controller.play)) {
                       Dagaz.Controller.play(Dagaz.Sounds.draw);
                   }
-                  this.doneMessage = "Draw";
+                  this.doneMessage = "Draw" + message;
                   this.winPlayer   = 0;
               }
               sendStat(g, this.board.parent.player);

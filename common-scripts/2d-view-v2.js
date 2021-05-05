@@ -8,6 +8,8 @@ Dagaz.View.DROPS_ALPHA  = 0.5;
 
 Dagaz.View.HINT_STEPS   = 1;
 
+Dagaz.View.TARGET_COLOR = "#00AA00";
+
 Dagaz.View.markType = {
    TARGET:    0,
    ATTACKING: 1,
@@ -126,7 +128,8 @@ View2D.prototype.clearDrops = function() {
   this.drops = [];
 }
 
-View2D.prototype.defPosition = function(name, x, y, dx, dy) {
+View2D.prototype.defPosition = function(name, x, y, dx, dy, selector) {
+  if (!_.isUndefined(selector) && (selector != Dagaz.Model.getResourceSelector())) return;
   this.pos.push({
       name: name,
       x:    x,
@@ -554,7 +557,7 @@ View2D.prototype.animate = function() {
 }
 
 Dagaz.View.showMarks = function(view, ctx) {
-  drawMarks(ctx, view, view.target, "#00AA00");
+  drawMarks(ctx, view, view.target, Dagaz.View.TARGET_COLOR);
   drawMarks(ctx, view, view.goal,   "#FFFF00");
 }
 
@@ -619,6 +622,10 @@ View2D.prototype.draw = function(canvas) {
            }
            ctx.drawImage(b.h, b.x, b.y);
       });
+      if (!_.isUndefined(Dagaz.View.showBoard)) {
+           var board = this.controller.getBoard();
+           Dagaz.View.showBoard(board, ctx);
+      }
       _.chain(_.range(this.setup.length))
        .sortBy(function(ix) {
            var piece = this.setup[ix];
@@ -649,10 +656,6 @@ View2D.prototype.draw = function(canvas) {
       Dagaz.View.showMarks(this, ctx);
       this.showDrops(ctx);
       this.animate();
-      if (!_.isUndefined(Dagaz.View.showBoard)) {
-           var board = this.controller.getBoard();
-           Dagaz.View.showBoard(board, ctx);
-      }
   }
 }
 
