@@ -1,6 +1,3 @@
-import _ from 'underscore';
-import { Dagaz } from 'dagaz.js';
-
 (function() {
 
 var Z2J_VERSION = 2;
