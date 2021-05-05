@@ -1,4 +1,4 @@
-var Dagaz  = {
+const Dagaz  = {
   Model:      {},
   View:       {},
   AI:         {},
@@ -67,3 +67,5 @@ Dagaz.AI.reject = function(ctx, move) {
       return child.move.toString() != move.toString();
   });
 }
+
+export { Dagaz }
