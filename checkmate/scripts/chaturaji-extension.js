@@ -10,8 +10,8 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
-var isFriend = function(a, b) {
-  return Math.abs(a - b) == 2;
+Dagaz.AI.isFriend = function(player, opponent) {
+  return (player % 2) == (opponent % 2);
 }
 
 var CheckInvariants = Dagaz.Model.CheckInvariants;
@@ -27,7 +27,7 @@ Dagaz.Model.CheckInvariants = function(board) {
       var pos = move.actions[0][1][0];
       var piece = board.getPiece(pos);
       if (piece === null) return;
-      if (isFriend(piece.player, board.player)) {
+      if (Dagaz.AI.isFriend(piece.player, board.player)) {
           move.failed = true;
           return;
       }
