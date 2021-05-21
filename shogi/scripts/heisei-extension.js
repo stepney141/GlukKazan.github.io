@@ -16,6 +16,29 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+Dagaz.Model.moveToString = function(move) {
+  var r = "";
+  _.each(move.actions, function(a) {
+      if (a[1] === null) return;
+      if (r != "") {
+          r = r + " ";
+      }
+      if (a[0] != null) {
+          r = r + Dagaz.Model.posToString(a[0][0]);
+          if (a[1] !== null) {
+              r = r + '-';
+          }
+      }
+      if (a[1] !== null) {
+          r = r + Dagaz.Model.posToString(a[1][0]);
+      }
+      if ((a[2] !== null) && ((a[0] != null) || (a[1] !== null))) {
+          r = r + " " + a[2][0].toString();
+      }
+  });
+  return r;
+}
+
 var isFriendNeighbour = function(design, board, player, pos) {
   var r = false;
   _.each(design.allDirections(), function(dir) {
