@@ -10,6 +10,16 @@ Dagaz.Model.checkVersion = function(design, name, value) {
   }
 }
 
+var getSeed = function() {
+  var str = window.location.search.toString();
+  var result = str.match(/[?&](seed|sid)=([^&]*)/);
+  if (result) {
+      return result[2];
+  } else {
+      return "" + _.random(0, 10000);
+  }
+}
+
 var getSetup = function(setup) {
   var str = window.location.search.toString();
   if (setup) {
@@ -55,26 +65,35 @@ var isAttacked = function(a, positions) {
   return r;
 }
 
-Dagaz.AI.isSafePosition = function(design, board, pos) {
-  var piece = board.getPiece(pos);
-  if (piece === null) return false;
-  var r = true;
-  _.each(design.allPositions(), function(p) {
-      var enemy = board.getPiece(p);
-      if ((enemy !== null) && (enemy.player != piece.player)) {
-          if (Math.abs(getX(pos) - getX(p)) == Math.abs(getY(pos) - getY(p))) {
-              r = false;
+var isDanger = function(design, board, pos, player) {
+  var r = false;
+  if (player == 1) return r;
+  _.each(design.allDirections(), function(dir) {
+      var p = design.navigate(0, pos, dir);
+      if (p === null) return;
+      if (board.getPiece(p) !== null) return;
+      p = design.navigate(1, pos, dir);
+      while (p !== null) {
+          if (board.getPiece(p) !== null) {
+              r = true;
+              return;
           }
+          p = design.navigate(1, p, dir);
       }
   });
   return r;
 }
+
+var setup = Dagaz.Model.setup;
 
 Dagaz.Model.setup = function(board, init) {
   if (getSetup(init)) {
       setup(board, init);
       return;
   }
+  var seed = getSeed();
+  console.log("Seed: " + seed);
+  Math.seedrandom(seed);
   var design = Dagaz.Model.design;
   var cnt = design.positions.length;
   row = Math.sqrt(cnt) | 0;
@@ -85,7 +104,7 @@ Dagaz.Model.setup = function(board, init) {
                var piece = Dagaz.Model.createPiece(+type, +player);
                for (var i = 0; i < design.reserve[type][player]; i++) {
                     var pos = _.random(0, cnt - 1);
-                    while (notValid(pos, +player) || (_.indexOf(positions, pos) >= 0)) {
+                    while (notValid(pos, +player) || (_.indexOf(positions, pos) >= 0) || isDanger(design, board, pos, +player)) {
                         pos = _.random(0, cnt - 1);
                     }
                     board.setPiece(pos, Dagaz.Model.createPiece(+type, +player));

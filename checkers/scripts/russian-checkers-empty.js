@@ -249,6 +249,9 @@ Dagaz.Model.BuildDesign = function(design) {
     design.addMove(1, 4, [0, 0], 1, 10);
     design.addMove(1, 4, [2, 2], 1, 10);
     design.addMove(1, 4, [1, 1], 1, 10);
+
+    design.reserve("White", "King", 3);
+    design.reserve("Black", "King", 1);
 }
 
 Dagaz.View.configure = function(view) {
