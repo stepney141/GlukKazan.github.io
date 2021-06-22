@@ -1,19 +1,8 @@
 "use strict";
 
-// Perf TODO:
-// Merge material updating with psq values
-// Put move scoring inline in generator
-// Remove need for fliptable in psq tables.  Access them by color
-// Optimize pawn move generation
+(function() {
 
-// Non-perf todo:
-// Checks in first q?
-// Pawn eval.
-// Better king evaluation
-// Better move sorting in PV nodes (especially root)
-
-var g_debug = true;
-var g_timeout = 40;
+var g_timeout = 3000;
 var g_width = 8;
 var g_height = 8;
 
@@ -553,66 +542,6 @@ function QSearch(alpha, beta, ply) {
         }
     }
 
-    /* Disable checks...  Too slow currently
-
-    if (ply == 0 && !wasInCheck) {
-        moves = new Array();
-        GenerateAllMoves(moves);
-
-        for (var i = 0; i < moves.length; i++) {
-            moveScores[i] = ScoreMove(moves[i]);
-        }
-
-        for (var i = 0; i < moves.length; i++) {
-            var bestMove = i;
-            for (var j = moves.length - 1; j > i; j--) {
-                if (moveScores[j] > moveScores[bestMove]) {
-                    bestMove = j;
-                }
-            }
-            {
-                var tmpMove = moves[i];
-                moves[i] = moves[bestMove];
-                moves[bestMove] = tmpMove;
-
-                var tmpScore = moveScores[i];
-                moveScores[i] = moveScores[bestMove];
-                moveScores[bestMove] = tmpScore;
-            }
-
-            if (!MakeMove(moves[i])) {
-                continue;
-            }
-            var checking = g_inCheck;
-            UnmakeMove(moves[i]);
-
-            if (!checking) {
-                continue;
-            }
-
-            if (!See(moves[i])) {
-                continue;
-            }
-            
-            MakeMove(moves[i]);
-
-            var value = -QSearch(-beta, -alpha, ply - 1);
-
-            UnmakeMove(moves[i]);
-
-            if (value > realEval) {
-                if (value >= beta)
-                    return value;
-
-                if (value > alpha)
-                    alpha = value;
-
-                realEval = value;
-            }
-        }
-    }
-    */
-
     return realEval;
 }
 
@@ -939,27 +868,6 @@ function AllCutNode(ply, depth, beta, allowNull) {
             plyToSearch++;
         } else {
             var reduced = plyToSearch - (movePicker.atMove > 14 ? 2 : 1);
-
-            // Futility pruning
-/*            if (movePicker.stage == 5 && !inCheck) {
-                if (movePicker.atMove >= (15 + (1 << (5 * ply) >> 2)) &&
-                    realEval > minMateBuffer) {
-                    UnmakeMove(currentMove);
-                    continue;
-                }
-
-                if (ply < 7) {
-                    var reducedPly = reduced <= 0 ? 0 : reduced;
-                    var futilityValue = -g_baseEval + (900 * (reducedPly + 2)) - (movePicker.atMove * 10);
-                    if (futilityValue < beta) {
-                        if (futilityValue > realEval) {
-                            realEval = futilityValue;
-                        }
-                        UnmakeMove(currentMove);
-                        continue;
-                    }
-                }
-            }*/
 
             // Late move reductions
             if (movePicker.stage == 5 && movePicker.atMove > 5 && ply >= 3) {
@@ -2501,6 +2409,10 @@ function BuildPVMessage(bestMove, value, timeTaken, ply) {
     return "Ply:" + ply + " Score:" + value + " Nodes:" + totalNodes + " NPS:" + ((totalNodes / (timeTaken / 1000)) | 0) + " " + PVFromHash(bestMove, 15);
 }
 
+function SetTimeout(timeout) {
+    g_timeout = timeout;
+}
+
 //////////////////////////////////////////////////
 // Test Harness
 //////////////////////////////////////////////////
@@ -2538,3 +2450,11 @@ self.onmessage = function (e) {
         MakeMove(GetMoveFromString(e.data));
     }
 }
+
+Dagaz.AI.FormatMove        = FormatMove;
+Dagaz.AI.ResetGame         = ResetGame;
+Dagaz.AI.InitializeFromFen = InitializeFromFen;
+Dagaz.AI.Search            = Search;
+Dagaz.AI.SetTimeout        = SetTimeout;
+
+})();
