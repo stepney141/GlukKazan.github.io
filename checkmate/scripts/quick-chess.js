@@ -1,3 +1,9 @@
+Dagaz.Controller.persistense = "session";
+
+Dagaz.Model.WIDTH  = 5;
+Dagaz.Model.HEIGHT = 6;
+Dagaz.AI.FLAGS     = 0xE0;
+
 ZRF = {
     JUMP:          0,
     IF:            1,
@@ -18,6 +24,10 @@ ZRF = {
     LITERAL:       16,
     VERIFY:        20
 };
+
+if (Dagaz.AI.SetParams) {
+    Dagaz.AI.SetParams(Dagaz.Model.WIDTH, Dagaz.Model.HEIGHT, Dagaz.AI.FLAGS);
+}
 
 Dagaz.Model.BuildDesign = function(design) {
     design.checkVersion("z2j", "2");

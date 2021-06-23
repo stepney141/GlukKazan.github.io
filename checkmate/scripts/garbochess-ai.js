@@ -2409,6 +2409,12 @@ function BuildPVMessage(bestMove, value, timeTaken, ply) {
     return "Ply:" + ply + " Score:" + value + " Nodes:" + totalNodes + " NPS:" + ((totalNodes / (timeTaken / 1000)) | 0) + " " + PVFromHash(bestMove, 15);
 }
 
+function SetParams(width, height, flags) {
+    g_flags   = flags;
+    g_width   = width;
+    g_height  = height;
+}
+
 function SetTimeout(timeout) {
     g_timeout = timeout;
 }
@@ -2455,6 +2461,7 @@ Dagaz.AI.FormatMove        = FormatMove;
 Dagaz.AI.ResetGame         = ResetGame;
 Dagaz.AI.InitializeFromFen = InitializeFromFen;
 Dagaz.AI.Search            = Search;
+Dagaz.AI.SetParams         = SetParams;
 Dagaz.AI.SetTimeout        = SetTimeout;
 
 })();
