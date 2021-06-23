@@ -73,9 +73,9 @@ var change = function(design, board, layer, positions) {
 
 var setup = Dagaz.Model.setup;
 
-Dagaz.Model.setup = function(board) {
-  if (getSetup()) {
-      setup(board);
+Dagaz.Model.setup = function(board, init) {
+  if (getSetup(init)) {
+      setup(board, init);
       return;
   }
   var design = Dagaz.Model.design;
