@@ -76,10 +76,10 @@ var createPiece = function(design, c) {
   if (c == 'p') return Dagaz.Model.createPiece(design.getPieceType("Pawn"), 2);
   if (c == 'R') return Dagaz.Model.createPiece(design.getPieceType("Rook"), 1);
   if (c == 'r') return Dagaz.Model.createPiece(design.getPieceType("Rook"), 2);
-  if (c == 'N') return Dagaz.Model.createPiece(design.getPieceType("Knight"), 1);
-  if (c == 'n') return Dagaz.Model.createPiece(design.getPieceType("Knight"), 2);
-  if (c == 'B') return Dagaz.Model.createPiece(design.getPieceType("Bishop"), 1);
-  if (c == 'b') return Dagaz.Model.createPiece(design.getPieceType("Bishop"), 2);
+  if (c == 'N') return Dagaz.Model.createPiece(design.getPieceType("Knibis"), 1);
+  if (c == 'n') return Dagaz.Model.createPiece(design.getPieceType("Knibis"), 2);
+  if (c == 'B') return Dagaz.Model.createPiece(design.getPieceType("Biskni"), 1);
+  if (c == 'b') return Dagaz.Model.createPiece(design.getPieceType("Biskni"), 2);
   if (c == 'Q') return Dagaz.Model.createPiece(design.getPieceType("Queen"), 1);
   if (c == 'q') return Dagaz.Model.createPiece(design.getPieceType("Queen"), 2);
   if (c == 'K') return Dagaz.Model.createPiece(design.getPieceType("King"), 1);
@@ -136,8 +136,8 @@ var getPieceNotation = function(design, piece) {
   r = 'M';
   if (piece.type == design.getPieceType("Pawn"))   r = 'P';
   if (piece.type == design.getPieceType("Rook"))   r = 'R';
-  if (piece.type == design.getPieceType("Knight")) r = 'N';
-  if (piece.type == design.getPieceType("Bishop")) r = 'B';
+  if (piece.type == design.getPieceType("Knibis")) r = 'N';
+  if (piece.type == design.getPieceType("Biskni")) r = 'B';
   if (piece.type == design.getPieceType("Queen"))  r = 'Q';
   if (piece.type == design.getPieceType("King"))   r = 'K';
   if (piece.player > 1) {
