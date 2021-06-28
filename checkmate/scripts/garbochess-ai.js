@@ -1552,15 +1552,13 @@ function InitializePieceList() {
             g_pieceList[(i << 6) | j] = 0;
         }
     }
-
     for (var i = 0; i < 256; i++) {
         g_pieceIndex[i] = 0;
         if (g_board[i] & (colorWhite | colorBlack)) {
-			var piece = g_board[i] & 0xF;
-
-			g_pieceList[(piece << 6) | g_pieceCount[piece]] = i;
-			g_pieceIndex[i] = g_pieceCount[piece];
-			g_pieceCount[piece]++;
+            var piece = g_board[i] & 0xF;
+            g_pieceList[(piece << 6) | g_pieceCount[piece]] = i;
+            g_pieceIndex[i] = g_pieceCount[piece];
+            g_pieceCount[piece]++;
         }
     }
 }
