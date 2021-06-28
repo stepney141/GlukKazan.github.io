@@ -1241,9 +1241,9 @@ function MakeTable(table) {
     for (var i = 0; i < 256; i++) {
         result[i] = 0;
     }
-    for (var row = 0; row < 8; row++) {
-        for (var col = 0; col < 8; col++) {
-            result[MakeSquare(row, col)] = table[row * 8 + col];
+    for (var row = 0; row < g_height; row++) {
+        for (var col = 0; col < g_width; col++) {
+            result[MakeSquare(row, col)] = table[row * g_width + col];
         }
     }
     return result;
@@ -1278,10 +1278,10 @@ function ResetGame() {
     g_zobristBlackLow = mt.next(32);
     g_zobristBlackHigh = mt.next(32);
 
-    for (var row = 0; row < 8; row++) {
-        for (var col = 0; col < 8; col++) {
+    for (var row = 0; row < g_height; row++) {
+        for (var col = 0; col < g_width; col++) {
             var square = MakeSquare(row, col);
-            flipTable[square] = MakeSquare(7 - row, col);
+            flipTable[square] = MakeSquare((g_height - 1) - row, col);
         }
     }
 
